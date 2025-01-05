@@ -1,0 +1,577 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section xml:id="sec-section-name" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>The Problem of Area</title>
+
+  <p>
+    One of the oldest problems in mathematics is computing the area of planar regions.
+    For example, the <url href="https://en.wikipedia.org/wiki/Rhind_Mathematical_Papyrus">Rhind mathematical papyrus</url> (16th century <init>BCE</init>) makes clear that the ancient Egyptians knew how to compute the areas of rectangles, triangles, and even discs (using the approximation <m>\pi \approx \frac{256}{81}</m>).
+  </p>
+
+  <p>
+    Despite enormous progress in computing the areas and volumes of geometric figures, the area of a <term>parabolic segment</term> (a planar region bounded by a parabola and a line) eluded ancient mathematicians until the 3rd century <init>BCE</init>, when the Greek mathematician <url href="https://en.wikipedia.org/wiki/Archimedes">Archimedes</url> successfully <url href="https://en.wikipedia.org/wiki/Quadrature_of_the_Parabola">computed the area of a parabolic segment</url> using the <url href="https://en.wikipedia.org/wiki/Method_of_exhaustion"><term>method of exhaustion</term></url>, an ancient precursor to calculus independently developed in both ancient Greece (5th century <init>BCE</init>) and ancient China (3rd century <init>CE</init>).
+  </p>
+
+  <p>
+    In this section, we'll use the method of exhaustion to carry out an area computation equivalent to a special case of Archimedes' computation; along the way, you'll encounter your first example of <url href="https://gvsuoer.github.io/sundstrom-textbook/S_contradiction.html"><term>proof by contradiction</term></url>.
+    Thus, we'll prove the following claim.
+  </p>
+
+  <theorem xml:id="thm-area-parabola">
+    <creator>after Archimedes</creator>
+    <statement>
+      <p>
+        Let <m>U</m> denote the planar region bounded by the parabola <m>y=x^2</m> and the lines <m>y=0</m> and <m>x=1</m>, i.e.,
+          <me>
+            U \defn \set{(x,y) \in \R^2}{0 \leq x \leq 1,\, 0 \leq y \leq x^2}
+          </me>.
+        Then <m>\Area(U) = \frac{1}{3}</m>.
+      </p>
+    </statement>
+  </theorem>
+
+  <figure xml:id="fig-area-parabola">
+    <caption>The planar region <m>U</m> of <xref ref="thm-area-parabola" />.</caption>
+    <image width="50%">
+      <description>
+        <p>
+          This is a plot of the bounded planar region <m>U</m> under the parabola <m>y=x^2</m>, above the <m>x</m>-axis, and to the left of the vertical line <m>x=1</m>.
+        </p>
+      </description>
+      <asymptote>
+        unitsize(4cm);
+        defaultpen(fontsize(10pt));
+        import graph;
+
+        real f(real x) { return x^2; }
+        path s = graph(f, 0, 1, operator..);
+        pen fillpen = mediumgray;
+        fill(s -- (1,0) -- cycle, fillpen);
+        path c = graph(f,0,1.05,operator..);
+        Label graphlabel = Label("$y=x^2$", position=EndPoint);
+        draw(c, L=graphlabel);
+        Label linelabel = Label("$1$", position=EndPoint);
+        draw ((1,1) -- (1,-0.05), L=linelabel);
+
+        arrowbar axisarrow = Arrow(TeXHead);
+        Label nula = Label("$0$", position=BeginPoint);
+        Label xlabel = Label("$+x$", position=EndPoint);
+        path xaxis = (-0.05,0) -- (1.1,0);
+        draw (xaxis, arrow=axisarrow);
+        label(nula,xaxis);
+        label(xlabel,xaxis);
+        Label ylabel = Label("$+y$", position=EndPoint);
+        path yaxis = (0,-0.05) -- (0,1.25);
+        draw (yaxis, arrow=axisarrow);
+        label(nula,yaxis);
+        label(ylabel,yaxis);
+      </asymptote>
+    </image>
+  </figure>
+
+  <note>
+    <p>
+      Let's just take a moment to review some of the notation and terminology we've just used.
+      <ul>
+        <li>
+          <p>
+            A <term>planar region</term> is a subset of <m>\R^2</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            The notation <m>p \in A</m> means <q><m>p</m> is an element of the set <m>A</m>.</q>
+          </p>
+        </li>
+        <li>
+          <p>
+            The notation <m>\set{p \in A}{Q(p)}</m> means <q>the set of all elements <m>p</m> of the set <m>A</m> such that the condition <m>Q(p)</m> is true.</q>
+            For example, <m>\set{x \in \R}{x \gt 0}</m> is the set of all elements <m>x</m> of the set <m>\R</m> such that <m>x \gt 0</m>, <ie />, the set of all positive real numbers.
+          </p>
+        </li>
+        <li>
+          <p>
+            The notation <m>x \defn y</m> means <q><m>x</m> is defined to be <m>y</m>.</q> This notation isn't yet completely standard in mathematics, but we'll use it throughout this course.
+          </p>
+        </li>
+      </ul>
+    </p>
+  </note>
+ <!-- <p>
+    Here's the basic strategy of the proof.
+    <ol>
+      <li>
+        <p>
+          Given a natural number <m>N</m>, subdivide the region <m>U</m> using equally spaced vertical cuts into <m>N</m> smaller pieces.
+        </p>
+      </li>
+      <li>
+        <p>
+          Each smaller piece contains a smaller rectangle, which gives a lower estimate for its area.
+          Similarly, each smaller piece is contained in a larger rectangle, which gives an upper estimate for its area.
+        </p>
+      </li>
+      <li>
+        <p>
+          Adding up the lower estimates on the areas of the smaller pieces gives a lower estimate of the form <m>\frac{1}{3}-\epsilon_1(N) \leq \Area(A)</m>, where the error term <m>\epsilon_1(N)</m> clearly decreases as <m>N</m> increases.
+          Similarly, adding up the upper estimates on the areas of the smaller pieces gives an upper estimate of the form <m>\Area(U) \leq \frac{1}{3}+\epsilon_2(N)</m>, where the error term <m>\epsilon_2(N)</m> clearly decreases as <m>N</m> increases.
+        </p>
+      </li>
+      <li>
+        <p>
+          Finally, we assume for argument's sake that <m>\Area(U) \neq \frac{1}{3}</m>.
+          If <m>\Area(U) > \frac{1}{3}</m>, we use our upper estimate to derive a contradiction, and if <m>\Area(U) \lt \frac{1}{3}</m>, we use our lower estimate to derive a contradiction.
+          Thus, either way, the assumption that <m>\Area(U) \neq \frac{1}{3}</m> yields a contradiction.
+        </p>
+      </li>
+    </ol>
+    The last two steps constitute a slightly modernized version of the method of exhaustion.
+    The last step will possibly be your first example of <url href="https://gvsuoer.github.io/sundstrom-textbook/S_contradiction.html">proof by contradiction</url>.
+  </p>-->
+
+  <p>
+    Before continuing, let me be precise about the properties of area we'll use.
+  </p>
+
+  <assumption xml:id="assumption-area">
+    <statement>
+      <p>
+        One can give a <url href= "https://en.wikipedia.org/wiki/Area#Formal_definition">formal definition</url> of the area of planar regions, which is realized by a construction called <term>Jordan content</term>.
+        We'll assume that all planar regions under consideration have a well-defined area.
+        We'll also assume without proof the following basic facts about area.
+        <ol>
+          <li xml:id="assumption-area-rectangle">
+            <p>
+              If <m>R</m> is a rectangle with base <m>b</m> and height <m>h</m>, then <m>\Area(R) = bh</m>.
+              In particular, a line segment (rectangle with base or height equal to <m>0</m>) has area equal to <m>0</m>.
+            </p>
+          </li>
+          <li xml:id="assumption-area-empty">
+            <p>
+              If <m>A</m> is empty, then <m>\Area(A) = 0</m>.
+            </p>
+          </li>
+          <li xml:id="assumption-area-union">
+            <p>
+              Let <m>A_1,\dotsc,A_N</m> be planar regions with well-defined area.
+              Suppose that <m>\Area(A_i \cap A_j) = 0</m> for all <m>1 \leq i,j \leq N</m> satisfying <m>i \neq j</m>.
+              Then <me>\Area(A_1 \cup \cdots \cup A_N) = \Area(A_1) + \cdots + \Area(A_N)</me>.
+            </p>
+          </li>
+          <li xml:id="assumption-area-monotone">
+            <p>
+              Let <m>A</m> and <m>B</m> be planar regions with well-defined area. If <m>A \subseteq B</m>, then <m>\Area(A) \leq \Area(B)</m>.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+  </assumption>
+
+  <note>
+    <p>
+      Again, let's review some of the notation we've just used.
+      <ul>
+        <li>
+          <p>
+            Let <m>A</m> and <m>B</m> be subsets of a set <m>X</m>.
+            <ul>
+              <li>
+                <p>
+                  The <term>union</term> of <m>A</m> and <m>B</m> is the set of all elements of <m>X</m> that lie in <m>A</m> or <m>B</m>, which we denote by <m>A \cup B</m>.
+                </p>
+              </li>
+              <li>
+                <p>
+                  The <term>intersection</term> of <m>A</m> and <m>B</m> is the set of all elements of <m>X</m> that lie in both <m>A</m> and <m>B</m>, which we denote by <m>A \cap B</m>.
+                </p>
+              </li>
+            </ul>
+          </p>
+        </li>
+        <li>
+          <p>
+            Let <m>A</m> and <m>B</m> be sets. The notation <m>A \subset B</m> means <q><m>A</m> is a subset of <m>B</m>,</q> equivalently, <q><m>A</m> is contained in <m>B</m>.</q>
+          </p>
+        </li>
+      </ul>
+    </p>
+  </note>
+
+  <p>
+    Our first step is to show how to decompose <m>\Area(U)</m> into the sum of areas of smaller vertical slices of equal width.
+  </p>
+
+  <figure xml:id="fig-area-parabola-partition">
+    <caption>Partitioning the region <m>U</m> of into <m>5</m> vertical slices of equal width.</caption>
+    <image width="50%">
+      <description>
+        <p>
+          This figure shows how to partition the bounded planar region <m>U</m> into <m>5</m> vertical slices of equal width by slicing it along the vertical lines <m>x=\frac{1}{5}</m>, <m>x=\frac{2}{5}</m>, <m>x=\frac{3}{5}</m>, and <m>x=\frac{4}{5}</m>.
+        </p>
+      </description>
+      <asymptote>
+        unitsize(4cm);
+        defaultpen(fontsize(10pt));
+        import graph;
+
+        real f(real x) { return x^2; }
+        path s = graph(f, 0, 1, operator..);
+        pen fillpen = mediumgray;
+        fill(s -- (1,0) -- cycle, fillpen);
+        path c = graph(f,0,1.05,operator..);
+        Label graphlabel = Label("$y=x^2$", position=EndPoint);
+        draw(c, L=graphlabel);
+        Label linelabel = Label("$1$", position=EndPoint);
+        draw ((1,1) -- (1,-0.05), L=linelabel);
+
+        arrowbar axisarrow = Arrow(TeXHead);
+        Label nula = Label("$0$", position=BeginPoint);
+        Label xlabel = Label("$+x$", position=EndPoint);
+        path xaxis = (-0.05,0) -- (1.1,0);
+        draw (xaxis, arrow=axisarrow);
+        label(nula,xaxis);
+        label(xlabel,xaxis);
+        Label ylabel = Label("$+y$", position=EndPoint);
+        path yaxis = (0,-0.05) -- (0,1.25);
+        draw (yaxis, arrow=axisarrow);
+        label(nula,yaxis);
+        label(ylabel,yaxis);
+
+        draw ((0.2,0.04)--(0.2,-0.05),L=Label("$1/5$",position=EndPoint));
+        draw ((0.4,0.16)--(0.4,-0.05),L=Label("$2/5$",position=EndPoint));
+        draw ((0.6,0.36)--(0.6,-0.05),L=Label("$3/5$",position=EndPoint));
+        draw ((0.8,0.64)--(0.8,-0.05),L=Label("$4/5$",position=EndPoint));
+      </asymptote>
+    </image>
+  </figure>
+
+  <lemma xml:id="lem-area-parabola-partition">
+    <statement>
+      <p>
+        Let <m>N</m> be a natural number.
+        For each <m>0 \leq k \leq N-1</m>, let
+        <me>
+          U_{k;N} \defn \set{(x,y) \in U}{\frac{k}{N} \leq x \leq \frac{k+1}{N}}
+        </me>.
+        Then <m>\Area(U) = \Area(U_{0;N}) + \Area(U_{1;N}) + \cdots + \Area(U_{N-1;N})</m>.
+      </p>
+    </statement>
+  </lemma>
+
+  <convention>
+    <p>
+      In this course, a <term>natural number</term> is a positive integer.
+      Thus, the set of all natural numbers is <m>\N = \{0,1,2,3,\dotsc\}</m>.
+    </p>
+  </convention>
+
+  <proof>
+    <title>Proof of <xref ref="lem-area-parabola-partition"/></title>
+    <p>
+      I'll be a little sketchy with this proof since it concerns the underlying geometry of this problem, which is intuitively clear but finnicky to write out in complete detail.
+    </p>
+    <p>
+      Let us first show that <m>U = U_{0;N} \cup \cdots \cup U_{N-1;N}</m>.
+      On the one hand, each <m>U_{k;N}</m> is contained in <m>U</m> by construction, so that <m>U_{0;N} \cup \cdots \cup U_{N-1;N} \subset U</m>.
+      On the other hand, since 
+      <m>
+        0 \lt \frac{1}{N} \lt \frac{2}{N} \lt \cdots \lt \frac{N-1}{N} \lt 1
+      </m>,
+      every point of <m>U</m> is contained in some <m>U_{k;N}</m>, and hence in <m>U_{0;N} \cup \cdots \cup U_{N-1;N} \subset U</m>, so that <m>U \subset U_{0;N} \cup \cdots \cup U_{N-1;N}</m>.
+    </p>
+    <p>
+      Next, let us show that <m>\Area(U_{i;N} \cap U_{j;N}) = 0</m> for all <m>0 \leq i,j \leq N-1</m> such that <m>i \neq j</m>.
+      Let <m>i</m> and <m>j</m> be given.
+      If <m>i</m> and <m>j</m> are consective integers, say, <m>j = i+1</m>, then <m>U_{i;N} \cap U_{j;N}</m> is the vertical line segment <m>\set{(x,y) \in \R^2}{x=i+1,\,y=0}</m>, so that <m>\Area(U_{i;N} \cap U_{j;N}) = 0</m> by <xref ref="assumption-area-rectangle"/> of <xref ref="assumption-area"/>.
+      Otherwise, <m>U_{i;N}</m> and <m>U_{j;N}</m> are disjoint, <ie/> <m>U_{i;N} \cap U_{j;N}</m> is empty, so that <m>\Area(U_{i;N} \cap U_{j;N}) = 0</m> by <xref ref="assumption-area-empty"/> of <xref ref="assumption-area"/>.
+    </p>
+    <p>
+      At last, we have shown that <m>U = U_{0;N} \cup \cdots \cup U_{N-1;N}</m>, where <m>\Area(U_{i;N} \cap U_{j;N}) = 0</m> whenever <m>i \neq j</m>.
+      Thus, by <xref ref="assumption-area-union"/> of <xref ref="assumption-area"/>, it follows that  <m>\Area(U) = \Area(U_{0;N}) + \cdots + \Area(U_{N-1;N})</m>.
+    </p>
+  </proof>
+
+  <p>
+    Our next step is to estimate the area of each vertical slice.
+  </p>
+
+  <lemma xml:id="lem-area-parabola-rectangle">
+    <statement>
+      <p>
+        Let <m>N</m> be a natural number, let <m>0 \leq k \leq N-1</m>, and let <m>U_{k;N}</m> be defined as in <xref ref="lem-area-parabola-partition"/>.
+        Then <m>\frac{k^2}{N^3} \leq \Area(U_{k;N}) \leq \frac{(k+1)^2}{N^3}</m>.
+      </p>
+    </statement>
+    <proof>
+      <p>
+        Again, I'll be a little sketchy with this proof since it concerns the underlying geometry of this problem, which is intuitively clear but a little finnicky to write out in complete detail.
+      </p>
+      <p>
+        Recall that <m>a^2 \leq b^2</m> whenever <m>0 \leq a \leq b</m>.
+        Thus, it follows that <m>\frac{k^2}{N^2} \leq x^2 \leq \frac{(k+1)^2}{N^2}</m> whenever <m>\frac{k}{N} \leq x \leq \frac{k+1}{N}</m>.
+        Hence, it follows that <m>U_{k;N}</m> contains the smaller rectangle
+        <me>R_1 \defn \set{(x,y) \in \R^2}{\frac{k}{N} \leq x \leq \frac{k+1}{N}, \, 0 \leq y \leq \frac{k^2}{N^2}}</me>
+        and is contained by the larger rectangle
+        <me>R_2 \defn \set{(x,y) \in \R^2}{\frac{k}{N} \leq x \leq \frac{k+1}{N}, \, 0 \leq y \leq \frac{(k+1)^2}{N^2}}</me>, 
+        so that <m>\Area(R_1) \leq \Area(U_{k;N}) \leq \Area(R_2)</m> by <xref ref="assumption-area-monotone" /> of <xref ref="assumption-area" />.
+      </p>
+      <figure xml:id="fig-area-parabola-rectangle">
+        <caption>Estimating the area of the vertical slice <m>U_{k;N}</m>.</caption>
+        <image width="80%">
+          <description>
+            <p>
+              This figure demonstrates how the vertical slice <m>U_{k;N}</m> both contains the smaller rectangle <m>R_1</m> of area <m>\frac{k^2}{N^2}</m> and is contained by the larger rectangle <m>R_2</m> of area <m>\frac{(k+1)^2}</m>.
+            </p>
+          </description>
+          <asymptote>
+            unitsize(4cm);
+            defaultpen(fontsize(10pt));
+            import graph;
+
+            real f(real x) { return x^2; }
+            fill((0.3333,0) -- (0.3333,f(0.6667)) -- (0.6667,f(0.6667)) -- (0.6667,0) -- cycle, lightgray);
+            path s = graph(f, 0.3333, 0.6667, operator..);
+            fill((0.3333,0) -- s -- (0.6667,f(0.6667)) -- (0.6667,0) -- cycle, mediumgray);
+            fill((0.3333,0) -- (0.3333,f(0.3333)) -- (0.6667,f(0.3333)) -- (0.6667,0) -- cycle, darkgray);
+            path c = graph(f,0,0.7,operator..);
+            Label graphlabel = Label("$y=x^2$", position=EndPoint);
+            draw(c, L=graphlabel);
+            Label linelabel = Label("$1$", position=EndPoint);
+            draw ((1,f(0.6667)) -- (1,-0.05), L=linelabel);
+
+            arrowbar axisarrow = Arrow(TeXHead);
+            Label nula = Label("$0$", position=BeginPoint);
+            Label xlabel = Label("$+x$", position=EndPoint);
+            path xaxis = (-0.05,0) -- (1.1,0);
+            draw (xaxis, arrow=axisarrow);
+            label(nula,xaxis);
+            label(xlabel,xaxis);
+            Label ylabel = Label("$+y$", position=EndPoint);
+            path yaxis = (0,-0.05) -- (0,0.5);
+            draw (yaxis, arrow=axisarrow);
+            label(nula,yaxis);
+            label(ylabel,yaxis);
+
+            draw ((0.3333,f(0.6667))--(0.3333,-0.05),L=Label("$k/N$",position=EndPoint));
+            draw ((1,f(0.3333))--(-0.05,f(0.3333)),L=Label("$k^2/N^2$",position=EndPoint));
+            draw ((0.6667,f(0.6667))--(0.6667,-0.05),L=Label("$(k+1)/N$",position=EndPoint));
+            draw ((1,f(0.6667))--(-0.05,f(0.6667)),L=Label("$(k+1)^2/N^2$",position=EndPoint));
+          </asymptote>
+        </image>
+      </figure>
+
+      <p>
+        On the one hand, since <m>R_1</m> is a rectangle with base <m>\frac{1}{N}</m> and height <m>\frac{k^2}{N^2}</m>, it follows that <m>\Area(R_1) = \frac{k^2}{N^3}</m> by <xref ref="assumption-area-rectangle" /> of <xref ref="assumption-area" />.
+        On the other hand, since <m>R_2</m> is a rectangle with base <m>\frac{1}{N}</m>L and height <m>\frac{(k+1)^2}{N^2}</m>, it follows that <m>\Area(R_2) =\frac{(k+1)^2}{N^3}</m> by <xref ref="assumption-area-rectangle" /> of <xref ref="assumption-area" />.
+        Thus, at last, it follows that
+        <me>
+          \frac{k^2}{N^3} = \Area(R_1) \leq \Area(U_{k;N}) \leq \Area(R_2) = \frac{(k+1)^2}{N^3}.
+        </me>
+      </p>
+    </proof>
+  </lemma>
+
+  <p>
+    Our next step is to sum up our upper and lower estimates on the areas of the vertical slices to obtain upper and lower estimates for <m>\Area(U)</m>.
+  </p>
+
+  <lemma xml:id="lem-area-parabola-sums">
+    <statement>
+      <p>
+        For every natural number <m>N</m>,
+        <me>
+          \frac{1}{N^3}(1^2 + 2^2 + \cdots (N-1)^2) \leq \Area(U) \leq \frac{1}{N^3}(1^2 + 2^2 + \cdots N^2)
+        </me>.
+      </p>
+    </statement>
+    <proof>
+      <p>
+        Let <m>M</m> be a natural number. 
+        On the one hand, <m>\Area(U) = \Area(U_{0;N}) + \cdots + \Area(U_{k;N})</m> by <xref ref="lem-area-parabola-partition"/>.
+        On the other hand, <m>\frac{k^2}{N^3} \leq \Area(U_{k;N}) \leq \frac{(k+1)^2}{N^3}</m> for each <m>0 \leq k \leq N-1</m> by <xref ref="lem-area-parabola-rectangle"/>.
+        Thus, we conclude that
+        <md>
+          <mrow>\Area(U) \amp = \Area(U_{0,1/N}) + \Area(U_{1/N,2/N}) + \cdots + \Area(U_{(N-1)/N,1})</mrow>
+          <mrow> \amp \geq \frac{0^2}{N} + \frac{1^2}{N} + \cdots \frac{(N-1)^2}{N} </mrow>
+          <mrow> \amp = \frac{1}{N}\left(1^2 + 2^2 + \cdots + (N-1)^2\right) </mrow>
+        </md>
+        and 
+        <md>
+          <mrow>\Area(U) \amp = \Area(U_{0,1/N}) + \Area(U_{1/N,2/N}) + \cdots + \Area(U_{(N-1)/N,1}) </mrow>
+          <mrow> \amp \leq \frac{1^2}{N} + \frac{2^2}{N} + \cdots \frac{N^2}{N}</mrow>
+          <mrow> \amp = \frac{1}{N}\left(1^2 + 2^2 + \cdots + N^2\right) </mrow>
+        </md>.
+      </p>
+    </proof>
+  </lemma>
+
+  <p>
+    Note that our upper and lower estimates for <m>\Area(U)</m> aren't yet in a particularly useful form.
+    We'll need the following familiar fact (also due to Archimedes!) to simplify our estimates.
+  </p>
+
+  <theorem xml:id="thm-sumofsquares">
+    <creator>Archimedes</creator>
+    <statement>
+      <p>
+        For every natural number <m>k</m>, <me>1^2 + 2^2 + \cdots + k^2 = \frac{1}{6}k(k+1)(2k+1).</me>
+      </p>
+    </statement>
+    <!--<proof>
+      <p>
+        We won't have time for this proof in class, but I'm providing it for completeness' sake; it's a quintessential example of <url href="https://gvsuoer.github.io/sundstrom-textbook/S_mathinduction.html">proof by mathematical induction</url>.
+      </p>
+        
+      <p>
+        For each <m>k \in \N</m>, let <m>P(k)</m> be the assertion that <me>1^2 + 2^2 + \cdots + k^2 = \frac{1}{6}k(k+1)(2k+1)</me>. 
+        Thus, we need to prove that <m>P(k)</m> is true for all <m>k \in \N</m>. 
+        Doing so by mathematical induction consists of the following.
+        <dl>
+          <li>
+            <title>Base case:</title>
+            <p>
+              prove that <m>P(1)</m> is true.
+            </p>
+          </li>
+          <li>
+            <title>Induction step:</title>
+            <p>
+              prove that <m>P(k)</m> implies <m>P(k+1)</m> for all <m>k \in \N</m>.
+            </p>
+          </li>
+        </dl>
+      </p>
+      <p>
+        We first prove the base case.
+        On the one hand, <m>1^2 = 1</m>. 
+        On the other hand, <m>\frac{1}{6}1(1+1)(2 \cdot 1+1) = \frac{1}{6}1 \cdot 2 \cdot 3 = 1</m>. 
+        Hence, <me>1^2 = 1 = \frac{1}{6}1(1+1)(2\cdot 1+1)</me>, so that <m>P(1)</m> is indeed true.
+      </p>
+      <p>
+        Let us now prove the induction step.
+        Let <m>k \in \N</m> be given, and suppose that <m>P(k)</m> is true, so that <m>1^2 + \cdots + k^2 = \frac{1}{6}k(k+1)(2k-1)</m>.
+        Then
+        <md>
+          <mrow> 1^2 + \cdots + (k+1)^2 \amp = (1^2 + \cdots + k^2) + (k+1)^2 </mrow>
+          <mrow> \amp = \frac{1}{6}k(k+1)(2k-1) + (k+1)^2 </mrow>
+          <mrow> \amp = \frac{1}{6}(k+1)\left(2k^2-k + k + 1\right) </mrow>
+          <mrow> \amp = \frac{1}{6}(k+1)\left((k+1)+1\right)\left(2(k+1)-1\right) </mrow>
+        </md>,
+        which shows that <m>P(k+1)</m> is true.
+      </p>
+    </proof>-->
+  </theorem>
+
+  <p>
+    We can now simplify our upper and lower estimates for <m>\Area(U)</m> into a usable form that makes clear why we should expect <m>\Area(U) = \frac{1}{3}</m>.
+  </p>
+
+  <lemma xml:id="lem-area-parabola-summed">
+    <statement>
+      <p>
+        For every natural number <m>N</m>, 
+        <me>
+          \frac{1}{3}-\frac{1}{2N} + \frac{1}{6N^2} \leq \Area(U) \leq \frac{1}{3} + \frac{1}{2N} + \frac{1}{6N^2}
+        </me>.
+      </p>
+    </statement>
+    <proof>
+      <p>
+        By <xref ref="lem-area-parabola-sums" /> and <xref ref="thm-sumofsquares" />,
+        <md>
+          <mrow> \frac{1}{N^3}(1^2 + 2^2 + \cdots N^2) \amp = \frac{1}{N^3} \cdot \frac{1}{6}N(N+1)(2N+1) </mrow>
+          <mrow> \amp = \frac{1}{6}\left(1+\frac{1}{N}\right)\left(2+\frac{1}{N}\right) </mrow>
+          <mrow> \amp = \frac{1}{3} + \frac{1}{2N} + \frac{1}{6N^2} </mrow>
+        </md>,
+        so that, in turn,
+        <md>
+          <mrow> \frac{1}{N^3}(1^2 + 2^2 + \cdots (N-1)^2) \amp = \frac{1}{N^3}(1^2 + 2^2 + \cdots + N^2) - \frac{1}{N^3}N^2 </mrow>
+          <mrow> \amp = \frac{1}{3} + \frac{1}{2N} + \frac{1}{6N^2} - \frac{1}{N} </mrow>
+          <mrow> \amp = \frac{1}{3} - \frac{1}{2N} + \frac{1}{6N^2} </mrow>
+        </md>.
+        Thus,
+        <me>
+           \Area(U) \leq \frac{1}{N^3}(1^2 + 2^2 + \cdots N^2) = \frac{1}{3} + \frac{1}{2N} + \frac{1}{6N^2}
+        </me>
+        and
+        <me>
+          \Area(U) \geq \frac{1}{N^3}(1^2 + 2^2 + \cdots (N-1)^2) = \frac{1}{3} - \frac{1}{2N} + \frac{1}{6N^2}
+        </me>.
+      </p>
+    </proof>
+  </lemma>
+
+  <p>
+    We're almost ready for our final step, where we show that the assumption <m>\Area(U) \neq \frac{1}{3}</m> gives rise to a contradiction.
+    The heart of our argument will be that the remainders in our upper and lower estimates for <m>\Area(U)</m> can be made as small as we like by making <m>N</m> sufficiently large.
+    This will reduce to the intuitively obvious fact that <m>\frac{1}{N}</m> can be made as small as well like by making <m>N</m> sufficiently large, but this is actually a profound fact about numbers that is commonly attributed to Archimedes but was credited by Archimedes himself to <url href="https://en.wikipedia.org/wiki/Eudoxus_of_Cnidus">Eudoxus of Cnidus</url>.
+  </p>
+
+  <axiom xml:id="axiom-archimedean">
+    <title>Archimedean property of the real numbers</title>
+    <statement>
+      <p>
+        For every positive real number <m>\epsilon</m>, there exists a natural number <m>N</m> such that <me>0 \lt \frac{1}{N} \lt \epsilon</me>.
+      </p>
+    </statement>
+  </axiom>
+
+  <p>
+    Armed with the Archimedean property of the real numbers, we can now complete our proof.
+  </p>
+
+  <proof>
+    <title>Proof of <xref ref="thm-area-parabola" /> </title>
+    <p>
+      We'll use a <term>proof by contradiction</term>.
+      Thus, assume the negation of our claim, i.e., <m>\Area(U) \neq \frac{1}{3}</m>; we'll use this assumption to prove something that is false.
+    </p>
+    <p>
+      Let <m>\Delta \defn \Area(U) - \frac{1}{3}</m>.
+      Since we assumed that <m>\Area(U) \neq \frac{1}{3}</m>, it follows that <m>\Delta \neq 0</m>, and hence that <m>\abs{\Delta} \gt 0</m>.
+      Thus, by <xref ref="axiom-archimedean" />, there exists a natural number <m>N</m> such that <m>0 \lt \frac{1}{N} \lt \abs{\Delta}</m>.
+      Hence, by <xref ref="lem-area-parabola-summed" />, 
+      <me>
+        \frac{1}{3}-\frac{1}{2N} + \frac{1}{6N^2} \leq \Area(U) \leq \frac{1}{3} + \frac{1}{2N} + \frac{1}{6N^2}
+      </me>.
+    </p>
+    <p>
+      Now, since <m>\Delta \neq 0</m>, either <m>\Delta \gt 0</m> or <m>\Delta \lt 0</m>.
+      Let us consider each case in turn.
+      <ol>
+        <li>
+          <p>
+            Suppose that <m>\Delta \gt 0</m>, so that <m>\abs{\Delta} = \Delta</m>. 
+            Then
+              <md>
+              <mrow> \Delta \amp \leq \left(\frac{1}{3} + \frac{1}{2N} + \frac{1}{6N^2}\right) - \frac{1}{3} </mrow>
+              <mrow> \amp  = \frac{1}{2} \cdot \frac{1}{N} + \frac{1}{6} \cdot \frac{1}{N} \cdot \frac{1}{N} </mrow>
+              <mrow> \amp \lt \frac{1}{2} \cdot \epsilon + \frac{1}{2} \cdot \abs{\Delta} \cdot 1 </mrow>
+              <mrow> \amp = \abs{\Delta} </mrow>
+              <mrow> \amp = \Delta </mrow>
+            </md>,
+            so that <m>\Delta \lt \Delta</m>, which is false.
+          </p>
+        </li>
+        <li>
+          <p>
+            Suppose that <m>\Delta \lt 0</m>, so that <m>\abs{\Delta} = -\Delta</m>. 
+            Then
+            <md>
+              <mrow> \Delta \amp \geq \left(\frac{1}{3} - \frac{1}{2N} + \frac{1}{6N^2}\right) - \frac{1}{3} </mrow>
+              <mrow> \amp \geq -\frac{1}{2} \cdot \frac{1}{N} </mrow>
+              <mrow> \amp \gt -\frac{1}{2} \cdot \epsilon </mrow>
+              <mrow> \amp \gt -\abs{\Delta} </mrow>
+              <mrow> \amp = \Delta </mrow>
+            </md>,
+            so that <m>\Delta \gt \Delta</m>, which is false.
+          </p>
+        </li>
+      </ol>
+      Thus, either way, the assumption that <m>\Area(A) \neq \frac{1}{3}</m> implies something false.
+    </p>
+  </proof>
+
+  
+</section>

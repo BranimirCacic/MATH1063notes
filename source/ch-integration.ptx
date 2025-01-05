@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<chapter xml:id="ch-chapter-title" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>Integration</title>
+
+  <introduction>
+    <p>
+      In this chapter, we give a fairly careful account of the theoretical foundations of integration loosely based on Chapters 13 and 14 of Spivak's <pubtitle>Calculus</pubtitle>.
+      In particular, we use <url href="https://en.wikipedia.org/wiki/Jean_Gaston_Darboux">Jean-Gaston Darboux's</url> elegant reformulation of <url href="https://en.wikipedia.org/wiki/Bernhard_Riemann">Bernhard Riemann's</url> pioneering theory of integration.
+      Thus, this chapter supplements the more conventional account in <url href="https://opentext.uleth.ca/apex-calculus/chapter_integration.html">Chapter 5</url> of <pubtitle>APEX Calculus</pubtitle>.
+    </p>
+  </introduction>
+
+  <!-- include sections -->
+  <xi:include href="sec-prob-area.ptx" />
+
+</chapter>
