@@ -13,7 +13,7 @@
   </p>
 
   <p>
-    In this section, we'll use the method of exhaustion to carry out an area computation equivalent to a special case of Archimedes' computation; along the way, you'll encounter your first example of <url href="https://gvsuoer.github.io/sundstrom-textbook/S_contradiction.html"><term>proof by contradiction</term></url>.
+    In this section, we'll use the method of exhaustion to carry out an area computation closely related to Archimedes' computation; along the way, you'll encounter your first example of <url href="https://gvsuoer.github.io/sundstrom-textbook/S_contradiction.html"><term>proof by contradiction</term></url>.
     Thus, we'll prove the following claim.
   </p>
 
@@ -363,7 +363,7 @@
 
       <p>
         On the one hand, since <m>R_1</m> is a rectangle with base <m>\frac{1}{N}</m> and height <m>\frac{k^2}{N^2}</m>, it follows that <m>\Area(R_1) = \frac{k^2}{N^3}</m> by <xref ref="assumption-area-rectangle" /> of <xref ref="assumption-area" />.
-        On the other hand, since <m>R_2</m> is a rectangle with base <m>\frac{1}{N}</m>L and height <m>\frac{(k+1)^2}{N^2}</m>, it follows that <m>\Area(R_2) =\frac{(k+1)^2}{N^3}</m> by <xref ref="assumption-area-rectangle" /> of <xref ref="assumption-area" />.
+        On the other hand, since <m>R_2</m> is a rectangle with base <m>\frac{1}{N}</m> and height <m>\frac{(k+1)^2}{N^2}</m>, it follows that <m>\Area(R_2) =\frac{(k+1)^2}{N^3}</m> by <xref ref="assumption-area-rectangle" /> of <xref ref="assumption-area" />.
         Thus, at last, it follows that
         <me>
           \frac{k^2}{N^3} = \Area(R_1) \leq \Area(U_{k;N}) \leq \Area(R_2) = \frac{(k+1)^2}{N^3}.
