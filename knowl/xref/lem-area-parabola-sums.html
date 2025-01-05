@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="lemma theorem-like"><h3 class="heading">
+<span class="type">Lemma</span><span class="space"> </span><span class="codenumber">1.1.11</span><span class="period">.</span>
+</h3>
+<div class="para logical">
+<div class="para">For every natural number <span class="process-math">\(N\text{,}\)</span>
+</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\frac{1}{N^3}(1^2 + 2^2 + \cdots (N-1)^2) \leq \Area(U) \leq \frac{1}{N^3}(1^2 + 2^2 + \cdots N^2)\text{.}
+\end{equation*}
+</div>
+</div></article><article class="proof"><h3 class="heading"><span class="type">Proof<span class="period">.</span></span></h3>
+<div class="para logical">
+<div class="para">Let <span class="process-math">\(M\)</span> be a natural number. On the one hand, <span class="process-math">\(\Area(U) = \Area(U_{0;N}) + \cdots + \Area(U_{k;N})\)</span> by <a href="sec-prob-area.html#lem-area-parabola-partition" class="xref" data-knowl="./knowl/xref/lem-area-parabola-partition.html" data-reveal-label="Reveal" data-close-label="Close" title="Lemma 1.1.7">Lemma 1.1.7</a>. On the other hand, <span class="process-math">\(\frac{k^2}{N^3} \leq \Area(U_{k;N}) \leq \frac{(k+1)^2}{N^3}\)</span> for each <span class="process-math">\(0 \leq k \leq N-1\)</span> by <a href="sec-prob-area.html#lem-area-parabola-rectangle" class="xref" data-knowl="./knowl/xref/lem-area-parabola-rectangle.html" data-reveal-label="Reveal" data-close-label="Close" title="Lemma 1.1.9">Lemma 1.1.9</a>. Thus, we conclude that</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/lem-area-parabola-partition.html ./knowl/xref/lem-area-parabola-rectangle.html">
+\begin{align*}
+\Area(U) \amp = \Area(U_{0,1/N}) + \Area(U_{1/N,2/N}) + \cdots + \Area(U_{(N-1)/N,1})\\
+\amp \geq \frac{0^2}{N} + \frac{1^2}{N} + \cdots \frac{(N-1)^2}{N} \\
+\amp = \frac{1}{N}\left(1^2 + 2^2 + \cdots + (N-1)^2\right) 
+\end{align*}
+</div>
+<div class="para">and</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/lem-area-parabola-partition.html ./knowl/xref/lem-area-parabola-rectangle.html">
+\begin{align*}
+\Area(U) \amp = \Area(U_{0,1/N}) + \Area(U_{1/N,2/N}) + \cdots + \Area(U_{(N-1)/N,1}) \\
+\amp \leq \frac{1^2}{N} + \frac{2^2}{N} + \cdots \frac{N^2}{N}\\
+\amp = \frac{1}{N}\left(1^2 + 2^2 + \cdots + N^2\right) \text{.}
+\end{align*}
+</div>
+</div></article><span class="incontext"><a class="internal" href="sec-prob-area.html#lem-area-parabola-sums">in-context</a></span>
+</body>
+</html>
