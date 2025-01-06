@@ -262,7 +262,7 @@
   <convention>
     <p>
       In this course, a <term>natural number</term> is a positive integer.
-      Thus, the set of all natural numbers is <m>\N = \{0,1,2,3,\dotsc\}</m>.
+      Thus, the set of all natural numbers is <m>\N = \{1,2,3,\dotsc\}</m>.
     </p>
   </convention>
 
