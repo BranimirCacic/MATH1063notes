@@ -283,12 +283,12 @@
     <p>
       Next, let us show that <m>\Area(U_{i;N} \cap U_{j;N}) = 0</m> for all <m>0 \leq i,j \leq N-1</m> such that <m>i \neq j</m>.
       Let <m>i</m> and <m>j</m> be given.
-      If <m>i</m> and <m>j</m> are consective integers, say, <m>j = i+1</m>, then <m>U_{i;N} \cap U_{j;N}</m> is the vertical line segment <m>\set{(x,y) \in \R^2}{x=i+1,\,y=0}</m>, so that <m>\Area(U_{i;N} \cap U_{j;N}) = 0</m> by <xref ref="assumption-area-rectangle"/> of <xref ref="assumption-area"/>.
-      Otherwise, <m>U_{i;N}</m> and <m>U_{j;N}</m> are disjoint, <ie/> <m>U_{i;N} \cap U_{j;N}</m> is empty, so that <m>\Area(U_{i;N} \cap U_{j;N}) = 0</m> by <xref ref="assumption-area-empty"/> of <xref ref="assumption-area"/>.
+      If <m>i</m> and <m>j</m> are consective integers, say, <m>j = i+1</m>, then <m>U_{i;N} \cap U_{j;N}</m> is the vertical line segment <m>\set{(x,y) \in \R^2}{x=i+1,\,y=0}</m>, so that <m>\Area(U_{i;N} \cap U_{j;N}) = 0</m> by <xref ref="assumption-area-rectangle"/>.
+      Otherwise, <m>U_{i;N}</m> and <m>U_{j;N}</m> are disjoint, <ie/> <m>U_{i;N} \cap U_{j;N}</m> is empty, so that <m>\Area(U_{i;N} \cap U_{j;N}) = 0</m> by <xref ref="assumption-area-empty"/>.
     </p>
     <p>
       At last, we have shown that <m>U = U_{0;N} \cup \cdots \cup U_{N-1;N}</m>, where <m>\Area(U_{i;N} \cap U_{j;N}) = 0</m> whenever <m>i \neq j</m>.
-      Thus, by <xref ref="assumption-area-union"/> of <xref ref="assumption-area"/>, it follows that  <m>\Area(U) = \Area(U_{0;N}) + \cdots + \Area(U_{N-1;N})</m>.
+      Thus, by <xref ref="assumption-area-union"/>, it follows that  <m>\Area(U) = \Area(U_{0;N}) + \cdots + \Area(U_{N-1;N})</m>.
     </p>
   </proof>
 
@@ -314,7 +314,7 @@
         <me>R_1 \defn \set{(x,y) \in \R^2}{\frac{k}{N} \leq x \leq \frac{k+1}{N}, \, 0 \leq y \leq \frac{k^2}{N^2}}</me>
         and is contained by the larger rectangle
         <me>R_2 \defn \set{(x,y) \in \R^2}{\frac{k}{N} \leq x \leq \frac{k+1}{N}, \, 0 \leq y \leq \frac{(k+1)^2}{N^2}}</me>, 
-        so that <m>\Area(R_1) \leq \Area(U_{k;N}) \leq \Area(R_2)</m> by <xref ref="assumption-area-monotone" /> of <xref ref="assumption-area" />.
+        so that <m>\Area(R_1) \leq \Area(U_{k;N}) \leq \Area(R_2)</m> by <xref ref="assumption-area-monotone" />.
       </p>
       <figure xml:id="fig-area-parabola-rectangle">
         <caption>Estimating the area of the vertical slice <m>U_{k;N}</m>.</caption>
@@ -362,8 +362,8 @@
       </figure>
 
       <p>
-        On the one hand, since <m>R_1</m> is a rectangle with base <m>\frac{1}{N}</m> and height <m>\frac{k^2}{N^2}</m>, it follows that <m>\Area(R_1) = \frac{k^2}{N^3}</m> by <xref ref="assumption-area-rectangle" /> of <xref ref="assumption-area" />.
-        On the other hand, since <m>R_2</m> is a rectangle with base <m>\frac{1}{N}</m> and height <m>\frac{(k+1)^2}{N^2}</m>, it follows that <m>\Area(R_2) =\frac{(k+1)^2}{N^3}</m> by <xref ref="assumption-area-rectangle" /> of <xref ref="assumption-area" />.
+        On the one hand, since <m>R_1</m> is a rectangle with base <m>\frac{1}{N}</m> and height <m>\frac{k^2}{N^2}</m>, it follows that <m>\Area(R_1) = \frac{k^2}{N^3}</m> by <xref ref="assumption-area-rectangle" />.
+        On the other hand, since <m>R_2</m> is a rectangle with base <m>\frac{1}{N}</m> and height <m>\frac{(k+1)^2}{N^2}</m>, it follows that <m>\Area(R_2) =\frac{(k+1)^2}{N^3}</m> by <xref ref="assumption-area-rectangle" />.
         Thus, at last, it follows that
         <me>
           \frac{k^2}{N^3} = \Area(R_1) \leq \Area(U_{k;N}) \leq \Area(R_2) = \frac{(k+1)^2}{N^3}.
