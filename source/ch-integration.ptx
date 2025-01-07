@@ -13,5 +13,6 @@
 
   <!-- include sections -->
   <xi:include href="sec-prob-area.ptx" />
+  <xi:include href="sec-suprema.ptx" />
 
 </chapter>

@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section xml:id="sec-suprema" xmlns:xi="http://www.w3.org/2001/XInclude">
+    <title>Upper bounds and lower bounds </title>
+
+    <introduction>
+        <p>
+            In <xref ref="sec-prob-area"/>, we derived the area of a planar region by obtaining better and better upper and lower estimates for its true value.
+            In this section, we make precise the notion of estimating a number or set of numbers from above (with an <term>upper bound</term>) or below (with a <term>lower bound</term>).
+            This, in turn, leads us to consider the notion of <term>least upper bound</term> (optimal upper bound) and <term>greatest lower bound</term> (optimal lower bound), which generalize maximal and minimal element, respectively, of a finite set of numbers.
+        </p>
+        <p>
+            The existence of least upper bounds and greatest lower bounds is a fundamental property of the real numbers that was first identified by <url href="https://en.wikipedia.org/wiki/Bernard_Bolzano">Bernard Bolzano</url> in the early 19th century.
+            It turns out to be <em>the</em> property of real numbers that distinguishes them from the rational numbers—for instance, it's the reason why <m>2</m> has a <em>real</em> square root.
+            In differential calculus, it gives rise to the <url href="https://opentext.uleth.ca/apex-calculus/sec_continuity.html#thm_IVT">intermediate value theorem</url> and <url href="https://opentext.uleth.ca/apex-calculus/sec_extreme_values.html#thm_extreme_val">extreme value theorem</url>.
+            In this course, it will give rise to the rigorous theory of integration.
+        </p>
+    </introduction>
+
+    <subsection xml:id="subsec-suprema">
+        <title>Upper bounds</title>
+        <p>
+            Consider the set <m>(0,1] = \set{x \in \R}{0 \lt x \leq 1}</m>.
+            By definition,  <m>x \leq 1</m> for every <m>x \in (0,1]</m>; thus, <m>1</m> is a simultaneous upper estimate for all numbers in the set <m>(0,1]</m>.
+            Likewise, <m>x \leq 2025</m> for every <m>x \in (0,1]</m>); thus, <m>2025</m> is also a simultaneous upper estimate for all numbers in the set <m>(0,1]</m>, if a much cruder upper estimate than <m>1</m>.
+            The notion of a simultaneous upper estimate for all numbers in some set of numbers is formalized as follows.
+        </p>
+
+        <definition xml:id="def-upper-bound">
+            <statement>
+                <p>
+                    Let <m>A</m> be a set of real numbers.
+                    An <term>upper bound</term> for <m>A</m> is a real number <m>M</m> such that <m>x \leq M</m> for all <m>x \in A</m>.
+                    Thus, we say that <m>A</m> is <term>bounded above</term> if there exists an upper bound for <m>A</m>.
+                </p>
+            </statement>
+        </definition>
+
+        <remark>
+            <p>
+                Note that <m>M</m> is an upper bound for <m>A</m> if and only if <m>A \subset (0,M]</m>.
+            </p>
+        </remark>
+
+        <example>
+            <p>
+                The number <m>1</m> is an upper bound for <m>(0,1]</m>, so that <m>(0,1]</m> is bounded above.
+                The number <m>2025</m> is also an upper bound for <m>(0,1]</m>.
+            </p>
+        </example>
+
+        <example xml:id="ex-a1">
+            <p>
+                Let <m>A_1</m> be the set of all numbers of the form <m>\frac{1}{3} - \frac{1}{2n} + \frac{1}{6n^2}</m>, where <m>n \in \N</m> (look familiar?).
+                Given <m>n \in \N</m>, since <m>\frac{1}{2n} - \frac{1}{6n^2} = \frac{3n-1}{6n^2} \geq 0</m>, it follows that
+                <me>
+                    \frac{1}{3} - \frac{1}{2n} + \frac{1}{6n^2} = \frac{1}{3} - \frac{3n-1}{6n^2} \leq \frac{1}{3}
+                </me>.
+                Thus, <m>\frac{1}{3}</m> is an upper bound for <m>A_1</m>.
+            </p>
+        </example>
+
+        <remark>
+            <p>
+                To show that a set of real numbers <m>A</m> is <em>not</em> bounded above, you need to show that every would-be upper bound <m>M</m> fails to be an upper bound for <m>A</m>.
+                More precisely, you need to show that for every <m>M \in A</m>, there exists some <m>x \in A</m> such that <m>x \gt M</m>.
+            </p>
+        </remark>
+
+        <example>
+            <p>
+                The set of all real numbers <m>\R</m> is not bounded above.
+                Indeed, let <m>M \in \R</m> be given.
+                Then <m>x \defn M+1</m> satisfies <m>x \in \R</m> and <m>x > M</m>.
+            </p>
+        </example>
+
+        <p>
+            Note that the upper bound <m>1</m> for <m>(0,1]</m> gives you more information than the much larger upper bound <m>2025</m>.
+            For example, the fact that <m>1</m> is an upper bound for <m>(0,1]</m> lets you conclude that <m>2 \notin (0,1]</m> since <m>2 \gt 1</m>.
+            By contrast, since <m>2 \leq 2025</m>, the larger upper bound <m>2025</m> is too crude to detect that <m>2 \notin (0,1]</m>.
+            Thus, we formalize the notion of an optimal upper bound.
+        </p>
+
+        <definition xml:id="def-supremum">
+            <statement>
+                <p>
+                    Let <m>A</m> be a set of real numbers that is bounded above, and let <m>M</m> be a real number.
+                    We say that <m>M</m> is the <term>least upper bound</term> or <term>supremum</term> of <m>A</m> whenever it satisfies both of the following conditions:
+                    <ol>
+                        <li>
+                            <p>
+                                <m>M</m> is an upper bound for <m>A</m>;
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                if <m>M'</m> is any other upper bound for <m>A</m>, then <m>M \leq M'</m>.
+                            </p>
+                        </li>
+                    </ol>
+                    Hence, we denote the least upper bound <m>M</m> of <m>A</m> by <m>\sup A</m>.
+                </p>
+            </statement>
+        </definition>
+
+        <fact xml:id="fact-sup-uniqueness">
+            <statement>
+                <p>
+                    Let <m>A</m> be a set of real numbers.
+                    If <m>A</m> has a least upper bound, then it is unique, so that the notation <m>\sup A</m> is unambiguous.
+                </p>
+            </statement>
+            <proof>
+                <p>
+                    Suppose that <m>M_1</m> and <m>M_2</m> are both least upper bounds of a set of real numbers <m>A</m>.
+                    On the one hand, since <m>M_1</m> is a least upper bound and <m>M_2</m> is an upper bound, it follows that <m>M_1 \leq M_2</m>.
+                    On the other hand, since <m>M_2</m> is a least upper bound and <m>M_1</m> is an upper bound, it follows that <m>M_2 \leq M_1</m>.
+                    Thus, it follows that <m>M_1 = M_2</m>.
+                </p>
+            </proof>
+        </fact>
+
+        <p>
+            There's a nice special case where you can find the least upper bound of a set without any trouble.
+            This case encompasses, for instance, the set <m>(0,1]</m>.
+        </p>
+
+        <proposition xml:id="prop-supremum-maximum">
+            <statement>
+                <p>
+                    Let <m>A</m> be a set of real numbers, and suppose that <m>A</m> has a maximal element <m>\max A</m>, <ie/>, <m>\max A \in A</m> and <m>x \leq \max A</m> for all <m>x \in A</m>.
+                    Then <m>\sup A = \max A</m>.
+                </p>
+            </statement>
+            <proof>
+                <p>
+                    First, note that the maximal element <m>\max A</m> of <m>A</m> is, in particular, an upper bound for <m>A</m>.
+                    Now, suppose that <m>M</m> is any other upper bound for <m>A</m> 
+                    Then, since <m>\max A \in A</m>, it follows that <m>\max A \leq M</m>.
+                    Thus, <m>\max A</m> is the least upper bound of <m>A</m>.
+                </p>
+            </proof>
+        </proposition>
+
+        <example>
+            <p>
+                The maximal element <m>1</m> of <m>(0,1]</m> is, therefore, the least upper bound of <m>(0,1]</m>, <ie/>, <m>\sup(0,1] = 1</m>.
+            </p>
+        </example>
+
+        <p>
+            We can now state the fundamental property of real numbers that distinguished the <term>field</term> of real numbers <m>\R</m> from the field of rational numbers <m>\Q</m>.
+            Indeed, it will turn out to be the property of real numbers that makes calculus work as a mathematical theory.
+        </p>
+
+        <axiom xml:id="axiom-suprema">
+            <title>Least-upper-bound property of the real numbers</title>
+            <creator>Bolzano</creator>
+            <statement>
+                <p>
+                    Let <m>A</m> be a set of real numbers.
+                    If <m>A</m> is non-empty and bounded above, then its least upper bound <m>\sup A</m> exists.
+                </p>
+            </statement>
+        </axiom>
+
+        <remark>
+            <p>
+                Every real number <m>M</m> is <term>vacuously</term> an upper bound for the empty set <m>\emptyset</m>: the condition that <m>x \leq M</m> for all <m>x \in \emptyset</m> is satisfied precisely because the empty set has no elements.
+            </p>
+        </remark>
+
+        <theorem xml:id="thm-archimedean-natural">
+            <statement>
+                <p>
+                    The set of natural numbers <m>\N</m> is not bounded above.
+                </p>
+            </statement>
+        </theorem>
+
+        <proof>
+            <p>
+                We'll prove this by contradiction.
+                Assume for the sake of argument that <m>\N</m> is bounded above.
+                Then <m>\N</m> is non-empty (<eg/>, since <m>1 \in \N</m>) and bounded above (by assumption), so that <m>\N</m> has a least upper bound <m>\sup \N</m>by <xref ref="axiom-suprema"/>.
+            </p>
+            <p>
+                Now, let <m>m \in \N</m> be given.
+                Since <m>m+1 \in \N</m>, it follows that <m>m+1 \leq \sup\N</m>, hence <m>m \leq \sup\N - 1</m>.
+                Since <m>m \in \N</m> was arbitrary, this shows that <m>M \defn \sup N - 1</m> is also an upper bound.
+                Thus, <m>M</m> is an upper bound of <m>\N</m> that satisfying <m>M \lt \sup N</m>, which contradicts the definition of <m>\sup N</m>.
+            </p>
+        </proof>
+
+        <corollary xml:id="cor-archimedean-real">
+            <title><xref ref="axiom-archimedean"/></title>
+            <statement>
+                <p>
+                    For every positive real number <m>\epsilon</m>, there exists a natural number <m>N</m> such that <m>\frac{1}{N} \lt \epsilon</m>.
+                </p>
+            </statement>
+            <proof>
+                <p>
+                    By <xref ref="thm-archimedean-natural"/>, the set <m>\N</m> is not bounded above, so <m>\frac{1}{\epsilon}</m> cannot be an upper bound of <m>\N</m>.
+                    Thus, there exists <m>N \in \N</m> such that <m>\frac{1}{\epsilon} \lt N</m>, which implies, in turn, that <m>\frac{\epsilon} \gt \frac{1}{N}</m>.
+                </p>
+            </proof>
+        </corollary>
+
+        <example xml:id="ex-a1-sup">
+            <p>
+                We can now show that <m>\frac{1}{3}</m> is the least upper bound of the set <m>A_1</m> of <xref ref="ex-a1"/>.
+                Let <m>M</m> be a real number, and suppose that <m>M \gt \frac{1}{3}</m>; we'll show that <m>M</m> is not an upper bound for <m>A_1</m> by finding <m>x \in A_1</m> such that <m>x \gt M</m>.
+            </p>
+            <p>
+                Since <m>M \gt \frac{1}{3}</m> by assumption, it follows that <m>M - \frac{1}{3} \gt 0</m>.
+                Thus, by <xref ref="cor-archimedean-real"/>, there exists <m>N \in \N</m> such that <m>\frac{1}{N} \lt M-\frac{1}{3}</m>.
+                Then <m>x := \frac{1}{3} - \frac{1}{2N} + \frac{1}{6N^2} \in A_1</m> satisfies
+                <md>
+                    <mrow> x \amp = \frac{1}{3} - \frac{1}{2N} + \frac{1}{6N^2}</mrow>
+                    <mrow> \amp \geq \frac{1}{3} - \frac{1}{N}</mrow>
+                    <mrow> \amp \gt  \frac{1}{3} - \left(M-\frac{1}{3}\right)</mrow> 
+                    <mrow> \amp = M</mrow>
+                </md>.
+            </p>
+        </example>
+
+        <remark>
+            <p>
+                Note that <m>\frac{1}{3} = \sup A_1</m> but <m>\frac{1}{3} \notin A_1</m> since <m>\frac{1}{3}-\frac{1}{2n}+\frac{1}{6n^2} \lt \frac{1}{3}</m> for all <m>n \in \N</m>.
+                Compare this to the case of <m>1 = \sup(0,1] = \max(0,1]</m>.
+            </p>
+        </remark>
+    </subsection>
+
+    <subsection xml:id="subsec-infima">
+        <title>Lower bounds</title>
+        <p>
+            Again, consider the set <m>(0,1]</m>.
+            By definition,  <m>0 \leq x</m> for every <m>x \in (0,1]</m>; thus, <m>0</m> is a simultaneous lower estimate for all numbers in the set <m>(0,1]</m>.
+            Likewise, <m>-2025 \leq x</m> for every <m>x \in (0,1]</m>); thus, <m>-2025</m> is also a simultaneous lower estimate for all numbers in the set <m>(0,1]</m>.
+            The notion of a simultaneous lower estimate for all numbers in some set of numbers is formalized as follows.
+        </p>
+
+        <definition xml:id="def-lower-bound">
+            <statement>
+                <p>
+                    Let <m>A</m> be a set of real numbers.
+                    A <term>lower bound</term> for <m>A</m> is a real number <m>m</m> such that <m>m \leq x</m> for all <m>x \in A</m>.
+                    Thus, we say that <m>A</m> is <term>bounded below</term> if there exists a lower bound for <m>A</m>.
+                </p>
+            </statement>
+        </definition>
+
+        <remark>
+            <p>
+                Note that <m>m</m> is a lower bound for <m>A</m> if and only if <m>A \subset [m,\infty)</m>.
+            </p>
+        </remark>
+
+        <example>
+            <p>
+                The number <m>0</m> is a lower bound for <m>(0,1]</m>, so that <m>(0,1]</m> is bounded blow.
+                The number <m>-2025</m> is also a lower bound for <m>(0,1]</m>.
+            </p>
+        </example>
+
+        <example xml:id="ex-a2">
+            <p>
+                Let <m>A_2</m> be the set of all numbers of the form <m>\frac{1}{3} + \frac{1}{2n} + \frac{1}{6n^2}</m>, where <m>n \in \N</m> (look familiar?).
+                Given <m>n \in \N</m>, since <m>\frac{1}{2n} + \frac{1}{6n^2} \geq 0</m>, it follows that
+                <me>
+                    \frac{1}{3} + \frac{1}{2n} + \frac{1}{6n^2} \geq \frac{1}{3}
+                </me>.
+                Thus, <m>\frac{1}{3}</m> is a lower bound for <m>A_1</m>.
+            </p>
+        </example>
+
+        <remark>
+            <p>
+                To show that a set of real numbers <m>A</m> is <em>not</em> bounded below, you need to show that every would-be lower bound <m>M</m> fails to be an upper bound for <m>A</m>.
+                More precisely, you need to show that for every <m>M \in A</m>, there exists some <m>x \in A</m> such that <m>x \lt M</m>.
+            </p>
+        </remark>
+
+        <example>
+            <p>
+                The set of all real numbers <m>\R</m> is not bounded below.
+                Indeed, let <m>m \in \R</m> be given.
+                Then <m>x \defn m-1</m> satisfies <m>x \in \R</m> and <m>x \lt m</m>.
+            </p>
+        </example>
+
+        <p>
+            Much like before, we can formalize a notion of <em>optimal</em> lower bound.
+        </p>
+
+        <definition xml:id="def-infimum">
+            <statement>
+                <p>
+                    Let <m>A</m> be a set of real numbers that is bounded below, and let <m>m</m> be a real number.
+                    We say that <m>m</m> is the <term>greatest upper bound</term> or <term>infimum</term> of <m>A</m> whenever it satisfies both of the following conditions:
+                    <ol>
+                        <li>
+                            <p>
+                                <m>m</m> is an lower bound for <m>A</m>;
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                if <m>m'</m> is any other lower bound for <m>A</m>, then <m>m \geq m'</m>.
+                            </p>
+                        </li>
+                    </ol>
+                    Hence, we denote the greatest lower bound <m>M</m> of <m>A</m> by <m>\sup A</m>.
+                </p>
+            </statement>
+        </definition>
+
+        <note>
+            <p>
+               Uniqueness of greatest lower bounds follows from a qualitatively identical argument to uniqueness of least upper bounds. 
+            </p>
+        </note>
+
+        <example>
+            <p>
+                The lower bound <m>0</m> of <m>(0,1]</m> is its greatest lower bound, <ie/>, <m>0 = \inf (0,1]</m>.
+                Indeed, let <m>m \gt 0</m>; we'll show that <m>m</m> cannot be a lower bound for <m>(0,1]</m> by demonstrating <m>x \in (0,1]</m> such that <m>x \lt m</m>.
+                If <m>m \gt 1</m>, then <m>x \defn 1 \in (0,1]</m> satisfies <m>x \lt m</m>.
+                If, instead, <m>0 \lt m \leq 1</m>, then <m>x \defn \frac{m}{2} \in (0,1]</m> satisfies <m>x \lt m</m>.
+            </p>
+        </example>
+
+        <p>
+            The most important single example of a greatest lower bound is the following.
+        </p>
+
+        <proposition xml:id="prop-inf-harmonic">
+            <statement>
+                <p>
+                    Let <m>S</m> be the set of all numbers of the form <m>\frac{1}{n}</m>, where <m>n \in \N</m>.
+                    Then <m>\inf S = 0</m>.
+                </p>
+            </statement>
+            <proof>
+                <p>
+                    Since <m>S</m> consists of positive numbers, it follows that <m>0</m> is a lower bound for <m>S</m>.
+                    Now, let <m>m \gt 0</m> be given; we'll show that <m>m</m> cannot be a lower bound by demonstrating <m>x \in S</m> such that <m>x \lt m</m>.
+                    Indeed, by <xref ref="cor-archimedean-real"/>, there exists <m>N \in \N</m> such that <m>\frac{1}{N} \lt m</m>.
+                    Then <m>x \defn \frac{1}{N} \in S</m> satisfies <m>x \lt </m>.
+                </p>
+            </proof>
+        </proposition>
+
+        <example>
+            <p>
+                One can now show that <m>\frac{1}{3}</m> is the greatest lower bound of the set <m>A_2</m> of <xref ref="ex-a2"/>.
+                Indeed, one can very easily modify the argument of <xref ref="ex-a1-sup"/> into a proof identical in structure to that of <xref ref="prop-inf-harmonic"/>.
+            </p>
+        </example>
+
+        <p>
+            Every fact about (least) upper bounds has a corresponding fact about (greatest) lower bounds.
+            This correspondence is provided by the following easy-to-prove fact.
+        </p> 
+
+        <proposition xml:id="prop-sup-inf">
+            <statement>
+                <p>
+                    Let <m>A</m> be a non-empty set of real numbers, and let <m>-A \defn \set{x \in \R}{-x \in A}</m>.
+                </p>
+                <p>
+                    <ol>
+                        <li>
+                            <p>
+                                A real number <m>c</m> is a lower bound for <m>A</m> if and only if <m>-c</m> is an upper bound for <m>-A</m>.
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                The set <m>A</m> has a greatest lower bound if and only if the set <m>-A</m> has a least upper bound, in which case <m>\inf A = -\sup(-A)</m>.
+                            </p>
+                        </li>
+                    </ol>
+                </p>
+            </statement>
+        </proposition>
+            
+        <corollary xml:id="cor-infimum-minimum">
+            <statement>
+                <p>
+                    Let <m>A</m> be a set of real numbers, and suppose that <m>A</m> has a minimal element <m>\min A</m>, <ie/>, <m>\min A \in A</m> and <m>x \gq \min A</m> for all <m>x \in A</m>.
+                    Then <m>\inf A = \min A</m>.
+                </p>
+            </statement>
+        </corollary>
+
+        <example>
+            <p>
+                The number <m>1</m> is the minimal element of <m>\N</m>. Thus, it follows that <m>\inf\N = \min\N = 1</m>.
+            </p>
+        </example>
+
+        <corollary xml:id="cor-infima">
+            <title>Least-upper-bound property of the real numbers</title>
+            <creator>Bolzano</creator>
+            <statement>
+                <p>
+                    Let <m>A</m> be a set of real numbers.
+                    If <m>A</m> is non-empty and bounded below, then its greatest lower bound <m>\inf A</m> exists.
+                </p>
+            </statement>
+        </corollary>
+    </subsection>
+
+</section>
