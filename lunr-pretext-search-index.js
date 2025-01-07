@@ -172,6 +172,321 @@ var ptx_lunr_docs = [
   "body": " Proof of   We'll use a proof by contradiction . Thus, assume the negation of our claim, i.e., ; we'll use this assumption to prove something that is false.  Let . Since we assumed that , it follows that , and hence that . Thus, by , there exists a natural number such that . Hence, by , .  Now, since , either or . Let us consider each case in turn.   Suppose that , so that . Then , so that , which is false.    Suppose that , so that . Then , so that , which is false.   Thus, either way, the assumption that implies something false.  "
 },
 {
+  "id": "sec-suprema",
+  "level": "1",
+  "url": "sec-suprema.html",
+  "type": "Section",
+  "number": "1.2",
+  "title": "Upper bounds and lower bounds",
+  "body": " Upper bounds and lower bounds   In , we derived the area of a planar region by obtaining better and better upper and lower estimates for its true value. In this section, we make precise the notion of estimating a number or set of numbers from above (with an upper bound ) or below (with a lower bound ). This, in turn, leads us to consider the notion of least upper bound (optimal upper bound) and greatest lower bound (optimal lower bound), which generalize maximal and minimal element, respectively, of a finite set of numbers.  The existence of least upper bounds and greatest lower bounds is a fundamental property of the real numbers that was first identified by Bernard Bolzano in the early 19th century. It turns out to be the property of real numbers that distinguishes them from the rational numbers—for instance, it's the reason why has a real square root. In differential calculus, it gives rise to the intermediate value theorem and extreme value theorem . In this course, it will give rise to the rigorous theory of integration.    Upper bounds  Consider the set . By definition, for every ; thus, is a simultaneous upper estimate for all numbers in the set . Likewise, for every ); thus, is also a simultaneous upper estimate for all numbers in the set , if a much cruder upper estimate than . The notion of a simultaneous upper estimate for all numbers in some set of numbers is formalized as follows.    Let be a set of real numbers. An upper bound for is a real number such that for all . Thus, we say that is bounded above if there exists an upper bound for .     Note that is an upper bound for if and only if .    The number is an upper bound for , so that is bounded above. The number is also an upper bound for .    Let be the set of all numbers of the form , where (look familiar?). Given , since , it follows that . Thus, is an upper bound for .    To show that a set of real numbers is not bounded above, you need to show that every would-be upper bound fails to be an upper bound for . More precisely, you need to show that for every , there exists some such that .    The set of all real numbers is not bounded above. Indeed, let be given. Then satisfies and .   Note that the upper bound for gives you more information than the much larger upper bound . For example, the fact that is an upper bound for lets you conclude that since . By contrast, since , the larger upper bound is too crude to detect that . Thus, we formalize the notion of an optimal upper bound.    Let be a set of real numbers that is bounded above, and let be a real number. We say that is the least upper bound or supremum of whenever it satisfies both of the following conditions:    is an upper bound for ;    if is any other upper bound for , then .   Hence, we denote the least upper bound of by .      Let be a set of real numbers. If has a least upper bound, then it is unique, so that the notation is unambiguous.    Suppose that and are both least upper bounds of a set of real numbers . On the one hand, since is a least upper bound and is an upper bound, it follows that . On the other hand, since is a least upper bound and is an upper bound, it follows that . Thus, it follows that .    There's a nice special case where you can find the least upper bound of a set without any trouble. This case encompasses, for instance, the set .    Let be a set of real numbers, and suppose that has a maximal element , , and for all . Then .    First, note that the maximal element of is, in particular, an upper bound for . Now, suppose that is any other upper bound for Then, since , it follows that . Thus, is the least upper bound of .     The maximal element of is, therefore, the least upper bound of , , .   We can now state the fundamental property of real numbers that distinguished the field of real numbers from the field of rational numbers . Indeed, it will turn out to be the property of real numbers that makes calculus work as a mathematical theory.   Least-upper-bound property of the real numbers  Bolzano   Let be a set of real numbers. If is non-empty and bounded above, then its least upper bound exists.     Every real number is vacuously an upper bound for the empty set : the condition that for all is satisfied precisely because the empty set has no elements.     The set of natural numbers is not bounded above.     We'll prove this by contradiction. Assume for the sake of argument that is bounded above. Then is non-empty ( , since ) and bounded above (by assumption), so that has a least upper bound by .  Now, let be given. Since , it follows that , hence . Since was arbitrary, this shows that is also an upper bound. Thus, is an upper bound of that satisfying , which contradicts the definition of .      For every positive real number , there exists a natural number such that .    By , the set is not bounded above, so cannot be an upper bound of . Thus, there exists such that , which implies, in turn, that .     We can now show that is the least upper bound of the set of . Let be a real number, and suppose that ; we'll show that is not an upper bound for by finding such that .  Since by assumption, it follows that . Thus, by , there exists such that . Then satisfies .    Note that but since for all . Compare this to the case of .     Lower bounds  Again, consider the set . By definition, for every ; thus, is a simultaneous lower estimate for all numbers in the set . Likewise, for every ); thus, is also a simultaneous lower estimate for all numbers in the set . The notion of a simultaneous lower estimate for all numbers in some set of numbers is formalized as follows.    Let be a set of real numbers. A lower bound for is a real number such that for all . Thus, we say that is bounded below if there exists a lower bound for .     Note that is a lower bound for if and only if .    The number is a lower bound for , so that is bounded blow. The number is also a lower bound for .    Let be the set of all numbers of the form , where (look familiar?). Given , since , it follows that . Thus, is a lower bound for .    To show that a set of real numbers is not bounded below, you need to show that every would-be lower bound fails to be an upper bound for . More precisely, you need to show that for every , there exists some such that .    The set of all real numbers is not bounded below. Indeed, let be given. Then satisfies and .   Much like before, we can formalize a notion of optimal lower bound.    Let be a set of real numbers that is bounded below, and let be a real number. We say that is the greatest upper bound or infimum of whenever it satisfies both of the following conditions:    is an lower bound for ;    if is any other lower bound for , then .   Hence, we denote the greatest lower bound of by .     Uniqueness of greatest lower bounds follows from a qualitatively identical argument to uniqueness of least upper bounds.    The lower bound of is its greatest lower bound, , . Indeed, let ; we'll show that cannot be a lower bound for by demonstrating such that . If , then satisfies . If, instead, , then satisfies .   The most important single example of a greatest lower bound is the following.    Let be the set of all numbers of the form , where . Then .    Since consists of positive numbers, it follows that is a lower bound for . Now, let be given; we'll show that cannot be a lower bound by demonstrating such that . Indeed, by , there exists such that . Then satisfies .     One can now show that is the greatest lower bound of the set of . Indeed, one can very easily modify the argument of into a proof identical in structure to that of .   Every fact about (least) upper bounds has a corresponding fact about (greatest) lower bounds. This correspondence is provided by the following easy-to-prove fact.    Let be a non-empty set of real numbers, and let .     A real number is a lower bound for if and only if is an upper bound for .    The set has a greatest lower bound if and only if the set has a least upper bound, in which case .         Let be a set of real numbers, and suppose that has a minimal element , , and for all . Then .     The number is the minimal element of . Thus, it follows that .    Least-upper-bound property of the real numbers  Bolzano   Let be a set of real numbers. If is non-empty and bounded below, then its greatest lower bound exists.     "
+},
+{
+  "id": "sec-suprema-2-1",
+  "level": "2",
+  "url": "sec-suprema.html#sec-suprema-2-1",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": "upper bound lower bound least upper bound greatest lower bound "
+},
+{
+  "id": "def-upper-bound",
+  "level": "2",
+  "url": "sec-suprema.html#def-upper-bound",
+  "type": "Definition",
+  "number": "1.2.1",
+  "title": "",
+  "body": "  Let be a set of real numbers. An upper bound for is a real number such that for all . Thus, we say that is bounded above if there exists an upper bound for .   "
+},
+{
+  "id": "subsec-suprema-4",
+  "level": "2",
+  "url": "sec-suprema.html#subsec-suprema-4",
+  "type": "Remark",
+  "number": "1.2.2",
+  "title": "",
+  "body": " Note that is an upper bound for if and only if .  "
+},
+{
+  "id": "subsec-suprema-5",
+  "level": "2",
+  "url": "sec-suprema.html#subsec-suprema-5",
+  "type": "Example",
+  "number": "1.2.3",
+  "title": "",
+  "body": " The number is an upper bound for , so that is bounded above. The number is also an upper bound for .  "
+},
+{
+  "id": "ex-a1",
+  "level": "2",
+  "url": "sec-suprema.html#ex-a1",
+  "type": "Example",
+  "number": "1.2.4",
+  "title": "",
+  "body": " Let be the set of all numbers of the form , where (look familiar?). Given , since , it follows that . Thus, is an upper bound for .  "
+},
+{
+  "id": "subsec-suprema-7",
+  "level": "2",
+  "url": "sec-suprema.html#subsec-suprema-7",
+  "type": "Remark",
+  "number": "1.2.5",
+  "title": "",
+  "body": " To show that a set of real numbers is not bounded above, you need to show that every would-be upper bound fails to be an upper bound for . More precisely, you need to show that for every , there exists some such that .  "
+},
+{
+  "id": "subsec-suprema-8",
+  "level": "2",
+  "url": "sec-suprema.html#subsec-suprema-8",
+  "type": "Example",
+  "number": "1.2.6",
+  "title": "",
+  "body": " The set of all real numbers is not bounded above. Indeed, let be given. Then satisfies and .  "
+},
+{
+  "id": "def-supremum",
+  "level": "2",
+  "url": "sec-suprema.html#def-supremum",
+  "type": "Definition",
+  "number": "1.2.7",
+  "title": "",
+  "body": "  Let be a set of real numbers that is bounded above, and let be a real number. We say that is the least upper bound or supremum of whenever it satisfies both of the following conditions:    is an upper bound for ;    if is any other upper bound for , then .   Hence, we denote the least upper bound of by .   "
+},
+{
+  "id": "fact-sup-uniqueness",
+  "level": "2",
+  "url": "sec-suprema.html#fact-sup-uniqueness",
+  "type": "Fact",
+  "number": "1.2.8",
+  "title": "",
+  "body": "  Let be a set of real numbers. If has a least upper bound, then it is unique, so that the notation is unambiguous.    Suppose that and are both least upper bounds of a set of real numbers . On the one hand, since is a least upper bound and is an upper bound, it follows that . On the other hand, since is a least upper bound and is an upper bound, it follows that . Thus, it follows that .   "
+},
+{
+  "id": "prop-supremum-maximum",
+  "level": "2",
+  "url": "sec-suprema.html#prop-supremum-maximum",
+  "type": "Proposition",
+  "number": "1.2.9",
+  "title": "",
+  "body": "  Let be a set of real numbers, and suppose that has a maximal element , , and for all . Then .    First, note that the maximal element of is, in particular, an upper bound for . Now, suppose that is any other upper bound for Then, since , it follows that . Thus, is the least upper bound of .   "
+},
+{
+  "id": "subsec-suprema-14",
+  "level": "2",
+  "url": "sec-suprema.html#subsec-suprema-14",
+  "type": "Example",
+  "number": "1.2.10",
+  "title": "",
+  "body": " The maximal element of is, therefore, the least upper bound of , , .  "
+},
+{
+  "id": "subsec-suprema-15",
+  "level": "2",
+  "url": "sec-suprema.html#subsec-suprema-15",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": "field "
+},
+{
+  "id": "axiom-suprema",
+  "level": "2",
+  "url": "sec-suprema.html#axiom-suprema",
+  "type": "Axiom",
+  "number": "1.2.11",
+  "title": "Least-upper-bound property of the real numbers.",
+  "body": " Least-upper-bound property of the real numbers  Bolzano   Let be a set of real numbers. If is non-empty and bounded above, then its least upper bound exists.   "
+},
+{
+  "id": "subsec-suprema-17",
+  "level": "2",
+  "url": "sec-suprema.html#subsec-suprema-17",
+  "type": "Remark",
+  "number": "1.2.12",
+  "title": "",
+  "body": " Every real number is vacuously an upper bound for the empty set : the condition that for all is satisfied precisely because the empty set has no elements.  "
+},
+{
+  "id": "thm-archimedean-natural",
+  "level": "2",
+  "url": "sec-suprema.html#thm-archimedean-natural",
+  "type": "Theorem",
+  "number": "1.2.13",
+  "title": "",
+  "body": "  The set of natural numbers is not bounded above.   "
+},
+{
+  "id": "subsec-suprema-19",
+  "level": "2",
+  "url": "sec-suprema.html#subsec-suprema-19",
+  "type": "Proof",
+  "number": "1.2.1.1",
+  "title": "",
+  "body": " We'll prove this by contradiction. Assume for the sake of argument that is bounded above. Then is non-empty ( , since ) and bounded above (by assumption), so that has a least upper bound by .  Now, let be given. Since , it follows that , hence . Since was arbitrary, this shows that is also an upper bound. Thus, is an upper bound of that satisfying , which contradicts the definition of .  "
+},
+{
+  "id": "cor-archimedean-real",
+  "level": "2",
+  "url": "sec-suprema.html#cor-archimedean-real",
+  "type": "Corollary",
+  "number": "1.2.14",
+  "title": "Axiom 1.1.14.",
+  "body": "   For every positive real number , there exists a natural number such that .    By , the set is not bounded above, so cannot be an upper bound of . Thus, there exists such that , which implies, in turn, that .   "
+},
+{
+  "id": "ex-a1-sup",
+  "level": "2",
+  "url": "sec-suprema.html#ex-a1-sup",
+  "type": "Example",
+  "number": "1.2.15",
+  "title": "",
+  "body": " We can now show that is the least upper bound of the set of . Let be a real number, and suppose that ; we'll show that is not an upper bound for by finding such that .  Since by assumption, it follows that . Thus, by , there exists such that . Then satisfies .  "
+},
+{
+  "id": "subsec-suprema-22",
+  "level": "2",
+  "url": "sec-suprema.html#subsec-suprema-22",
+  "type": "Remark",
+  "number": "1.2.16",
+  "title": "",
+  "body": " Note that but since for all . Compare this to the case of .  "
+},
+{
+  "id": "def-lower-bound",
+  "level": "2",
+  "url": "sec-suprema.html#def-lower-bound",
+  "type": "Definition",
+  "number": "1.2.17",
+  "title": "",
+  "body": "  Let be a set of real numbers. A lower bound for is a real number such that for all . Thus, we say that is bounded below if there exists a lower bound for .   "
+},
+{
+  "id": "subsec-infima-4",
+  "level": "2",
+  "url": "sec-suprema.html#subsec-infima-4",
+  "type": "Remark",
+  "number": "1.2.18",
+  "title": "",
+  "body": " Note that is a lower bound for if and only if .  "
+},
+{
+  "id": "subsec-infima-5",
+  "level": "2",
+  "url": "sec-suprema.html#subsec-infima-5",
+  "type": "Example",
+  "number": "1.2.19",
+  "title": "",
+  "body": " The number is a lower bound for , so that is bounded blow. The number is also a lower bound for .  "
+},
+{
+  "id": "ex-a2",
+  "level": "2",
+  "url": "sec-suprema.html#ex-a2",
+  "type": "Example",
+  "number": "1.2.20",
+  "title": "",
+  "body": " Let be the set of all numbers of the form , where (look familiar?). Given , since , it follows that . Thus, is a lower bound for .  "
+},
+{
+  "id": "subsec-infima-7",
+  "level": "2",
+  "url": "sec-suprema.html#subsec-infima-7",
+  "type": "Remark",
+  "number": "1.2.21",
+  "title": "",
+  "body": " To show that a set of real numbers is not bounded below, you need to show that every would-be lower bound fails to be an upper bound for . More precisely, you need to show that for every , there exists some such that .  "
+},
+{
+  "id": "subsec-infima-8",
+  "level": "2",
+  "url": "sec-suprema.html#subsec-infima-8",
+  "type": "Example",
+  "number": "1.2.22",
+  "title": "",
+  "body": " The set of all real numbers is not bounded below. Indeed, let be given. Then satisfies and .  "
+},
+{
+  "id": "def-infimum",
+  "level": "2",
+  "url": "sec-suprema.html#def-infimum",
+  "type": "Definition",
+  "number": "1.2.23",
+  "title": "",
+  "body": "  Let be a set of real numbers that is bounded below, and let be a real number. We say that is the greatest upper bound or infimum of whenever it satisfies both of the following conditions:    is an lower bound for ;    if is any other lower bound for , then .   Hence, we denote the greatest lower bound of by .   "
+},
+{
+  "id": "subsec-infima-11",
+  "level": "2",
+  "url": "sec-suprema.html#subsec-infima-11",
+  "type": "Note",
+  "number": "1.2.24",
+  "title": "",
+  "body": " Uniqueness of greatest lower bounds follows from a qualitatively identical argument to uniqueness of least upper bounds.  "
+},
+{
+  "id": "subsec-infima-12",
+  "level": "2",
+  "url": "sec-suprema.html#subsec-infima-12",
+  "type": "Example",
+  "number": "1.2.25",
+  "title": "",
+  "body": " The lower bound of is its greatest lower bound, , . Indeed, let ; we'll show that cannot be a lower bound for by demonstrating such that . If , then satisfies . If, instead, , then satisfies .  "
+},
+{
+  "id": "prop-inf-harmonic",
+  "level": "2",
+  "url": "sec-suprema.html#prop-inf-harmonic",
+  "type": "Proposition",
+  "number": "1.2.26",
+  "title": "",
+  "body": "  Let be the set of all numbers of the form , where . Then .    Since consists of positive numbers, it follows that is a lower bound for . Now, let be given; we'll show that cannot be a lower bound by demonstrating such that . Indeed, by , there exists such that . Then satisfies .   "
+},
+{
+  "id": "subsec-infima-15",
+  "level": "2",
+  "url": "sec-suprema.html#subsec-infima-15",
+  "type": "Example",
+  "number": "1.2.27",
+  "title": "",
+  "body": " One can now show that is the greatest lower bound of the set of . Indeed, one can very easily modify the argument of into a proof identical in structure to that of .  "
+},
+{
+  "id": "prop-sup-inf",
+  "level": "2",
+  "url": "sec-suprema.html#prop-sup-inf",
+  "type": "Proposition",
+  "number": "1.2.28",
+  "title": "",
+  "body": "  Let be a non-empty set of real numbers, and let .     A real number is a lower bound for if and only if is an upper bound for .    The set has a greatest lower bound if and only if the set has a least upper bound, in which case .      "
+},
+{
+  "id": "cor-infimum-minimum",
+  "level": "2",
+  "url": "sec-suprema.html#cor-infimum-minimum",
+  "type": "Corollary",
+  "number": "1.2.29",
+  "title": "",
+  "body": "  Let be a set of real numbers, and suppose that has a minimal element , , and for all . Then .   "
+},
+{
+  "id": "subsec-infima-19",
+  "level": "2",
+  "url": "sec-suprema.html#subsec-infima-19",
+  "type": "Example",
+  "number": "1.2.30",
+  "title": "",
+  "body": " The number is the minimal element of . Thus, it follows that .  "
+},
+{
+  "id": "cor-infima",
+  "level": "2",
+  "url": "sec-suprema.html#cor-infima",
+  "type": "Corollary",
+  "number": "1.2.31",
+  "title": "Least-upper-bound property of the real numbers.",
+  "body": " Least-upper-bound property of the real numbers  Bolzano   Let be a set of real numbers. If is non-empty and bounded below, then its greatest lower bound exists.   "
+},
+{
   "id": "backmatter-2",
   "level": "1",
   "url": "backmatter-2.html",

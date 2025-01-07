@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<html lang="en-US" dir="ltr">
+<head xmlns:og="http://ogp.me/ns#" xmlns:book="https://ogp.me/ns/book#">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Upper bounds and lower bounds</title>
+<meta name="Keywords" content="Authored in PreTeXt">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:type" content="book">
+<meta property="book:title" content="Enriched Calculus II">
+<meta property="book:author" content="Branimir Ćaćić">
+<script>
+var runestoneMathReady = new Promise((resolve) => window.rsMathReady = resolve);
+window.MathJax = {
+  "tex": {
+    "inlineMath": [
+      [
+        "\\(",
+        "\\)"
+      ]
+    ],
+    "tags": "none",
+    "tagSide": "right",
+    "tagIndent": ".8em",
+    "packages": {
+      "[+]": [
+        "base",
+        "extpfeil",
+        "ams",
+        "amscd",
+        "color",
+        "newcommand",
+        "knowl"
+      ]
+    }
+  },
+  "options": {
+    "ignoreHtmlClass": "tex2jax_ignore|ignore-math",
+    "processHtmlClass": "process-math"
+  },
+  "chtml": {
+    "scale": 0.98,
+    "mtextInheritFont": true
+  },
+  "loader": {
+    "load": [
+      "input/asciimath",
+      "[tex]/extpfeil",
+      "[tex]/amscd",
+      "[tex]/color",
+      "[tex]/newcommand",
+      "[pretext]/mathjaxknowl3.js"
+    ],
+    "paths": {
+      "pretext": "_static/pretext/js/lib"
+    }
+  },
+  "startup": {
+    pageReady() {
+      return MathJax.startup.defaultPageReady().then(function () {
+      console.log("in ready function");
+      rsMathReady();
+      }
+    )}
+  }
+};
+</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.9/lunr.min.js" integrity="sha512-4xUl/d6D6THrAnXAwGajXkoWaeMNwEKK4iNfq5DotEbLPAfk6FSxSP3ydNxqDgCw1c/0Z1Jg6L8h2j+++9BZmg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><script src="lunr-pretext-search-index.js" async=""></script><script src="_static/pretext/js/pretext_search.js"></script><link href="_static/pretext/css/pretext_search.css" rel="stylesheet" type="text/css">
+<script src="_static/pretext/js/lib/jquery.min.js"></script><script src="_static/pretext/js/lib/jquery.sticky.js"></script><script src="_static/pretext/js/lib/jquery.espy.min.js"></script><script src="_static/pretext/js/pretext.js"></script><script src="_static/pretext/js/pretext_add_on.js?x=1"></script><script src="_static/pretext/js/user_preferences.js"></script><script src="_static/pretext/js/lib/knowl.js"></script><!--knowl.js code controls Sage Cells within knowls--><script>sagecellEvalName='Evaluate (Sage)';
+</script><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
+<link href="_static/pretext/css/theme.css" rel="stylesheet" type="text/css">
+<!--** eBookCongig is necessary to configure interactive       **-->
+<!--** Runestone components to run locally in reader's browser **-->
+<!--** No external communication:                              **-->
+<!--**     log level is 0, Runestone Services are disabled     **-->
+<script type="text/javascript">
+eBookConfig = {};
+eBookConfig.useRunestoneServices = false;
+eBookConfig.host = 'http://127.0.0.1:8000';
+eBookConfig.course = 'PTX_Course_Title_Here';
+eBookConfig.basecourse = 'PTX_Base_Course';
+eBookConfig.isLoggedIn = false;
+eBookConfig.email = '';
+eBookConfig.isInstructor = false;
+eBookConfig.logLevel = 0;
+eBookConfig.username = '';
+eBookConfig.readings = null;
+eBookConfig.activities = null;
+eBookConfig.downloadsEnabled = false;
+eBookConfig.allow_pairs = false;
+eBookConfig.enableScratchAC = false;
+eBookConfig.build_info = "";
+eBookConfig.python3 = null;
+eBookConfig.runestone_version = '7.5.1';
+eBookConfig.jobehost = '';
+eBookConfig.proxyuri_runs = '';
+eBookConfig.proxyuri_files = '';
+eBookConfig.enable_chatcodes =  false;
+</script>
+<!--*** Runestone Services ***-->
+<script src="_static/prefix-runtime.87cabc2515250052.bundle.js"></script><script src="_static/prefix-723.3e6434f80549315a.bundle.js"></script><script src="_static/prefix-runestone.630d5c4fb4b681eb.bundle.js"></script><link rel="stylesheet" type="text/css" href="_static/prefix-723.3bccd435914aa0ff.css">
+<link rel="stylesheet" type="text/css" href="_static/prefix-runestone.97f3ae4f7a71ba18.css">
+<style>
+#assumption-area-1-1-4 { counter-set: assumption-area-1-1-4 0; }
+#assumption-area-1-1-4 > li::marker { content: ""counter(assumption-area-1-1-4,decimal)"."; }
+#assumption-area-1-1-4 > li { counter-increment: assumption-area-1-1-4; }
+#sec-prob-area-27-4-4 { counter-set: sec-prob-area-27-4-4 0; }
+#sec-prob-area-27-4-4 > li::marker { content: ""counter(sec-prob-area-27-4-4,decimal)"."; }
+#sec-prob-area-27-4-4 > li { counter-increment: sec-prob-area-27-4-4; }
+#def-supremum-1-1-7 { counter-set: def-supremum-1-1-7 0; }
+#def-supremum-1-1-7 > li::marker { content: ""counter(def-supremum-1-1-7,decimal)"."; }
+#def-supremum-1-1-7 > li { counter-increment: def-supremum-1-1-7; }
+#def-infimum-1-1-7 { counter-set: def-infimum-1-1-7 0; }
+#def-infimum-1-1-7 > li::marker { content: ""counter(def-infimum-1-1-7,decimal)"."; }
+#def-infimum-1-1-7 > li { counter-increment: def-infimum-1-1-7; }
+#prop-sup-inf-1-2-1 { counter-set: prop-sup-inf-1-2-1 0; }
+#prop-sup-inf-1-2-1 > li::marker { content: ""counter(prop-sup-inf-1-2-1,decimal)"."; }
+#prop-sup-inf-1-2-1 > li { counter-increment: prop-sup-inf-1-2-1; }
+</style>
+</head>
+<body class="pretext book ignore-math">
+<a class="assistive" href="#ptx-content">Skip to main content</a><header id="ptx-masthead" class="ptx-masthead"><div class="ptx-banner">
+<a id="logo-link" class="logo-link" target="_blank" href=""></a><div class="title-container">
+<h1 class="heading"><a href="mybook.html"><span class="title">Enriched Calculus II:</span> <span class="subtitle">Notes for MATH 1063</span></a></h1>
+<p class="byline">Branimir Ćaćić</p>
+</div>
+</div></header><nav id="ptx-navbar" class="ptx-navbar navbar"><div class="ptx-navbar-contents">
+<button class="toc-toggle button" title="Contents"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5d2;</span><span class="name">Contents</span></button><div class="searchbox">
+<div class="searchwidget"><button id="searchbutton" class="searchbutton button" type="button" title="Search book"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe8b6;</span><span class="name">Search Book</span></button></div>
+<div id="searchresultsplaceholder" class="searchresultsplaceholder" style="display: none">
+<div class="search-results-controls">
+<input aria-label="Search term" id="ptxsearch" class="ptxsearch" type="text" name="terms" placeholder="Search term"><button title="Close search" id="closesearchresults" class="closesearchresults"><span class="material-symbols-outlined">close</span></button>
+</div>
+<h2 class="search-results-heading">Search Results: </h2>
+<div id="searchempty" class="searchempty"><span>No results.</span></div>
+<ol id="searchresults" class="searchresults"></ol>
+</div>
+</div>
+<span class="nav-other-controls"><button id="light-dark-button" class="light-dark-button button" title="Dark Mode"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe51c;</span><span class="name">Dark Mode</span></button></span><span class="treebuttons"><a class="previous-button button" href="sec-prob-area.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="up-button button" href="ch-integration.html" title="Up"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Up</span></a><a class="next-button button" href="backmatter.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a></span>
+</div></nav><div id="latex-macros" class="hidden-content process-math" style="display:none"><span class="process-math">\(\newcommand{\N}{\mathbb N}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\R}{\mathbb R}
+\newcommand{\abs}[1]{\lvert{#1}\rvert}
+\newcommand{\defn}{\mathrel{:=}}
+\newcommand{\set}[2]{\left\{{#1}:{#2}\right\}}
+\DeclareMathOperator{\Area}{Area}
+\newcommand{\lt}{&lt;}
+\newcommand{\gt}{&gt;}
+\newcommand{\amp}{&amp;}
+\definecolor{fillinmathshade}{gray}{0.9}
+\newcommand{\fillinmath}[1]{\mathchoice{\colorbox{fillinmathshade}{$\displaystyle     \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\textstyle        \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\scriptstyle      \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\scriptscriptstyle\phantom{\,#1\,}$}}}
+\)</span></div>
+<div class="ptx-page">
+<div id="ptx-sidebar" class="ptx-sidebar"><nav id="ptx-toc" class="ptx-toc depth2 focused" data-preexpanded-levels="0" data-max-levels="2"><ul class="structural toc-item-list contains-active">
+<li class="toc-item toc-frontmatter"><div class="toc-title-box"><a href="frontmatter.html" class="internal"><span class="title">Front Matter</span></a></div></li>
+<li class="toc-item toc-chapter contains-active">
+<div class="toc-title-box"><a href="ch-integration.html" class="internal"><span class="codenumber">1</span> <span class="title">Integration</span></a></div>
+<ul class="structural toc-item-list contains-active">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-prob-area.html" class="internal"><span class="codenumber">1.1</span> <span class="title">The Problem of Area</span></a></div></li>
+<li class="toc-item toc-section contains-active">
+<div class="toc-title-box"><a href="sec-suprema.html" class="internal"><span class="codenumber">1.2</span> <span class="title">Upper bounds and lower bounds</span></a></div>
+<ul class="structural toc-item-list active">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-suprema.html#subsec-suprema" class="internal"><span class="codenumber">1.2.1</span> <span class="title">Upper bounds</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-suprema.html#subsec-infima" class="internal"><span class="codenumber">1.2.2</span> <span class="title">Lower bounds</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-backmatter"><div class="toc-title-box"><a href="backmatter.html" class="internal"><span class="title">Backmatter</span></a></div></li>
+</ul></nav></div>
+<main class="ptx-main"><div id="ptx-content" class="ptx-content"><section class="section" id="sec-suprema"><h2 class="heading hide-type">
+<span class="type">Section</span><span class="space"> </span><span class="codenumber">1.2</span><span class="space"> </span><span class="title">Upper bounds and lower bounds</span>
+</h2>
+<section class="introduction" id="sec-suprema-2"><div class="para" id="sec-suprema-2-1">In <a href="sec-prob-area.html" class="internal" title="Section 1.1: The Problem of Area">Section 1.1</a>, we derived the area of a planar region by obtaining better and better upper and lower estimates for its true value. In this section, we make precise the notion of estimating a number or set of numbers from above (with an <dfn class="terminology">upper bound</dfn>) or below (with a <dfn class="terminology">lower bound</dfn>). This, in turn, leads us to consider the notion of <dfn class="terminology">least upper bound</dfn> (optimal upper bound) and <dfn class="terminology">greatest lower bound</dfn> (optimal lower bound), which generalize maximal and minimal element, respectively, of a finite set of numbers.</div>
+<div class="para" id="sec-suprema-2-2">The existence of least upper bounds and greatest lower bounds is a fundamental property of the real numbers that was first identified by <a class="external" href="https://en.wikipedia.org/wiki/Bernard_Bolzano" target="_blank">Bernard Bolzano</a><details class="ptx-footnote" aria-live="polite" id="sec-suprema-2-2-2"><summary class="ptx-footnote__number" title="Footnote 1.2.1"><sup> 1 </sup></summary><div class="ptx-footnote__contents" id="sec-suprema-2-2-2"><code class="code-inline tex2jax_ignore">en.wikipedia.org/wiki/Bernard_Bolzano</code></div></details> in the early 19th century. It turns out to be <em class="emphasis">the</em> property of real numbers that distinguishes them from the rational numbers—for instance, it’s the reason why <span class="process-math">\(2\)</span> has a <em class="emphasis">real</em> square root. In differential calculus, it gives rise to the <a class="external" href="https://opentext.uleth.ca/apex-calculus/sec_continuity.html#thm_IVT" target="_blank">intermediate value theorem</a><details class="ptx-footnote" aria-live="polite" id="sec-suprema-2-2-7"><summary class="ptx-footnote__number" title="Footnote 1.2.2"><sup> 2 </sup></summary><div class="ptx-footnote__contents" id="sec-suprema-2-2-7"><code class="code-inline tex2jax_ignore">opentext.uleth.ca/apex-calculus/sec_continuity.html#thm_IVT</code></div></details> and <a class="external" href="https://opentext.uleth.ca/apex-calculus/sec_extreme_values.html#thm_extreme_val" target="_blank">extreme value theorem</a><details class="ptx-footnote" aria-live="polite" id="sec-suprema-2-2-9"><summary class="ptx-footnote__number" title="Footnote 1.2.3"><sup> 3 </sup></summary><div class="ptx-footnote__contents" id="sec-suprema-2-2-9"><code class="code-inline tex2jax_ignore">opentext.uleth.ca/apex-calculus/sec_extreme_values.html#thm_extreme_val</code></div></details>. In this course, it will give rise to the rigorous theory of integration.</div></section><section class="subsection" id="subsec-suprema"><h3 class="heading hide-type">
+<span class="type">Subsection</span><span class="space"> </span><span class="codenumber">1.2.1</span><span class="space"> </span><span class="title">Upper bounds</span>
+</h3>
+<div class="para" id="subsec-suprema-2">Consider the set <span class="process-math">\((0,1] = \set{x \in \R}{0 \lt x \leq 1}\text{.}\)</span> By definition,  <span class="process-math">\(x \leq 1\)</span> for every <span class="process-math">\(x \in (0,1]\text{;}\)</span> thus, <span class="process-math">\(1\)</span> is a simultaneous upper estimate for all numbers in the set <span class="process-math">\((0,1]\text{.}\)</span> Likewise, <span class="process-math">\(x \leq 2025\)</span> for every <span class="process-math">\(x \in (0,1]\)</span>); thus, <span class="process-math">\(2025\)</span> is also a simultaneous upper estimate for all numbers in the set <span class="process-math">\((0,1]\text{,}\)</span> if a much cruder upper estimate than <span class="process-math">\(1\text{.}\)</span> The notion of a simultaneous upper estimate for all numbers in some set of numbers is formalized as follows.</div>
+<article class="definition definition-like" id="def-upper-bound"><h4 class="heading">
+<span class="type">Definition</span><span class="space"> </span><span class="codenumber">1.2.1</span><span class="period">.</span>
+</h4>
+<div class="para" id="def-upper-bound-1-1">Let <span class="process-math">\(A\)</span> be a set of real numbers. An <dfn class="terminology">upper bound</dfn> for <span class="process-math">\(A\)</span> is a real number <span class="process-math">\(M\)</span> such that <span class="process-math">\(x \leq M\)</span> for all <span class="process-math">\(x \in A\text{.}\)</span> Thus, we say that <span class="process-math">\(A\)</span> is <dfn class="terminology">bounded above</dfn> if there exists an upper bound for <span class="process-math">\(A\text{.}\)</span>
+</div></article><article class="remark remark-like" id="subsec-suprema-4"><h4 class="heading">
+<span class="type">Remark</span><span class="space"> </span><span class="codenumber">1.2.2</span><span class="period">.</span>
+</h4>
+<div class="para" id="subsec-suprema-4-1">Note that <span class="process-math">\(M\)</span> is an upper bound for <span class="process-math">\(A\)</span> if and only if <span class="process-math">\(A \subset (0,M]\text{.}\)</span>
+</div></article><article class="example example-like" id="subsec-suprema-5"><h4 class="heading">
+<span class="type">Example</span><span class="space"> </span><span class="codenumber">1.2.3</span><span class="period">.</span>
+</h4>
+<div class="para" id="subsec-suprema-5-1">The number <span class="process-math">\(1\)</span> is an upper bound for <span class="process-math">\((0,1]\text{,}\)</span> so that <span class="process-math">\((0,1]\)</span> is bounded above. The number <span class="process-math">\(2025\)</span> is also an upper bound for <span class="process-math">\((0,1]\text{.}\)</span>
+</div></article><article class="example example-like" id="ex-a1"><h4 class="heading">
+<span class="type">Example</span><span class="space"> </span><span class="codenumber">1.2.4</span><span class="period">.</span>
+</h4>
+<div class="para logical" id="ex-a1-1">
+<div class="para">Let <span class="process-math">\(A_1\)</span> be the set of all numbers of the form <span class="process-math">\(\frac{1}{3} - \frac{1}{2n} + \frac{1}{6n^2}\text{,}\)</span> where <span class="process-math">\(n \in \N\)</span> (look familiar?). Given <span class="process-math">\(n \in \N\text{,}\)</span> since <span class="process-math">\(\frac{1}{2n} - \frac{1}{6n^2} = \frac{3n-1}{6n^2} \geq 0\text{,}\)</span> it follows that</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\frac{1}{3} - \frac{1}{2n} + \frac{1}{6n^2} = \frac{1}{3} - \frac{3n-1}{6n^2} \leq \frac{1}{3}\text{.}
+\end{equation*}
+</div>
+<div class="para">Thus, <span class="process-math">\(\frac{1}{3}\)</span> is an upper bound for <span class="process-math">\(A_1\text{.}\)</span>
+</div>
+</div></article><article class="remark remark-like" id="subsec-suprema-7"><h4 class="heading">
+<span class="type">Remark</span><span class="space"> </span><span class="codenumber">1.2.5</span><span class="period">.</span>
+</h4>
+<div class="para" id="subsec-suprema-7-1">To show that a set of real numbers <span class="process-math">\(A\)</span> is <em class="emphasis">not</em> bounded above, you need to show that every would-be upper bound <span class="process-math">\(M\)</span> fails to be an upper bound for <span class="process-math">\(A\text{.}\)</span> More precisely, you need to show that for every <span class="process-math">\(M \in A\text{,}\)</span> there exists some <span class="process-math">\(x \in A\)</span> such that <span class="process-math">\(x \gt M\text{.}\)</span>
+</div></article><article class="example example-like" id="subsec-suprema-8"><h4 class="heading">
+<span class="type">Example</span><span class="space"> </span><span class="codenumber">1.2.6</span><span class="period">.</span>
+</h4>
+<div class="para" id="subsec-suprema-8-1">The set of all real numbers <span class="process-math">\(\R\)</span> is not bounded above. Indeed, let <span class="process-math">\(M \in \R\)</span> be given. Then <span class="process-math">\(x \defn M+1\)</span> satisfies <span class="process-math">\(x \in \R\)</span> and <span class="process-math">\(x &gt; M\text{.}\)</span>
+</div></article><div class="para" id="subsec-suprema-9">Note that the upper bound <span class="process-math">\(1\)</span> for <span class="process-math">\((0,1]\)</span> gives you more information than the much larger upper bound <span class="process-math">\(2025\text{.}\)</span> For example, the fact that <span class="process-math">\(1\)</span> is an upper bound for <span class="process-math">\((0,1]\)</span> lets you conclude that <span class="process-math">\(2 \notin (0,1]\)</span> since <span class="process-math">\(2 \gt 1\text{.}\)</span> By contrast, since <span class="process-math">\(2 \leq 2025\text{,}\)</span> the larger upper bound <span class="process-math">\(2025\)</span> is too crude to detect that <span class="process-math">\(2 \notin (0,1]\text{.}\)</span> Thus, we formalize the notion of an optimal upper bound.</div>
+<article class="definition definition-like" id="def-supremum"><h4 class="heading">
+<span class="type">Definition</span><span class="space"> </span><span class="codenumber">1.2.7</span><span class="period">.</span>
+</h4>
+<div class="para logical" id="def-supremum-1-1">
+<div class="para">Let <span class="process-math">\(A\)</span> be a set of real numbers that is bounded above, and let <span class="process-math">\(M\)</span> be a real number. We say that <span class="process-math">\(M\)</span> is the <dfn class="terminology">least upper bound</dfn> or <dfn class="terminology">supremum</dfn> of <span class="process-math">\(A\)</span> whenever it satisfies both of the following conditions:</div>
+<ol class="decimal" id="def-supremum-1-1-7">
+<li id="def-supremum-1-1-7-1"><div class="para" id="def-supremum-1-1-7-1-1">
+<span class="process-math">\(M\)</span> is an upper bound for <span class="process-math">\(A\text{;}\)</span>
+</div></li>
+<li id="def-supremum-1-1-7-2"><div class="para" id="def-supremum-1-1-7-2-1">if <span class="process-math">\(M'\)</span> is any other upper bound for <span class="process-math">\(A\text{,}\)</span> then <span class="process-math">\(M \leq M'\text{.}\)</span>
+</div></li>
+</ol>
+<div class="para">Hence, we denote the least upper bound <span class="process-math">\(M\)</span> of <span class="process-math">\(A\)</span> by <span class="process-math">\(\sup A\text{.}\)</span>
+</div>
+</div></article><article class="fact theorem-like" id="fact-sup-uniqueness"><h4 class="heading">
+<span class="type">Fact</span><span class="space"> </span><span class="codenumber">1.2.8</span><span class="period">.</span>
+</h4>
+<div class="para" id="fact-sup-uniqueness-1-1">Let <span class="process-math">\(A\)</span> be a set of real numbers. If <span class="process-math">\(A\)</span> has a least upper bound, then it is unique, so that the notation <span class="process-math">\(\sup A\)</span> is unambiguous.</div></article><article class="proof" id="fact-sup-uniqueness-2"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
+<div class="para" id="fact-sup-uniqueness-2-1">Suppose that <span class="process-math">\(M_1\)</span> and <span class="process-math">\(M_2\)</span> are both least upper bounds of a set of real numbers <span class="process-math">\(A\text{.}\)</span> On the one hand, since <span class="process-math">\(M_1\)</span> is a least upper bound and <span class="process-math">\(M_2\)</span> is an upper bound, it follows that <span class="process-math">\(M_1 \leq M_2\text{.}\)</span> On the other hand, since <span class="process-math">\(M_2\)</span> is a least upper bound and <span class="process-math">\(M_1\)</span> is an upper bound, it follows that <span class="process-math">\(M_2 \leq M_1\text{.}\)</span> Thus, it follows that <span class="process-math">\(M_1 = M_2\text{.}\)</span>
+</div></article><div class="para" id="subsec-suprema-12">There’s a nice special case where you can find the least upper bound of a set without any trouble. This case encompasses, for instance, the set <span class="process-math">\((0,1]\text{.}\)</span>
+</div>
+<article class="proposition theorem-like" id="prop-supremum-maximum"><h4 class="heading">
+<span class="type">Proposition</span><span class="space"> </span><span class="codenumber">1.2.9</span><span class="period">.</span>
+</h4>
+<div class="para" id="prop-supremum-maximum-1-1">Let <span class="process-math">\(A\)</span> be a set of real numbers, and suppose that <span class="process-math">\(A\)</span> has a maximal element <span class="process-math">\(\max A\text{,}\)</span> i.e., <span class="process-math">\(\max A \in A\)</span> and <span class="process-math">\(x \leq \max A\)</span> for all <span class="process-math">\(x \in A\text{.}\)</span> Then <span class="process-math">\(\sup A = \max A\text{.}\)</span>
+</div></article><article class="proof" id="prop-supremum-maximum-2"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
+<div class="para" id="prop-supremum-maximum-2-1">First, note that the maximal element <span class="process-math">\(\max A\)</span> of <span class="process-math">\(A\)</span> is, in particular, an upper bound for <span class="process-math">\(A\text{.}\)</span> Now, suppose that <span class="process-math">\(M\)</span> is any other upper bound for <span class="process-math">\(A\)</span> Then, since <span class="process-math">\(\max A \in A\text{,}\)</span> it follows that <span class="process-math">\(\max A \leq M\text{.}\)</span> Thus, <span class="process-math">\(\max A\)</span> is the least upper bound of <span class="process-math">\(A\text{.}\)</span>
+</div></article><article class="example example-like" id="subsec-suprema-14"><h4 class="heading">
+<span class="type">Example</span><span class="space"> </span><span class="codenumber">1.2.10</span><span class="period">.</span>
+</h4>
+<div class="para" id="subsec-suprema-14-1">The maximal element <span class="process-math">\(1\)</span> of <span class="process-math">\((0,1]\)</span> is, therefore, the least upper bound of <span class="process-math">\((0,1]\text{,}\)</span> i.e., <span class="process-math">\(\sup(0,1] = 1\text{.}\)</span>
+</div></article><div class="para" id="subsec-suprema-15">We can now state the fundamental property of real numbers that distinguished the <dfn class="terminology">field</dfn> of real numbers <span class="process-math">\(\R\)</span> from the field of rational numbers <span class="process-math">\(\Q\text{.}\)</span> Indeed, it will turn out to be the property of real numbers that makes calculus work as a mathematical theory.</div>
+<article class="axiom theorem-like" id="axiom-suprema"><h4 class="heading">
+<span class="type">Axiom</span><span class="space"> </span><span class="codenumber">1.2.11</span><span class="space"> </span><span class="creator">(Bolzano)</span><span class="period">.</span><span class="space"> </span><span class="title">Least-upper-bound property of the real numbers.</span>
+</h4>
+<div class="para" id="axiom-suprema-3-1">Let <span class="process-math">\(A\)</span> be a set of real numbers. If <span class="process-math">\(A\)</span> is non-empty and bounded above, then its least upper bound <span class="process-math">\(\sup A\)</span> exists.</div></article><article class="remark remark-like" id="subsec-suprema-17"><h4 class="heading">
+<span class="type">Remark</span><span class="space"> </span><span class="codenumber">1.2.12</span><span class="period">.</span>
+</h4>
+<div class="para" id="subsec-suprema-17-1">Every real number <span class="process-math">\(M\)</span> is <dfn class="terminology">vacuously</dfn> an upper bound for the empty set <span class="process-math">\(\emptyset\text{:}\)</span> the condition that <span class="process-math">\(x \leq M\)</span> for all <span class="process-math">\(x \in \emptyset\)</span> is satisfied precisely because the empty set has no elements.</div></article><article class="theorem theorem-like" id="thm-archimedean-natural"><h4 class="heading">
+<span class="type">Theorem</span><span class="space"> </span><span class="codenumber">1.2.13</span><span class="period">.</span>
+</h4>
+<div class="para" id="thm-archimedean-natural-1-1">The set of natural numbers <span class="process-math">\(\N\)</span> is not bounded above.</div></article><article class="proof" id="subsec-suprema-19"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
+<div class="para" id="subsec-suprema-19-1">We’ll prove this by contradiction. Assume for the sake of argument that <span class="process-math">\(\N\)</span> is bounded above. Then <span class="process-math">\(\N\)</span> is non-empty (e.g., since <span class="process-math">\(1 \in \N\)</span>) and bounded above (by assumption), so that <span class="process-math">\(\N\)</span> has a least upper bound <span class="process-math">\(\sup \N\)</span>by <a href="sec-suprema.html#axiom-suprema" class="xref" data-knowl="./knowl/xref/axiom-suprema.html" data-reveal-label="Reveal" data-close-label="Close" title="Axiom 1.2.11: Least-upper-bound property of the real numbers">Axiom 1.2.11</a>.</div>
+<div class="para" id="subsec-suprema-19-2">Now, let <span class="process-math">\(m \in \N\)</span> be given. Since <span class="process-math">\(m+1 \in \N\text{,}\)</span> it follows that <span class="process-math">\(m+1 \leq \sup\N\text{,}\)</span> hence <span class="process-math">\(m \leq \sup\N - 1\text{.}\)</span> Since <span class="process-math">\(m \in \N\)</span> was arbitrary, this shows that <span class="process-math">\(M \defn \sup N - 1\)</span> is also an upper bound. Thus, <span class="process-math">\(M\)</span> is an upper bound of <span class="process-math">\(\N\)</span> that satisfying <span class="process-math">\(M \lt \sup N\text{,}\)</span> which contradicts the definition of <span class="process-math">\(\sup N\text{.}\)</span>
+</div></article><article class="corollary theorem-like" id="cor-archimedean-real"><h4 class="heading">
+<span class="type">Corollary</span><span class="space"> </span><span class="codenumber">1.2.14</span><span class="period">.</span><span class="space"> </span><span class="title">Axiom 1.1.14.</span>
+</h4>
+<div class="para" id="cor-archimedean-real-2-1">For every positive real number <span class="process-math">\(\epsilon\text{,}\)</span> there exists a natural number <span class="process-math">\(N\)</span> such that <span class="process-math">\(\frac{1}{N} \lt \epsilon\text{.}\)</span>
+</div></article><article class="proof" id="cor-archimedean-real-3"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
+<div class="para" id="cor-archimedean-real-3-1">By <a href="sec-suprema.html#thm-archimedean-natural" class="xref" data-knowl="./knowl/xref/thm-archimedean-natural.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 1.2.13">Theorem 1.2.13</a>, the set <span class="process-math">\(\N\)</span> is not bounded above, so <span class="process-math">\(\frac{1}{\epsilon}\)</span> cannot be an upper bound of <span class="process-math">\(\N\text{.}\)</span> Thus, there exists <span class="process-math">\(N \in \N\)</span> such that <span class="process-math">\(\frac{1}{\epsilon} \lt N\text{,}\)</span> which implies, in turn, that <span class="process-math">\(\frac{\epsilon} \gt \frac{1}{N}\text{.}\)</span>
+</div></article><article class="example example-like" id="ex-a1-sup"><h4 class="heading">
+<span class="type">Example</span><span class="space"> </span><span class="codenumber">1.2.15</span><span class="period">.</span>
+</h4>
+<div class="para" id="ex-a1-sup-1">We can now show that <span class="process-math">\(\frac{1}{3}\)</span> is the least upper bound of the set <span class="process-math">\(A_1\)</span> of <a href="sec-suprema.html#ex-a1" class="xref" data-knowl="./knowl/xref/ex-a1.html" data-reveal-label="Reveal" data-close-label="Close" title="Example 1.2.4">Example 1.2.4</a>. Let <span class="process-math">\(M\)</span> be a real number, and suppose that <span class="process-math">\(M \gt \frac{1}{3}\text{;}\)</span> we’ll show that <span class="process-math">\(M\)</span> is not an upper bound for <span class="process-math">\(A_1\)</span> by finding <span class="process-math">\(x \in A_1\)</span> such that <span class="process-math">\(x \gt M\text{.}\)</span>
+</div>
+<div class="para logical" id="ex-a1-sup-2">
+<div class="para">Since <span class="process-math">\(M \gt \frac{1}{3}\)</span> by assumption, it follows that <span class="process-math">\(M - \frac{1}{3} \gt 0\text{.}\)</span> Thus, by <a href="sec-suprema.html#cor-archimedean-real" class="xref" data-knowl="./knowl/xref/cor-archimedean-real.html" data-reveal-label="Reveal" data-close-label="Close" title="Corollary 1.2.14: Axiom 1.1.14">Corollary 1.2.14</a>, there exists <span class="process-math">\(N \in \N\)</span> such that <span class="process-math">\(\frac{1}{N} \lt M-\frac{1}{3}\text{.}\)</span> Then <span class="process-math">\(x := \frac{1}{3} - \frac{1}{2N} + \frac{1}{6N^2} \in A_1\)</span> satisfies</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/cor-archimedean-real.html" id="ex-a1-sup-2-7">
+\begin{align*}
+x \amp = \frac{1}{3} - \frac{1}{2N} + \frac{1}{6N^2}\\
+\amp \geq \frac{1}{3} - \frac{1}{N}\\
+\amp \gt  \frac{1}{3} - \left(M-\frac{1}{3}\right)\\
+\amp = M\text{.}
+\end{align*}
+</div>
+</div></article><article class="remark remark-like" id="subsec-suprema-22"><h4 class="heading">
+<span class="type">Remark</span><span class="space"> </span><span class="codenumber">1.2.16</span><span class="period">.</span>
+</h4>
+<div class="para" id="subsec-suprema-22-1">Note that <span class="process-math">\(\frac{1}{3} = \sup A_1\)</span> but <span class="process-math">\(\frac{1}{3} \notin A_1\)</span> since <span class="process-math">\(\frac{1}{3}-\frac{1}{2n}+\frac{1}{6n^2} \lt \frac{1}{3}\)</span> for all <span class="process-math">\(n \in \N\text{.}\)</span> Compare this to the case of <span class="process-math">\(1 = \sup(0,1] = \max(0,1]\text{.}\)</span>
+</div></article></section><section class="subsection" id="subsec-infima"><h3 class="heading hide-type">
+<span class="type">Subsection</span><span class="space"> </span><span class="codenumber">1.2.2</span><span class="space"> </span><span class="title">Lower bounds</span>
+</h3>
+<div class="para" id="subsec-infima-2">Again, consider the set <span class="process-math">\((0,1]\text{.}\)</span> By definition,  <span class="process-math">\(0 \leq x\)</span> for every <span class="process-math">\(x \in (0,1]\text{;}\)</span> thus, <span class="process-math">\(0\)</span> is a simultaneous lower estimate for all numbers in the set <span class="process-math">\((0,1]\text{.}\)</span> Likewise, <span class="process-math">\(-2025 \leq x\)</span> for every <span class="process-math">\(x \in (0,1]\)</span>); thus, <span class="process-math">\(-2025\)</span> is also a simultaneous lower estimate for all numbers in the set <span class="process-math">\((0,1]\text{.}\)</span> The notion of a simultaneous lower estimate for all numbers in some set of numbers is formalized as follows.</div>
+<article class="definition definition-like" id="def-lower-bound"><h4 class="heading">
+<span class="type">Definition</span><span class="space"> </span><span class="codenumber">1.2.17</span><span class="period">.</span>
+</h4>
+<div class="para" id="def-lower-bound-1-1">Let <span class="process-math">\(A\)</span> be a set of real numbers. A <dfn class="terminology">lower bound</dfn> for <span class="process-math">\(A\)</span> is a real number <span class="process-math">\(m\)</span> such that <span class="process-math">\(m \leq x\)</span> for all <span class="process-math">\(x \in A\text{.}\)</span> Thus, we say that <span class="process-math">\(A\)</span> is <dfn class="terminology">bounded below</dfn> if there exists a lower bound for <span class="process-math">\(A\text{.}\)</span>
+</div></article><article class="remark remark-like" id="subsec-infima-4"><h4 class="heading">
+<span class="type">Remark</span><span class="space"> </span><span class="codenumber">1.2.18</span><span class="period">.</span>
+</h4>
+<div class="para" id="subsec-infima-4-1">Note that <span class="process-math">\(m\)</span> is a lower bound for <span class="process-math">\(A\)</span> if and only if <span class="process-math">\(A \subset [m,\infty)\text{.}\)</span>
+</div></article><article class="example example-like" id="subsec-infima-5"><h4 class="heading">
+<span class="type">Example</span><span class="space"> </span><span class="codenumber">1.2.19</span><span class="period">.</span>
+</h4>
+<div class="para" id="subsec-infima-5-1">The number <span class="process-math">\(0\)</span> is a lower bound for <span class="process-math">\((0,1]\text{,}\)</span> so that <span class="process-math">\((0,1]\)</span> is bounded blow. The number <span class="process-math">\(-2025\)</span> is also a lower bound for <span class="process-math">\((0,1]\text{.}\)</span>
+</div></article><article class="example example-like" id="ex-a2"><h4 class="heading">
+<span class="type">Example</span><span class="space"> </span><span class="codenumber">1.2.20</span><span class="period">.</span>
+</h4>
+<div class="para logical" id="ex-a2-1">
+<div class="para">Let <span class="process-math">\(A_2\)</span> be the set of all numbers of the form <span class="process-math">\(\frac{1}{3} + \frac{1}{2n} + \frac{1}{6n^2}\text{,}\)</span> where <span class="process-math">\(n \in \N\)</span> (look familiar?). Given <span class="process-math">\(n \in \N\text{,}\)</span> since <span class="process-math">\(\frac{1}{2n} + \frac{1}{6n^2} \geq 0\text{,}\)</span> it follows that</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\frac{1}{3} + \frac{1}{2n} + \frac{1}{6n^2} \geq \frac{1}{3}\text{.}
+\end{equation*}
+</div>
+<div class="para">Thus, <span class="process-math">\(\frac{1}{3}\)</span> is a lower bound for <span class="process-math">\(A_1\text{.}\)</span>
+</div>
+</div></article><article class="remark remark-like" id="subsec-infima-7"><h4 class="heading">
+<span class="type">Remark</span><span class="space"> </span><span class="codenumber">1.2.21</span><span class="period">.</span>
+</h4>
+<div class="para" id="subsec-infima-7-1">To show that a set of real numbers <span class="process-math">\(A\)</span> is <em class="emphasis">not</em> bounded below, you need to show that every would-be lower bound <span class="process-math">\(M\)</span> fails to be an upper bound for <span class="process-math">\(A\text{.}\)</span> More precisely, you need to show that for every <span class="process-math">\(M \in A\text{,}\)</span> there exists some <span class="process-math">\(x \in A\)</span> such that <span class="process-math">\(x \lt M\text{.}\)</span>
+</div></article><article class="example example-like" id="subsec-infima-8"><h4 class="heading">
+<span class="type">Example</span><span class="space"> </span><span class="codenumber">1.2.22</span><span class="period">.</span>
+</h4>
+<div class="para" id="subsec-infima-8-1">The set of all real numbers <span class="process-math">\(\R\)</span> is not bounded below. Indeed, let <span class="process-math">\(m \in \R\)</span> be given. Then <span class="process-math">\(x \defn m-1\)</span> satisfies <span class="process-math">\(x \in \R\)</span> and <span class="process-math">\(x \lt m\text{.}\)</span>
+</div></article><div class="para" id="subsec-infima-9">Much like before, we can formalize a notion of <em class="emphasis">optimal</em> lower bound.</div>
+<article class="definition definition-like" id="def-infimum"><h4 class="heading">
+<span class="type">Definition</span><span class="space"> </span><span class="codenumber">1.2.23</span><span class="period">.</span>
+</h4>
+<div class="para logical" id="def-infimum-1-1">
+<div class="para">Let <span class="process-math">\(A\)</span> be a set of real numbers that is bounded below, and let <span class="process-math">\(m\)</span> be a real number. We say that <span class="process-math">\(m\)</span> is the <dfn class="terminology">greatest upper bound</dfn> or <dfn class="terminology">infimum</dfn> of <span class="process-math">\(A\)</span> whenever it satisfies both of the following conditions:</div>
+<ol class="decimal" id="def-infimum-1-1-7">
+<li id="def-infimum-1-1-7-1"><div class="para" id="def-infimum-1-1-7-1-1">
+<span class="process-math">\(m\)</span> is an lower bound for <span class="process-math">\(A\text{;}\)</span>
+</div></li>
+<li id="def-infimum-1-1-7-2"><div class="para" id="def-infimum-1-1-7-2-1">if <span class="process-math">\(m'\)</span> is any other lower bound for <span class="process-math">\(A\text{,}\)</span> then <span class="process-math">\(m \geq m'\text{.}\)</span>
+</div></li>
+</ol>
+<div class="para">Hence, we denote the greatest lower bound <span class="process-math">\(M\)</span> of <span class="process-math">\(A\)</span> by <span class="process-math">\(\sup A\text{.}\)</span>
+</div>
+</div></article><article class="note remark-like" id="subsec-infima-11"><h4 class="heading">
+<span class="type">Note</span><span class="space"> </span><span class="codenumber">1.2.24</span><span class="period">.</span>
+</h4>
+<div class="para" id="subsec-infima-11-1">Uniqueness of greatest lower bounds follows from a qualitatively identical argument to uniqueness of least upper bounds.</div></article><article class="example example-like" id="subsec-infima-12"><h4 class="heading">
+<span class="type">Example</span><span class="space"> </span><span class="codenumber">1.2.25</span><span class="period">.</span>
+</h4>
+<div class="para" id="subsec-infima-12-1">The lower bound <span class="process-math">\(0\)</span> of <span class="process-math">\((0,1]\)</span> is its greatest lower bound, i.e., <span class="process-math">\(0 = \inf (0,1]\text{.}\)</span> Indeed, let <span class="process-math">\(m \gt 0\text{;}\)</span> we’ll show that <span class="process-math">\(m\)</span> cannot be a lower bound for <span class="process-math">\((0,1]\)</span> by demonstrating <span class="process-math">\(x \in (0,1]\)</span> such that <span class="process-math">\(x \lt m\text{.}\)</span> If <span class="process-math">\(m \gt 1\text{,}\)</span> then <span class="process-math">\(x \defn 1 \in (0,1]\)</span> satisfies <span class="process-math">\(x \lt m\text{.}\)</span> If, instead, <span class="process-math">\(0 \lt m \leq 1\text{,}\)</span> then <span class="process-math">\(x \defn \frac{m}{2} \in (0,1]\)</span> satisfies <span class="process-math">\(x \lt m\text{.}\)</span>
+</div></article><div class="para" id="subsec-infima-13">The most important single example of a greatest lower bound is the following.</div>
+<article class="proposition theorem-like" id="prop-inf-harmonic"><h4 class="heading">
+<span class="type">Proposition</span><span class="space"> </span><span class="codenumber">1.2.26</span><span class="period">.</span>
+</h4>
+<div class="para" id="prop-inf-harmonic-1-1">Let <span class="process-math">\(S\)</span> be the set of all numbers of the form <span class="process-math">\(\frac{1}{n}\text{,}\)</span> where <span class="process-math">\(n \in \N\text{.}\)</span> Then <span class="process-math">\(\inf S = 0\text{.}\)</span>
+</div></article><article class="proof" id="prop-inf-harmonic-2"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
+<div class="para" id="prop-inf-harmonic-2-1">Since <span class="process-math">\(S\)</span> consists of positive numbers, it follows that <span class="process-math">\(0\)</span> is a lower bound for <span class="process-math">\(S\text{.}\)</span> Now, let <span class="process-math">\(m \gt 0\)</span> be given; we’ll show that <span class="process-math">\(m\)</span> cannot be a lower bound by demonstrating <span class="process-math">\(x \in S\)</span> such that <span class="process-math">\(x \lt m\text{.}\)</span> Indeed, by <a href="sec-suprema.html#cor-archimedean-real" class="xref" data-knowl="./knowl/xref/cor-archimedean-real.html" data-reveal-label="Reveal" data-close-label="Close" title="Corollary 1.2.14: Axiom 1.1.14">Corollary 1.2.14</a>, there exists <span class="process-math">\(N \in \N\)</span> such that <span class="process-math">\(\frac{1}{N} \lt m\text{.}\)</span> Then <span class="process-math">\(x \defn \frac{1}{N} \in S\)</span> satisfies <span class="process-math">\(x \lt \text{.}\)</span>
+</div></article><article class="example example-like" id="subsec-infima-15"><h4 class="heading">
+<span class="type">Example</span><span class="space"> </span><span class="codenumber">1.2.27</span><span class="period">.</span>
+</h4>
+<div class="para" id="subsec-infima-15-1">One can now show that <span class="process-math">\(\frac{1}{3}\)</span> is the greatest lower bound of the set <span class="process-math">\(A_2\)</span> of <a href="sec-suprema.html#ex-a2" class="xref" data-knowl="./knowl/xref/ex-a2.html" data-reveal-label="Reveal" data-close-label="Close" title="Example 1.2.20">Example 1.2.20</a>. Indeed, one can very easily modify the argument of <a href="sec-suprema.html#ex-a1-sup" class="xref" data-knowl="./knowl/xref/ex-a1-sup.html" data-reveal-label="Reveal" data-close-label="Close" title="Example 1.2.15">Example 1.2.15</a> into a proof identical in structure to that of <a href="sec-suprema.html#prop-inf-harmonic" class="xref" data-knowl="./knowl/xref/prop-inf-harmonic.html" data-reveal-label="Reveal" data-close-label="Close" title="Proposition 1.2.26">Proposition 1.2.26</a>.</div></article><div class="para" id="subsec-infima-16">Every fact about (least) upper bounds has a corresponding fact about (greatest) lower bounds. This correspondence is provided by the following easy-to-prove fact.</div>
+<article class="proposition theorem-like" id="prop-sup-inf"><h4 class="heading">
+<span class="type">Proposition</span><span class="space"> </span><span class="codenumber">1.2.28</span><span class="period">.</span>
+</h4>
+<div class="para" id="prop-sup-inf-1-1">Let <span class="process-math">\(A\)</span> be a non-empty set of real numbers, and let <span class="process-math">\(-A \defn \set{x \in \R}{-x \in A}\text{.}\)</span>
+</div> <div class="para logical" id="prop-sup-inf-1-2"><ol class="decimal" id="prop-sup-inf-1-2-1">
+<li id="prop-sup-inf-1-2-1-1"><div class="para" id="prop-sup-inf-1-2-1-1-1">A real number <span class="process-math">\(c\)</span> is a lower bound for <span class="process-math">\(A\)</span> if and only if <span class="process-math">\(-c\)</span> is an upper bound for <span class="process-math">\(-A\text{.}\)</span>
+</div></li>
+<li id="prop-sup-inf-1-2-1-2"><div class="para" id="prop-sup-inf-1-2-1-2-1">The set <span class="process-math">\(A\)</span> has a greatest lower bound if and only if the set <span class="process-math">\(-A\)</span> has a least upper bound, in which case <span class="process-math">\(\inf A = -\sup(-A)\text{.}\)</span>
+</div></li>
+</ol></div></article><article class="corollary theorem-like" id="cor-infimum-minimum"><h4 class="heading">
+<span class="type">Corollary</span><span class="space"> </span><span class="codenumber">1.2.29</span><span class="period">.</span>
+</h4>
+<div class="para" id="cor-infimum-minimum-1-1">Let <span class="process-math">\(A\)</span> be a set of real numbers, and suppose that <span class="process-math">\(A\)</span> has a minimal element <span class="process-math">\(\min A\text{,}\)</span> i.e., <span class="process-math">\(\min A \in A\)</span> and <span class="process-math">\(x \gq \min A\)</span> for all <span class="process-math">\(x \in A\text{.}\)</span> Then <span class="process-math">\(\inf A = \min A\text{.}\)</span>
+</div></article><article class="example example-like" id="subsec-infima-19"><h4 class="heading">
+<span class="type">Example</span><span class="space"> </span><span class="codenumber">1.2.30</span><span class="period">.</span>
+</h4>
+<div class="para" id="subsec-infima-19-1">The number <span class="process-math">\(1\)</span> is the minimal element of <span class="process-math">\(\N\text{.}\)</span> Thus, it follows that <span class="process-math">\(\inf\N = \min\N = 1\text{.}\)</span>
+</div></article><article class="corollary theorem-like" id="cor-infima"><h4 class="heading">
+<span class="type">Corollary</span><span class="space"> </span><span class="codenumber">1.2.31</span><span class="space"> </span><span class="creator">(Bolzano)</span><span class="period">.</span><span class="space"> </span><span class="title">Least-upper-bound property of the real numbers.</span>
+</h4>
+<div class="para" id="cor-infima-3-1">Let <span class="process-math">\(A\)</span> be a set of real numbers. If <span class="process-math">\(A\)</span> is non-empty and bounded below, then its greatest lower bound <span class="process-math">\(\inf A\)</span> exists.</div></article></section></section></div>
+<div class="ptx-content-footer">
+<a class="previous-button button" href="sec-prob-area.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="top-button button" href="#" title="Top"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Top</span></a><a class="next-button button" href="backmatter.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a>
+</div></main>
+</div>
+<div id="ptx-page-footer" class="ptx-page-footer">
+<a class="pretext-link" href="https://pretextbook.org" title="PreTeXt"><div class="logo"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="338 3000 8772 6866"><g style="stroke-width:.025in; stroke:currentColor; fill:none"><polyline points="472,3590 472,9732 " style="stroke-width:174; stroke-linejoin:miter; stroke-linecap:round; "></polyline><path style="stroke-width:126;stroke-linecap:butt;" d="M 4724,9448 A 4660 4660  0  0  1  8598  9259"></path><path style="stroke-width:174;stroke-linecap:butt;" d="M 4488,9685 A 4228 4228  0  0  0   472  9732"></path><path style="stroke-width:126;stroke-linecap:butt;" d="M 4724,3590 A 4241 4241  0  0  1  8598  3496"></path><path style="stroke-width:126;stroke-linecap:round;" d="M 850,3496  A 4241 4241  0  0  1  4724  3590"></path><path style="stroke-width:126;stroke-linecap:round;" d="M 850,9259  A 4507 4507  0  0  1  4724  9448"></path><polyline points="5385,4299 4062,8125" style="stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="8598,3496 8598,9259" style="stroke-width:126; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="850,3496 850,9259" style="stroke-width:126; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="4960,9685 4488,9685" style="stroke-width:174; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="3070,4582 1889,6141 3070,7700" style="stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="6418,4582 7600,6141 6418,7700" style="stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="8976,3590 8976,9732" style="stroke-width:174; stroke-linejoin:miter; stroke-linecap:round;"></polyline><path style="stroke-width:174;stroke-linecap:butt;" d="M 4960,9685 A 4228 4228  0  0  1  8976  9732"></path></g></svg></div></a><a class="runestone-link" href="https://runestone.academy" title="Runestone Academy"><img class="logo" src="https://runestone.academy/runestone/static/images/RAIcon_cropped.png"></a><a class="mathjax-link" href="https://www.mathjax.org" title="MathJax"><img class="logo" src="https://www.mathjax.org/badge/badge-square-2.png"></a>
+</div>
+</body>
+</html>
