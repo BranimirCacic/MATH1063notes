@@ -203,7 +203,7 @@
             <proof>
                 <p>
                     By <xref ref="thm-archimedean-natural"/>, the set <m>\N</m> is not bounded above, so <m>\frac{1}{\epsilon}</m> cannot be an upper bound of <m>\N</m>.
-                    Thus, there exists <m>N \in \N</m> such that <m>\frac{1}{\epsilon} \lt N</m>, which implies, in turn, that <m>\frac{\epsilon} \gt \frac{1}{N}</m>.
+                    Thus, there exists <m>N \in \N</m> such that <m>\frac{1}{\epsilon} \lt N</m>, which implies, in turn, that <m>\epsilon \gt \frac{1}{N}</m>.
                 </p>
             </proof>
         </corollary>
