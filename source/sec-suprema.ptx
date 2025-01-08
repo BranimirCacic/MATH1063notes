@@ -391,7 +391,7 @@
         <corollary xml:id="cor-infimum-minimum">
             <statement>
                 <p>
-                    Let <m>A</m> be a set of real numbers, and suppose that <m>A</m> has a minimal element <m>\min A</m>, <ie/>, <m>\min A \in A</m> and <m>x \gq \min A</m> for all <m>x \in A</m>.
+                    Let <m>A</m> be a set of real numbers, and suppose that <m>A</m> has a minimal element <m>\min A</m>, <ie/>, <m>\min A \in A</m> and <m>x \geq \min A</m> for all <m>x \in A</m>.
                     Then <m>\inf A = \min A</m>.
                 </p>
             </statement>
