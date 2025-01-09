@@ -442,9 +442,9 @@ var ptx_lunr_docs = [
   "body": "  Let be the set of all numbers of the form , where . Then .    Since consists of positive numbers, it follows that is a lower bound for . Now, let be given; we'll show that cannot be a lower bound by demonstrating such that . Indeed, by , there exists such that . Then satisfies .   "
 },
 {
-  "id": "subsec-infima-15",
+  "id": "ex-a2-inf",
   "level": "2",
-  "url": "sec-suprema.html#subsec-infima-15",
+  "url": "sec-suprema.html#ex-a2-inf",
   "type": "Example",
   "number": "1.2.27",
   "title": "",
@@ -485,6 +485,114 @@ var ptx_lunr_docs = [
   "number": "1.2.31",
   "title": "Least-upper-bound property of the real numbers.",
   "body": " Least-upper-bound property of the real numbers  Bolzano   Let be a set of real numbers. If is non-empty and bounded below, then its greatest lower bound exists.   "
+},
+{
+  "id": "sec-upper-lower-int",
+  "level": "1",
+  "url": "sec-upper-lower-int.html",
+  "type": "Section",
+  "number": "1.3",
+  "title": "Upper and lower sums",
+  "body": " Upper and lower sums  Let's revisit the proof of , where we showed that the planar region must have area . Using the machinery of , we can now recast our proof into a robustly generalizable form.     First, in , we systematically approximated from within and without by simpler regions contructed from rectangles, which let us prove the area estimates of , , for every .    Next, observe that is both an upper bound for the set of and a lower bound for the set of . Hence, it follows that .    Finally, since by and , respectively, it follows that . Hence, at last, .     In this section, we'll generalize the first step.    Let . A partition of the closed interval is a finite list of real numbers such that .    We view a partition of an interval as subdividing into subintervals .   Let , and let . Define a partition of by setting for all . Then subdivides into subintervals of equal width .    The partition of the interval .    This figure shows a partition of the interval into five subintervals of equal width.        Let be a real-valued function defined on a closed interval . We say that is bounded on if there exist constants and such that for all .      Let be a bounded real-valued function on a closed interval , let be a partition of , and set for each .   The lower sum of with respect to is .    The upper sum of with respect to is .        Let be a bounded real-valued function on a closed interval such that for all . Assume that its undergraph  has well-defined area (see ). Then for every partition of .    Let be the function on given by . Consider the partition of defined by , so that , , and . Since is decreasing on , it follows that and for . Hence, and . Thus, by , the area of the undergraph (assuming it's well-defined) can be estimated from below and above by , where and .    Let be the function on given by . Let be given, and let be the partition of defined by , so that for all . Since is strictly increasing on , and for all . Thus, by the proof of , it follows that and . By combining these calculations with , we recover the estimates of .     Let be a bounded real-valued function on a closed interval . The set is non-empty and bounded above, and the set is non-empty and bounded below.    Let us prove that is non-empty and bounded above; the proof that is non-empty and bounded below will be qualitatively identical. For later convenience, let .  Let us first show that is non-empty. Observe that is a valid partition of with lower sum . Thus, .  Let us now show that is non-empty. Let be a partition of . Given , note that for all , so that . Thus, . Since the partition of was freely chosen, it follows that for all partitions of , so that is an upper bound for .      Let be a bounded real-valued function on a closed interval .   The lower integral of on is     The upper integral of on is        To say anything more, we'll need the machinery of .   "
+},
+{
+  "id": "def-partition",
+  "level": "2",
+  "url": "sec-upper-lower-int.html#def-partition",
+  "type": "Definition",
+  "number": "1.3.1",
+  "title": "",
+  "body": "  Let . A partition of the closed interval is a finite list of real numbers such that .   "
+},
+{
+  "id": "ex-partition-equal",
+  "level": "2",
+  "url": "sec-upper-lower-int.html#ex-partition-equal",
+  "type": "Example",
+  "number": "1.3.2",
+  "title": "",
+  "body": " Let , and let . Define a partition of by setting for all . Then subdivides into subintervals of equal width .  "
+},
+{
+  "id": "fig-partition-equal",
+  "level": "2",
+  "url": "sec-upper-lower-int.html#fig-partition-equal",
+  "type": "Figure",
+  "number": "1.3.3",
+  "title": "",
+  "body": " The partition of the interval .    This figure shows a partition of the interval into five subintervals of equal width.     "
+},
+{
+  "id": "def-bounded-function",
+  "level": "2",
+  "url": "sec-upper-lower-int.html#def-bounded-function",
+  "type": "Definition",
+  "number": "1.3.4",
+  "title": "",
+  "body": "  Let be a real-valued function defined on a closed interval . We say that is bounded on if there exist constants and such that for all .   "
+},
+{
+  "id": "def-upper-lower-sum",
+  "level": "2",
+  "url": "sec-upper-lower-int.html#def-upper-lower-sum",
+  "type": "Definition",
+  "number": "1.3.5",
+  "title": "",
+  "body": "  Let be a bounded real-valued function on a closed interval , let be a partition of , and set for each .   The lower sum of with respect to is .    The upper sum of with respect to is .      "
+},
+{
+  "id": "observ-area-undergraph-sums",
+  "level": "2",
+  "url": "sec-upper-lower-int.html#observ-area-undergraph-sums",
+  "type": "Observation",
+  "number": "1.3.6",
+  "title": "",
+  "body": " Let be a bounded real-valued function on a closed interval such that for all . Assume that its undergraph  has well-defined area (see ). Then for every partition of .  "
+},
+{
+  "id": "sec-upper-lower-int-12",
+  "level": "2",
+  "url": "sec-upper-lower-int.html#sec-upper-lower-int-12",
+  "type": "Example",
+  "number": "1.3.7",
+  "title": "",
+  "body": " Let be the function on given by . Consider the partition of defined by , so that , , and . Since is decreasing on , it follows that and for . Hence, and . Thus, by , the area of the undergraph (assuming it's well-defined) can be estimated from below and above by , where and .  "
+},
+{
+  "id": "ex-parabola-sums",
+  "level": "2",
+  "url": "sec-upper-lower-int.html#ex-parabola-sums",
+  "type": "Example",
+  "number": "1.3.8",
+  "title": "",
+  "body": " Let be the function on given by . Let be given, and let be the partition of defined by , so that for all . Since is strictly increasing on , and for all . Thus, by the proof of , it follows that and . By combining these calculations with , we recover the estimates of .  "
+},
+{
+  "id": "lem-upper-lower-sums-bounded",
+  "level": "2",
+  "url": "sec-upper-lower-int.html#lem-upper-lower-sums-bounded",
+  "type": "Lemma",
+  "number": "1.3.9",
+  "title": "",
+  "body": "  Let be a bounded real-valued function on a closed interval . The set is non-empty and bounded above, and the set is non-empty and bounded below.    Let us prove that is non-empty and bounded above; the proof that is non-empty and bounded below will be qualitatively identical. For later convenience, let .  Let us first show that is non-empty. Observe that is a valid partition of with lower sum . Thus, .  Let us now show that is non-empty. Let be a partition of . Given , note that for all , so that . Thus, . Since the partition of was freely chosen, it follows that for all partitions of , so that is an upper bound for .   "
+},
+{
+  "id": "def-upper-lower-int",
+  "level": "2",
+  "url": "sec-upper-lower-int.html#def-upper-lower-int",
+  "type": "Definition",
+  "number": "1.3.10",
+  "title": "",
+  "body": "  Let be a bounded real-valued function on a closed interval .   The lower integral of on is     The upper integral of on is       "
+},
+{
+  "id": "sec-integrability",
+  "level": "1",
+  "url": "sec-integrability.html",
+  "type": "Section",
+  "number": "1.4",
+  "title": "Integrability and integration",
+  "body": " Integrability and integration   "
 },
 {
   "id": "backmatter-2",

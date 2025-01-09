@@ -122,6 +122,15 @@ eBookConfig.enable_chatcodes =  false;
 #prop-sup-inf-1-2-1 { counter-set: prop-sup-inf-1-2-1 0; }
 #prop-sup-inf-1-2-1 > li::marker { content: ""counter(prop-sup-inf-1-2-1,decimal)"."; }
 #prop-sup-inf-1-2-1 > li { counter-increment: prop-sup-inf-1-2-1; }
+#sec-upper-lower-int-3-1 { counter-set: sec-upper-lower-int-3-1 0; }
+#sec-upper-lower-int-3-1 > li::marker { content: ""counter(sec-upper-lower-int-3-1,decimal)"."; }
+#sec-upper-lower-int-3-1 > li { counter-increment: sec-upper-lower-int-3-1; }
+#def-upper-lower-sum-1-1-7 { counter-set: def-upper-lower-sum-1-1-7 0; }
+#def-upper-lower-sum-1-1-7 > li::marker { content: ""counter(def-upper-lower-sum-1-1-7,decimal)"."; }
+#def-upper-lower-sum-1-1-7 > li { counter-increment: def-upper-lower-sum-1-1-7; }
+#def-upper-lower-int-1-1-3 { counter-set: def-upper-lower-int-1-1-3 0; }
+#def-upper-lower-int-1-1-3 > li::marker { content: ""counter(def-upper-lower-int-1-1-3,decimal)"."; }
+#def-upper-lower-int-1-1-3 > li { counter-increment: def-upper-lower-int-1-1-3; }
 </style>
 </head>
 <body class="pretext book ignore-math">
@@ -142,14 +151,18 @@ eBookConfig.enable_chatcodes =  false;
 <ol id="searchresults" class="searchresults"></ol>
 </div>
 </div>
-<span class="nav-other-controls"><button id="light-dark-button" class="light-dark-button button" title="Dark Mode"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe51c;</span><span class="name">Dark Mode</span></button></span><span class="treebuttons"><a class="previous-button button" href="sec-prob-area.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="up-button button" href="ch-integration.html" title="Up"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Up</span></a><a class="next-button button" href="backmatter.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a></span>
-</div></nav><div id="latex-macros" class="hidden-content process-math" style="display:none"><span class="process-math">\(\newcommand{\N}{\mathbb N}
+<span class="nav-other-controls"><button id="light-dark-button" class="light-dark-button button" title="Dark Mode"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe51c;</span><span class="name">Dark Mode</span></button></span><span class="treebuttons"><a class="previous-button button" href="sec-prob-area.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="up-button button" href="ch-integration.html" title="Up"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Up</span></a><a class="next-button button" href="sec-upper-lower-int.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a></span>
+</div></nav><div id="latex-macros" class="hidden-content process-math" style="display:none"><span class="process-math">\(\newcommand{\cL}{\mathcal L}
+\newcommand{\cU}{\mathcal U}
+\newcommand{\N}{\mathbb N}
 \newcommand{\Z}{\mathbb Z}
 \newcommand{\Q}{\mathbb Q}
 \newcommand{\R}{\mathbb R}
 \newcommand{\abs}[1]{\lvert{#1}\rvert}
 \newcommand{\defn}{\mathrel{:=}}
 \newcommand{\set}[2]{\left\{{#1}:{#2}\right\}}
+\newcommand{\Lint}[2]{\underline{\int_{#1}^{#2}}}
+ \newcommand{\Uint}[2]{\overline{\int_{#1}^{#2}}}
 \DeclareMathOperator{\Area}{Area}
 \newcommand{\lt}{&lt;}
 \newcommand{\gt}{&gt;}
@@ -171,6 +184,8 @@ eBookConfig.enable_chatcodes =  false;
 <li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-suprema.html#subsec-infima" class="internal"><span class="codenumber">1.2.2</span> <span class="title">Lower bounds</span></a></div></li>
 </ul>
 </li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-upper-lower-int.html" class="internal"><span class="codenumber">1.3</span> <span class="title">Upper and lower sums</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-integrability.html" class="internal"><span class="codenumber">1.4</span> <span class="title">Integrability and integration</span></a></div></li>
 </ul>
 </li>
 <li class="toc-item toc-backmatter"><div class="toc-title-box"><a href="backmatter.html" class="internal"><span class="title">Backmatter</span></a></div></li>
@@ -349,11 +364,11 @@ x \amp = \frac{1}{3} - \frac{1}{2N} + \frac{1}{6N^2}\\
 </h4>
 <div class="para" id="prop-inf-harmonic-1-1">Let <span class="process-math">\(S\)</span> be the set of all numbers of the form <span class="process-math">\(\frac{1}{n}\text{,}\)</span> where <span class="process-math">\(n \in \N\text{.}\)</span> Then <span class="process-math">\(\inf S = 0\text{.}\)</span>
 </div></article><article class="proof" id="prop-inf-harmonic-2"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
-<div class="para" id="prop-inf-harmonic-2-1">Since <span class="process-math">\(S\)</span> consists of positive numbers, it follows that <span class="process-math">\(0\)</span> is a lower bound for <span class="process-math">\(S\text{.}\)</span> Now, let <span class="process-math">\(m \gt 0\)</span> be given; we’ll show that <span class="process-math">\(m\)</span> cannot be a lower bound by demonstrating <span class="process-math">\(x \in S\)</span> such that <span class="process-math">\(x \lt m\text{.}\)</span> Indeed, by <a href="sec-suprema.html#cor-archimedean-real" class="xref" data-knowl="./knowl/xref/cor-archimedean-real.html" data-reveal-label="Reveal" data-close-label="Close" title="Corollary 1.2.14: Axiom 1.1.14">Corollary 1.2.14</a>, there exists <span class="process-math">\(N \in \N\)</span> such that <span class="process-math">\(\frac{1}{N} \lt m\text{.}\)</span> Then <span class="process-math">\(x \defn \frac{1}{N} \in S\)</span> satisfies <span class="process-math">\(x \lt \text{.}\)</span>
-</div></article><article class="example example-like" id="subsec-infima-15"><h4 class="heading">
+<div class="para" id="prop-inf-harmonic-2-1">Since <span class="process-math">\(S\)</span> consists of positive numbers, it follows that <span class="process-math">\(0\)</span> is a lower bound for <span class="process-math">\(S\text{.}\)</span> Now, let <span class="process-math">\(m \gt 0\)</span> be given; we’ll show that <span class="process-math">\(m\)</span> cannot be a lower bound by demonstrating <span class="process-math">\(x \in S\)</span> such that <span class="process-math">\(x \lt m\text{.}\)</span> Indeed, by <a href="sec-suprema.html#cor-archimedean-real" class="xref" data-knowl="./knowl/xref/cor-archimedean-real.html" data-reveal-label="Reveal" data-close-label="Close" title="Corollary 1.2.14: Axiom 1.1.14">Corollary 1.2.14</a>, there exists <span class="process-math">\(N \in \N\)</span> such that <span class="process-math">\(\frac{1}{N} \lt m\text{.}\)</span> Then <span class="process-math">\(x \defn \frac{1}{N} \in S\)</span> satisfies <span class="process-math">\(x \lt m\text{.}\)</span>
+</div></article><article class="example example-like" id="ex-a2-inf"><h4 class="heading">
 <span class="type">Example</span><span class="space"> </span><span class="codenumber">1.2.27</span><span class="period">.</span>
 </h4>
-<div class="para" id="subsec-infima-15-1">One can now show that <span class="process-math">\(\frac{1}{3}\)</span> is the greatest lower bound of the set <span class="process-math">\(A_2\)</span> of <a href="sec-suprema.html#ex-a2" class="xref" data-knowl="./knowl/xref/ex-a2.html" data-reveal-label="Reveal" data-close-label="Close" title="Example 1.2.20">Example 1.2.20</a>. Indeed, one can very easily modify the argument of <a href="sec-suprema.html#ex-a1-sup" class="xref" data-knowl="./knowl/xref/ex-a1-sup.html" data-reveal-label="Reveal" data-close-label="Close" title="Example 1.2.15">Example 1.2.15</a> into a proof identical in structure to that of <a href="sec-suprema.html#prop-inf-harmonic" class="xref" data-knowl="./knowl/xref/prop-inf-harmonic.html" data-reveal-label="Reveal" data-close-label="Close" title="Proposition 1.2.26">Proposition 1.2.26</a>.</div></article><div class="para" id="subsec-infima-16">Every fact about (least) upper bounds has a corresponding fact about (greatest) lower bounds. This correspondence is provided by the following easy-to-prove fact.</div>
+<div class="para" id="ex-a2-inf-1">One can now show that <span class="process-math">\(\frac{1}{3}\)</span> is the greatest lower bound of the set <span class="process-math">\(A_2\)</span> of <a href="sec-suprema.html#ex-a2" class="xref" data-knowl="./knowl/xref/ex-a2.html" data-reveal-label="Reveal" data-close-label="Close" title="Example 1.2.20">Example 1.2.20</a>. Indeed, one can very easily modify the argument of <a href="sec-suprema.html#ex-a1-sup" class="xref" data-knowl="./knowl/xref/ex-a1-sup.html" data-reveal-label="Reveal" data-close-label="Close" title="Example 1.2.15">Example 1.2.15</a> into a proof identical in structure to that of <a href="sec-suprema.html#prop-inf-harmonic" class="xref" data-knowl="./knowl/xref/prop-inf-harmonic.html" data-reveal-label="Reveal" data-close-label="Close" title="Proposition 1.2.26">Proposition 1.2.26</a>.</div></article><div class="para" id="subsec-infima-16">Every fact about (least) upper bounds has a corresponding fact about (greatest) lower bounds. This correspondence is provided by the following easy-to-prove fact.</div>
 <article class="proposition theorem-like" id="prop-sup-inf"><h4 class="heading">
 <span class="type">Proposition</span><span class="space"> </span><span class="codenumber">1.2.28</span><span class="period">.</span>
 </h4>
@@ -376,7 +391,7 @@ x \amp = \frac{1}{3} - \frac{1}{2N} + \frac{1}{6N^2}\\
 </h4>
 <div class="para" id="cor-infima-3-1">Let <span class="process-math">\(A\)</span> be a set of real numbers. If <span class="process-math">\(A\)</span> is non-empty and bounded below, then its greatest lower bound <span class="process-math">\(\inf A\)</span> exists.</div></article></section></section></div>
 <div class="ptx-content-footer">
-<a class="previous-button button" href="sec-prob-area.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="top-button button" href="#" title="Top"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Top</span></a><a class="next-button button" href="backmatter.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a>
+<a class="previous-button button" href="sec-prob-area.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="top-button button" href="#" title="Top"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Top</span></a><a class="next-button button" href="sec-upper-lower-int.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a>
 </div></main>
 </div>
 <div id="ptx-page-footer" class="ptx-page-footer">
