@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section xml:id="sec-upper-lower-int" xmlns:xi="http://www.w3.org/2001/XInclude">
+    <title>Upper and lower sums</title>
+
+    <p>
+        Let's revisit the proof of <xref ref="thm-area-parabola"/>, where we showed that the planar region <me>U \defn \set{(x,y) \in \R^2}{0 \leq x \leq 1,\,0 \leq y \leq x^2}</me> must have area <m>\frac{1}{3}</m>.
+        Using the machinery of <xref ref="sec-suprema"/>, we can now recast our proof into a robustly generalizable form.
+    </p>
+    <p>
+        <ol>
+            <li>
+                <p>
+                    First, in <xref ref="lem-area-parabola-partition"/>, we systematically approximated <m>U</m> from within and without by simpler regions contructed from rectangles, which let us prove the area estimates of <xref ref="lem-area-parabola-rectangle"/>, <ie/>,
+                    <me>
+                        \frac{1}{3} - \frac{1}{2N} + \frac{1}{6N^2} \leq \Area(U) \leq \frac{1}{3} - \frac{1}{2N} + \frac{1}{6N^2}
+                    </me>
+                    for every <m>N \in \N</m>.
+                </p>
+            </li>
+            <li>
+                <p>
+                    Next, observe that <m>\Area(U)</m> is both an upper bound for the set
+                    <me>
+                        A_1 \defn \set{\frac{1}{3}-\frac{1}{2N}+\frac{1}{6N^2}}{N \in \N}
+                    </me>
+                    of <xref ref="ex-a1"/> and a lower bound for the set
+                    <me>
+                        A_2 \defn \set{\frac{1}{3}+\frac{1}{2N}+\frac{1}{6N^2}}{N \in \N}
+                    </me>
+                    of <xref ref="ex-a2"/>.
+                    Hence, it follows that <me>\sup A_1 \leq \Area(U) \leq \inf A_2</me>.
+                </p>
+            </li>
+            <li>
+                <p>
+                    Finally, since <m>\sup A_1 = \frac{1}{3} = \inf A_2</m> by <xref ref="ex-a1-sup"/> and <xref ref="ex-a2-inf"/>, respectively, it follows that
+                    <me>
+                        \frac{1}{3} = \sup A_1 \leq \Area(U) \leq \inf A_2 = \frac{1}{3}
+                    </me>.
+                    Hence, at last, <m>\Area(U) = \frac{1}{3}</m>.
+                </p>
+            </li>
+        </ol>
+    </p>
+    <p>
+        In this section, we'll generalize the first step.
+    </p>
+
+    <definition xml:id="def-partition">
+        <statement>
+            <p>
+                Let <m>a \lt b</m>. 
+                A <term>partition</term> of the closed interval <m>[a,b]</m> is a finite list of real numbers <m>P = (t_0,t_1,\dotsc,t_N)</m> such that <me>a = t_0 \lt t_1 \lt \cdots \lt t_{N-1} \lt t_N = b</me>.
+            </p>
+        </statement>
+    </definition>
+
+    <p>
+        We view a partition <m>P = (t_0,t_1,\dotsc,t_N)</m> of an interval <m>[a,b]</m> as subdividing <m>[a,b]</m> into <m>N</m> subintervals <m>[t_0,t_1],[t_1,t_2],\dotsc,[t_{N-1},t_N]</m>.
+    </p>
+
+    <example xml:id="ex-partition-equal">
+        <p>
+            Let <m>a \lt b</m>, and let <m>N \in \N</m>.
+            Define a partition <m>P_N = (t_0,t_1,\dotsc,t_N)</m> of <m>[a,b]</m> by setting <m>t_k \defn a + k \cdot \frac{b-a}{N}</m> for all <m>0 \leq k \leq N</m>.
+            Then <m>P_N</m> subdivides <m>[a,b]</m> into <m>N</m> subintervals <m>[t_{k-1},t_{k}]</m> of equal width <m>\frac{b-a}{N}</m>.
+        </p>    
+    </example>
+
+     <figure xml:id="fig-partition-equal">
+    <caption>The partition <m>P_5</m> of the interval <m>[0,1]</m>.</caption>
+    <image width="50%">
+      <description>
+        <p>
+          This figure shows a partition of the interval <m>[0,1]</m> into five subintervals of equal width.
+        </p>
+      </description>
+      <asymptote>
+        unitsize(4cm);
+        defaultpen(fontsize(10pt));
+
+        arrowbar axisarrow = Arrow(TeXHead);
+        Label xlabel = Label("$+x$", position=EndPoint);
+        path xaxis = (-0.05,0) -- (1.1,0);
+        draw (xaxis, arrow=axisarrow);
+        label(xlabel,xaxis);
+
+        draw ((0,0.025)--(0,-0.025),L=Label("$0=t_0$",position=EndPoint));
+        draw ((0.2,0.025)--(0.2,-0.025),L=Label("$t_1$",position=EndPoint));
+        draw ((0.4,0.025)--(0.4,-0.025),L=Label("$t_2$",position=EndPoint));
+        draw ((0.6,0.025)--(0.6,-0.025),L=Label("$t_3$",position=EndPoint));
+        draw ((0.8,0.025)--(0.8,-0.025),L=Label("$t_4$",position=EndPoint));
+        draw ((1,0.025)--(1,-0.025),L=Label("$t_5=1$",position=EndPoint));
+      </asymptote>
+    </image>
+  </figure>
+
+    <definition xml:id="def-bounded-function">
+        <statement>
+            <p>
+                Let <m>f</m> be a real-valued function defined on a closed interval <m>[a,b]</m>.
+                We say that <m>f</m> is <term>bounded</term> on <m>D</m> if there exist constants <m>m</m> and <m>M</m> such that <m>m \leq f(x) \leq M</m> for all <m>a \leq x \leq b</m>.
+            </p>
+        </statement>
+    </definition>
+
+    <definition xml:id="def-upper-lower-sum">
+        <statement>
+            <p>
+                    Let <m>f</m> be a bounded real-valued function on a closed interval <m>[a,b]</m>, let <m>P = (t_0,t_1,\dotsc,t_N)</m> be a partition of <m>[a,b]</m>, and set 
+                    <md>
+                    <mrow>m_k \amp \defn \inf\set{f(x)}{t_{k-1} \leq x \leq t_k} \amp </mrow>
+                    <mrow>M_k \amp \defn \sup\set{f(x)}{t_{k-1} \leq x \leq t_k} </mrow>
+                    </md>
+                    for each <m>1 \leq k \leq N</m>.
+                    <ol>
+                    <li>
+                        <p>
+                            The <term>lower sum</term> of <m>f</m> with respect to <m>P</m> is
+                            <me>
+                                L(f,P) \defn \sum_{k=1}^N m_k(t_k-t_{k_1})
+                            </me>.
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            The <term>upper sum</term> of <m>f</m> with respect to <m>P</m> is
+                            <me>
+                                U(f,P) \defn \sum_{k=1}^N M_k(t_k-t_{k_1})
+                            </me>.
+                        </p>
+                    </li>
+                    </ol>
+            </p>
+        </statement>
+    </definition>
+
+    <observation xml:id="observ-area-undergraph-sums">
+        <p>
+            Let <m>f</m> be a bounded real-valued function on a closed interval <m>[a,b]</m> such that <m>f(x) \geq 0</m> for all <m>a \leq x \leq </m>.
+            Assume that its <term>undergraph</term>
+            <me>
+                U_f \defn \set{(x,y) \in \R^2}{a \leq x \leq b, \, 0 \leq y \leq f(x)}
+            </me>
+            has well-defined area (see <xref ref="assumption-area"/>).
+            Then 
+            <me>
+                L(f,P) \leq \Area(U_f) \leq U(f,P)
+            </me>
+            for every partition <m>P</m> of <m>[a,b]</m>.
+        </p>
+    </observation>
+
+    <example>
+        <p>
+            Let <m>f</m> be the function on <m>[1,2]</m> given by <m>f(x) \defn \frac{1}{x^2}</m>.
+            Consider the partition <m>P_2 = (t_0,t_1,t_2)</m> of <m>[1,2]</m> defined by <xref ref="ex-partition-equal"/>, so that <m>t_0 = 1</m>, <m>t_1 = 1 + 1\cdot \frac{2-1}{2} = \frac{3}{2}</m>, and <m>t_2 = 2</m>.
+            Since <m>f</m> is decreasing on <m>[1,2]</m>, it follows that
+            <me>
+                m_k \defn \inf\set{\frac{1}{x^2}}{t_{k-1} \leq x \leq t_k} = \min\set{\frac{1}{x^2}}{t_{k-1} \leq x \leq t_k} = \frac{1}{t_{k}^2}
+            </me>
+            and 
+            <me>
+                M_k \defn \sup\set{\frac{1}{x^2}}{t_{k-1} \leq x \leq t_k} = \max\set{\frac{1}{x^2}}{t_{k-1} \leq x \leq t_k} = \frac{1}{t_{k-1}^2}
+            </me>
+            for <m>k=0,1,2</m>.
+            Hence,
+            <md>
+                <mrow> L(f,P_2) \amp \defn \sum_{k=1}^2 m_k (t_k-t_{k-1})</mrow>
+                <mrow> \amp = \frac{1}{t_1^2}(t_1-t_0) + \frac{1}{t_2^2}(t_2-t_1) </mrow>
+                <mrow> \amp = \frac{1}{(3/2)^2}(\tfrac{3}{2}-1) + \frac{1}{2^2}(2-\tfrac{3}{2})</mrow>
+                <mrow> \amp = \frac{4}{9} \cdot \frac{1}{2} + \frac{1}{4} \cdot \frac{1}{2}</mrow>
+                <mrow> \amp =\frac{25}{72}</mrow>
+            </md>
+            and 
+            <md>
+                <mrow> U(f,P_2) \amp \defn \sum_{k=1}^2 M_k (t_k-t_{k-1})</mrow>
+                <mrow> \amp = \frac{1}{t_0^2}(t_1-t_0) + \frac{1}{t_1^2}(t_2-t_1) </mrow>
+                <mrow> \amp = \frac{1}{1^2}(\tfrac{3}{2}-1) + \frac{1}{(3/2)^2}(2-\tfrac{3}{2})</mrow>
+                <mrow> \amp = 1 \cdot \frac{1}{2} + \frac{4}{9} \cdot \frac{1}{2}</mrow>
+                <mrow> \amp =\frac{13}{18}</mrow>
+            </md>.
+            Thus, by <xref ref="observ-area-undergraph-sums"/>, the area of the undergraph <m>U_f</m> (assuming it's well-defined) can be estimated from below and above by
+            <me>
+                \frac{25}{72} \leq \Area(U_f) \leq \frac{13}{18}
+            </me>,
+            where <m>\frac{25}{72} \approx 0.347</m> and <m>\frac{13}{18}\approx 0.722</m>.
+        </p>
+    </example>
+
+    <example xml:id="ex-parabola-sums">
+        <p>
+            Let <m>f</m> be the function on <m>[0,1]</m> given by <m>f(x) \defn x^2</m>.
+            Let <m>N \in \N</m> be given, and let <m>P_N = (t_0,t_1,\dotsc,t_N)</m> be the partition of <m>[0,1]</m> defined by <xref ref="ex-partition-equal"/>, so that <m>t_k = 0 + k \cdot \frac{1-0}{N} = \frac{k}{N}</m> for all <m>0 \leq k \leq N</m>.
+            Since <m>f</m> is strictly increasing on <m>[0,1]</m>,
+            <md>
+                <mrow> m_k \amp \defn \inf\set{x^2}{\frac{k-1}{N} \leq x \leq \frac{k}{N}} </mrow>
+                <mrow> \amp = \min\set{x^2}{\frac{k-1}{N} \leq x \leq \frac{k}{N}}</mrow>
+                <mrow> \amp = \frac{(k-1)^2}{N^2}</mrow>
+            </md>
+            and
+             <md>
+                <mrow> M_k \amp \defn \sup\set{x^2}{\frac{k-1}{N} \leq x \leq \frac{k}{N}} </mrow>
+                <mrow> \amp = \max\set{x^2}{\frac{k-1}{N} \leq x \leq \frac{k}{N}}</mrow>
+                <mrow> \amp = \frac{k^2}{N^2}</mrow>
+            </md>
+            for all <m>1 \leq k \leq N</m>.
+            Thus, by the proof of <xref ref="lem-area-parabola-summed"/>, it follows that
+            <me>
+                L(f,P_N) \defn \sum_{k=1}^N m_k(t_k-t_{k-1}) = \sum_{k=1}^N \frac{(k-1)^2}{N^2}  \frac{1}{N} = \frac{1}{3} - \frac{1}{2N} + \frac{1}{6N^2}
+            </me>
+            and
+            <me>
+                U(f,P_N) \defn \sum_{k=1}^N M_k(t_k-t_{k-1}) = \sum_{k=1}^N \frac{k^2}{N^2} \frac{1}{N} = \frac{1}{3} + \frac{1}{2N} + \frac{1}{6N^2}
+            </me>.
+            By combining these calculations with <xref ref="observ-area-undergraph-sums"/>, we recover the estimates of <xref ref="lem-area-parabola-summed"/>.
+        </p>
+    </example>
+
+    <lemma xml:id="lem-upper-lower-sums-bounded">
+        <statement>
+            <p>
+                Let <m>f</m> be a bounded real-valued function on a closed interval <m>[a,b]</m>.
+                The set 
+                <me>
+                    \mathcal{L}(f) \defn \set{L(f,P)}{P \text{ is a partition of }[a,b]}
+                </me>
+                is non-empty and bounded above, and the set 
+                <me>
+                    \mathcal{U}(f) \defn \set{U(f,P)}{P \text{ is a partition of }[a,b]}
+                </me>
+                is non-empty and bounded below.
+            </p>
+        </statement>
+        <proof>
+            <p>
+                Let us prove that <m>\mathcal{L}(f)</m> is non-empty and bounded above; the proof that <m>\mathcal{U}(f)</m> is non-empty and bounded below will be qualitatively identical.
+                For later convenience, let
+                <md>
+                    <mrow>m \amp \defn \inf\set{f(x)}{a \leq x \leq b}</mrow>
+                    <mrow>M \amp \defn \sup\set{f(x)}{a \leq x \leq b}</mrow>
+                </md>.
+            </p>
+            <p>
+                Let us first show that <m>\mathcal{L}(f)</m> is non-empty.
+                Observe that <m>P \defn (a,b)</m> is a valid partition of <m>[a,b]</m> with lower sum <m>L(f,P) = m(b-a)</m>.
+                Thus, <m>m(b-a) \in \mathcal{L}(f)</m>.
+            </p>
+            <p>
+                Let us now show that <m>\mathcal{L}(f)</m> is non-empty.
+                Let <m>P = (t_0,t_1,\dotsc,t_N)</m> be a partition of <m>[a,b]</m>.
+                Given <m>1 \leq k \leq N</m>, note that <m>m_k \leq f(x) \leq M</m> for all <m>t_{k-1}\leq x \leq t_k</m>, so that <m>m_k \leq M</m>.
+                Thus,
+                <md>
+                    <mrow> L(f,P) \amp \defn \sum_{k=1}^N m_k(t_k-t_k-1) </mrow>
+                    <mrow> \amp \leq \sum_{k=1}^N M(t_k-t_{k-1}) </mrow>
+                    <mrow> \amp = M\sum_{k=1}^N(t_k-t_{k-1})</mrow>
+                    <mrow> \amp = M(b-a) </mrow>
+                </md>.
+                Since the partition <m>P</m> of <m>[a,b]</m> was freely chosen, it follows that <m>L(f,P) \leq M(b-a)</m> for all partitions <m>P</m> of <m>[a,b]</m>, so that <m>M(b-a)</m> is an upper bound for <m>\mathcal{L}(f)</m>.
+            </p>
+        </proof>
+    </lemma>
+
+    <definition xml:id="def-upper-lower-int">
+        <statement>
+            <p>
+                Let <m>f</m> be a bounded real-valued function on a closed interval <m>[a,b]</m>.
+                <ol>
+                    <li>
+                        <p>
+                            The <term>lower integral</term> of <m>f</m> on <m>[a,b]</m> is 
+                            <me>
+                                \Lint{a}{b} f \defn \inf\set{L(f,P)}{P \text{ is a partition of }[a,b]}.
+                            </me>
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            The <term>upper integral</term> of <m>f</m> on <m>[a,b]</m> is 
+                            <me>
+                                \Uint{a}{b} f \defn \sup\set{L(f,P)}{P \text{ is a partition of }[a,b]}.
+                            </me>
+                        </p>
+                    </li>
+                </ol>
+            </p>
+        </statement>
+    </definition>
+
+    <p>
+        To say anything more, we'll need the machinery of <xref ref="sec-integrability"/>.
+    </p>
+
+    <!--<example xml:id="ex-parabola-upper-lower-int">
+        <p>
+            Let's continue from <xref ref="ex-parabola-sums"/>.
+            Recall that <m>f</m> is defined on <m>[0,1]</m> by <m>f(x) \defn x^2</m>.
+            On the one hand, for each <m>N \in \N</m>,
+            <me>
+                \frac{1}{3} - \frac{1}{2N} + \frac{1}{6N^2} = L(f,P_N) \leq \Lint{0}{1} f
+            </me>,
+            so that
+            <me>
+                \frac{1}{3} = \sup\set{\frac{1}{3} - \frac{1}{2N} + \frac{1}{6N^2}}{N \in \N} \leq \Lint{0}{1} f
+            </me>.
+            On the other hand, for each <m>N \in \N</m>,
+            <me>
+                \frac{1}{3} + \frac{1}{2N} + \frac{1}{6N^2} = U(f,P_N) \geq \Uint{0}{1} f
+            </me>,
+            so that
+            <me>
+                \frac{1}{3} = \inf\set{\frac{1}{3} + \frac{1}{2N} + \frac{1}{6N^2}}{N \in \N} \geq \Lint{0}{1} f
+            </me>.
+            We'll need the <xref ref="sec-integrability"/>, we'll see that <m>\Lint{0}{1}f \leq \Uint{0}{1} f</m> on general grounds, so that
+            <me>
+                \frac{1}{3} \leq \Lint{0}{1}f \leq \Uint{0}{1}f \leq \frac{1}{3}
+            </me>,
+            and 
+        </p>
+    </example>-->
+
+</section>

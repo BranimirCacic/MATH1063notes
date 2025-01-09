@@ -19,6 +19,8 @@
   <!-- to define these semantically, so that the macro relates to what-->
   <!-- it defines. -->
   <macros> 
+    \newcommand{\cL}{\mathcal L}
+    \newcommand{\cU}{\mathcal U}
     \newcommand{\N}{\mathbb N}
     \newcommand{\Z}{\mathbb Z}
     \newcommand{\Q}{\mathbb Q}
@@ -26,6 +28,8 @@
     \newcommand{\abs}[1]{\lvert{#1}\rvert}
     \newcommand{\defn}{\mathrel{:=}}
     \newcommand{\set}[2]{\left\{{#1}:{#2}\right\}}
+    \newcommand{\Lint}[2]{\underline{\int_{#1}^{#2}}}
+     \newcommand{\Uint}[2]{\overline{\int_{#1}^{#2}}}
     \DeclareMathOperator{\Area}{Area}
   </macros>
 
@@ -34,7 +38,7 @@
   <latex-image-preamble> \usepackage{tikz, pgfplots} \usetikzlibrary{positioning,matrix,arrows} \usetikzlibrary{shapes,decorations,shadows,fadings,patterns} \usetikzlibrary{decorations.markings} </latex-image-preamble>
 
   <!-- It is possible to rename elements: -->
-  <!-- <rename element="assemblage" xml:lang="en-US">Summary</rename> -->
+  <rename element="insight" xml:lang="en-US">Idea</rename>
 
   <!-- Specify the default type of cross reference: -->
   <!-- <cross-references text="type-global" /> -->

@@ -354,7 +354,7 @@
             </proof>
         </proposition>
 
-        <example>
+        <example xml:id="ex-a2-inf">
             <p>
                 One can now show that <m>\frac{1}{3}</m> is the greatest lower bound of the set <m>A_2</m> of <xref ref="ex-a2"/>.
                 Indeed, one can very easily modify the argument of <xref ref="ex-a1-sup"/> into a proof identical in structure to that of <xref ref="prop-inf-harmonic"/>.
