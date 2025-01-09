@@ -14,5 +14,7 @@
   <!-- include sections -->
   <xi:include href="sec-prob-area.ptx" />
   <xi:include href="sec-suprema.ptx" />
+  <xi:include href="sec-riemann-darboux" />
+  <xi:include href="sec-nonintegrable.ptx" />
 
 </chapter>

@@ -349,7 +349,7 @@
                     Since <m>S</m> consists of positive numbers, it follows that <m>0</m> is a lower bound for <m>S</m>.
                     Now, let <m>m \gt 0</m> be given; we'll show that <m>m</m> cannot be a lower bound by demonstrating <m>x \in S</m> such that <m>x \lt m</m>.
                     Indeed, by <xref ref="cor-archimedean-real"/>, there exists <m>N \in \N</m> such that <m>\frac{1}{N} \lt m</m>.
-                    Then <m>x \defn \frac{1}{N} \in S</m> satisfies <m>x \lt </m>.
+                    Then <m>x \defn \frac{1}{N} \in S</m> satisfies <m>x \lt m</m>.
                 </p>
             </proof>
         </proposition>
