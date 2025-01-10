@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <section xml:id="sec-upper-lower-int" xmlns:xi="http://www.w3.org/2001/XInclude">
-    <title>Upper and lower sums</title>
+    <title>Upper and lower integrals</title>
 
     <p>
         Let's revisit the proof of <xref ref="thm-area-parabola"/>, where we showed that the planar region <me>U \defn \set{(x,y) \in \R^2}{0 \leq x \leq 1,\,0 \leq y \leq x^2}</me> must have area <m>\frac{1}{3}</m>.
@@ -44,27 +44,27 @@
         </ol>
     </p>
     <p>
-        In this section, we'll generalize the first step.
+        In this section, we'll generalize this process.
     </p>
 
     <definition xml:id="def-partition">
         <statement>
             <p>
                 Let <m>a \lt b</m>. 
-                A <term>partition</term> of the closed interval <m>[a,b]</m> is a finite list of real numbers <m>P = (t_0,t_1,\dotsc,t_N)</m> such that <me>a = t_0 \lt t_1 \lt \cdots \lt t_{N-1} \lt t_N = b</me>.
+                A <term>partition</term> of the closed interval <m>[a,b]</m> is a finite list of real numbers <m>P = (x_0,x_1,\dotsc,x_N)</m> such that <me>a = x_0 \lt x_1 \lt \cdots \lt x_{N-1} \lt x_N = b</me>.
             </p>
         </statement>
     </definition>
 
     <p>
-        We view a partition <m>P = (t_0,t_1,\dotsc,t_N)</m> of an interval <m>[a,b]</m> as subdividing <m>[a,b]</m> into <m>N</m> subintervals <m>[t_0,t_1],[t_1,t_2],\dotsc,[t_{N-1},t_N]</m>.
+        We view a partition <m>P = (x_0,x_1,\dotsc,x_N)</m> of an interval <m>[a,b]</m> as subdividing <m>[a,b]</m> into <m>N</m> subintervals <m>[x_0,x_1],[x_1,x_2],\dotsc,[x_{N-1},x_N]</m>.
     </p>
 
     <example xml:id="ex-partition-equal">
         <p>
             Let <m>a \lt b</m>, and let <m>N \in \N</m>.
-            Define a partition <m>P_N = (t_0,t_1,\dotsc,t_N)</m> of <m>[a,b]</m> by setting <m>t_k \defn a + k \cdot \frac{b-a}{N}</m> for all <m>0 \leq k \leq N</m>.
-            Then <m>P_N</m> subdivides <m>[a,b]</m> into <m>N</m> subintervals <m>[t_{k-1},t_{k}]</m> of equal width <m>\frac{b-a}{N}</m>.
+            Define a partition <m>P_N = (x_0,x_1,\dotsc,x_N)</m> of <m>[a,b]</m> by setting <m>x_k \defn a + k \cdot \frac{b-a}{N}</m> for all <m>0 \leq k \leq N</m>.
+            Then <m>P_N</m> subdivides <m>[a,b]</m> into <m>N</m> subintervals <m>[x_{k-1},x_{k}]</m> of equal width <m>\frac{b-a}{N}</m>.
         </p>    
     </example>
 
@@ -96,6 +96,12 @@
     </image>
   </figure>
 
+  <remark>
+    <p>
+        We'll repeatedly use the fact that for any partition <m>P=(x_0,x_1,\dotsc,x_N)</m> of <m>[a,b]</m>, we have <m>\sum_{k=1}^N(x_k-x_{k-1}) = b-a</m>. This is called a <term>telescoping sum</term>.
+    </p>
+  </remark>
+
     <definition xml:id="def-bounded-function">
         <statement>
             <p>
@@ -108,10 +114,10 @@
     <definition xml:id="def-upper-lower-sum">
         <statement>
             <p>
-                    Let <m>f</m> be a bounded real-valued function on a closed interval <m>[a,b]</m>, let <m>P = (t_0,t_1,\dotsc,t_N)</m> be a partition of <m>[a,b]</m>, and set 
+                    Let <m>f</m> be a bounded real-valued function on a closed interval <m>[a,b]</m>, let <m>P = (x_0,x_1,\dotsc,x_N)</m> be a partition of <m>[a,b]</m>, and set 
                     <md>
-                    <mrow>m_k \amp \defn \inf\set{f(x)}{t_{k-1} \leq x \leq t_k} \amp </mrow>
-                    <mrow>M_k \amp \defn \sup\set{f(x)}{t_{k-1} \leq x \leq t_k} </mrow>
+                    <mrow>m_k \amp \defn \inf\set{f(x)}{x_{k-1} \leq x \leq x_k} \amp </mrow>
+                    <mrow>M_k \amp \defn \sup\set{f(x)}{x_{k-1} \leq x \leq x_k} </mrow>
                     </md>
                     for each <m>1 \leq k \leq N</m>.
                     <ol>
@@ -119,7 +125,7 @@
                         <p>
                             The <term>lower sum</term> of <m>f</m> with respect to <m>P</m> is
                             <me>
-                                L(f,P) \defn \sum_{k=1}^N m_k(t_k-t_{k_1})
+                                L(f,P) \defn \sum_{k=1}^N m_k(x_k-x_{k_1})
                             </me>.
                         </p>
                     </li>
@@ -127,7 +133,7 @@
                         <p>
                             The <term>upper sum</term> of <m>f</m> with respect to <m>P</m> is
                             <me>
-                                U(f,P) \defn \sum_{k=1}^N M_k(t_k-t_{k_1})
+                                U(f,P) \defn \sum_{k=1}^N M_k(x_k-x_{k_1})
                             </me>.
                         </p>
                     </li>
@@ -155,28 +161,28 @@
     <example>
         <p>
             Let <m>f</m> be the function on <m>[1,2]</m> given by <m>f(x) \defn \frac{1}{x^2}</m>.
-            Consider the partition <m>P_2 = (t_0,t_1,t_2)</m> of <m>[1,2]</m> defined by <xref ref="ex-partition-equal"/>, so that <m>t_0 = 1</m>, <m>t_1 = 1 + 1\cdot \frac{2-1}{2} = \frac{3}{2}</m>, and <m>t_2 = 2</m>.
+            Consider the partition <m>P_2 = (x_0,x_1,x_2)</m> of <m>[1,2]</m> defined by <xref ref="ex-partition-equal"/>, so that <m>x_0 = 1</m>, <m>x_1 = 1 + 1\cdot \frac{2-1}{2} = \frac{3}{2}</m>, and <m>x_2 = 2</m>.
             Since <m>f</m> is decreasing on <m>[1,2]</m>, it follows that
             <me>
-                m_k \defn \inf\set{\frac{1}{x^2}}{t_{k-1} \leq x \leq t_k} = \min\set{\frac{1}{x^2}}{t_{k-1} \leq x \leq t_k} = \frac{1}{t_{k}^2}
+                m_k \defn \inf\set{\frac{1}{x^2}}{x_{k-1} \leq x \leq x_k} = \min\set{\frac{1}{x^2}}{x_{k-1} \leq x \leq x_k} = \frac{1}{x_{k}^2}
             </me>
             and 
             <me>
-                M_k \defn \sup\set{\frac{1}{x^2}}{t_{k-1} \leq x \leq t_k} = \max\set{\frac{1}{x^2}}{t_{k-1} \leq x \leq t_k} = \frac{1}{t_{k-1}^2}
+                M_k \defn \sup\set{\frac{1}{x^2}}{x_{k-1} \leq x \leq x_k} = \max\set{\frac{1}{x^2}}{x_{k-1} \leq x \leq x_k} = \frac{1}{x_{k-1}^2}
             </me>
             for <m>k=0,1,2</m>.
             Hence,
             <md>
-                <mrow> L(f,P_2) \amp \defn \sum_{k=1}^2 m_k (t_k-t_{k-1})</mrow>
-                <mrow> \amp = \frac{1}{t_1^2}(t_1-t_0) + \frac{1}{t_2^2}(t_2-t_1) </mrow>
+                <mrow> L(f,P_2) \amp \defn \sum_{k=1}^2 m_k (x_k-x_{k-1})</mrow>
+                <mrow> \amp = \frac{1}{x_1^2}(x_1-x_0) + \frac{1}{x_2^2}(x_2-x_1) </mrow>
                 <mrow> \amp = \frac{1}{(3/2)^2}(\tfrac{3}{2}-1) + \frac{1}{2^2}(2-\tfrac{3}{2})</mrow>
                 <mrow> \amp = \frac{4}{9} \cdot \frac{1}{2} + \frac{1}{4} \cdot \frac{1}{2}</mrow>
                 <mrow> \amp =\frac{25}{72}</mrow>
             </md>
             and 
             <md>
-                <mrow> U(f,P_2) \amp \defn \sum_{k=1}^2 M_k (t_k-t_{k-1})</mrow>
-                <mrow> \amp = \frac{1}{t_0^2}(t_1-t_0) + \frac{1}{t_1^2}(t_2-t_1) </mrow>
+                <mrow> U(f,P_2) \amp \defn \sum_{k=1}^2 M_k (x_k-x_{k-1})</mrow>
+                <mrow> \amp = \frac{1}{x_0^2}(x_1-x_0) + \frac{1}{x_1^2}(x_2-x_1) </mrow>
                 <mrow> \amp = \frac{1}{1^2}(\tfrac{3}{2}-1) + \frac{1}{(3/2)^2}(2-\tfrac{3}{2})</mrow>
                 <mrow> \amp = 1 \cdot \frac{1}{2} + \frac{4}{9} \cdot \frac{1}{2}</mrow>
                 <mrow> \amp =\frac{13}{18}</mrow>
@@ -192,7 +198,7 @@
     <example xml:id="ex-parabola-sums">
         <p>
             Let <m>f</m> be the function on <m>[0,1]</m> given by <m>f(x) \defn x^2</m>.
-            Let <m>N \in \N</m> be given, and let <m>P_N = (t_0,t_1,\dotsc,t_N)</m> be the partition of <m>[0,1]</m> defined by <xref ref="ex-partition-equal"/>, so that <m>t_k = 0 + k \cdot \frac{1-0}{N} = \frac{k}{N}</m> for all <m>0 \leq k \leq N</m>.
+            Let <m>N \in \N</m> be given, and let <m>P_N = (x_0,x_1,\dotsc,x_N)</m> be the partition of <m>[0,1]</m> defined by <xref ref="ex-partition-equal"/>, so that <m>x_k = 0 + k \cdot \frac{1-0}{N} = \frac{k}{N}</m> for all <m>0 \leq k \leq N</m>.
             Since <m>f</m> is strictly increasing on <m>[0,1]</m>,
             <md>
                 <mrow> m_k \amp \defn \inf\set{x^2}{\frac{k-1}{N} \leq x \leq \frac{k}{N}} </mrow>
@@ -208,60 +214,89 @@
             for all <m>1 \leq k \leq N</m>.
             Thus, by the proof of <xref ref="lem-area-parabola-summed"/>, it follows that
             <me>
-                L(f,P_N) \defn \sum_{k=1}^N m_k(t_k-t_{k-1}) = \sum_{k=1}^N \frac{(k-1)^2}{N^2}  \frac{1}{N} = \frac{1}{3} - \frac{1}{2N} + \frac{1}{6N^2}
+                L(f,P_N) \defn \sum_{k=1}^N m_k(x_k-x_{k-1}) = \sum_{k=1}^N \frac{(k-1)^2}{N^2}  \frac{1}{N} = \frac{1}{3} - \frac{1}{2N} + \frac{1}{6N^2}
             </me>
             and
             <me>
-                U(f,P_N) \defn \sum_{k=1}^N M_k(t_k-t_{k-1}) = \sum_{k=1}^N \frac{k^2}{N^2} \frac{1}{N} = \frac{1}{3} + \frac{1}{2N} + \frac{1}{6N^2}
+                U(f,P_N) \defn \sum_{k=1}^N M_k(x_k-x_{k-1}) = \sum_{k=1}^N \frac{k^2}{N^2} \frac{1}{N} = \frac{1}{3} + \frac{1}{2N} + \frac{1}{6N^2}
             </me>.
             By combining these calculations with <xref ref="observ-area-undergraph-sums"/>, we recover the estimates of <xref ref="lem-area-parabola-summed"/>.
         </p>
     </example>
 
-    <lemma xml:id="lem-upper-lower-sums-bounded">
+    <proposition xml:id="prop-upper-lower-sums-properties">
         <statement>
             <p>
                 Let <m>f</m> be a bounded real-valued function on a closed interval <m>[a,b]</m>.
-                The set 
-                <me>
-                    \mathcal{L}(f) \defn \set{L(f,P)}{P \text{ is a partition of }[a,b]}
-                </me>
-                is non-empty and bounded above, and the set 
-                <me>
-                    \mathcal{U}(f) \defn \set{U(f,P)}{P \text{ is a partition of }[a,b]}
-                </me>
-                is non-empty and bounded below.
+                <ol>
+                    <li xml:id="item-upper-lower-sums-inequality">
+                        <p>
+                            Let <m>P</m> be a partition of <m>[a,b]</m>.
+                            Then <m>L(f,P) \leq U(f,P)</m>.
+                        </p>
+                    </li>
+                    <li xml:id="item-upper-lower-sums-refinement">
+                        <p>
+                            Let <m>P</m> and <m>P'</m> be partitions of <m>[a,b]</m>.
+                            Suppose that <m>P'</m> can be obtained from <m>P</m> by including additional points (<ie/>, <m>P'</m> is a <term>refinement</term> of <m>P</m>).
+                            Then
+                            <me>
+                                L(f,P) \leq L(f,P') \leq U(f,P') \leq U(f,P)
+                            </me>.
+                        </p>
+                    </li>
+                    <li xml:id="item-upper-sums-bound-lower-sums">
+                        <p>
+                            Let <m>P</m> and <m>P'</m> be partitions of <m>[a,b]</m>.
+                            Then <m>L(f,P) \leq U(f,P')</m>.
+                        </p>
+                    </li>
+                </ol>
             </p>
         </statement>
         <proof>
             <p>
-                Let us prove that <m>\mathcal{L}(f)</m> is non-empty and bounded above; the proof that <m>\mathcal{U}(f)</m> is non-empty and bounded below will be qualitatively identical.
-                For later convenience, let
-                <md>
-                    <mrow>m \amp \defn \inf\set{f(x)}{a \leq x \leq b}</mrow>
-                    <mrow>M \amp \defn \sup\set{f(x)}{a \leq x \leq b}</mrow>
-                </md>.
-            </p>
-            <p>
-                Let us first show that <m>\mathcal{L}(f)</m> is non-empty.
-                Observe that <m>P \defn (a,b)</m> is a valid partition of <m>[a,b]</m> with lower sum <m>L(f,P) = m(b-a)</m>.
-                Thus, <m>m(b-a) \in \mathcal{L}(f)</m>.
-            </p>
-            <p>
-                Let us now show that <m>\mathcal{L}(f)</m> is non-empty.
-                Let <m>P = (t_0,t_1,\dotsc,t_N)</m> be a partition of <m>[a,b]</m>.
-                Given <m>1 \leq k \leq N</m>, note that <m>m_k \leq f(x) \leq M</m> for all <m>t_{k-1}\leq x \leq t_k</m>, so that <m>m_k \leq M</m>.
+                Let us first prove <xref ref="item-upper-lower-sums-inequality"/>            
+                Let <m>P = (x_0,x_1,\dotsc,x_N)</m> be a partition of <m>[a,b]</m>.
+                Given <m>1 \leq k \leq N</m>, since 
+                <me>
+                    m_k = \inf\set{f(x)}{x_{k-1} \leq x \leq x_k} \leq f(x_{k-1}) \leq \sup\set{f(x)}{x_{k-1}\leq x\leq x_k} = M_k
+                </me>,
+                it follows that <m>m_k \leq M_k</m>.
                 Thus,
+                <me>
+                    L(f,P) = \sum_{k=1}^N m_k (x_k-x_{k-1}) \leq \sum_{k=1}^N M_k(x_k-x_{k-1}) = U(f,P)
+                </me>.
+            </p>
+
+            <p>
+                Next, let us sketch the proof of <xref ref="item-upper-lower-sums-refinement"/>.
+                The general case is a tedious application of the special case where <m>P = (a,b)</m> and where <m>P' = (x_0^\prime,\dotsc,x_N^\prime)</m> is any other partition.
+                We'll show that <m>U(f,P') \leq U(f,P)</m>; the argument that <m>L(f,P) \leq L(f,P')</m> will be qualitatively identical.
+            </p>
+            <p>
+                For each <m>1 \leq k \leq N</m>, let <m>M_k^\prime \defn \sup\set{f(x)}{x_{k-1}^\prime \leq x \leq x_k^\prime}</m>, so that <m>U(f,P') = \sum_{k=1}^N M_k^\prime(x_k^\prime-x_{k-1}^\prime)</m>; let <m>M \defn \sup{f(x)}{a\leq x \leq b}</m>, so that <m>U(f,P) = M(b-a)</m>.
+                Given <m>1 \leq k \leq </m>, since <m>f(x) \leq \sup{f(x)}{a\leq x \leq b} = M</m> for all <m>x \in [x_{k-1}^\prime,x_k^\prime]</m>, it follows that
                 <md>
-                    <mrow> L(f,P) \amp \defn \sum_{k=1}^N m_k(t_k-t_k-1) </mrow>
-                    <mrow> \amp \leq \sum_{k=1}^N M(t_k-t_{k-1}) </mrow>
-                    <mrow> \amp = M\sum_{k=1}^N(t_k-t_{k-1})</mrow>
+                    <mrow> U(f,P') \amp \defn \sum_{k=1}^N M_k^\prime(x_k^\prime-x_k-1^\prime) </mrow>
+                    <mrow> \amp \leq \sum_{k=1}^N M(x_k^\prime-x_{k-1}^\prime) </mrow>
+                    <mrow> \amp = M\sum_{k=1}^N(x_k^\prime-x_{k-1}^\prime)</mrow>
                     <mrow> \amp = M(b-a) </mrow>
+                    <mrow> \amp = U(f,P) </mrow>
                 </md>.
-                Since the partition <m>P</m> of <m>[a,b]</m> was freely chosen, it follows that <m>L(f,P) \leq M(b-a)</m> for all partitions <m>P</m> of <m>[a,b]</m>, so that <m>M(b-a)</m> is an upper bound for <m>\mathcal{L}(f)</m>.
+            </p>
+            <p>
+                Finally, let us prove <xref ref="item-upper-sums-bound-lower-sums"/>.
+                Let <m>P</m> and <m>P'</m> be partitions of <m>[a,b]</m>.
+                Let <m>P^{\prime\prime}</m> be the partition of <m>[a,b]</m> obtained by merging the lists <m>P</m> and <m>P'</m>.
+                Then <m>P^{\prime\prime}</m> is a refinement of both <m>P</m> and <m>P'</m>, so that
+                <me>
+                    L(f,P) \leq L(f,P^{\prime\prime}) \leq U(f,P^{\prime\prime}) \leq U(f,P)
+                </me>
+                by <xref ref="item-upper-lower-sums-inequality"/> and <xref ref="item-upper-lower-sums-refinement"/>.
             </p>
         </proof>
-    </lemma>
+    </proposition>
 
     <definition xml:id="def-upper-lower-int">
         <statement>
@@ -289,11 +324,33 @@
         </statement>
     </definition>
 
-    <p>
-        To say anything more, we'll need the machinery of <xref ref="sec-integrability"/>.
-    </p>
-
-    <!--<example xml:id="ex-parabola-upper-lower-int">
+    <theorem xml:id="thm-upper-lower-integrals">
+        <statement>
+            <p>
+                Let <m>f</m> be a bounded real-valued function on a closed interval <m>[a,b]</m>.
+                Then its lower integral <m>\Lint{a}{b}f</m> and upper integral <m>\Uint{a}{b}f</m> both exist and satisfy
+                <me>\Lint{a}{b}f \leq \Uint{a}{b}f</me>.
+            </p>
+        </statement>
+        <proof>
+            <p>
+                Let <m>\cL(f)</m> be the set of all lower sums of <m>f</m> with respect to partitions of <m>[a,b]</m>.
+                On the one hand, it is non-empty since it contains <m>L(f,P)</m> for <m>P = (a,b)</m>.
+                On the other hand, if <m>P</m> is any partition of <m>[a,b]</m>, then <m>U(f,P)</m> is an upper bound for <m>\cL(f,P)</m> by <xref ref="item-upper-sums-bound-lower-sums"/>.
+                Thus, <m>\Lint{a}{b}f \defn \sup\cL(f)</m> exists.
+                A qualitatively identical argument shows that <m>\Uint{a}{b}f = \sup\cU(f)</m> exists, where <m>\cU(f)</m> is the set of all upper sums of <m>f</m> with respect to partitions of <m>[a,b]</m>.
+            </p>
+            <p>
+                Let us now show that <m>\Lint{a}{b}f \leq \Uint{a}{b}f</m>.
+                Let <m>P</m> be any partition of <m>[a,b]</m>.
+                Recall that <m>U(f,P)</m> is an upper bound for <m>\cL(f)</m> by <xref ref="item-upper-sums-bound-lower-sums"/>, so that
+                <me>U(f,P) \geq \sup\cL(f,P) = \Lint{a}{b}f</me>.
+                However, this shows that <m>\Lint{a}{b}f</m> is a lower bound for <m>\cU(f)</m>, so that <me>\Lint{a}{b}f \leq \inf\cU(f) = \Uint{a}{b}f</me>.
+            </p>
+        </proof>
+    </theorem>
+    
+    <example xml:id="ex-parabola-upper-lower-int">
         <p>
             Let's continue from <xref ref="ex-parabola-sums"/>.
             Recall that <m>f</m> is defined on <m>[0,1]</m> by <m>f(x) \defn x^2</m>.
@@ -313,12 +370,16 @@
             <me>
                 \frac{1}{3} = \inf\set{\frac{1}{3} + \frac{1}{2N} + \frac{1}{6N^2}}{N \in \N} \geq \Lint{0}{1} f
             </me>.
-            We'll need the <xref ref="sec-integrability"/>, we'll see that <m>\Lint{0}{1}f \leq \Uint{0}{1} f</m> on general grounds, so that
+            Hence, by <xref ref="thm-upper-lower-integrals"/>,
             <me>
                 \frac{1}{3} \leq \Lint{0}{1}f \leq \Uint{0}{1}f \leq \frac{1}{3}
             </me>,
-            and 
+            so that
+            <me>
+                 \Lint{0}{1}f = \frac{1}{3} = \Uint{0}{1}f
+            </me>. 
+            This turns out to be a rigorous proof that the area of the planar region <m>U</m> of <xref ref="thm-area-parabola"/> is both well-defined and equal to <m>\frac{1}{3}</m>. 
         </p>
-    </example>-->
+    </example>
 
 </section>
