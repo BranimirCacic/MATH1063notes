@@ -8,7 +8,7 @@
 <html lang="en-US" dir="ltr">
 <head xmlns:og="http://ogp.me/ns#" xmlns:book="https://ogp.me/ns/book#">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Upper and lower sums</title>
+<title>Upper and lower integrals</title>
 <meta name="Keywords" content="Authored in PreTeXt">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta property="og:type" content="book">
@@ -128,6 +128,9 @@ eBookConfig.enable_chatcodes =  false;
 #def-upper-lower-sum-1-1-7 { counter-set: def-upper-lower-sum-1-1-7 0; }
 #def-upper-lower-sum-1-1-7 > li::marker { content: ""counter(def-upper-lower-sum-1-1-7,decimal)"."; }
 #def-upper-lower-sum-1-1-7 > li { counter-increment: def-upper-lower-sum-1-1-7; }
+#prop-upper-lower-sums-properties-1-1-3 { counter-set: prop-upper-lower-sums-properties-1-1-3 0; }
+#prop-upper-lower-sums-properties-1-1-3 > li::marker { content: ""counter(prop-upper-lower-sums-properties-1-1-3,decimal)"."; }
+#prop-upper-lower-sums-properties-1-1-3 > li { counter-increment: prop-upper-lower-sums-properties-1-1-3; }
 #def-upper-lower-int-1-1-3 { counter-set: def-upper-lower-int-1-1-3 0; }
 #def-upper-lower-int-1-1-3 > li::marker { content: ""counter(def-upper-lower-int-1-1-3,decimal)"."; }
 #def-upper-lower-int-1-1-3 > li { counter-increment: def-upper-lower-int-1-1-3; }
@@ -184,14 +187,14 @@ eBookConfig.enable_chatcodes =  false;
 <li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-suprema.html#subsec-infima" class="internal"><span class="codenumber">1.2.2</span> <span class="title">Lower bounds</span></a></div></li>
 </ul>
 </li>
-<li class="toc-item toc-section active"><div class="toc-title-box"><a href="sec-upper-lower-int.html" class="internal"><span class="codenumber">1.3</span> <span class="title">Upper and lower sums</span></a></div></li>
+<li class="toc-item toc-section active"><div class="toc-title-box"><a href="sec-upper-lower-int.html" class="internal"><span class="codenumber">1.3</span> <span class="title">Upper and lower integrals</span></a></div></li>
 <li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-integrability.html" class="internal"><span class="codenumber">1.4</span> <span class="title">Integrability and integration</span></a></div></li>
 </ul>
 </li>
 <li class="toc-item toc-backmatter"><div class="toc-title-box"><a href="backmatter.html" class="internal"><span class="title">Backmatter</span></a></div></li>
 </ul></nav></div>
 <main class="ptx-main"><div id="ptx-content" class="ptx-content"><section class="section" id="sec-upper-lower-int"><h2 class="heading hide-type">
-<span class="type">Section</span><span class="space"> </span><span class="codenumber">1.3</span><span class="space"> </span><span class="title">Upper and lower sums</span>
+<span class="type">Section</span><span class="space"> </span><span class="codenumber">1.3</span><span class="space"> </span><span class="title">Upper and lower integrals</span>
 </h2>
 <div class="para logical" id="sec-upper-lower-int-2">
 <div class="para">Let’s revisit the proof of <a href="sec-prob-area.html#thm-area-parabola" class="xref" data-knowl="./knowl/xref/thm-area-parabola.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 1.1.1">Theorem 1.1.1</a>, where we showed that the planar region</div>
@@ -244,37 +247,40 @@ A_2 \defn \set{\frac{1}{3}+\frac{1}{2N}+\frac{1}{6N^2}}{N \in \N}
 </div>
 </div></li>
 </ol></div>
-<div class="para" id="sec-upper-lower-int-4">In this section, we’ll generalize the first step.</div>
+<div class="para" id="sec-upper-lower-int-4">In this section, we’ll generalize this process.</div>
 <article class="definition definition-like" id="def-partition"><h3 class="heading">
 <span class="type">Definition</span><span class="space"> </span><span class="codenumber">1.3.1</span><span class="period">.</span>
 </h3>
 <div class="para logical" id="def-partition-1-1">
-<div class="para">Let <span class="process-math">\(a \lt b\text{.}\)</span> A <dfn class="terminology">partition</dfn> of the closed interval <span class="process-math">\([a,b]\)</span> is a finite list of real numbers <span class="process-math">\(P = (t_0,t_1,\dotsc,t_N)\)</span> such that</div>
+<div class="para">Let <span class="process-math">\(a \lt b\text{.}\)</span> A <dfn class="terminology">partition</dfn> of the closed interval <span class="process-math">\([a,b]\)</span> is a finite list of real numbers <span class="process-math">\(P = (x_0,x_1,\dotsc,x_N)\)</span> such that</div>
 <div class="displaymath process-math">
 \begin{equation*}
-a = t_0 \lt t_1 \lt \cdots \lt t_{N-1} \lt t_N = b\text{.}
+a = x_0 \lt x_1 \lt \cdots \lt x_{N-1} \lt x_N = b\text{.}
 \end{equation*}
 </div>
-</div></article><div class="para" id="sec-upper-lower-int-6">We view a partition <span class="process-math">\(P = (t_0,t_1,\dotsc,t_N)\)</span> of an interval <span class="process-math">\([a,b]\)</span> as subdividing <span class="process-math">\([a,b]\)</span> into <span class="process-math">\(N\)</span> subintervals <span class="process-math">\([t_0,t_1],[t_1,t_2],\dotsc,[t_{N-1},t_N]\text{.}\)</span>
+</div></article><div class="para" id="sec-upper-lower-int-6">We view a partition <span class="process-math">\(P = (x_0,x_1,\dotsc,x_N)\)</span> of an interval <span class="process-math">\([a,b]\)</span> as subdividing <span class="process-math">\([a,b]\)</span> into <span class="process-math">\(N\)</span> subintervals <span class="process-math">\([x_0,x_1],[x_1,x_2],\dotsc,[x_{N-1},x_N]\text{.}\)</span>
 </div>
 <article class="example example-like" id="ex-partition-equal"><h3 class="heading">
 <span class="type">Example</span><span class="space"> </span><span class="codenumber">1.3.2</span><span class="period">.</span>
 </h3>
-<div class="para" id="ex-partition-equal-1">Let <span class="process-math">\(a \lt b\text{,}\)</span> and let <span class="process-math">\(N \in \N\text{.}\)</span> Define a partition <span class="process-math">\(P_N = (t_0,t_1,\dotsc,t_N)\)</span> of <span class="process-math">\([a,b]\)</span> by setting <span class="process-math">\(t_k \defn a + k \cdot \frac{b-a}{N}\)</span> for all <span class="process-math">\(0 \leq k \leq N\text{.}\)</span> Then <span class="process-math">\(P_N\)</span> subdivides <span class="process-math">\([a,b]\)</span> into <span class="process-math">\(N\)</span> subintervals <span class="process-math">\([t_{k-1},t_{k}]\)</span> of equal width <span class="process-math">\(\frac{b-a}{N}\text{.}\)</span>
+<div class="para" id="ex-partition-equal-1">Let <span class="process-math">\(a \lt b\text{,}\)</span> and let <span class="process-math">\(N \in \N\text{.}\)</span> Define a partition <span class="process-math">\(P_N = (x_0,x_1,\dotsc,x_N)\)</span> of <span class="process-math">\([a,b]\)</span> by setting <span class="process-math">\(x_k \defn a + k \cdot \frac{b-a}{N}\)</span> for all <span class="process-math">\(0 \leq k \leq N\text{.}\)</span> Then <span class="process-math">\(P_N\)</span> subdivides <span class="process-math">\([a,b]\)</span> into <span class="process-math">\(N\)</span> subintervals <span class="process-math">\([x_{k-1},x_{k}]\)</span> of equal width <span class="process-math">\(\frac{b-a}{N}\text{.}\)</span>
 </div></article><figure class="figure figure-like" id="fig-partition-equal"><div class="image-box" style="width: 50%; margin-left: 25%; margin-right: 25%;"><div class="asymptote-box" style="padding-top: 12.552052605611%"><iframe src="generated/asymptote/fig-partition-equal-2.html" class="asymptote"></iframe></div></div>
-<figcaption><span class="type">Figure</span><span class="space"> </span><span class="codenumber">1.3.3<span class="period">.</span></span><span class="space"> </span>The partition <span class="process-math">\(P_5\)</span> of the interval <span class="process-math">\([0,1]\text{.}\)</span></figcaption></figure><article class="definition definition-like" id="def-bounded-function"><h3 class="heading">
-<span class="type">Definition</span><span class="space"> </span><span class="codenumber">1.3.4</span><span class="period">.</span>
+<figcaption><span class="type">Figure</span><span class="space"> </span><span class="codenumber">1.3.3<span class="period">.</span></span><span class="space"> </span>The partition <span class="process-math">\(P_5\)</span> of the interval <span class="process-math">\([0,1]\text{.}\)</span></figcaption></figure><article class="remark remark-like" id="sec-upper-lower-int-9"><h3 class="heading">
+<span class="type">Remark</span><span class="space"> </span><span class="codenumber">1.3.4</span><span class="period">.</span>
+</h3>
+<div class="para" id="sec-upper-lower-int-9-1">We’ll repeatedly use the fact that for any partition <span class="process-math">\(P=(x_0,x_1,\dotsc,x_N)\)</span> of <span class="process-math">\([a,b]\text{,}\)</span> we have <span class="process-math">\(\sum_{k=1}^N(x_k-x_{k-1}) = b-a\text{.}\)</span> This is called a <dfn class="terminology">telescoping sum</dfn>.</div></article><article class="definition definition-like" id="def-bounded-function"><h3 class="heading">
+<span class="type">Definition</span><span class="space"> </span><span class="codenumber">1.3.5</span><span class="period">.</span>
 </h3>
 <div class="para" id="def-bounded-function-1-1">Let <span class="process-math">\(f\)</span> be a real-valued function defined on a closed interval <span class="process-math">\([a,b]\text{.}\)</span> We say that <span class="process-math">\(f\)</span> is <dfn class="terminology">bounded</dfn> on <span class="process-math">\(D\)</span> if there exist constants <span class="process-math">\(m\)</span> and <span class="process-math">\(M\)</span> such that <span class="process-math">\(m \leq f(x) \leq M\)</span> for all <span class="process-math">\(a \leq x \leq b\text{.}\)</span>
 </div></article><article class="definition definition-like" id="def-upper-lower-sum"><h3 class="heading">
-<span class="type">Definition</span><span class="space"> </span><span class="codenumber">1.3.5</span><span class="period">.</span>
+<span class="type">Definition</span><span class="space"> </span><span class="codenumber">1.3.6</span><span class="period">.</span>
 </h3>
 <div class="para logical" id="def-upper-lower-sum-1-1">
-<div class="para">Let <span class="process-math">\(f\)</span> be a bounded real-valued function on a closed interval <span class="process-math">\([a,b]\text{,}\)</span> let <span class="process-math">\(P = (t_0,t_1,\dotsc,t_N)\)</span> be a partition of <span class="process-math">\([a,b]\text{,}\)</span> and set</div>
+<div class="para">Let <span class="process-math">\(f\)</span> be a bounded real-valued function on a closed interval <span class="process-math">\([a,b]\text{,}\)</span> let <span class="process-math">\(P = (x_0,x_1,\dotsc,x_N)\)</span> be a partition of <span class="process-math">\([a,b]\text{,}\)</span> and set</div>
 <div class="displaymath process-math" id="def-upper-lower-sum-1-1-5">
 \begin{align*}
-m_k \amp \defn \inf\set{f(x)}{t_{k-1} \leq x \leq t_k} \amp \\
-M_k \amp \defn \sup\set{f(x)}{t_{k-1} \leq x \leq t_k} 
+m_k \amp \defn \inf\set{f(x)}{x_{k-1} \leq x \leq x_k} \amp \\
+M_k \amp \defn \sup\set{f(x)}{x_{k-1} \leq x \leq x_k} 
 \end{align*}
 </div>
 <div class="para">for each <span class="process-math">\(1 \leq k \leq N\text{.}\)</span>
@@ -284,7 +290,7 @@ M_k \amp \defn \sup\set{f(x)}{t_{k-1} \leq x \leq t_k}
 <div class="para">The <dfn class="terminology">lower sum</dfn> of <span class="process-math">\(f\)</span> with respect to <span class="process-math">\(P\)</span> is</div>
 <div class="displaymath process-math">
 \begin{equation*}
-L(f,P) \defn \sum_{k=1}^N m_k(t_k-t_{k_1})\text{.}
+L(f,P) \defn \sum_{k=1}^N m_k(x_k-x_{k_1})\text{.}
 \end{equation*}
 </div>
 </div></li>
@@ -292,13 +298,13 @@ L(f,P) \defn \sum_{k=1}^N m_k(t_k-t_{k_1})\text{.}
 <div class="para">The <dfn class="terminology">upper sum</dfn> of <span class="process-math">\(f\)</span> with respect to <span class="process-math">\(P\)</span> is</div>
 <div class="displaymath process-math">
 \begin{equation*}
-U(f,P) \defn \sum_{k=1}^N M_k(t_k-t_{k_1})\text{.}
+U(f,P) \defn \sum_{k=1}^N M_k(x_k-x_{k_1})\text{.}
 \end{equation*}
 </div>
 </div></li>
 </ol>
 </div></article><article class="observation remark-like" id="observ-area-undergraph-sums"><h3 class="heading">
-<span class="type">Observation</span><span class="space"> </span><span class="codenumber">1.3.6</span><span class="period">.</span>
+<span class="type">Observation</span><span class="space"> </span><span class="codenumber">1.3.7</span><span class="period">.</span>
 </h3>
 <div class="para logical" id="observ-area-undergraph-sums-1">
 <div class="para">Let <span class="process-math">\(f\)</span> be a bounded real-valued function on a closed interval <span class="process-math">\([a,b]\)</span> such that <span class="process-math">\(f(x) \geq 0\)</span> for all <span class="process-math">\(a \leq x \leq \text{.}\)</span> Assume that its <dfn class="terminology">undergraph</dfn>
@@ -316,43 +322,43 @@ L(f,P) \leq \Area(U_f) \leq U(f,P)
 </div>
 <div class="para">for every partition <span class="process-math">\(P\)</span> of <span class="process-math">\([a,b]\text{.}\)</span>
 </div>
-</div></article><article class="example example-like" id="sec-upper-lower-int-12"><h3 class="heading">
-<span class="type">Example</span><span class="space"> </span><span class="codenumber">1.3.7</span><span class="period">.</span>
+</div></article><article class="example example-like" id="sec-upper-lower-int-13"><h3 class="heading">
+<span class="type">Example</span><span class="space"> </span><span class="codenumber">1.3.8</span><span class="period">.</span>
 </h3>
-<div class="para logical" id="sec-upper-lower-int-12-1">
-<div class="para">Let <span class="process-math">\(f\)</span> be the function on <span class="process-math">\([1,2]\)</span> given by <span class="process-math">\(f(x) \defn \frac{1}{x^2}\text{.}\)</span> Consider the partition <span class="process-math">\(P_2 = (t_0,t_1,t_2)\)</span> of <span class="process-math">\([1,2]\)</span> defined by <a href="sec-upper-lower-int.html#ex-partition-equal" class="xref" data-knowl="./knowl/xref/ex-partition-equal.html" data-reveal-label="Reveal" data-close-label="Close" title="Example 1.3.2">Example 1.3.2</a>, so that <span class="process-math">\(t_0 = 1\text{,}\)</span> <span class="process-math">\(t_1 = 1 + 1\cdot \frac{2-1}{2} = \frac{3}{2}\text{,}\)</span> and <span class="process-math">\(t_2 = 2\text{.}\)</span> Since <span class="process-math">\(f\)</span> is decreasing on <span class="process-math">\([1,2]\text{,}\)</span> it follows that</div>
+<div class="para logical" id="sec-upper-lower-int-13-1">
+<div class="para">Let <span class="process-math">\(f\)</span> be the function on <span class="process-math">\([1,2]\)</span> given by <span class="process-math">\(f(x) \defn \frac{1}{x^2}\text{.}\)</span> Consider the partition <span class="process-math">\(P_2 = (x_0,x_1,x_2)\)</span> of <span class="process-math">\([1,2]\)</span> defined by <a href="sec-upper-lower-int.html#ex-partition-equal" class="xref" data-knowl="./knowl/xref/ex-partition-equal.html" data-reveal-label="Reveal" data-close-label="Close" title="Example 1.3.2">Example 1.3.2</a>, so that <span class="process-math">\(x_0 = 1\text{,}\)</span> <span class="process-math">\(x_1 = 1 + 1\cdot \frac{2-1}{2} = \frac{3}{2}\text{,}\)</span> and <span class="process-math">\(x_2 = 2\text{.}\)</span> Since <span class="process-math">\(f\)</span> is decreasing on <span class="process-math">\([1,2]\text{,}\)</span> it follows that</div>
 <div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/ex-partition-equal.html ./knowl/xref/observ-area-undergraph-sums.html">
 \begin{equation*}
-m_k \defn \inf\set{\frac{1}{x^2}}{t_{k-1} \leq x \leq t_k} = \min\set{\frac{1}{x^2}}{t_{k-1} \leq x \leq t_k} = \frac{1}{t_{k}^2}
+m_k \defn \inf\set{\frac{1}{x^2}}{x_{k-1} \leq x \leq x_k} = \min\set{\frac{1}{x^2}}{x_{k-1} \leq x \leq x_k} = \frac{1}{x_{k}^2}
 \end{equation*}
 </div>
 <div class="para">and</div>
 <div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/ex-partition-equal.html ./knowl/xref/observ-area-undergraph-sums.html">
 \begin{equation*}
-M_k \defn \sup\set{\frac{1}{x^2}}{t_{k-1} \leq x \leq t_k} = \max\set{\frac{1}{x^2}}{t_{k-1} \leq x \leq t_k} = \frac{1}{t_{k-1}^2}
+M_k \defn \sup\set{\frac{1}{x^2}}{x_{k-1} \leq x \leq x_k} = \max\set{\frac{1}{x^2}}{x_{k-1} \leq x \leq x_k} = \frac{1}{x_{k-1}^2}
 \end{equation*}
 </div>
 <div class="para">for <span class="process-math">\(k=0,1,2\text{.}\)</span> Hence,</div>
-<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/ex-partition-equal.html ./knowl/xref/observ-area-undergraph-sums.html" id="sec-upper-lower-int-12-1-15">
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/ex-partition-equal.html ./knowl/xref/observ-area-undergraph-sums.html" id="sec-upper-lower-int-13-1-15">
 \begin{align*}
-L(f,P_2) \amp \defn \sum_{k=1}^2 m_k (t_k-t_{k-1})\\
-\amp = \frac{1}{t_1^2}(t_1-t_0) + \frac{1}{t_2^2}(t_2-t_1) \\
+L(f,P_2) \amp \defn \sum_{k=1}^2 m_k (x_k-x_{k-1})\\
+\amp = \frac{1}{x_1^2}(x_1-x_0) + \frac{1}{x_2^2}(x_2-x_1) \\
 \amp = \frac{1}{(3/2)^2}(\tfrac{3}{2}-1) + \frac{1}{2^2}(2-\tfrac{3}{2})\\
 \amp = \frac{4}{9} \cdot \frac{1}{2} + \frac{1}{4} \cdot \frac{1}{2}\\
 \amp =\frac{25}{72}
 \end{align*}
 </div>
 <div class="para">and</div>
-<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/ex-partition-equal.html ./knowl/xref/observ-area-undergraph-sums.html" id="sec-upper-lower-int-12-1-16">
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/ex-partition-equal.html ./knowl/xref/observ-area-undergraph-sums.html" id="sec-upper-lower-int-13-1-16">
 \begin{align*}
-U(f,P_2) \amp \defn \sum_{k=1}^2 M_k (t_k-t_{k-1})\\
-\amp = \frac{1}{t_0^2}(t_1-t_0) + \frac{1}{t_1^2}(t_2-t_1) \\
+U(f,P_2) \amp \defn \sum_{k=1}^2 M_k (x_k-x_{k-1})\\
+\amp = \frac{1}{x_0^2}(x_1-x_0) + \frac{1}{x_1^2}(x_2-x_1) \\
 \amp = \frac{1}{1^2}(\tfrac{3}{2}-1) + \frac{1}{(3/2)^2}(2-\tfrac{3}{2})\\
 \amp = 1 \cdot \frac{1}{2} + \frac{4}{9} \cdot \frac{1}{2}\\
 \amp =\frac{13}{18}\text{.}
 \end{align*}
 </div>
-<div class="para">Thus, by <a href="sec-upper-lower-int.html#observ-area-undergraph-sums" class="xref" data-knowl="./knowl/xref/observ-area-undergraph-sums.html" data-reveal-label="Reveal" data-close-label="Close" title="Observation 1.3.6">Observation 1.3.6</a>, the area of the undergraph <span class="process-math">\(U_f\)</span> (assuming it’s well-defined) can be estimated from below and above by</div>
+<div class="para">Thus, by <a href="sec-upper-lower-int.html#observ-area-undergraph-sums" class="xref" data-knowl="./knowl/xref/observ-area-undergraph-sums.html" data-reveal-label="Reveal" data-close-label="Close" title="Observation 1.3.7">Observation 1.3.7</a>, the area of the undergraph <span class="process-math">\(U_f\)</span> (assuming it’s well-defined) can be estimated from below and above by</div>
 <div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/ex-partition-equal.html ./knowl/xref/observ-area-undergraph-sums.html">
 \begin{equation*}
 \frac{25}{72} \leq \Area(U_f) \leq \frac{13}{18}\text{,}
@@ -361,10 +367,10 @@ U(f,P_2) \amp \defn \sum_{k=1}^2 M_k (t_k-t_{k-1})\\
 <div class="para">where <span class="process-math">\(\frac{25}{72} \approx 0.347\)</span> and <span class="process-math">\(\frac{13}{18}\approx 0.722\text{.}\)</span>
 </div>
 </div></article><article class="example example-like" id="ex-parabola-sums"><h3 class="heading">
-<span class="type">Example</span><span class="space"> </span><span class="codenumber">1.3.8</span><span class="period">.</span>
+<span class="type">Example</span><span class="space"> </span><span class="codenumber">1.3.9</span><span class="period">.</span>
 </h3>
 <div class="para logical" id="ex-parabola-sums-1">
-<div class="para">Let <span class="process-math">\(f\)</span> be the function on <span class="process-math">\([0,1]\)</span> given by <span class="process-math">\(f(x) \defn x^2\text{.}\)</span> Let <span class="process-math">\(N \in \N\)</span> be given, and let <span class="process-math">\(P_N = (t_0,t_1,\dotsc,t_N)\)</span> be the partition of <span class="process-math">\([0,1]\)</span> defined by <a href="sec-upper-lower-int.html#ex-partition-equal" class="xref" data-knowl="./knowl/xref/ex-partition-equal.html" data-reveal-label="Reveal" data-close-label="Close" title="Example 1.3.2">Example 1.3.2</a>, so that <span class="process-math">\(t_k = 0 + k \cdot \frac{1-0}{N} = \frac{k}{N}\)</span> for all <span class="process-math">\(0 \leq k \leq N\text{.}\)</span> Since <span class="process-math">\(f\)</span> is strictly increasing on <span class="process-math">\([0,1]\text{,}\)</span>
+<div class="para">Let <span class="process-math">\(f\)</span> be the function on <span class="process-math">\([0,1]\)</span> given by <span class="process-math">\(f(x) \defn x^2\text{.}\)</span> Let <span class="process-math">\(N \in \N\)</span> be given, and let <span class="process-math">\(P_N = (x_0,x_1,\dotsc,x_N)\)</span> be the partition of <span class="process-math">\([0,1]\)</span> defined by <a href="sec-upper-lower-int.html#ex-partition-equal" class="xref" data-knowl="./knowl/xref/ex-partition-equal.html" data-reveal-label="Reveal" data-close-label="Close" title="Example 1.3.2">Example 1.3.2</a>, so that <span class="process-math">\(x_k = 0 + k \cdot \frac{1-0}{N} = \frac{k}{N}\)</span> for all <span class="process-math">\(0 \leq k \leq N\text{.}\)</span> Since <span class="process-math">\(f\)</span> is strictly increasing on <span class="process-math">\([0,1]\text{,}\)</span>
 </div>
 <div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/ex-partition-equal.html ./knowl/xref/lem-area-parabola-summed.html ./knowl/xref/observ-area-undergraph-sums.html ./knowl/xref/lem-area-parabola-summed.html" id="ex-parabola-sums-1-12">
 \begin{align*}
@@ -384,59 +390,74 @@ M_k \amp \defn \sup\set{x^2}{\frac{k-1}{N} \leq x \leq \frac{k}{N}} \\
 <div class="para">for all <span class="process-math">\(1 \leq k \leq N\text{.}\)</span> Thus, by the proof of <a href="sec-prob-area.html#lem-area-parabola-summed" class="xref" data-knowl="./knowl/xref/lem-area-parabola-summed.html" data-reveal-label="Reveal" data-close-label="Close" title="Lemma 1.1.13">Lemma 1.1.13</a>, it follows that</div>
 <div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/ex-partition-equal.html ./knowl/xref/lem-area-parabola-summed.html ./knowl/xref/observ-area-undergraph-sums.html ./knowl/xref/lem-area-parabola-summed.html">
 \begin{equation*}
-L(f,P_N) \defn \sum_{k=1}^N m_k(t_k-t_{k-1}) = \sum_{k=1}^N \frac{(k-1)^2}{N^2}  \frac{1}{N} = \frac{1}{3} - \frac{1}{2N} + \frac{1}{6N^2}
+L(f,P_N) \defn \sum_{k=1}^N m_k(x_k-x_{k-1}) = \sum_{k=1}^N \frac{(k-1)^2}{N^2}  \frac{1}{N} = \frac{1}{3} - \frac{1}{2N} + \frac{1}{6N^2}
 \end{equation*}
 </div>
 <div class="para">and</div>
 <div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/ex-partition-equal.html ./knowl/xref/lem-area-parabola-summed.html ./knowl/xref/observ-area-undergraph-sums.html ./knowl/xref/lem-area-parabola-summed.html">
 \begin{equation*}
-U(f,P_N) \defn \sum_{k=1}^N M_k(t_k-t_{k-1}) = \sum_{k=1}^N \frac{k^2}{N^2} \frac{1}{N} = \frac{1}{3} + \frac{1}{2N} + \frac{1}{6N^2}\text{.}
+U(f,P_N) \defn \sum_{k=1}^N M_k(x_k-x_{k-1}) = \sum_{k=1}^N \frac{k^2}{N^2} \frac{1}{N} = \frac{1}{3} + \frac{1}{2N} + \frac{1}{6N^2}\text{.}
 \end{equation*}
 </div>
-<div class="para">By combining these calculations with <a href="sec-upper-lower-int.html#observ-area-undergraph-sums" class="xref" data-knowl="./knowl/xref/observ-area-undergraph-sums.html" data-reveal-label="Reveal" data-close-label="Close" title="Observation 1.3.6">Observation 1.3.6</a>, we recover the estimates of <a href="sec-prob-area.html#lem-area-parabola-summed" class="xref" data-knowl="./knowl/xref/lem-area-parabola-summed.html" data-reveal-label="Reveal" data-close-label="Close" title="Lemma 1.1.13">Lemma 1.1.13</a>.</div>
-</div></article><article class="lemma theorem-like" id="lem-upper-lower-sums-bounded"><h3 class="heading">
-<span class="type">Lemma</span><span class="space"> </span><span class="codenumber">1.3.9</span><span class="period">.</span>
+<div class="para">By combining these calculations with <a href="sec-upper-lower-int.html#observ-area-undergraph-sums" class="xref" data-knowl="./knowl/xref/observ-area-undergraph-sums.html" data-reveal-label="Reveal" data-close-label="Close" title="Observation 1.3.7">Observation 1.3.7</a>, we recover the estimates of <a href="sec-prob-area.html#lem-area-parabola-summed" class="xref" data-knowl="./knowl/xref/lem-area-parabola-summed.html" data-reveal-label="Reveal" data-close-label="Close" title="Lemma 1.1.13">Lemma 1.1.13</a>.</div>
+</div></article><article class="proposition theorem-like" id="prop-upper-lower-sums-properties"><h3 class="heading">
+<span class="type">Proposition</span><span class="space"> </span><span class="codenumber">1.3.10</span><span class="period">.</span>
 </h3>
-<div class="para logical" id="lem-upper-lower-sums-bounded-1-1">
-<div class="para">Let <span class="process-math">\(f\)</span> be a bounded real-valued function on a closed interval <span class="process-math">\([a,b]\text{.}\)</span> The set</div>
+<div class="para logical" id="prop-upper-lower-sums-properties-1-1">
+<div class="para">Let <span class="process-math">\(f\)</span> be a bounded real-valued function on a closed interval <span class="process-math">\([a,b]\text{.}\)</span>
+</div>
+<ol class="decimal" id="prop-upper-lower-sums-properties-1-1-3">
+<li id="item-upper-lower-sums-inequality"><div class="para" id="item-upper-lower-sums-inequality-1">Let <span class="process-math">\(P\)</span> be a partition of <span class="process-math">\([a,b]\text{.}\)</span> Then <span class="process-math">\(L(f,P) \leq U(f,P)\text{.}\)</span>
+</div></li>
+<li id="item-upper-lower-sums-refinement"><div class="para logical" id="item-upper-lower-sums-refinement-1">
+<div class="para">Let <span class="process-math">\(P\)</span> and <span class="process-math">\(P'\)</span> be partitions of <span class="process-math">\([a,b]\text{.}\)</span> Suppose that <span class="process-math">\(P'\)</span> can be obtained from <span class="process-math">\(P\)</span> by including additional points (i.e., <span class="process-math">\(P'\)</span> is a <dfn class="terminology">refinement</dfn> of <span class="process-math">\(P\)</span>). Then</div>
 <div class="displaymath process-math">
 \begin{equation*}
-\mathcal{L}(f) \defn \set{L(f,P)}{P \text{ is a partition of }[a,b]}
+L(f,P) \leq L(f,P') \leq U(f,P') \leq U(f,P)\text{.}
 \end{equation*}
 </div>
-<div class="para">is non-empty and bounded above, and the set</div>
-<div class="displaymath process-math">
+</div></li>
+<li id="item-upper-sums-bound-lower-sums"><div class="para" id="item-upper-sums-bound-lower-sums-1">Let <span class="process-math">\(P\)</span> and <span class="process-math">\(P'\)</span> be partitions of <span class="process-math">\([a,b]\text{.}\)</span> Then <span class="process-math">\(L(f,P) \leq U(f,P')\text{.}\)</span>
+</div></li>
+</ol>
+</div></article><article class="proof" id="prop-upper-lower-sums-properties-2"><h3 class="heading"><span class="type">Proof<span class="period">.</span></span></h3>
+<div class="para logical" id="prop-upper-lower-sums-properties-2-1">
+<div class="para">Let us first prove <a href="sec-upper-lower-int.html#item-upper-lower-sums-inequality" class="xref" data-knowl="./knowl/xref/item-upper-lower-sums-inequality.html" data-reveal-label="Reveal" data-close-label="Close" title="Item 1">Item 1</a> Let <span class="process-math">\(P = (x_0,x_1,\dotsc,x_N)\)</span> be a partition of <span class="process-math">\([a,b]\text{.}\)</span> Given <span class="process-math">\(1 \leq k \leq N\text{,}\)</span> since</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/item-upper-lower-sums-inequality.html">
 \begin{equation*}
-\mathcal{U}(f) \defn \set{U(f,P)}{P \text{ is a partition of }[a,b]}
+m_k = \inf\set{f(x)}{x_{k-1} \leq x \leq x_k} \leq f(x_{k-1}) \leq \sup\set{f(x)}{x_{k-1}\leq x\leq x_k} = M_k\text{,}
 \end{equation*}
 </div>
-<div class="para">is non-empty and bounded below.</div>
-</div></article><article class="proof" id="lem-upper-lower-sums-bounded-2"><h3 class="heading"><span class="type">Proof<span class="period">.</span></span></h3>
-<div class="para logical" id="lem-upper-lower-sums-bounded-2-1">
-<div class="para">Let us prove that <span class="process-math">\(\mathcal{L}(f)\)</span> is non-empty and bounded above; the proof that <span class="process-math">\(\mathcal{U}(f)\)</span> is non-empty and bounded below will be qualitatively identical. For later convenience, let</div>
-<div class="displaymath process-math" id="lem-upper-lower-sums-bounded-2-1-3">
+<div class="para">it follows that <span class="process-math">\(m_k \leq M_k\text{.}\)</span> Thus,</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/item-upper-lower-sums-inequality.html">
+\begin{equation*}
+L(f,P) = \sum_{k=1}^N m_k (x_k-x_{k-1}) \leq \sum_{k=1}^N M_k(x_k-x_{k-1}) = U(f,P)\text{.}
+\end{equation*}
+</div>
+</div>
+<div class="para" id="prop-upper-lower-sums-properties-2-2">Next, let us sketch the proof of <a href="sec-upper-lower-int.html#item-upper-lower-sums-refinement" class="xref" data-knowl="./knowl/xref/item-upper-lower-sums-refinement.html" data-reveal-label="Reveal" data-close-label="Close" title="Item 2">Item 2</a>. The general case is a tedious application of the special case where <span class="process-math">\(P = (a,b)\)</span> and where <span class="process-math">\(P' = (x_0^\prime,\dotsc,x_N^\prime)\)</span> is any other partition. We’ll show that <span class="process-math">\(U(f,P') \leq U(f,P)\text{;}\)</span> the argument that <span class="process-math">\(L(f,P) \leq L(f,P')\)</span> will be qualitatively identical.</div>
+<div class="para logical" id="prop-upper-lower-sums-properties-2-3">
+<div class="para">For each <span class="process-math">\(1 \leq k \leq N\text{,}\)</span> let <span class="process-math">\(M_k^\prime \defn \sup\set{f(x)}{x_{k-1}^\prime \leq x \leq x_k^\prime}\text{,}\)</span> so that <span class="process-math">\(U(f,P') = \sum_{k=1}^N M_k^\prime(x_k^\prime-x_{k-1}^\prime)\text{;}\)</span> let <span class="process-math">\(M \defn \sup{f(x)}{a\leq x \leq b}\text{,}\)</span> so that <span class="process-math">\(U(f,P) = M(b-a)\text{.}\)</span> Given <span class="process-math">\(1 \leq k \leq \text{,}\)</span> since <span class="process-math">\(f(x) \leq \sup{f(x)}{a\leq x \leq b} = M\)</span> for all <span class="process-math">\(x \in [x_{k-1}^\prime,x_k^\prime]\text{,}\)</span> it follows that</div>
+<div class="displaymath process-math" id="prop-upper-lower-sums-properties-2-3-9">
 \begin{align*}
-m \amp \defn \inf\set{f(x)}{a \leq x \leq b}\\
-M \amp \defn \sup\set{f(x)}{a \leq x \leq b}\text{.}
+U(f,P') \amp \defn \sum_{k=1}^N M_k^\prime(x_k^\prime-x_k-1^\prime) \\
+\amp \leq \sum_{k=1}^N M(x_k^\prime-x_{k-1}^\prime) \\
+\amp = M\sum_{k=1}^N(x_k^\prime-x_{k-1}^\prime)\\
+\amp = M(b-a) \\
+\amp = U(f,P) \text{.}
 \end{align*}
 </div>
 </div>
-<div class="para" id="lem-upper-lower-sums-bounded-2-2">Let us first show that <span class="process-math">\(\mathcal{L}(f)\)</span> is non-empty. Observe that <span class="process-math">\(P \defn (a,b)\)</span> is a valid partition of <span class="process-math">\([a,b]\)</span> with lower sum <span class="process-math">\(L(f,P) = m(b-a)\text{.}\)</span> Thus, <span class="process-math">\(m(b-a) \in \mathcal{L}(f)\text{.}\)</span>
+<div class="para logical" id="prop-upper-lower-sums-properties-2-4">
+<div class="para">Finally, let us prove <a href="sec-upper-lower-int.html#item-upper-sums-bound-lower-sums" class="xref" data-knowl="./knowl/xref/item-upper-sums-bound-lower-sums.html" data-reveal-label="Reveal" data-close-label="Close" title="Item 3">Item 3</a>. Let <span class="process-math">\(P\)</span> and <span class="process-math">\(P'\)</span> be partitions of <span class="process-math">\([a,b]\text{.}\)</span> Let <span class="process-math">\(P^{\prime\prime}\)</span> be the partition of <span class="process-math">\([a,b]\)</span> obtained by merging the lists <span class="process-math">\(P\)</span> and <span class="process-math">\(P'\text{.}\)</span> Then <span class="process-math">\(P^{\prime\prime}\)</span> is a refinement of both <span class="process-math">\(P\)</span> and <span class="process-math">\(P'\text{,}\)</span> so that</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/item-upper-sums-bound-lower-sums.html ./knowl/xref/item-upper-lower-sums-inequality.html ./knowl/xref/item-upper-lower-sums-refinement.html">
+\begin{equation*}
+L(f,P) \leq L(f,P^{\prime\prime}) \leq U(f,P^{\prime\prime}) \leq U(f,P)
+\end{equation*}
 </div>
-<div class="para logical" id="lem-upper-lower-sums-bounded-2-3">
-<div class="para">Let us now show that <span class="process-math">\(\mathcal{L}(f)\)</span> is non-empty. Let <span class="process-math">\(P = (t_0,t_1,\dotsc,t_N)\)</span> be a partition of <span class="process-math">\([a,b]\text{.}\)</span> Given <span class="process-math">\(1 \leq k \leq N\text{,}\)</span> note that <span class="process-math">\(m_k \leq f(x) \leq M\)</span> for all <span class="process-math">\(t_{k-1}\leq x \leq t_k\text{,}\)</span> so that <span class="process-math">\(m_k \leq M\text{.}\)</span> Thus,</div>
-<div class="displaymath process-math" id="lem-upper-lower-sums-bounded-2-3-8">
-\begin{align*}
-L(f,P) \amp \defn \sum_{k=1}^N m_k(t_k-t_k-1) \\
-\amp \leq \sum_{k=1}^N M(t_k-t_{k-1}) \\
-\amp = M\sum_{k=1}^N(t_k-t_{k-1})\\
-\amp = M(b-a) \text{.}
-\end{align*}
-</div>
-<div class="para">Since the partition <span class="process-math">\(P\)</span> of <span class="process-math">\([a,b]\)</span> was freely chosen, it follows that <span class="process-math">\(L(f,P) \leq M(b-a)\)</span> for all partitions <span class="process-math">\(P\)</span> of <span class="process-math">\([a,b]\text{,}\)</span> so that <span class="process-math">\(M(b-a)\)</span> is an upper bound for <span class="process-math">\(\mathcal{L}(f)\text{.}\)</span>
-</div>
+<div class="para">by <a href="sec-upper-lower-int.html#item-upper-lower-sums-inequality" class="xref" data-knowl="./knowl/xref/item-upper-lower-sums-inequality.html" data-reveal-label="Reveal" data-close-label="Close" title="Item 1">Item 1</a> and <a href="sec-upper-lower-int.html#item-upper-lower-sums-refinement" class="xref" data-knowl="./knowl/xref/item-upper-lower-sums-refinement.html" data-reveal-label="Reveal" data-close-label="Close" title="Item 2">Item 2</a>.</div>
 </div></article><article class="definition definition-like" id="def-upper-lower-int"><h3 class="heading">
-<span class="type">Definition</span><span class="space"> </span><span class="codenumber">1.3.10</span><span class="period">.</span>
+<span class="type">Definition</span><span class="space"> </span><span class="codenumber">1.3.11</span><span class="period">.</span>
 </h3>
 <div class="para logical" id="def-upper-lower-int-1-1">
 <div class="para">Let <span class="process-math">\(f\)</span> be a bounded real-valued function on a closed interval <span class="process-math">\([a,b]\text{.}\)</span>
@@ -459,7 +480,77 @@ L(f,P) \amp \defn \sum_{k=1}^N m_k(t_k-t_k-1) \\
 </div>
 </div></li>
 </ol>
-</div></article><div class="para" id="sec-upper-lower-int-16">To say anything more, we’ll need the machinery of <a href="sec-integrability.html" class="internal" title="Section 1.4: Integrability and integration">Section 1.4</a>.</div></section></div>
+</div></article><article class="theorem theorem-like" id="thm-upper-lower-integrals"><h3 class="heading">
+<span class="type">Theorem</span><span class="space"> </span><span class="codenumber">1.3.12</span><span class="period">.</span>
+</h3>
+<div class="para logical" id="thm-upper-lower-integrals-1-1">
+<div class="para">Let <span class="process-math">\(f\)</span> be a bounded real-valued function on a closed interval <span class="process-math">\([a,b]\text{.}\)</span> Then its lower integral <span class="process-math">\(\Lint{a}{b}f\)</span> and upper integral <span class="process-math">\(\Uint{a}{b}f\)</span> both exist and satisfy</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\Lint{a}{b}f \leq \Uint{a}{b}f\text{.}
+\end{equation*}
+</div>
+</div></article><article class="proof" id="thm-upper-lower-integrals-2"><h3 class="heading"><span class="type">Proof<span class="period">.</span></span></h3>
+<div class="para" id="thm-upper-lower-integrals-2-1">Let <span class="process-math">\(\cL(f)\)</span> be the set of all lower sums of <span class="process-math">\(f\)</span> with respect to partitions of <span class="process-math">\([a,b]\text{.}\)</span> On the one hand, it is non-empty since it contains <span class="process-math">\(L(f,P)\)</span> for <span class="process-math">\(P = (a,b)\text{.}\)</span> On the other hand, if <span class="process-math">\(P\)</span> is any partition of <span class="process-math">\([a,b]\text{,}\)</span> then <span class="process-math">\(U(f,P)\)</span> is an upper bound for <span class="process-math">\(\cL(f,P)\)</span> by <a href="sec-upper-lower-int.html#item-upper-sums-bound-lower-sums" class="xref" data-knowl="./knowl/xref/item-upper-sums-bound-lower-sums.html" data-reveal-label="Reveal" data-close-label="Close" title="Item 3">Item 3</a>. Thus, <span class="process-math">\(\Lint{a}{b}f \defn \sup\cL(f)\)</span> exists. A qualitatively identical argument shows that <span class="process-math">\(\Uint{a}{b}f = \sup\cU(f)\)</span> exists, where <span class="process-math">\(\cU(f)\)</span> is the set of all upper sums of <span class="process-math">\(f\)</span> with respect to partitions of <span class="process-math">\([a,b]\text{.}\)</span>
+</div>
+<div class="para logical" id="thm-upper-lower-integrals-2-2">
+<div class="para">Let us now show that <span class="process-math">\(\Lint{a}{b}f \leq \Uint{a}{b}f\text{.}\)</span> Let <span class="process-math">\(P\)</span> be any partition of <span class="process-math">\([a,b]\text{.}\)</span> Recall that <span class="process-math">\(U(f,P)\)</span> is an upper bound for <span class="process-math">\(\cL(f)\)</span> by <a href="sec-upper-lower-int.html#item-upper-sums-bound-lower-sums" class="xref" data-knowl="./knowl/xref/item-upper-sums-bound-lower-sums.html" data-reveal-label="Reveal" data-close-label="Close" title="Item 3">Item 3</a>, so that</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/item-upper-sums-bound-lower-sums.html">
+\begin{equation*}
+U(f,P) \geq \sup\cL(f,P) = \Lint{a}{b}f\text{.}
+\end{equation*}
+</div>
+<div class="para">However, this shows that <span class="process-math">\(\Lint{a}{b}f\)</span> is a lower bound for <span class="process-math">\(\cU(f)\text{,}\)</span> so that</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/item-upper-sums-bound-lower-sums.html">
+\begin{equation*}
+\Lint{a}{b}f \leq \inf\cU(f) = \Uint{a}{b}f\text{.}
+\end{equation*}
+</div>
+</div></article><article class="example example-like" id="ex-parabola-upper-lower-int"><h3 class="heading">
+<span class="type">Example</span><span class="space"> </span><span class="codenumber">1.3.13</span><span class="period">.</span>
+</h3>
+<div class="para logical" id="ex-parabola-upper-lower-int-1">
+<div class="para">Let’s continue from <a href="sec-upper-lower-int.html#ex-parabola-sums" class="xref" data-knowl="./knowl/xref/ex-parabola-sums.html" data-reveal-label="Reveal" data-close-label="Close" title="Example 1.3.9">Example 1.3.9</a>. Recall that <span class="process-math">\(f\)</span> is defined on <span class="process-math">\([0,1]\)</span> by <span class="process-math">\(f(x) \defn x^2\text{.}\)</span> On the one hand, for each <span class="process-math">\(N \in \N\text{,}\)</span>
+</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/ex-parabola-sums.html ./knowl/xref/thm-upper-lower-integrals.html ./knowl/xref/thm-area-parabola.html">
+\begin{equation*}
+\frac{1}{3} - \frac{1}{2N} + \frac{1}{6N^2} = L(f,P_N) \leq \Lint{0}{1} f\text{,}
+\end{equation*}
+</div>
+<div class="para">so that</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/ex-parabola-sums.html ./knowl/xref/thm-upper-lower-integrals.html ./knowl/xref/thm-area-parabola.html">
+\begin{equation*}
+\frac{1}{3} = \sup\set{\frac{1}{3} - \frac{1}{2N} + \frac{1}{6N^2}}{N \in \N} \leq \Lint{0}{1} f\text{.}
+\end{equation*}
+</div>
+<div class="para">On the other hand, for each <span class="process-math">\(N \in \N\text{,}\)</span>
+</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/ex-parabola-sums.html ./knowl/xref/thm-upper-lower-integrals.html ./knowl/xref/thm-area-parabola.html">
+\begin{equation*}
+\frac{1}{3} + \frac{1}{2N} + \frac{1}{6N^2} = U(f,P_N) \geq \Uint{0}{1} f\text{,}
+\end{equation*}
+</div>
+<div class="para">so that</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/ex-parabola-sums.html ./knowl/xref/thm-upper-lower-integrals.html ./knowl/xref/thm-area-parabola.html">
+\begin{equation*}
+\frac{1}{3} = \inf\set{\frac{1}{3} + \frac{1}{2N} + \frac{1}{6N^2}}{N \in \N} \geq \Lint{0}{1} f\text{.}
+\end{equation*}
+</div>
+<div class="para">Hence, by <a href="sec-upper-lower-int.html#thm-upper-lower-integrals" class="xref" data-knowl="./knowl/xref/thm-upper-lower-integrals.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 1.3.12">Theorem 1.3.12</a>,</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/ex-parabola-sums.html ./knowl/xref/thm-upper-lower-integrals.html ./knowl/xref/thm-area-parabola.html">
+\begin{equation*}
+\frac{1}{3} \leq \Lint{0}{1}f \leq \Uint{0}{1}f \leq \frac{1}{3}\text{,}
+\end{equation*}
+</div>
+<div class="para">so that</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/ex-parabola-sums.html ./knowl/xref/thm-upper-lower-integrals.html ./knowl/xref/thm-area-parabola.html">
+\begin{equation*}
+\Lint{0}{1}f = \frac{1}{3} = \Uint{0}{1}f\text{.}
+\end{equation*}
+</div>
+<div class="para">This turns out to be a rigorous proof that the area of the planar region <span class="process-math">\(U\)</span> of <a href="sec-prob-area.html#thm-area-parabola" class="xref" data-knowl="./knowl/xref/thm-area-parabola.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 1.1.1">Theorem 1.1.1</a> is both well-defined and equal to <span class="process-math">\(\frac{1}{3}\text{.}\)</span>
+</div>
+</div></article></section></div>
 <div class="ptx-content-footer">
 <a class="previous-button button" href="sec-suprema.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="top-button button" href="#" title="Top"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Top</span></a><a class="next-button button" href="sec-integrability.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a>
 </div></main>

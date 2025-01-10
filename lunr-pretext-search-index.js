@@ -492,8 +492,8 @@ var ptx_lunr_docs = [
   "url": "sec-upper-lower-int.html",
   "type": "Section",
   "number": "1.3",
-  "title": "Upper and lower sums",
-  "body": " Upper and lower sums  Let's revisit the proof of , where we showed that the planar region must have area . Using the machinery of , we can now recast our proof into a robustly generalizable form.     First, in , we systematically approximated from within and without by simpler regions contructed from rectangles, which let us prove the area estimates of , , for every .    Next, observe that is both an upper bound for the set of and a lower bound for the set of . Hence, it follows that .    Finally, since by and , respectively, it follows that . Hence, at last, .     In this section, we'll generalize the first step.    Let . A partition of the closed interval is a finite list of real numbers such that .    We view a partition of an interval as subdividing into subintervals .   Let , and let . Define a partition of by setting for all . Then subdivides into subintervals of equal width .    The partition of the interval .    This figure shows a partition of the interval into five subintervals of equal width.        Let be a real-valued function defined on a closed interval . We say that is bounded on if there exist constants and such that for all .      Let be a bounded real-valued function on a closed interval , let be a partition of , and set for each .   The lower sum of with respect to is .    The upper sum of with respect to is .        Let be a bounded real-valued function on a closed interval such that for all . Assume that its undergraph  has well-defined area (see ). Then for every partition of .    Let be the function on given by . Consider the partition of defined by , so that , , and . Since is decreasing on , it follows that and for . Hence, and . Thus, by , the area of the undergraph (assuming it's well-defined) can be estimated from below and above by , where and .    Let be the function on given by . Let be given, and let be the partition of defined by , so that for all . Since is strictly increasing on , and for all . Thus, by the proof of , it follows that and . By combining these calculations with , we recover the estimates of .     Let be a bounded real-valued function on a closed interval . The set is non-empty and bounded above, and the set is non-empty and bounded below.    Let us prove that is non-empty and bounded above; the proof that is non-empty and bounded below will be qualitatively identical. For later convenience, let .  Let us first show that is non-empty. Observe that is a valid partition of with lower sum . Thus, .  Let us now show that is non-empty. Let be a partition of . Given , note that for all , so that . Thus, . Since the partition of was freely chosen, it follows that for all partitions of , so that is an upper bound for .      Let be a bounded real-valued function on a closed interval .   The lower integral of on is     The upper integral of on is        To say anything more, we'll need the machinery of .   "
+  "title": "Upper and lower integrals",
+  "body": " Upper and lower integrals  Let's revisit the proof of , where we showed that the planar region must have area . Using the machinery of , we can now recast our proof into a robustly generalizable form.     First, in , we systematically approximated from within and without by simpler regions contructed from rectangles, which let us prove the area estimates of , , for every .    Next, observe that is both an upper bound for the set of and a lower bound for the set of . Hence, it follows that .    Finally, since by and , respectively, it follows that . Hence, at last, .     In this section, we'll generalize this process.    Let . A partition of the closed interval is a finite list of real numbers such that .    We view a partition of an interval as subdividing into subintervals .   Let , and let . Define a partition of by setting for all . Then subdivides into subintervals of equal width .    The partition of the interval .    This figure shows a partition of the interval into five subintervals of equal width.       We'll repeatedly use the fact that for any partition of , we have . This is called a telescoping sum .     Let be a real-valued function defined on a closed interval . We say that is bounded on if there exist constants and such that for all .      Let be a bounded real-valued function on a closed interval , let be a partition of , and set for each .   The lower sum of with respect to is .    The upper sum of with respect to is .        Let be a bounded real-valued function on a closed interval such that for all . Assume that its undergraph  has well-defined area (see ). Then for every partition of .    Let be the function on given by . Consider the partition of defined by , so that , , and . Since is decreasing on , it follows that and for . Hence, and . Thus, by , the area of the undergraph (assuming it's well-defined) can be estimated from below and above by , where and .    Let be the function on given by . Let be given, and let be the partition of defined by , so that for all . Since is strictly increasing on , and for all . Thus, by the proof of , it follows that and . By combining these calculations with , we recover the estimates of .     Let be a bounded real-valued function on a closed interval .   Let be a partition of . Then .    Let and be partitions of . Suppose that can be obtained from by including additional points ( , is a refinement of ). Then .    Let and be partitions of . Then .       Let us first prove Let be a partition of . Given , since , it follows that . Thus, .  Next, let us sketch the proof of . The general case is a tedious application of the special case where and where is any other partition. We'll show that ; the argument that will be qualitatively identical.  For each , let , so that ; let , so that . Given , since for all , it follows that .  Finally, let us prove . Let and be partitions of . Let be the partition of obtained by merging the lists and . Then is a refinement of both and , so that by and .      Let be a bounded real-valued function on a closed interval .   The lower integral of on is     The upper integral of on is          Let be a bounded real-valued function on a closed interval . Then its lower integral and upper integral both exist and satisfy .    Let be the set of all lower sums of with respect to partitions of . On the one hand, it is non-empty since it contains for . On the other hand, if is any partition of , then is an upper bound for by . Thus, exists. A qualitatively identical argument shows that exists, where is the set of all upper sums of with respect to partitions of .  Let us now show that . Let be any partition of . Recall that is an upper bound for by , so that . However, this shows that is a lower bound for , so that .     Let's continue from . Recall that is defined on by . On the one hand, for each , , so that . On the other hand, for each , , so that . Hence, by , , so that . This turns out to be a rigorous proof that the area of the planar region of is both well-defined and equal to .   "
 },
 {
   "id": "def-partition",
@@ -523,11 +523,20 @@ var ptx_lunr_docs = [
   "body": " The partition of the interval .    This figure shows a partition of the interval into five subintervals of equal width.     "
 },
 {
+  "id": "sec-upper-lower-int-9",
+  "level": "2",
+  "url": "sec-upper-lower-int.html#sec-upper-lower-int-9",
+  "type": "Remark",
+  "number": "1.3.4",
+  "title": "",
+  "body": " We'll repeatedly use the fact that for any partition of , we have . This is called a telescoping sum .  "
+},
+{
   "id": "def-bounded-function",
   "level": "2",
   "url": "sec-upper-lower-int.html#def-bounded-function",
   "type": "Definition",
-  "number": "1.3.4",
+  "number": "1.3.5",
   "title": "",
   "body": "  Let be a real-valued function defined on a closed interval . We say that is bounded on if there exist constants and such that for all .   "
 },
@@ -536,7 +545,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "sec-upper-lower-int.html#def-upper-lower-sum",
   "type": "Definition",
-  "number": "1.3.5",
+  "number": "1.3.6",
   "title": "",
   "body": "  Let be a bounded real-valued function on a closed interval , let be a partition of , and set for each .   The lower sum of with respect to is .    The upper sum of with respect to is .      "
 },
@@ -545,16 +554,16 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "sec-upper-lower-int.html#observ-area-undergraph-sums",
   "type": "Observation",
-  "number": "1.3.6",
+  "number": "1.3.7",
   "title": "",
   "body": " Let be a bounded real-valued function on a closed interval such that for all . Assume that its undergraph  has well-defined area (see ). Then for every partition of .  "
 },
 {
-  "id": "sec-upper-lower-int-12",
+  "id": "sec-upper-lower-int-13",
   "level": "2",
-  "url": "sec-upper-lower-int.html#sec-upper-lower-int-12",
+  "url": "sec-upper-lower-int.html#sec-upper-lower-int-13",
   "type": "Example",
-  "number": "1.3.7",
+  "number": "1.3.8",
   "title": "",
   "body": " Let be the function on given by . Consider the partition of defined by , so that , , and . Since is decreasing on , it follows that and for . Hence, and . Thus, by , the area of the undergraph (assuming it's well-defined) can be estimated from below and above by , where and .  "
 },
@@ -563,27 +572,45 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "sec-upper-lower-int.html#ex-parabola-sums",
   "type": "Example",
-  "number": "1.3.8",
+  "number": "1.3.9",
   "title": "",
   "body": " Let be the function on given by . Let be given, and let be the partition of defined by , so that for all . Since is strictly increasing on , and for all . Thus, by the proof of , it follows that and . By combining these calculations with , we recover the estimates of .  "
 },
 {
-  "id": "lem-upper-lower-sums-bounded",
+  "id": "prop-upper-lower-sums-properties",
   "level": "2",
-  "url": "sec-upper-lower-int.html#lem-upper-lower-sums-bounded",
-  "type": "Lemma",
-  "number": "1.3.9",
+  "url": "sec-upper-lower-int.html#prop-upper-lower-sums-properties",
+  "type": "Proposition",
+  "number": "1.3.10",
   "title": "",
-  "body": "  Let be a bounded real-valued function on a closed interval . The set is non-empty and bounded above, and the set is non-empty and bounded below.    Let us prove that is non-empty and bounded above; the proof that is non-empty and bounded below will be qualitatively identical. For later convenience, let .  Let us first show that is non-empty. Observe that is a valid partition of with lower sum . Thus, .  Let us now show that is non-empty. Let be a partition of . Given , note that for all , so that . Thus, . Since the partition of was freely chosen, it follows that for all partitions of , so that is an upper bound for .   "
+  "body": "  Let be a bounded real-valued function on a closed interval .   Let be a partition of . Then .    Let and be partitions of . Suppose that can be obtained from by including additional points ( , is a refinement of ). Then .    Let and be partitions of . Then .       Let us first prove Let be a partition of . Given , since , it follows that . Thus, .  Next, let us sketch the proof of . The general case is a tedious application of the special case where and where is any other partition. We'll show that ; the argument that will be qualitatively identical.  For each , let , so that ; let , so that . Given , since for all , it follows that .  Finally, let us prove . Let and be partitions of . Let be the partition of obtained by merging the lists and . Then is a refinement of both and , so that by and .   "
 },
 {
   "id": "def-upper-lower-int",
   "level": "2",
   "url": "sec-upper-lower-int.html#def-upper-lower-int",
   "type": "Definition",
-  "number": "1.3.10",
+  "number": "1.3.11",
   "title": "",
   "body": "  Let be a bounded real-valued function on a closed interval .   The lower integral of on is     The upper integral of on is       "
+},
+{
+  "id": "thm-upper-lower-integrals",
+  "level": "2",
+  "url": "sec-upper-lower-int.html#thm-upper-lower-integrals",
+  "type": "Theorem",
+  "number": "1.3.12",
+  "title": "",
+  "body": "  Let be a bounded real-valued function on a closed interval . Then its lower integral and upper integral both exist and satisfy .    Let be the set of all lower sums of with respect to partitions of . On the one hand, it is non-empty since it contains for . On the other hand, if is any partition of , then is an upper bound for by . Thus, exists. A qualitatively identical argument shows that exists, where is the set of all upper sums of with respect to partitions of .  Let us now show that . Let be any partition of . Recall that is an upper bound for by , so that . However, this shows that is a lower bound for , so that .   "
+},
+{
+  "id": "ex-parabola-upper-lower-int",
+  "level": "2",
+  "url": "sec-upper-lower-int.html#ex-parabola-upper-lower-int",
+  "type": "Example",
+  "number": "1.3.13",
+  "title": "",
+  "body": " Let's continue from . Recall that is defined on by . On the one hand, for each , , so that . On the other hand, for each , , so that . Hence, by , , so that . This turns out to be a rigorous proof that the area of the planar region of is both well-defined and equal to .  "
 },
 {
   "id": "sec-integrability",

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="example example-like"><h3 class="heading">
+<span class="type">Example</span><span class="space"> </span><span class="codenumber">1.3.9</span><span class="period">.</span>
+</h3>
+<div class="para logical">
+<div class="para">Let <span class="process-math">\(f\)</span> be the function on <span class="process-math">\([0,1]\)</span> given by <span class="process-math">\(f(x) \defn x^2\text{.}\)</span> Let <span class="process-math">\(N \in \N\)</span> be given, and let <span class="process-math">\(P_N = (x_0,x_1,\dotsc,x_N)\)</span> be the partition of <span class="process-math">\([0,1]\)</span> defined by <a href="sec-upper-lower-int.html#ex-partition-equal" class="xref" data-knowl="./knowl/xref/ex-partition-equal.html" data-reveal-label="Reveal" data-close-label="Close" title="Example 1.3.2">Example 1.3.2</a>, so that <span class="process-math">\(x_k = 0 + k \cdot \frac{1-0}{N} = \frac{k}{N}\)</span> for all <span class="process-math">\(0 \leq k \leq N\text{.}\)</span> Since <span class="process-math">\(f\)</span> is strictly increasing on <span class="process-math">\([0,1]\text{,}\)</span>
+</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/ex-partition-equal.html ./knowl/xref/lem-area-parabola-summed.html ./knowl/xref/observ-area-undergraph-sums.html ./knowl/xref/lem-area-parabola-summed.html">
+\begin{align*}
+m_k \amp \defn \inf\set{x^2}{\frac{k-1}{N} \leq x \leq \frac{k}{N}} \\
+\amp = \min\set{x^2}{\frac{k-1}{N} \leq x \leq \frac{k}{N}}\\
+\amp = \frac{(k-1)^2}{N^2}
+\end{align*}
+</div>
+<div class="para">and</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/ex-partition-equal.html ./knowl/xref/lem-area-parabola-summed.html ./knowl/xref/observ-area-undergraph-sums.html ./knowl/xref/lem-area-parabola-summed.html">
+\begin{align*}
+M_k \amp \defn \sup\set{x^2}{\frac{k-1}{N} \leq x \leq \frac{k}{N}} \\
+\amp = \max\set{x^2}{\frac{k-1}{N} \leq x \leq \frac{k}{N}}\\
+\amp = \frac{k^2}{N^2}
+\end{align*}
+</div>
+<div class="para">for all <span class="process-math">\(1 \leq k \leq N\text{.}\)</span> Thus, by the proof of <a href="sec-prob-area.html#lem-area-parabola-summed" class="xref" data-knowl="./knowl/xref/lem-area-parabola-summed.html" data-reveal-label="Reveal" data-close-label="Close" title="Lemma 1.1.13">Lemma 1.1.13</a>, it follows that</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/ex-partition-equal.html ./knowl/xref/lem-area-parabola-summed.html ./knowl/xref/observ-area-undergraph-sums.html ./knowl/xref/lem-area-parabola-summed.html">
+\begin{equation*}
+L(f,P_N) \defn \sum_{k=1}^N m_k(x_k-x_{k-1}) = \sum_{k=1}^N \frac{(k-1)^2}{N^2}  \frac{1}{N} = \frac{1}{3} - \frac{1}{2N} + \frac{1}{6N^2}
+\end{equation*}
+</div>
+<div class="para">and</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/ex-partition-equal.html ./knowl/xref/lem-area-parabola-summed.html ./knowl/xref/observ-area-undergraph-sums.html ./knowl/xref/lem-area-parabola-summed.html">
+\begin{equation*}
+U(f,P_N) \defn \sum_{k=1}^N M_k(x_k-x_{k-1}) = \sum_{k=1}^N \frac{k^2}{N^2} \frac{1}{N} = \frac{1}{3} + \frac{1}{2N} + \frac{1}{6N^2}\text{.}
+\end{equation*}
+</div>
+<div class="para">By combining these calculations with <a href="sec-upper-lower-int.html#observ-area-undergraph-sums" class="xref" data-knowl="./knowl/xref/observ-area-undergraph-sums.html" data-reveal-label="Reveal" data-close-label="Close" title="Observation 1.3.7">Observation 1.3.7</a>, we recover the estimates of <a href="sec-prob-area.html#lem-area-parabola-summed" class="xref" data-knowl="./knowl/xref/lem-area-parabola-summed.html" data-reveal-label="Reveal" data-close-label="Close" title="Lemma 1.1.13">Lemma 1.1.13</a>.</div>
+</div></article><span class="incontext"><a class="internal" href="sec-upper-lower-int.html#ex-parabola-sums">in-context</a></span>
+</body>
+</html>

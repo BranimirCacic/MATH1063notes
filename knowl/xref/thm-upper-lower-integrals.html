@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="theorem theorem-like"><h3 class="heading">
+<span class="type">Theorem</span><span class="space"> </span><span class="codenumber">1.3.12</span><span class="period">.</span>
+</h3>
+<div class="para logical">
+<div class="para">Let <span class="process-math">\(f\)</span> be a bounded real-valued function on a closed interval <span class="process-math">\([a,b]\text{.}\)</span> Then its lower integral <span class="process-math">\(\Lint{a}{b}f\)</span> and upper integral <span class="process-math">\(\Uint{a}{b}f\)</span> both exist and satisfy</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\Lint{a}{b}f \leq \Uint{a}{b}f\text{.}
+\end{equation*}
+</div>
+</div></article><article class="proof"><h3 class="heading"><span class="type">Proof<span class="period">.</span></span></h3>
+<div class="para">Let <span class="process-math">\(\cL(f)\)</span> be the set of all lower sums of <span class="process-math">\(f\)</span> with respect to partitions of <span class="process-math">\([a,b]\text{.}\)</span> On the one hand, it is non-empty since it contains <span class="process-math">\(L(f,P)\)</span> for <span class="process-math">\(P = (a,b)\text{.}\)</span> On the other hand, if <span class="process-math">\(P\)</span> is any partition of <span class="process-math">\([a,b]\text{,}\)</span> then <span class="process-math">\(U(f,P)\)</span> is an upper bound for <span class="process-math">\(\cL(f,P)\)</span> by <a href="sec-upper-lower-int.html#item-upper-sums-bound-lower-sums" class="xref" data-knowl="./knowl/xref/item-upper-sums-bound-lower-sums.html" data-reveal-label="Reveal" data-close-label="Close" title="Item 3">Item 3</a>. Thus, <span class="process-math">\(\Lint{a}{b}f \defn \sup\cL(f)\)</span> exists. A qualitatively identical argument shows that <span class="process-math">\(\Uint{a}{b}f = \sup\cU(f)\)</span> exists, where <span class="process-math">\(\cU(f)\)</span> is the set of all upper sums of <span class="process-math">\(f\)</span> with respect to partitions of <span class="process-math">\([a,b]\text{.}\)</span>
+</div>
+<div class="para logical">
+<div class="para">Let us now show that <span class="process-math">\(\Lint{a}{b}f \leq \Uint{a}{b}f\text{.}\)</span> Let <span class="process-math">\(P\)</span> be any partition of <span class="process-math">\([a,b]\text{.}\)</span> Recall that <span class="process-math">\(U(f,P)\)</span> is an upper bound for <span class="process-math">\(\cL(f)\)</span> by <a href="sec-upper-lower-int.html#item-upper-sums-bound-lower-sums" class="xref" data-knowl="./knowl/xref/item-upper-sums-bound-lower-sums.html" data-reveal-label="Reveal" data-close-label="Close" title="Item 3">Item 3</a>, so that</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/item-upper-sums-bound-lower-sums.html">
+\begin{equation*}
+U(f,P) \geq \sup\cL(f,P) = \Lint{a}{b}f\text{.}
+\end{equation*}
+</div>
+<div class="para">However, this shows that <span class="process-math">\(\Lint{a}{b}f\)</span> is a lower bound for <span class="process-math">\(\cU(f)\text{,}\)</span> so that</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/item-upper-sums-bound-lower-sums.html">
+\begin{equation*}
+\Lint{a}{b}f \leq \inf\cU(f) = \Uint{a}{b}f\text{.}
+\end{equation*}
+</div>
+</div></article><span class="incontext"><a class="internal" href="sec-upper-lower-int.html#thm-upper-lower-integrals">in-context</a></span>
+</body>
+</html>
