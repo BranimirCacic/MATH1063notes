@@ -134,6 +134,15 @@ eBookConfig.enable_chatcodes =  false;
 #def-upper-lower-int-1-1-3 { counter-set: def-upper-lower-int-1-1-3 0; }
 #def-upper-lower-int-1-1-3 > li::marker { content: ""counter(def-upper-lower-int-1-1-3,decimal)"."; }
 #def-upper-lower-int-1-1-3 > li { counter-increment: def-upper-lower-int-1-1-3; }
+#thm-integrability-criterion-1-1-3 { counter-set: thm-integrability-criterion-1-1-3 0; }
+#thm-integrability-criterion-1-1-3 > li::marker { content: ""counter(thm-integrability-criterion-1-1-3,decimal)"."; }
+#thm-integrability-criterion-1-1-3 > li { counter-increment: thm-integrability-criterion-1-1-3; }
+#sec-integrability-12-1-8 { counter-set: sec-integrability-12-1-8 0; }
+#sec-integrability-12-1-8 > li::marker { content: ""counter(sec-integrability-12-1-8,decimal)"."; }
+#sec-integrability-12-1-8 > li { counter-increment: sec-integrability-12-1-8; }
+#prop-integration-properties-2-1-1 { counter-set: prop-integration-properties-2-1-1 0; }
+#prop-integration-properties-2-1-1 > li::marker { content: ""counter(prop-integration-properties-2-1-1,decimal)"."; }
+#prop-integration-properties-2-1-1 > li { counter-increment: prop-integration-properties-2-1-1; }
 </style>
 </head>
 <body class="pretext book ignore-math">
@@ -165,7 +174,8 @@ eBookConfig.enable_chatcodes =  false;
 \newcommand{\defn}{\mathrel{:=}}
 \newcommand{\set}[2]{\left\{{#1}:{#2}\right\}}
 \newcommand{\Lint}[2]{\underline{\int_{#1}^{#2}}}
- \newcommand{\Uint}[2]{\overline{\int_{#1}^{#2}}}
+\newcommand{\Uint}[2]{\overline{\int_{#1}^{#2}}}
+\newcommand{\du}{\,\mathrm{d}}
 \DeclareMathOperator{\Area}{Area}
 \newcommand{\lt}{&lt;}
 \newcommand{\gt}{&gt;}
@@ -265,10 +275,10 @@ a = x_0 \lt x_1 \lt \cdots \lt x_{N-1} \lt x_N = b\text{.}
 </h3>
 <div class="para" id="ex-partition-equal-1">Let <span class="process-math">\(a \lt b\text{,}\)</span> and let <span class="process-math">\(N \in \N\text{.}\)</span> Define a partition <span class="process-math">\(P_N = (x_0,x_1,\dotsc,x_N)\)</span> of <span class="process-math">\([a,b]\)</span> by setting <span class="process-math">\(x_k \defn a + k \cdot \frac{b-a}{N}\)</span> for all <span class="process-math">\(0 \leq k \leq N\text{.}\)</span> Then <span class="process-math">\(P_N\)</span> subdivides <span class="process-math">\([a,b]\)</span> into <span class="process-math">\(N\)</span> subintervals <span class="process-math">\([x_{k-1},x_{k}]\)</span> of equal width <span class="process-math">\(\frac{b-a}{N}\text{.}\)</span>
 </div></article><figure class="figure figure-like" id="fig-partition-equal"><div class="image-box" style="width: 50%; margin-left: 25%; margin-right: 25%;"><div class="asymptote-box" style="padding-top: 12.552052605611%"><iframe src="generated/asymptote/fig-partition-equal-2.html" class="asymptote"></iframe></div></div>
-<figcaption><span class="type">Figure</span><span class="space"> </span><span class="codenumber">1.3.3<span class="period">.</span></span><span class="space"> </span>The partition <span class="process-math">\(P_5\)</span> of the interval <span class="process-math">\([0,1]\text{.}\)</span></figcaption></figure><article class="remark remark-like" id="sec-upper-lower-int-9"><h3 class="heading">
+<figcaption><span class="type">Figure</span><span class="space"> </span><span class="codenumber">1.3.3<span class="period">.</span></span><span class="space"> </span>The partition <span class="process-math">\(P_5\)</span> of the interval <span class="process-math">\([0,1]\text{.}\)</span></figcaption></figure><article class="remark remark-like" id="rem-telescoping-sum"><h3 class="heading">
 <span class="type">Remark</span><span class="space"> </span><span class="codenumber">1.3.4</span><span class="period">.</span>
 </h3>
-<div class="para" id="sec-upper-lower-int-9-1">We’ll repeatedly use the fact that for any partition <span class="process-math">\(P=(x_0,x_1,\dotsc,x_N)\)</span> of <span class="process-math">\([a,b]\text{,}\)</span> we have <span class="process-math">\(\sum_{k=1}^N(x_k-x_{k-1}) = b-a\text{.}\)</span> This is called a <dfn class="terminology">telescoping sum</dfn>.</div></article><article class="definition definition-like" id="def-bounded-function"><h3 class="heading">
+<div class="para" id="rem-telescoping-sum-1">We’ll repeatedly use the fact that for any partition <span class="process-math">\(P=(x_0,x_1,\dotsc,x_N)\)</span> of <span class="process-math">\([a,b]\text{,}\)</span> we have <span class="process-math">\(\sum_{k=1}^N(x_k-x_{k-1}) = b-a\text{.}\)</span> This is called a <dfn class="terminology">telescoping sum</dfn>.</div></article><article class="definition definition-like" id="def-bounded-function"><h3 class="heading">
 <span class="type">Definition</span><span class="space"> </span><span class="codenumber">1.3.5</span><span class="period">.</span>
 </h3>
 <div class="para" id="def-bounded-function-1-1">Let <span class="process-math">\(f\)</span> be a real-valued function defined on a closed interval <span class="process-math">\([a,b]\text{.}\)</span> We say that <span class="process-math">\(f\)</span> is <dfn class="terminology">bounded</dfn> on <span class="process-math">\(D\)</span> if there exist constants <span class="process-math">\(m\)</span> and <span class="process-math">\(M\)</span> such that <span class="process-math">\(m \leq f(x) \leq M\)</span> for all <span class="process-math">\(a \leq x \leq b\text{.}\)</span>

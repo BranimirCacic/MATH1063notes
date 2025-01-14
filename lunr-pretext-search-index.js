@@ -523,9 +523,9 @@ var ptx_lunr_docs = [
   "body": " The partition of the interval .    This figure shows a partition of the interval into five subintervals of equal width.     "
 },
 {
-  "id": "sec-upper-lower-int-9",
+  "id": "rem-telescoping-sum",
   "level": "2",
-  "url": "sec-upper-lower-int.html#sec-upper-lower-int-9",
+  "url": "sec-upper-lower-int.html#rem-telescoping-sum",
   "type": "Remark",
   "number": "1.3.4",
   "title": "",
@@ -619,7 +619,124 @@ var ptx_lunr_docs = [
   "type": "Section",
   "number": "1.4",
   "title": "Integrability and integration",
-  "body": " Integrability and integration   "
+  "body": " Integrability and integration  In this section, we give a more-or-less rigorous alternative to Section 5.4 of APEX Calculus and Section 5.5 of Strang's Calculus . Thus, instead of hand-waving around Riemann's original formulation of a rigorous theory of integration, we give a fairly precise account using technical simplifications due to Darboux. Thus, in this course, we're technically considering Darboux integration instead of Riemann integration sensu stricto , but the two theories turn out to be equivalent .    Let be a bounded function on a closed interval . We say that is integrable on whenever , in which case the integral of on is .     Leibniz's notation for is . This notation conveys the intuition that the integral is a continuous sum over of terms , where is the width of an infinitesimal subinterval of (note the scare quotes).    Suppose that is a continuous function on . Then is bounded by the extreme value theorem . In particular, since attains both a maximum and minimum on , it follows that .    Define on by . Since by , it follows that is integrable with integral ( , ). This turns out to yield a rigorous proof that the region of has a well-defined area equal to .     Let be a constant function on , and let denote the constant value of , , for all . Then ( , ).    Let be any partition of . Since has the constant value , it follows that for all . Hence, by , it follows that . Thus, at last, so that is integrable and .    While the above definition of integrability is most closely linked to the geometric intuition of approximating the area under the graph of a function from above and below, it generally quite difficult to prove. Instead, one uses the following necessary and sufficient condition.    Let be a bounded function on . The following are equivalent:   the function is integrable on ;    for every , there exists a partition of such that .            A detailed proof of can be found here . Be aware of the following quirks of notation and terminology:   a closed interval is denoted by ;    a partition is called a finite subdivision ;    the lower sum of a function with respect to a partition of an interval is denoted by , and is denoted by ;    the upper sum of a function with respect to a partition of an interval is denoted by , and is denoted by .       Define a function on by . Then is integrable on and .  Let's first show that is integrable using . Let be given. Define a partition of by . On the one hand, on both and , the function has the constant value , so that and . On the other hand, on , the function attains a minimum of and a maximum of , so that and . Hence, and , so that Since we can do this for all sufficienly small , it follows that is integrable on .  Let us now compute . By our computations above, for every , , so that for all sufficiently small . Thus, .    In , we concluded that two numbers and were equal because for all . This is a typical way to prove an equality in analysis. In fact, given real numbers and , the following statements are equivalent:    ;     for every ;     for every .      We now need to know that the kinds of functions we typically work with in calculus are actually integrable on closed intervals. Using the theory of uniform continuity , one can actually show that a continuous function on a closed interval is necessarily integrable. However, the following special case will suffice for our purposes.    Let be continuously differentiable on . Then is integrable on .    As a preliminary step, we show that there exists a constant such that for all . Since the derivative is continuous on , it is bounded on by the extreme value theorem . Hence, let to ensure that . Now, let be given; without loss of generality, we may assume that . Then, by the mean value theorem , there exists some such that . Thus, .  We now apply the integrability criterion of . Let be given. By , find such that . Hence, let be the partition of constructed in , so that for all . Thus, by our estimate above, given , we find that for all .  Now, let be given. Given , it follows that for all , so that . But now, we see that for all , so that , , . Thus, at last, we find that .    Finally, we record some important basic properties of the integral.   Basic properties of integration      Suppose that is integrable on and that . Then is integrable on both and and , , .    Suppose that and are both integrable on . Define on by . Then is integrable on and  , .    Suppose that is integrable on ; let be a real number. Define on by . Then is integrable on and  , .       I'll give the proof of as a typical example of how these kinds of facts are proved (and an illustration of how abjectly tedious the necessary bookkeeping is). In what follows, if is an integrable function on and is a partition of , let for each , so that .  Let's first prove that is integrable. Let be given. On the one hand, by applied to , there exists a partition of such that . On the other hand, by applied to , there exists a partition of such that . Hence, let be the partition of obtained by merging the lists and , so that, by , . Now, for each , observe that for all , so that . Hence, . Similarly, one can show that . Thus, at last, .  Let's now show that . Let be given. By our constructions above, there exists a partition of such that , and moreover, . On the one hand, since and . On the other hand, since and Thus, we find that , and similarly . Hence, at last, by the triangle inequality, . Since was arbitrary, it follows that .     Let's find , , for .  If we're being hyper-pedantic, we'll proceed as follows. Note that for and . On the one hand, by , the constant function is integrable on and . On the other hand, by , the function is integrable on and , so that, by , the function is integrable on and . Thus, by , the function is also integrable on and .  In practice, one proceeds as follows. Since and , it follows ( by repeated applications of ) that .   "
+},
+{
+  "id": "def-integrability",
+  "level": "2",
+  "url": "sec-integrability.html#def-integrability",
+  "type": "Definition",
+  "number": "1.4.1",
+  "title": "",
+  "body": "  Let be a bounded function on a closed interval . We say that is integrable on whenever , in which case the integral of on is .   "
+},
+{
+  "id": "sec-integrability-4",
+  "level": "2",
+  "url": "sec-integrability.html#sec-integrability-4",
+  "type": "Note",
+  "number": "1.4.2",
+  "title": "",
+  "body": " Leibniz's notation for is . This notation conveys the intuition that the integral is a continuous sum over of terms , where is the width of an infinitesimal subinterval of (note the scare quotes).  "
+},
+{
+  "id": "sec-integrability-5",
+  "level": "2",
+  "url": "sec-integrability.html#sec-integrability-5",
+  "type": "Note",
+  "number": "1.4.3",
+  "title": "",
+  "body": " Suppose that is a continuous function on . Then is bounded by the extreme value theorem . In particular, since attains both a maximum and minimum on , it follows that .  "
+},
+{
+  "id": "ex-integral-parabola",
+  "level": "2",
+  "url": "sec-integrability.html#ex-integral-parabola",
+  "type": "Example",
+  "number": "1.4.4",
+  "title": "",
+  "body": " Define on by . Since by , it follows that is integrable with integral ( , ). This turns out to yield a rigorous proof that the region of has a well-defined area equal to .  "
+},
+{
+  "id": "prop-constant-int",
+  "level": "2",
+  "url": "sec-integrability.html#prop-constant-int",
+  "type": "Proposition",
+  "number": "1.4.5",
+  "title": "",
+  "body": "  Let be a constant function on , and let denote the constant value of , , for all . Then ( , ).    Let be any partition of . Since has the constant value , it follows that for all . Hence, by , it follows that . Thus, at last, so that is integrable and .   "
+},
+{
+  "id": "thm-integrability-criterion",
+  "level": "2",
+  "url": "sec-integrability.html#thm-integrability-criterion",
+  "type": "Theorem",
+  "number": "1.4.6",
+  "title": "",
+  "body": "  Let be a bounded function on . The following are equivalent:   the function is integrable on ;    for every , there exists a partition of such that .          "
+},
+{
+  "id": "sec-integrability-10",
+  "level": "2",
+  "url": "sec-integrability.html#sec-integrability-10",
+  "type": "Remark",
+  "number": "1.4.7",
+  "title": "",
+  "body": " A detailed proof of can be found here . Be aware of the following quirks of notation and terminology:   a closed interval is denoted by ;    a partition is called a finite subdivision ;    the lower sum of a function with respect to a partition of an interval is denoted by , and is denoted by ;    the upper sum of a function with respect to a partition of an interval is denoted by , and is denoted by .     "
+},
+{
+  "id": "ex-int-one-point",
+  "level": "2",
+  "url": "sec-integrability.html#ex-int-one-point",
+  "type": "Example",
+  "number": "1.4.8",
+  "title": "",
+  "body": " Define a function on by . Then is integrable on and .  Let's first show that is integrable using . Let be given. Define a partition of by . On the one hand, on both and , the function has the constant value , so that and . On the other hand, on , the function attains a minimum of and a maximum of , so that and . Hence, and , so that Since we can do this for all sufficienly small , it follows that is integrable on .  Let us now compute . By our computations above, for every , , so that for all sufficiently small . Thus, .  "
+},
+{
+  "id": "sec-integrability-12",
+  "level": "2",
+  "url": "sec-integrability.html#sec-integrability-12",
+  "type": "Remark",
+  "number": "1.4.9",
+  "title": "",
+  "body": " In , we concluded that two numbers and were equal because for all . This is a typical way to prove an equality in analysis. In fact, given real numbers and , the following statements are equivalent:    ;     for every ;     for every .     "
+},
+{
+  "id": "sec-integrability-13",
+  "level": "2",
+  "url": "sec-integrability.html#sec-integrability-13",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": "uniform continuity "
+},
+{
+  "id": "thm-int-c1",
+  "level": "2",
+  "url": "sec-integrability.html#thm-int-c1",
+  "type": "Theorem",
+  "number": "1.4.10",
+  "title": "",
+  "body": "  Let be continuously differentiable on . Then is integrable on .    As a preliminary step, we show that there exists a constant such that for all . Since the derivative is continuous on , it is bounded on by the extreme value theorem . Hence, let to ensure that . Now, let be given; without loss of generality, we may assume that . Then, by the mean value theorem , there exists some such that . Thus, .  We now apply the integrability criterion of . Let be given. By , find such that . Hence, let be the partition of constructed in , so that for all . Thus, by our estimate above, given , we find that for all .  Now, let be given. Given , it follows that for all , so that . But now, we see that for all , so that , , . Thus, at last, we find that .   "
+},
+{
+  "id": "prop-integration-properties",
+  "level": "2",
+  "url": "sec-integrability.html#prop-integration-properties",
+  "type": "Proposition",
+  "number": "1.4.11",
+  "title": "Basic properties of integration.",
+  "body": " Basic properties of integration      Suppose that is integrable on and that . Then is integrable on both and and , , .    Suppose that and are both integrable on . Define on by . Then is integrable on and  , .    Suppose that is integrable on ; let be a real number. Define on by . Then is integrable on and  , .       I'll give the proof of as a typical example of how these kinds of facts are proved (and an illustration of how abjectly tedious the necessary bookkeeping is). In what follows, if is an integrable function on and is a partition of , let for each , so that .  Let's first prove that is integrable. Let be given. On the one hand, by applied to , there exists a partition of such that . On the other hand, by applied to , there exists a partition of such that . Hence, let be the partition of obtained by merging the lists and , so that, by , . Now, for each , observe that for all , so that . Hence, . Similarly, one can show that . Thus, at last, .  Let's now show that . Let be given. By our constructions above, there exists a partition of such that , and moreover, . On the one hand, since and . On the other hand, since and Thus, we find that , and similarly . Hence, at last, by the triangle inequality, . Since was arbitrary, it follows that .   "
+},
+{
+  "id": "sec-integrability-17",
+  "level": "2",
+  "url": "sec-integrability.html#sec-integrability-17",
+  "type": "Example",
+  "number": "1.4.12",
+  "title": "",
+  "body": " Let's find , , for .  If we're being hyper-pedantic, we'll proceed as follows. Note that for and . On the one hand, by , the constant function is integrable on and . On the other hand, by , the function is integrable on and , so that, by , the function is integrable on and . Thus, by , the function is also integrable on and .  In practice, one proceeds as follows. Since and , it follows ( by repeated applications of ) that .  "
 },
 {
   "id": "backmatter-2",

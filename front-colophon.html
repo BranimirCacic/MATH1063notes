@@ -134,6 +134,15 @@ eBookConfig.enable_chatcodes =  false;
 #def-upper-lower-int-1-1-3 { counter-set: def-upper-lower-int-1-1-3 0; }
 #def-upper-lower-int-1-1-3 > li::marker { content: ""counter(def-upper-lower-int-1-1-3,decimal)"."; }
 #def-upper-lower-int-1-1-3 > li { counter-increment: def-upper-lower-int-1-1-3; }
+#thm-integrability-criterion-1-1-3 { counter-set: thm-integrability-criterion-1-1-3 0; }
+#thm-integrability-criterion-1-1-3 > li::marker { content: ""counter(thm-integrability-criterion-1-1-3,decimal)"."; }
+#thm-integrability-criterion-1-1-3 > li { counter-increment: thm-integrability-criterion-1-1-3; }
+#sec-integrability-12-1-8 { counter-set: sec-integrability-12-1-8 0; }
+#sec-integrability-12-1-8 > li::marker { content: ""counter(sec-integrability-12-1-8,decimal)"."; }
+#sec-integrability-12-1-8 > li { counter-increment: sec-integrability-12-1-8; }
+#prop-integration-properties-2-1-1 { counter-set: prop-integration-properties-2-1-1 0; }
+#prop-integration-properties-2-1-1 > li::marker { content: ""counter(prop-integration-properties-2-1-1,decimal)"."; }
+#prop-integration-properties-2-1-1 > li { counter-increment: prop-integration-properties-2-1-1; }
 </style>
 </head>
 <body class="pretext book ignore-math">
@@ -165,7 +174,8 @@ eBookConfig.enable_chatcodes =  false;
 \newcommand{\defn}{\mathrel{:=}}
 \newcommand{\set}[2]{\left\{{#1}:{#2}\right\}}
 \newcommand{\Lint}[2]{\underline{\int_{#1}^{#2}}}
- \newcommand{\Uint}[2]{\overline{\int_{#1}^{#2}}}
+\newcommand{\Uint}[2]{\overline{\int_{#1}^{#2}}}
+\newcommand{\du}{\,\mathrm{d}}
 \DeclareMathOperator{\Area}{Area}
 \newcommand{\lt}{&lt;}
 \newcommand{\gt}{&gt;}

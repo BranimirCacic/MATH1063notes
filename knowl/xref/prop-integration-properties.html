@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="proposition theorem-like"><h3 class="heading">
+<span class="type">Proposition</span><span class="space"> </span><span class="codenumber">1.4.11</span><span class="period">.</span><span class="space"> </span><span class="title">Basic properties of integration.</span>
+</h3>
+<div class="para logical"><ol class="decimal" id="prop-integration-properties-2-1-1">
+<li><div class="para logical">
+<div class="para">Suppose that <span class="process-math">\(f\)</span> is integrable on <span class="process-math">\([a,b]\)</span> and that <span class="process-math">\(a \lt c \lt b\text{.}\)</span> Then <span class="process-math">\(f\)</span> is integrable on both <span class="process-math">\([a,c]\)</span> and <span class="process-math">\([c,b]\)</span> and</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\int_a^b f = \int_a^c f + \int_c^b f\text{,}
+\end{equation*}
+</div>
+<div class="para">i.e., <span class="process-math">\(\int_a^b f(x)\du{x} = \int_a^c f(x)\du{x} + \int_c^b f(x)\du{x}\text{.}\)</span>
+</div>
+</div></li>
+<li><div class="para logical">
+<div class="para">Suppose that <span class="process-math">\(f\)</span> and <span class="process-math">\(g\)</span> are both integrable on <span class="process-math">\([a,b]\text{.}\)</span> Define <span class="process-math">\(f+g\)</span> on <span class="process-math">\([a,b]\)</span> by <span class="process-math">\((f+g)(x) \defn f(x) + g(x)\text{.}\)</span> Then <span class="process-math">\(f+g\)</span> is integrable on <span class="process-math">\([a,b]\)</span> and</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\int_a^b (f+g) = \int_a^b f + \int_a^b g
+\end{equation*}
+</div>
+<div class="para">i.e., <span class="process-math">\(\int_a^b \left(f(x)+g(x)\right)\du{x} = \int_a^b f(x)\du{x} + \int_a^b g(x)\du{x}\text{.}\)</span>
+</div>
+</div></li>
+<li><div class="para logical">
+<div class="para">Suppose that <span class="process-math">\(f\)</span> is integrable on <span class="process-math">\([a,b]\text{;}\)</span> let <span class="process-math">\(c\)</span> be a real number. Define <span class="process-math">\(cf\)</span> on <span class="process-math">\([a,b]\)</span> by <span class="process-math">\((cf)(x) \defn cf(x)\text{.}\)</span> Then <span class="process-math">\(cf\)</span> is integrable on <span class="process-math">\([a,b]\)</span> and</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\int_a^b cf = c \int_a^b f
+\end{equation*}
+</div>
+<div class="para">i.e., <span class="process-math">\(\int_a^b c f(x) \du{x} = c \int_a^b f(x)\du{x}\text{.}\)</span>
+</div>
+</div></li>
+</ol></div></article><article class="proof"><h3 class="heading"><span class="type">Proof<span class="period">.</span></span></h3>
+<div class="para logical">
+<div class="para">I’ll give the proof of <a href="sec-integrability.html#item-int-sum" class="xref" data-knowl="./knowl/xref/item-int-sum.html" data-reveal-label="Reveal" data-close-label="Close" title="Item 2">Item 2</a> as a typical example of how these kinds of facts are proved (and an illustration of how abjectly tedious the necessary bookkeeping is). In what follows, if <span class="process-math">\(h\)</span> is an integrable function on <span class="process-math">\([a,b]\)</span> and <span class="process-math">\(P = (x_0,x_1,\dotsc,x_N)\)</span> is a partition of <span class="process-math">\([a,b]\text{,}\)</span> let</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/item-int-sum.html">
+\begin{align*}
+m_k[h,P] \amp \defn \inf\set{h(x)}{x_{k_1}\leq x \leq x_k}\\
+M_k \amp \defn \sup\set{h(x)}{x_{k_1}\leq x \leq x_k}
+\end{align*}
+</div>
+<div class="para">for each <span class="process-math">\(1 \leq k \leq N\text{,}\)</span> so that</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/item-int-sum.html">
+\begin{align*}
+L(h,P) \amp = \sum_{k=1}^N m_k[h,P](x_k-x_{k-1}) \\
+U(h,P) \amp = \sum_{k=1}^N M_k[h,P] (x_k-x_{k-1})\text{.}
+\end{align*}
+</div>
+</div>
+<div class="para logical">
+<div class="para">Let’s first prove that <span class="process-math">\(f+g\)</span> is integrable. Let <span class="process-math">\(\epsilon \gt 0\)</span> be given. On the one hand, by <a href="sec-integrability.html#thm-integrability-criterion" class="xref" data-knowl="./knowl/xref/thm-integrability-criterion.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 1.4.6">Theorem 1.4.6</a> applied to <span class="process-math">\(f\text{,}\)</span> there exists a partition <span class="process-math">\(P_1\)</span> of <span class="process-math">\([a,b]\)</span> such that <span class="process-math">\(U(f,P_1) - L(f,P_1) \lt \frac{\epsilon}{2}\text{.}\)</span> On the other hand, by <a href="sec-integrability.html#thm-integrability-criterion" class="xref" data-knowl="./knowl/xref/thm-integrability-criterion.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 1.4.6">Theorem 1.4.6</a> applied to <span class="process-math">\(g\text{,}\)</span> there exists a partition <span class="process-math">\(P_2\)</span> of <span class="process-math">\([a,b]\)</span> such that <span class="process-math">\(U(g,P_2) - L(f,P_2) \lt \frac{\epsilon}{2}\text{.}\)</span> Hence, let <span class="process-math">\(P=(x_0,x_1,\dotsc,x_N)\)</span> be the partition of <span class="process-math">\([a,b]\)</span> obtained by merging the lists <span class="process-math">\(P_1\)</span> and <span class="process-math">\(P_2\text{,}\)</span> so that, by <a href="sec-upper-lower-int.html#item-upper-lower-sums-refinement" class="xref" data-knowl="./knowl/xref/item-upper-lower-sums-refinement.html" data-reveal-label="Reveal" data-close-label="Close" title="Item 2">Item 2</a>,</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/thm-integrability-criterion.html ./knowl/xref/thm-integrability-criterion.html ./knowl/xref/item-upper-lower-sums-refinement.html">
+\begin{align*}
+L(f,P) \amp \geq L(f,P_1) \amp U(f,P) \amp \leq U(f,P_1)\\
+L(g,P) \amp \geq L(g,P_2) \amp U(g,P) \amp \leq U(g,P_2)\text{.}
+\end{align*}
+</div>
+<div class="para">Now, for each <span class="process-math">\(1 \leq k \leq N\text{,}\)</span> observe that</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/thm-integrability-criterion.html ./knowl/xref/thm-integrability-criterion.html ./knowl/xref/item-upper-lower-sums-refinement.html">
+\begin{equation*}
+m_k[f,P]+m_k[g,P] \leq f(x) + g(x) \leq M_k[f,P]+M_k[g,P]
+\end{equation*}
+</div>
+<div class="para">for all <span class="process-math">\(x_{k-1} \leq x \leq x_k\text{,}\)</span> so that</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/thm-integrability-criterion.html ./knowl/xref/thm-integrability-criterion.html ./knowl/xref/item-upper-lower-sums-refinement.html">
+\begin{align*}
+m_k[f,P] + m_k[g,P] \amp \leq m_k[f+g,P]\\
+M_k[f,P] + M_k[g,P] \amp \geq M_k[f+g,P]\text{.}
+\end{align*}
+</div>
+<div class="para">Hence,</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/thm-integrability-criterion.html ./knowl/xref/thm-integrability-criterion.html ./knowl/xref/item-upper-lower-sums-refinement.html">
+\begin{align*}
+L(f+g,P) \amp = \sum_{k=1}^N m_k[f+g,P](x_k-x_{k-1}) \\
+\amp \geq \sum_{k=1}^N \left(m_k[f,P]+m_k[g,P]\right)(x_k-x_{k-1}) \\
+\amp = \sum_{k=1}^N m_k[f,P](x_k-x_{k-1}) + \sum_{k=1}^N m_k[g,P](x_k-x_{k-1})\\
+\amp = L(f,P) + L(g,P) \\
+\amp \geq L(f,P_1) + L(g,P_2) \text{.}
+\end{align*}
+</div>
+<div class="para">Similarly, one can show that <span class="process-math">\(U(f+g,P) \leq U(f,P_1) + U(g,P_2)\text{.}\)</span> Thus, at last,</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/thm-integrability-criterion.html ./knowl/xref/thm-integrability-criterion.html ./knowl/xref/item-upper-lower-sums-refinement.html">
+\begin{align*}
+U(f+g,P) - L(f+g,P) \amp \leq \left(U(f,P_1) + U(g,P_2)\right) - \left(L(f,P_1) + L(g,P_2)\right) \\
+\amp = \left(U(f,P_1)-L(f,P_1)\right) + \left(U(g,P_2) - L(g,P_2)\right) \\
+\amp \lt \frac{\epsilon}{2} + \frac{\epsilon}{2}\\
+\amp = \epsilon \text{.}
+\end{align*}
+</div>
+</div>
+<div class="para logical">
+<div class="para">Let’s now show that <span class="process-math">\(\int_a^b(f+g) = \int_a^b f + \int_a^b g\text{.}\)</span> Let <span class="process-math">\(\epsilon \gt 0\)</span> be given. By our constructions above, there exists a partition <span class="process-math">\(P\)</span> of <span class="process-math">\([a,b]\)</span> such that</div>
+<div class="displaymath process-math">
+\begin{align*}
+U(f,P) - L(f,P) \amp \lt \frac{\epsilon}{4} \amp U(g,P) - L(g,P) \amp \lt \frac{\epsilon}{4} \text{,}
+\end{align*}
+</div>
+<div class="para">and moreover,</div>
+<div class="displaymath process-math">
+\begin{align*}
+L(f,P) + L(g,P) \amp \leq L(f+g,P) \amp U(f+g,P) \amp \leq U(f,P) + U(g,P)\text{.}
+\end{align*}
+</div>
+<div class="para">On the one hand,</div>
+<div class="displaymath process-math">
+\begin{equation*}
+L(f,P) + L(g,P) \leq \int_a^b (f+g) \leq U(f,P) + U(g,P)
+\end{equation*}
+</div>
+<div class="para">since</div>
+<div class="displaymath process-math">
+\begin{equation*}
+L(f,P) + L(g,P) \leq L(f+g,P) \leq \Lint{a}{b}(f+g) = \int_a^b (f+g)
+\end{equation*}
+</div>
+<div class="para">and</div>
+<div class="displaymath process-math">
+\begin{equation*}
+U(f,P) + U(g,P) \geq U(f+g,P) \geq \Uint{a}{b}(f+g) = \int_a^b(f+g)\text{.}
+\end{equation*}
+</div>
+<div class="para">On the other hand,</div>
+<div class="displaymath process-math">
+\begin{equation*}
+L(f,P) + L(g,P) \leq \int_a^b f + \int_a^b g \leq U(f,P) + U(g,P)
+\end{equation*}
+</div>
+<div class="para">since</div>
+<div class="displaymath process-math">
+\begin{equation*}
+L(f,P) + L(g,P) \leq \Lint{a}{b}f + \Lint{a}{b} g = \int_a^b f + \int_a^b g
+\end{equation*}
+</div>
+<div class="para">and</div>
+<div class="displaymath process-math">
+\begin{equation*}
+U(f,P) + U(g,P) \geq \Uint{a}{b}f + \Uint{a}{b}g = \int_a^b f = \int_a^b g.
+\end{equation*}
+</div>
+<div class="para">Thus, we find that</div>
+<div class="displaymath process-math">
+\begin{align*}
+0 \amp \leq \left(\int_a^b (f+g)) \right) - \left(L(f,P)+L(g,P)\right) \\
+\amp \leq \left(U(f,P)+U(g,P)\right) - \left(L(f,P)+L(g,P)\right) \\
+\amp = \left(U(f,P)-L(f,P)\right) + \left(U(g,P) - L(g,P)\right) \\
+\amp = \frac{\epsilon}{4} + \frac{\epsilon}{4} \\
+\amp = \frac{\epsilon}{2}\text{,}
+\end{align*}
+</div>
+<div class="para">and similarly</div>
+<div class="displaymath process-math">
+\begin{equation*}
+0 \leq \left(\int_a^b f + \int_a^b g \right) - \left(L(f,P)+L(g,P)\right) \lt \frac{\epsilon}{2}\text{.}
+\end{equation*}
+</div>
+<div class="para">Hence, at last, by the triangle inequality,</div>
+<div class="displaymath process-math">
+\begin{align*}
+\abs{\left(\int_a^b f + \int_a^b g \right) - \int_a^b(f+g)} \amp \leq \abs{\left(\int_a^b f + \int_a^b g \right) - \left(L(f,P)+L(g,P)\right)}\\
+\amp \quad \abs{\int_a^b (f+g) - \left(L(f,P)+L(g,P)\right)}\\
+\amp \leq \frac{\epsilon}{2} + \frac{\epsilon}{2} \\
+\amp =\epsilon\text{.}
+\end{align*}
+</div>
+<div class="para">Since <span class="process-math">\(\epsilon \gt 0\)</span> was arbitrary, it follows that <span class="process-math">\(\int_a^b f + \int_a^b g = \int_a^b(f+g)\text{.}\)</span>
+</div>
+</div></article><span class="incontext"><a class="internal" href="sec-integrability.html#prop-integration-properties">in-context</a></span>
+</body>
+</html>

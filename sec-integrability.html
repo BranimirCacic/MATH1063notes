@@ -134,6 +134,15 @@ eBookConfig.enable_chatcodes =  false;
 #def-upper-lower-int-1-1-3 { counter-set: def-upper-lower-int-1-1-3 0; }
 #def-upper-lower-int-1-1-3 > li::marker { content: ""counter(def-upper-lower-int-1-1-3,decimal)"."; }
 #def-upper-lower-int-1-1-3 > li { counter-increment: def-upper-lower-int-1-1-3; }
+#thm-integrability-criterion-1-1-3 { counter-set: thm-integrability-criterion-1-1-3 0; }
+#thm-integrability-criterion-1-1-3 > li::marker { content: ""counter(thm-integrability-criterion-1-1-3,decimal)"."; }
+#thm-integrability-criterion-1-1-3 > li { counter-increment: thm-integrability-criterion-1-1-3; }
+#sec-integrability-12-1-8 { counter-set: sec-integrability-12-1-8 0; }
+#sec-integrability-12-1-8 > li::marker { content: ""counter(sec-integrability-12-1-8,decimal)"."; }
+#sec-integrability-12-1-8 > li { counter-increment: sec-integrability-12-1-8; }
+#prop-integration-properties-2-1-1 { counter-set: prop-integration-properties-2-1-1 0; }
+#prop-integration-properties-2-1-1 > li::marker { content: ""counter(prop-integration-properties-2-1-1,decimal)"."; }
+#prop-integration-properties-2-1-1 > li { counter-increment: prop-integration-properties-2-1-1; }
 </style>
 </head>
 <body class="pretext book ignore-math">
@@ -165,7 +174,8 @@ eBookConfig.enable_chatcodes =  false;
 \newcommand{\defn}{\mathrel{:=}}
 \newcommand{\set}[2]{\left\{{#1}:{#2}\right\}}
 \newcommand{\Lint}[2]{\underline{\int_{#1}^{#2}}}
- \newcommand{\Uint}[2]{\overline{\int_{#1}^{#2}}}
+\newcommand{\Uint}[2]{\overline{\int_{#1}^{#2}}}
+\newcommand{\du}{\,\mathrm{d}}
 \DeclareMathOperator{\Area}{Area}
 \newcommand{\lt}{&lt;}
 \newcommand{\gt}{&gt;}
@@ -196,7 +206,417 @@ eBookConfig.enable_chatcodes =  false;
 <main class="ptx-main"><div id="ptx-content" class="ptx-content"><section class="section" id="sec-integrability"><h2 class="heading hide-type">
 <span class="type">Section</span><span class="space"> </span><span class="codenumber">1.4</span><span class="space"> </span><span class="title">Integrability and integration</span>
 </h2>
-<div class="para" id="sec-integrability-2"></div></section></div>
+<div class="para" id="sec-integrability-2">In this section, we give a more-or-less rigorous alternative to <a class="external" href="https://opentext.uleth.ca/apex-calculus/sec_riemann.html" target="_blank">Section 5.4</a><details class="ptx-footnote" aria-live="polite" id="sec-integrability-2-2"><summary class="ptx-footnote__number" title="Footnote 1.4.1"><sup> 1 </sup></summary><div class="ptx-footnote__contents" id="sec-integrability-2-2"><code class="code-inline tex2jax_ignore">opentext.uleth.ca/apex-calculus/sec_riemann.html</code></div></details> of <span class="booktitle"><abbr class="initialism">APEX</abbr> Calculus</span> and Section 5.5 of Strang’s <span class="booktitle">Calculus</span>. Thus, instead of hand-waving around Riemann’s original formulation of a rigorous theory of integration, we give a fairly precise account using technical simplifications due to Darboux. Thus, in this course, we’re technically considering Darboux integration instead of Riemann integration <i class="foreign">sensu stricto</i>, but the two theories <a class="external" href="https://proofwiki.org/wiki/Equivalence_of_Definitions_of_Riemann_and_Darboux_Integrals" target="_blank">turn out to be equivalent</a><details class="ptx-footnote" aria-live="polite" id="sec-integrability-2-7"><summary class="ptx-footnote__number" title="Footnote 1.4.2"><sup> 2 </sup></summary><div class="ptx-footnote__contents" id="sec-integrability-2-7"><code class="code-inline tex2jax_ignore">proofwiki.org/wiki/Equivalence_of_Definitions_of_Riemann_and_Darboux_Integrals</code></div></details>.</div>
+<article class="definition definition-like" id="def-integrability"><h3 class="heading">
+<span class="type">Definition</span><span class="space"> </span><span class="codenumber">1.4.1</span><span class="period">.</span>
+</h3>
+<div class="para logical" id="def-integrability-1-1">
+<div class="para">Let <span class="process-math">\(f\)</span> be a bounded function on a closed interval <span class="process-math">\([a,b]\text{.}\)</span> We say that <span class="process-math">\(f\)</span> is <dfn class="terminology">integrable</dfn> on <span class="process-math">\([a,b]\)</span> whenever <span class="process-math">\(\Lint{a}{b}f = \Uint{a}{b}f\text{,}\)</span> in which case the <dfn class="terminology">integral</dfn> of <span class="process-math">\(f\)</span> on <span class="process-math">\([a,b]\)</span> is</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\int_a^b f \defn \Lint{a}{b}f = \Uint{a}{b}f\text{.}
+\end{equation*}
+</div>
+</div></article><article class="note remark-like" id="sec-integrability-4"><h3 class="heading">
+<span class="type">Note</span><span class="space"> </span><span class="codenumber">1.4.2</span><span class="period">.</span>
+</h3>
+<div class="para" id="sec-integrability-4-1">Leibniz’s notation for <span class="process-math">\(\int_a^b f\)</span> is <span class="process-math">\(\int_a^b f(x) \du{x}\text{.}\)</span> This notation conveys the intuition that the integral <span class="process-math">\(\int_a^b f\)</span> is a “continuous sum” over <span class="process-math">\(a \leq x \leq b\)</span> of terms <span class="process-math">\(f(x)\du{x}\text{,}\)</span> where <span class="process-math">\(\du{x}\)</span> is the “width” of an “infinitesimal subinterval” of <span class="process-math">\([a,b]\)</span> (note the scare quotes).</div></article><article class="note remark-like" id="sec-integrability-5"><h3 class="heading">
+<span class="type">Note</span><span class="space"> </span><span class="codenumber">1.4.3</span><span class="period">.</span>
+</h3>
+<div class="para logical" id="sec-integrability-5-1">
+<div class="para">Suppose that <span class="process-math">\(f\)</span> is a <em class="emphasis">continuous</em> function on <span class="process-math">\([a,b]\text{.}\)</span> Then <span class="process-math">\(f\)</span> is bounded by the <a class="external" href="https://opentext.uleth.ca/apex-calculus/sec_extreme_values.html#thm_extreme_val" target="_blank">extreme value theorem</a><details class="ptx-footnote" aria-live="polite" id="sec-integrability-5-1-6"><summary class="ptx-footnote__number" title="Footnote 1.4.3"><sup> 3 </sup></summary><div class="ptx-footnote__contents" id="sec-integrability-5-1-6"><code class="code-inline tex2jax_ignore">opentext.uleth.ca/apex-calculus/sec_extreme_values.html#thm_extreme_val</code></div></details>. In particular, since <span class="process-math">\(f\)</span> attains both a maximum and minimum on <span class="process-math">\([a,b]\text{,}\)</span> it follows that</div>
+<div class="displaymath process-math" id="sec-integrability-5-1-9">
+\begin{align*}
+\inf\set{f(x)}{a \leq x \leq b} \amp = \min\set{f(x)}{a \leq x \leq b} \\
+\sup\set{f(x)}{a \leq x \leq b} \amp = \max\set{f(x)}{a \leq x \leq b} \text{.}
+\end{align*}
+</div>
+</div></article><article class="example example-like" id="ex-integral-parabola"><h3 class="heading">
+<span class="type">Example</span><span class="space"> </span><span class="codenumber">1.4.4</span><span class="period">.</span>
+</h3>
+<div class="para" id="ex-integral-parabola-1">Define <span class="process-math">\(f\)</span> on <span class="process-math">\([0,1]\)</span> by <span class="process-math">\(f(x) := x^2\text{.}\)</span> Since <span class="process-math">\(\Lint{0}{1}f = \frac{1}{3} = \Uint{0}{1}f\)</span> by <a href="sec-upper-lower-int.html#ex-parabola-upper-lower-int" class="xref" data-knowl="./knowl/xref/ex-parabola-upper-lower-int.html" data-reveal-label="Reveal" data-close-label="Close" title="Example 1.3.13">Example 1.3.13</a>, it follows that <span class="process-math">\(f\)</span> is integrable with integral <span class="process-math">\(\int_0^1 f = \frac{1}{3}\)</span> (i.e., <span class="process-math">\(\int_0^1 x^2 \du{x} = \frac{1}{3}\)</span>). This turns out to yield a rigorous proof that the region <span class="process-math">\(U\)</span> of <a href="sec-prob-area.html#thm-area-parabola" class="xref" data-knowl="./knowl/xref/thm-area-parabola.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 1.1.1">Theorem 1.1.1</a> has a well-defined area equal to <span class="process-math">\(\frac{1}{3}\text{.}\)</span>
+</div></article><article class="proposition theorem-like" id="prop-constant-int"><h3 class="heading">
+<span class="type">Proposition</span><span class="space"> </span><span class="codenumber">1.4.5</span><span class="period">.</span>
+</h3>
+<div class="para" id="prop-constant-int-1-1">Let <span class="process-math">\(f\)</span> be a constant function on <span class="process-math">\([a,b]\text{,}\)</span> and let <span class="process-math">\(c\)</span> denote the constant value of <span class="process-math">\(f\text{,}\)</span> i.e., <span class="process-math">\(f(x) = c\)</span> for all <span class="process-math">\(a \leq x \leq b\text{.}\)</span> Then <span class="process-math">\(\int_a^b f = c(b-a)\)</span> (i.e., <span class="process-math">\(\int_a^b c \du{x} = c(b-a)\)</span>).</div></article><article class="proof" id="prop-constant-int-2"><h3 class="heading"><span class="type">Proof<span class="period">.</span></span></h3>
+<div class="para logical" id="prop-constant-int-2-1">
+<div class="para">Let <span class="process-math">\(P = (x_0,x_1,\dotsc,x_N)\)</span> be any partition of <span class="process-math">\([a,b]\text{.}\)</span> Since <span class="process-math">\(f\)</span> has the constant value <span class="process-math">\(c\text{,}\)</span> it follows that</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/rem-telescoping-sum.html" id="prop-constant-int-2-1-5">
+\begin{align*}
+m_k \amp \defn \inf\set{f(x)}{x_{k-1} \leq x \leq x_k} = \inf\{c\} = c\\
+M_k \amp \defn \sup\set{f(x)}{x_{k-1} \leq x \leq x_k} = \inf\{c\} = c
+\end{align*}
+</div>
+<div class="para">for all <span class="process-math">\(1 \leq k \leq N\text{.}\)</span> Hence, by <a href="sec-upper-lower-int.html#rem-telescoping-sum" class="xref" data-knowl="./knowl/xref/rem-telescoping-sum.html" data-reveal-label="Reveal" data-close-label="Close" title="Remark 1.3.4">Remark 1.3.4</a>, it follows that</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/rem-telescoping-sum.html" id="prop-constant-int-2-1-8">
+\begin{align*}
+L(f,P) \amp \defn \sum_{k=1}^N m_k(x_k-x_{k-1}) = \sum_{k=1}^N c(x_k-x_{k-1}) = c(b-a)\\
+U(f,P) \amp \defn \sum_{k=1}^N M_k(x_k-x_{k-1}) = \sum_{k=1}^N c(x_k-x_{k-1}) = c(b-a)\text{.}
+\end{align*}
+</div>
+<div class="para">Thus, at last,</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/rem-telescoping-sum.html" id="prop-constant-int-2-1-9">
+\begin{align*}
+\Lint{a}{b}f \amp \sup\cL(f) = \sup\{c(b-a)\} = c(b-a)\\
+\Uint{a}{b}f \amp \inf\cU(f) = \inf\{c(b-a)\} = c(b-a)
+\end{align*}
+</div>
+<div class="para">so that <span class="process-math">\(f\)</span> is integrable and <span class="process-math">\(\int_a^b f = c(b-a)\text{.}\)</span>
+</div>
+</div></article><div class="para" id="sec-integrability-8">While the above definition of integrability is most closely linked to the geometric intuition of approximating the area under the graph of a function from above and below, it generally quite difficult to prove. Instead, one uses the following necessary and sufficient condition.</div>
+<article class="theorem theorem-like" id="thm-integrability-criterion"><h3 class="heading">
+<span class="type">Theorem</span><span class="space"> </span><span class="codenumber">1.4.6</span><span class="period">.</span>
+</h3>
+<div class="para logical" id="thm-integrability-criterion-1-1">
+<div class="para">Let <span class="process-math">\(f\)</span> be a bounded function on <span class="process-math">\([a,b]\text{.}\)</span> The following are equivalent:</div>
+<ol class="decimal" id="thm-integrability-criterion-1-1-3">
+<li id="thm-integrability-criterion-1-1-3-1"><div class="para" id="thm-integrability-criterion-1-1-3-1-1">the function <span class="process-math">\(f\)</span> is integrable on <span class="process-math">\([a,b]\text{;}\)</span>
+</div></li>
+<li id="thm-integrability-criterion-1-1-3-2"><div class="para" id="thm-integrability-criterion-1-1-3-2-1">for every <span class="process-math">\(\epsilon \gt 0\text{,}\)</span> there exists a partition <span class="process-math">\(P\)</span> of <span class="process-math">\([a,b]\)</span> such that <span class="process-math">\(U(f,P) - L(f,P) \lt \epsilon\text{.}\)</span>
+</div></li>
+</ol>
+</div></article><article class="proof" id="thm-integrability-criterion-2"><h3 class="heading"><span class="type">Proof<span class="period">.</span></span></h3>
+<div class="para" id="thm-integrability-criterion-2-1"></div></article><article class="remark remark-like" id="sec-integrability-10"><h3 class="heading">
+<span class="type">Remark</span><span class="space"> </span><span class="codenumber">1.4.7</span><span class="period">.</span>
+</h3>
+<div class="para logical" id="sec-integrability-10-1">
+<div class="para">A detailed proof of <a href="sec-integrability.html#thm-integrability-criterion" class="xref" data-knowl="./knowl/xref/thm-integrability-criterion.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 1.4.6">Theorem 1.4.6</a> can be found <a class="external" href="https://proofwiki.org/wiki/Condition_for_Darboux_Integrability" target="_blank">here</a><details class="ptx-footnote" aria-live="polite" id="sec-integrability-10-1-3"><summary class="ptx-footnote__number" title="Footnote 1.4.4"><sup> 4 </sup></summary><div class="ptx-footnote__contents" id="sec-integrability-10-1-3"><code class="code-inline tex2jax_ignore">proofwiki.org/wiki/Condition_for_Darboux_Integrability</code></div></details>. Be aware of the following quirks of notation and terminology:</div>
+<ul class="disc" id="sec-integrability-10-1-4">
+<li id="sec-integrability-10-1-4-1"><div class="para" id="sec-integrability-10-1-4-1-1">a closed interval <span class="process-math">\([a,b]\)</span> is denoted by <span class="process-math">\([a \,.\,.\, b]\text{;}\)</span>
+</div></li>
+<li id="sec-integrability-10-1-4-2"><div class="para" id="sec-integrability-10-1-4-2-1">a partition is called a <dfn class="terminology">finite subdivision</dfn>;</div></li>
+<li id="sec-integrability-10-1-4-3"><div class="para" id="sec-integrability-10-1-4-3-1">the lower sum <span class="process-math">\(L(f,P)\)</span>of a function <span class="process-math">\(f\)</span> with respect to a partition <span class="process-math">\(P\)</span> of an interval <span class="process-math">\([a,b]\)</span> is denoted by <span class="process-math">\(L(P)\text{,}\)</span> and <span class="process-math">\(\sup\cL(f)\)</span> is denoted by <span class="process-math">\(\sup_P L(P)\text{;}\)</span>
+</div></li>
+<li id="sec-integrability-10-1-4-4"><div class="para" id="sec-integrability-10-1-4-4-1">the upper sum <span class="process-math">\(U(f,P)\)</span>of a function <span class="process-math">\(f\)</span> with respect to a partition <span class="process-math">\(P\)</span> of an interval <span class="process-math">\([a,b]\)</span> is denoted by <span class="process-math">\(U(P)\text{,}\)</span> and <span class="process-math">\(\inf\cU(f)\)</span> is denoted by <span class="process-math">\(\inf_P U(P)\text{.}\)</span>
+</div></li>
+</ul>
+</div></article><article class="example example-like" id="ex-int-one-point"><h3 class="heading">
+<span class="type">Example</span><span class="space"> </span><span class="codenumber">1.4.8</span><span class="period">.</span>
+</h3>
+<div class="para logical" id="ex-int-one-point-1">
+<div class="para">Define a function <span class="process-math">\(f\)</span> on <span class="process-math">\([0,1]\)</span> by</div>
+<div class="displaymath process-math">
+\begin{equation*}
+f(x) \defn \begin{cases}1 \amp \text{if } x = 1\\ 0 \amp \text{else}\end{cases}\text{.}
+\end{equation*}
+</div>
+<div class="para">Then <span class="process-math">\(f\)</span> is integrable on <span class="process-math">\([0,2]\)</span> and <span class="process-math">\(\int_0^2 f = 0\text{.}\)</span>
+</div>
+</div>
+<div class="para logical" id="ex-int-one-point-2">
+<div class="para">Let’s first show that <span class="process-math">\(f\)</span> is integrable using <a href="sec-integrability.html#thm-integrability-criterion" class="xref" data-knowl="./knowl/xref/thm-integrability-criterion.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 1.4.6">Theorem 1.4.6</a>. Let <span class="process-math">\(0 \lt \epsilon \lt 4\)</span> be given. Define a partition <span class="process-math">\(P_\epsilon = (x_0,x_1,x_2,x_3)\)</span> of <span class="process-math">\([0,2]\)</span> by</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/thm-integrability-criterion.html" id="ex-int-one-point-2-6">
+\begin{align*}
+x_0 \amp \defn 0 \amp x_1 \amp \defn 1-\frac{\epsilon}{4} \amp x_2 \amp \defn 1+\frac{\epsilon}{4} \amp x_3 \amp \defn 2 \text{.}
+\end{align*}
+</div>
+<div class="para">On the one hand, on both <span class="process-math">\([x_0,x_1]\)</span> and <span class="process-math">\([x_2,x_3]\text{,}\)</span> the function <span class="process-math">\(f\)</span> has the constant value <span class="process-math">\(0\text{,}\)</span> so that <span class="process-math">\(m_1 = 0 = M_1\)</span> and <span class="process-math">\(m_3 = 0 = M_3\text{.}\)</span> On the other hand, on <span class="process-math">\([x_1,x_2]\text{,}\)</span> the function <span class="process-math">\(f\)</span> attains a minimum of <span class="process-math">\(0\)</span> and a maximum of <span class="process-math">\(1\text{,}\)</span> so that <span class="process-math">\(m_2 = 0\)</span> and <span class="process-math">\(M_2 = 1\text{.}\)</span> Hence,</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/thm-integrability-criterion.html">
+\begin{equation*}
+L(f,P_\epsilon) = \sum_{k=1}^3 m_k (x_k-x_{k-1}) = \sum_{k=1}^3 0(x_k-x_{k-1}) = 0
+\end{equation*}
+</div>
+<div class="para">and</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/thm-integrability-criterion.html" id="ex-int-one-point-2-20">
+\begin{align*}
+U(f,P_\epsilon) \amp = \sum_{k=1}^3 M_k (x_k-x_{k-1})\\
+\amp = 0 \cdot ((1-\tfrac{\epsilon}{4})-1) + 1 \cdot ((1+\tfrac{\epsilon}{4})-(1-\tfrac{\epsilon}{4})) + 0 \cdot (2-(1+\tfrac{\epsilon}{4})) \\
+\amp = \frac{\epsilon}{2} \text{,}
+\end{align*}
+</div>
+<div class="para">so that</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/thm-integrability-criterion.html">
+\begin{equation*}
+U(f,P_\epsilon) - L(f,P_\epsilon) = \frac{\epsilon}{2}-0 = \frac{\epsilon}{2} \lt \epsilon.
+\end{equation*}
+</div>
+<div class="para">Since we can do this for all sufficienly small <span class="process-math">\(\epsilon \gt 0\text{,}\)</span> it follows that <span class="process-math">\(f\)</span> is integrable on <span class="process-math">\([0,2]\text{.}\)</span>
+</div>
+</div>
+<div class="para logical" id="ex-int-one-point-3">
+<div class="para">Let us now compute <span class="process-math">\(\int_0^2 f\text{.}\)</span> By our computations above, for every <span class="process-math">\(0 \lt \epsilon \lt 4\text{,}\)</span>
+</div>
+<div class="displaymath process-math">
+\begin{equation*}
+0 = L(f,P_\epsilon) \leq \Lint{0}{2}f = \int_0^2 f = \Uint{0}{2} f \leq U(f,P_\epsilon) = \frac{\epsilon}{2} \lt \epsilon\text{,}
+\end{equation*}
+</div>
+<div class="para">so that <span class="process-math">\(0 \leq \int_0^2 f \lt \epsilon\)</span> for all sufficiently small <span class="process-math">\(\epsilon \gt 0\text{.}\)</span> Thus, <span class="process-math">\(\int_0^2 f = 0\text{.}\)</span>
+</div>
+</div></article><article class="remark remark-like" id="sec-integrability-12"><h3 class="heading">
+<span class="type">Remark</span><span class="space"> </span><span class="codenumber">1.4.9</span><span class="period">.</span>
+</h3>
+<div class="para logical" id="sec-integrability-12-1">
+<div class="para">In <a href="sec-integrability.html#ex-int-one-point" class="xref" data-knowl="./knowl/xref/ex-int-one-point.html" data-reveal-label="Reveal" data-close-label="Close" title="Example 1.4.8">Example 1.4.8</a>, we concluded that two numbers <span class="process-math">\(a\)</span> and <span class="process-math">\(b\)</span> were equal because <span class="process-math">\(\abs{a-b} \leq \epsilon\)</span> for all <span class="process-math">\(\epsilon \gt 0\text{.}\)</span> This is a typical way to prove an equality in analysis. In fact, given real numbers <span class="process-math">\(a\)</span> and <span class="process-math">\(b\text{,}\)</span> the following statements are equivalent:</div>
+<ol class="decimal" id="sec-integrability-12-1-8">
+<li id="sec-integrability-12-1-8-1"><div class="para" id="sec-integrability-12-1-8-1-1"><span class="process-math">\(a \leq b\text{;}\)</span></div></li>
+<li id="sec-integrability-12-1-8-2"><div class="para" id="sec-integrability-12-1-8-2-1">
+<span class="process-math">\(a \leq b + \epsilon\)</span> for every <span class="process-math">\(\epsilon \gt 0\text{;}\)</span>
+</div></li>
+<li id="sec-integrability-12-1-8-3"><div class="para" id="sec-integrability-12-1-8-3-1">
+<span class="process-math">\(a-\epsilon \leq b\)</span> for every <span class="process-math">\(\epsilon \gt 0\text{.}\)</span>
+</div></li>
+</ol>
+</div></article><div class="para" id="sec-integrability-13">We now need to know that the kinds of functions we typically work with in calculus are actually integrable on closed intervals. Using the theory of <dfn class="terminology">uniform continuity</dfn>, one can actually show that a continuous function <span class="process-math">\(f\)</span> on a closed interval <span class="process-math">\([a,b]\)</span> is necessarily integrable. However, the following special case will suffice for our purposes.</div>
+<article class="theorem theorem-like" id="thm-int-c1"><h3 class="heading">
+<span class="type">Theorem</span><span class="space"> </span><span class="codenumber">1.4.10</span><span class="period">.</span>
+</h3>
+<div class="para" id="thm-int-c1-1-1">Let <span class="process-math">\(f\)</span> be continuously differentiable on <span class="process-math">\([a,b]\text{.}\)</span> Then <span class="process-math">\(f\)</span> is integrable on <span class="process-math">\([a,b]\text{.}\)</span>
+</div></article><article class="proof" id="thm-int-c1-2"><h3 class="heading"><span class="type">Proof<span class="period">.</span></span></h3>
+<div class="para logical" id="thm-int-c1-2-1">
+<div class="para">As a preliminary step, we show that there exists a constant <span class="process-math">\(C \gt 0\)</span> such that <span class="process-math">\(\abs{f(t)-f(s)} \leq C\abs{s-t}\)</span> for all <span class="process-math">\(s,t \in [a,b]\text{.}\)</span> Since the derivative <span class="process-math">\(f'\)</span> is continuous on <span class="process-math">\([a,b]\text{,}\)</span> it is bounded on <span class="process-math">\([a,b]\)</span> by the <a class="external" href="https://opentext.uleth.ca/apex-calculus/sec_extreme_values.html#thm_extreme_val" target="_blank">extreme value theorem</a><details class="ptx-footnote" aria-live="polite" id="thm-int-c1-2-1-8"><summary class="ptx-footnote__number" title="Footnote 1.4.5"><sup> 5 </sup></summary><div class="ptx-footnote__contents" id="thm-int-c1-2-1-8"><code class="code-inline tex2jax_ignore">opentext.uleth.ca/apex-calculus/sec_extreme_values.html#thm_extreme_val</code></div></details>. Hence, let <span class="process-math">\(C \defn \sup\set{\abs{f'(x)}}{a \leq x \leq b} + 1\)</span> to ensure that <span class="process-math">\(C \gt 0\text{.}\)</span> Now, let <span class="process-math">\(s,t \in [a,b]\)</span> be given; without loss of generality, we may assume that <span class="process-math">\(a \leq s \lt t \leq b\text{.}\)</span> Then, by the <a class="external" href="https://opentext.uleth.ca/apex-calculus/sec_mvt.html#thm_mvt" target="_blank">mean value theorem</a><details class="ptx-footnote" aria-live="polite" id="thm-int-c1-2-1-14"><summary class="ptx-footnote__number" title="Footnote 1.4.6"><sup> 6 </sup></summary><div class="ptx-footnote__contents" id="thm-int-c1-2-1-14"><code class="code-inline tex2jax_ignore">opentext.uleth.ca/apex-calculus/sec_mvt.html#thm_mvt</code></div></details>, there exists some <span class="process-math">\(s \lt c \lt t\)</span> such that <span class="process-math">\(f(t)-f(s) = f'(c)(t-s)\text{.}\)</span> Thus,</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\abs{f(t)-f(s)} = \abs{f'(c)(t-s)} = \abs{f'(c)}\abs{s-t} \leq C\abs{s-t}\text{.}
+\end{equation*}
+</div>
+</div>
+<div class="para logical" id="thm-int-c1-2-2">
+<div class="para">We now apply the integrability criterion of <a href="sec-integrability.html#thm-integrability-criterion" class="xref" data-knowl="./knowl/xref/thm-integrability-criterion.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 1.4.6">Theorem 1.4.6</a>. Let <span class="process-math">\(\epsilon \gt 0\)</span> be given. By <a href="sec-suprema.html#cor-archimedean-real" class="xref" data-knowl="./knowl/xref/cor-archimedean-real.html" data-reveal-label="Reveal" data-close-label="Close" title="Corollary 1.2.14: Axiom 1.1.14">Corollary 1.2.14</a>, find <span class="process-math">\(N \in \N\)</span> such that <span class="process-math">\(\frac{1}{N} \lt \frac{\epsilon}{2C(b-a)^2}\text{.}\)</span> Hence, let <span class="process-math">\(P_N = (x_0,\dotsc,x_N)\)</span> be the partition of <span class="process-math">\([a,b]\)</span> constructed in <a href="sec-upper-lower-int.html#ex-partition-equal" class="xref" data-knowl="./knowl/xref/ex-partition-equal.html" data-reveal-label="Reveal" data-close-label="Close" title="Example 1.3.2">Example 1.3.2</a>, so that</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/thm-integrability-criterion.html ./knowl/xref/cor-archimedean-real.html ./knowl/xref/ex-partition-equal.html">
+\begin{equation*}
+\abs{x_k-x_{k-1}} = x_k-x_{k-1} = \frac{b-a}{N}
+\end{equation*}
+</div>
+<div class="para">for all <span class="process-math">\(1 \leq k \leq N\text{.}\)</span> Thus, by our estimate above, given <span class="process-math">\(1 \leq k \leq N\text{,}\)</span> we find that</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/thm-integrability-criterion.html ./knowl/xref/cor-archimedean-real.html ./knowl/xref/ex-partition-equal.html" id="thm-int-c1-2-2-12">
+\begin{align*}
+f(s) - f(t) \leq \amp \abs{f(s)-f(t)}\\
+\amp\leq C\abs{s-t} \leq C \cdot \frac{b-a}{N} \\
+\amp \lt C(b-a) \cdot \frac{\epsilon}{2C(b-a)^2}\\
+\lt \frac{\epsilon}{2(b-a)}
+\end{align*}
+</div>
+<div class="para">for all <span class="process-math">\(s,t \in [x_{k-1},x_k]\text{.}\)</span>
+</div>
+</div>
+<div class="para logical" id="thm-int-c1-2-3">
+<div class="para">Now, let <span class="process-math">\(1 \leq k \leq N\)</span> be given. Given <span class="process-math">\(x_{k_1} \leq t \leq x_k\text{,}\)</span> it follows that <span class="process-math">\(f(s) \leq f(t) + \frac{\epsilon}{2(b-a)}\)</span> for all <span class="process-math">\(x_{k-1} \leq s \leq x_k\text{,}\)</span> so that <span class="process-math">\(M_k \leq f(t) + \frac{\epsilon}{2(b-a)}\text{.}\)</span> But now, we see that <span class="process-math">\(M_k - \frac{\epsilon}{2(b-a)} \leq f(t)\)</span> for all <span class="process-math">\(x_{k-1} \leq t \leq x\text{,}\)</span> so that <span class="process-math">\(M_k - \frac{\epsilon}{2(b-a)} \leq m_k\text{,}\)</span> i.e.,</div>
+<div class="displaymath process-math">
+\begin{equation*}
+M_k - m_k \leq \frac{\epsilon}{2(b-a)}\text{.}
+\end{equation*}
+</div>
+<div class="para">Thus, at last, we find that</div>
+<div class="displaymath process-math" id="thm-int-c1-2-3-11">
+\begin{align*}
+U(f,P) - L(f,P)\amp \sum_{k=1}^N M_k(x_k-x_{k-1}) - \sum_{k=1}^N m_k(x_k-x_{k-1}) \\
+\amp = \sum_{k=1}^N (M_k-m_k)(x_k-x_{k-1}) \\
+\amp \leq \sum_{k=1}^N \frac{\epsilon}{2(b-a)}(x_k-x_{k-1})\\
+\amp = \frac{\epsilon}{2(b-a)}\sum_{k=1}^N (x_k-x_{k-1})\\
+\amp = \frac{\epsilon}{2(b-a)}(b-a)\\
+\amp = \frac{\epsilon}{2} \\
+\amp \lt \epsilon \text{.}
+\end{align*}
+</div>
+</div></article><div class="para" id="sec-integrability-15">Finally, we record some important basic properties of the integral.</div>
+<article class="proposition theorem-like" id="prop-integration-properties"><h3 class="heading">
+<span class="type">Proposition</span><span class="space"> </span><span class="codenumber">1.4.11</span><span class="period">.</span><span class="space"> </span><span class="title">Basic properties of integration.</span>
+</h3>
+<div class="para logical" id="prop-integration-properties-2-1"><ol class="decimal" id="prop-integration-properties-2-1-1">
+<li id="prop-integration-properties-2-1-1-1"><div class="para logical" id="prop-integration-properties-2-1-1-1-1">
+<div class="para">Suppose that <span class="process-math">\(f\)</span> is integrable on <span class="process-math">\([a,b]\)</span> and that <span class="process-math">\(a \lt c \lt b\text{.}\)</span> Then <span class="process-math">\(f\)</span> is integrable on both <span class="process-math">\([a,c]\)</span> and <span class="process-math">\([c,b]\)</span> and</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\int_a^b f = \int_a^c f + \int_c^b f\text{,}
+\end{equation*}
+</div>
+<div class="para">i.e., <span class="process-math">\(\int_a^b f(x)\du{x} = \int_a^c f(x)\du{x} + \int_c^b f(x)\du{x}\text{.}\)</span>
+</div>
+</div></li>
+<li id="item-int-sum"><div class="para logical" id="item-int-sum-1">
+<div class="para">Suppose that <span class="process-math">\(f\)</span> and <span class="process-math">\(g\)</span> are both integrable on <span class="process-math">\([a,b]\text{.}\)</span> Define <span class="process-math">\(f+g\)</span> on <span class="process-math">\([a,b]\)</span> by <span class="process-math">\((f+g)(x) \defn f(x) + g(x)\text{.}\)</span> Then <span class="process-math">\(f+g\)</span> is integrable on <span class="process-math">\([a,b]\)</span> and</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\int_a^b (f+g) = \int_a^b f + \int_a^b g
+\end{equation*}
+</div>
+<div class="para">i.e., <span class="process-math">\(\int_a^b \left(f(x)+g(x)\right)\du{x} = \int_a^b f(x)\du{x} + \int_a^b g(x)\du{x}\text{.}\)</span>
+</div>
+</div></li>
+<li id="prop-integration-properties-2-1-1-3"><div class="para logical" id="prop-integration-properties-2-1-1-3-1">
+<div class="para">Suppose that <span class="process-math">\(f\)</span> is integrable on <span class="process-math">\([a,b]\text{;}\)</span> let <span class="process-math">\(c\)</span> be a real number. Define <span class="process-math">\(cf\)</span> on <span class="process-math">\([a,b]\)</span> by <span class="process-math">\((cf)(x) \defn cf(x)\text{.}\)</span> Then <span class="process-math">\(cf\)</span> is integrable on <span class="process-math">\([a,b]\)</span> and</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\int_a^b cf = c \int_a^b f
+\end{equation*}
+</div>
+<div class="para">i.e., <span class="process-math">\(\int_a^b c f(x) \du{x} = c \int_a^b f(x)\du{x}\text{.}\)</span>
+</div>
+</div></li>
+</ol></div></article><article class="proof" id="prop-integration-properties-3"><h3 class="heading"><span class="type">Proof<span class="period">.</span></span></h3>
+<div class="para logical" id="prop-integration-properties-3-1">
+<div class="para">I’ll give the proof of <a href="sec-integrability.html#item-int-sum" class="xref" data-knowl="./knowl/xref/item-int-sum.html" data-reveal-label="Reveal" data-close-label="Close" title="Item 2">Item 2</a> as a typical example of how these kinds of facts are proved (and an illustration of how abjectly tedious the necessary bookkeeping is). In what follows, if <span class="process-math">\(h\)</span> is an integrable function on <span class="process-math">\([a,b]\)</span> and <span class="process-math">\(P = (x_0,x_1,\dotsc,x_N)\)</span> is a partition of <span class="process-math">\([a,b]\text{,}\)</span> let</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/item-int-sum.html" id="prop-integration-properties-3-1-6">
+\begin{align*}
+m_k[h,P] \amp \defn \inf\set{h(x)}{x_{k_1}\leq x \leq x_k}\\
+M_k \amp \defn \sup\set{h(x)}{x_{k_1}\leq x \leq x_k}
+\end{align*}
+</div>
+<div class="para">for each <span class="process-math">\(1 \leq k \leq N\text{,}\)</span> so that</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/item-int-sum.html" id="prop-integration-properties-3-1-8">
+\begin{align*}
+L(h,P) \amp = \sum_{k=1}^N m_k[h,P](x_k-x_{k-1}) \\
+U(h,P) \amp = \sum_{k=1}^N M_k[h,P] (x_k-x_{k-1})\text{.}
+\end{align*}
+</div>
+</div>
+<div class="para logical" id="prop-integration-properties-3-2">
+<div class="para">Let’s first prove that <span class="process-math">\(f+g\)</span> is integrable. Let <span class="process-math">\(\epsilon \gt 0\)</span> be given. On the one hand, by <a href="sec-integrability.html#thm-integrability-criterion" class="xref" data-knowl="./knowl/xref/thm-integrability-criterion.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 1.4.6">Theorem 1.4.6</a> applied to <span class="process-math">\(f\text{,}\)</span> there exists a partition <span class="process-math">\(P_1\)</span> of <span class="process-math">\([a,b]\)</span> such that <span class="process-math">\(U(f,P_1) - L(f,P_1) \lt \frac{\epsilon}{2}\text{.}\)</span> On the other hand, by <a href="sec-integrability.html#thm-integrability-criterion" class="xref" data-knowl="./knowl/xref/thm-integrability-criterion.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 1.4.6">Theorem 1.4.6</a> applied to <span class="process-math">\(g\text{,}\)</span> there exists a partition <span class="process-math">\(P_2\)</span> of <span class="process-math">\([a,b]\)</span> such that <span class="process-math">\(U(g,P_2) - L(f,P_2) \lt \frac{\epsilon}{2}\text{.}\)</span> Hence, let <span class="process-math">\(P=(x_0,x_1,\dotsc,x_N)\)</span> be the partition of <span class="process-math">\([a,b]\)</span> obtained by merging the lists <span class="process-math">\(P_1\)</span> and <span class="process-math">\(P_2\text{,}\)</span> so that, by <a href="sec-upper-lower-int.html#item-upper-lower-sums-refinement" class="xref" data-knowl="./knowl/xref/item-upper-lower-sums-refinement.html" data-reveal-label="Reveal" data-close-label="Close" title="Item 2">Item 2</a>,</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/thm-integrability-criterion.html ./knowl/xref/thm-integrability-criterion.html ./knowl/xref/item-upper-lower-sums-refinement.html" id="prop-integration-properties-3-2-18">
+\begin{align*}
+L(f,P) \amp \geq L(f,P_1) \amp U(f,P) \amp \leq U(f,P_1)\\
+L(g,P) \amp \geq L(g,P_2) \amp U(g,P) \amp \leq U(g,P_2)\text{.}
+\end{align*}
+</div>
+<div class="para">Now, for each <span class="process-math">\(1 \leq k \leq N\text{,}\)</span> observe that</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/thm-integrability-criterion.html ./knowl/xref/thm-integrability-criterion.html ./knowl/xref/item-upper-lower-sums-refinement.html">
+\begin{equation*}
+m_k[f,P]+m_k[g,P] \leq f(x) + g(x) \leq M_k[f,P]+M_k[g,P]
+\end{equation*}
+</div>
+<div class="para">for all <span class="process-math">\(x_{k-1} \leq x \leq x_k\text{,}\)</span> so that</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/thm-integrability-criterion.html ./knowl/xref/thm-integrability-criterion.html ./knowl/xref/item-upper-lower-sums-refinement.html" id="prop-integration-properties-3-2-22">
+\begin{align*}
+m_k[f,P] + m_k[g,P] \amp \leq m_k[f+g,P]\\
+M_k[f,P] + M_k[g,P] \amp \geq M_k[f+g,P]\text{.}
+\end{align*}
+</div>
+<div class="para">Hence,</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/thm-integrability-criterion.html ./knowl/xref/thm-integrability-criterion.html ./knowl/xref/item-upper-lower-sums-refinement.html" id="prop-integration-properties-3-2-23">
+\begin{align*}
+L(f+g,P) \amp = \sum_{k=1}^N m_k[f+g,P](x_k-x_{k-1}) \\
+\amp \geq \sum_{k=1}^N \left(m_k[f,P]+m_k[g,P]\right)(x_k-x_{k-1}) \\
+\amp = \sum_{k=1}^N m_k[f,P](x_k-x_{k-1}) + \sum_{k=1}^N m_k[g,P](x_k-x_{k-1})\\
+\amp = L(f,P) + L(g,P) \\
+\amp \geq L(f,P_1) + L(g,P_2) \text{.}
+\end{align*}
+</div>
+<div class="para">Similarly, one can show that <span class="process-math">\(U(f+g,P) \leq U(f,P_1) + U(g,P_2)\text{.}\)</span> Thus, at last,</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/thm-integrability-criterion.html ./knowl/xref/thm-integrability-criterion.html ./knowl/xref/item-upper-lower-sums-refinement.html" id="prop-integration-properties-3-2-25">
+\begin{align*}
+U(f+g,P) - L(f+g,P) \amp \leq \left(U(f,P_1) + U(g,P_2)\right) - \left(L(f,P_1) + L(g,P_2)\right) \\
+\amp = \left(U(f,P_1)-L(f,P_1)\right) + \left(U(g,P_2) - L(g,P_2)\right) \\
+\amp \lt \frac{\epsilon}{2} + \frac{\epsilon}{2}\\
+\amp = \epsilon \text{.}
+\end{align*}
+</div>
+</div>
+<div class="para logical" id="prop-integration-properties-3-3">
+<div class="para">Let’s now show that <span class="process-math">\(\int_a^b(f+g) = \int_a^b f + \int_a^b g\text{.}\)</span> Let <span class="process-math">\(\epsilon \gt 0\)</span> be given. By our constructions above, there exists a partition <span class="process-math">\(P\)</span> of <span class="process-math">\([a,b]\)</span> such that</div>
+<div class="displaymath process-math" id="prop-integration-properties-3-3-5">
+\begin{align*}
+U(f,P) - L(f,P) \amp \lt \frac{\epsilon}{4} \amp U(g,P) - L(g,P) \amp \lt \frac{\epsilon}{4} \text{,}
+\end{align*}
+</div>
+<div class="para">and moreover,</div>
+<div class="displaymath process-math" id="prop-integration-properties-3-3-6">
+\begin{align*}
+L(f,P) + L(g,P) \amp \leq L(f+g,P) \amp U(f+g,P) \amp \leq U(f,P) + U(g,P)\text{.}
+\end{align*}
+</div>
+<div class="para">On the one hand,</div>
+<div class="displaymath process-math">
+\begin{equation*}
+L(f,P) + L(g,P) \leq \int_a^b (f+g) \leq U(f,P) + U(g,P)
+\end{equation*}
+</div>
+<div class="para">since</div>
+<div class="displaymath process-math">
+\begin{equation*}
+L(f,P) + L(g,P) \leq L(f+g,P) \leq \Lint{a}{b}(f+g) = \int_a^b (f+g)
+\end{equation*}
+</div>
+<div class="para">and</div>
+<div class="displaymath process-math">
+\begin{equation*}
+U(f,P) + U(g,P) \geq U(f+g,P) \geq \Uint{a}{b}(f+g) = \int_a^b(f+g)\text{.}
+\end{equation*}
+</div>
+<div class="para">On the other hand,</div>
+<div class="displaymath process-math">
+\begin{equation*}
+L(f,P) + L(g,P) \leq \int_a^b f + \int_a^b g \leq U(f,P) + U(g,P)
+\end{equation*}
+</div>
+<div class="para">since</div>
+<div class="displaymath process-math">
+\begin{equation*}
+L(f,P) + L(g,P) \leq \Lint{a}{b}f + \Lint{a}{b} g = \int_a^b f + \int_a^b g
+\end{equation*}
+</div>
+<div class="para">and</div>
+<div class="displaymath process-math">
+\begin{equation*}
+U(f,P) + U(g,P) \geq \Uint{a}{b}f + \Uint{a}{b}g = \int_a^b f = \int_a^b g.
+\end{equation*}
+</div>
+<div class="para">Thus, we find that</div>
+<div class="displaymath process-math" id="prop-integration-properties-3-3-13">
+\begin{align*}
+0 \amp \leq \left(\int_a^b (f+g)) \right) - \left(L(f,P)+L(g,P)\right) \\
+\amp \leq \left(U(f,P)+U(g,P)\right) - \left(L(f,P)+L(g,P)\right) \\
+\amp = \left(U(f,P)-L(f,P)\right) + \left(U(g,P) - L(g,P)\right) \\
+\amp = \frac{\epsilon}{4} + \frac{\epsilon}{4} \\
+\amp = \frac{\epsilon}{2}\text{,}
+\end{align*}
+</div>
+<div class="para">and similarly</div>
+<div class="displaymath process-math">
+\begin{equation*}
+0 \leq \left(\int_a^b f + \int_a^b g \right) - \left(L(f,P)+L(g,P)\right) \lt \frac{\epsilon}{2}\text{.}
+\end{equation*}
+</div>
+<div class="para">Hence, at last, by the triangle inequality,</div>
+<div class="displaymath process-math" id="prop-integration-properties-3-3-15">
+\begin{align*}
+\abs{\left(\int_a^b f + \int_a^b g \right) - \int_a^b(f+g)} \amp \leq \abs{\left(\int_a^b f + \int_a^b g \right) - \left(L(f,P)+L(g,P)\right)}\\
+\amp \quad \abs{\int_a^b (f+g) - \left(L(f,P)+L(g,P)\right)}\\
+\amp \leq \frac{\epsilon}{2} + \frac{\epsilon}{2} \\
+\amp =\epsilon\text{.}
+\end{align*}
+</div>
+<div class="para">Since <span class="process-math">\(\epsilon \gt 0\)</span> was arbitrary, it follows that <span class="process-math">\(\int_a^b f + \int_a^b g = \int_a^b(f+g)\text{.}\)</span>
+</div>
+</div></article><article class="example example-like" id="sec-integrability-17"><h3 class="heading">
+<span class="type">Example</span><span class="space"> </span><span class="codenumber">1.4.12</span><span class="period">.</span>
+</h3>
+<div class="para" id="sec-integrability-17-1">Let’s find <span class="process-math">\(\int_0^1(4+3x^2)\du{x}\text{,}\)</span> i.e., <span class="process-math">\(\int_0^1 f\)</span> for <span class="process-math">\(f(x) \defn 4+3x^2\text{.}\)</span>
+</div>
+<div class="para logical" id="sec-integrability-17-2">
+<div class="para">If we’re being hyper-pedantic, we’ll proceed as follows. Note that <span class="process-math">\(f = g+3h\)</span> for <span class="process-math">\(g(x) \defn 4\)</span> and <span class="process-math">\(h(x) = x^2\text{.}\)</span> On the one hand, by <a href="sec-integrability.html#prop-constant-int" class="xref" data-knowl="./knowl/xref/prop-constant-int.html" data-reveal-label="Reveal" data-close-label="Close" title="Proposition 1.4.5">Proposition 1.4.5</a>, the constant function <span class="process-math">\(g\)</span> is integrable on <span class="process-math">\([0,1]\)</span> and</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/prop-constant-int.html ./knowl/xref/ex-integral-parabola.html ./knowl/xref/prop-integration-properties.html ./knowl/xref/prop-integration-properties.html">
+\begin{equation*}
+\int_0^1 g = 4(1-0) = 4\text{.}
+\end{equation*}
+</div>
+<div class="para">On the other hand, by <a href="sec-integrability.html#ex-integral-parabola" class="xref" data-knowl="./knowl/xref/ex-integral-parabola.html" data-reveal-label="Reveal" data-close-label="Close" title="Example 1.4.4">Example 1.4.4</a>, the function <span class="process-math">\(h\)</span> is integrable on <span class="process-math">\([0,1]\)</span> and <span class="process-math">\(\int_0^1 h = \frac{1}{3}\text{,}\)</span> so that, by <a href="sec-integrability.html#prop-integration-properties" class="xref" data-knowl="./knowl/xref/prop-integration-properties.html" data-reveal-label="Reveal" data-close-label="Close" title="Proposition 1.4.11: Basic properties of integration">Proposition 1.4.11</a>, the function <span class="process-math">\(3h\)</span> is integrable on <span class="process-math">\([0,1]\)</span> and</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/prop-constant-int.html ./knowl/xref/ex-integral-parabola.html ./knowl/xref/prop-integration-properties.html ./knowl/xref/prop-integration-properties.html">
+\begin{equation*}
+\int_0^1 3h = 3\int_0^1 h = 3 \cdot \frac{1}{3} = 1\text{.}
+\end{equation*}
+</div>
+<div class="para">Thus, by <a href="sec-integrability.html#prop-integration-properties" class="xref" data-knowl="./knowl/xref/prop-integration-properties.html" data-reveal-label="Reveal" data-close-label="Close" title="Proposition 1.4.11: Basic properties of integration">Proposition 1.4.11</a>, the function <span class="process-math">\(f = g+3h\)</span> is also integrable on <span class="process-math">\([0,1]\)</span> and</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/prop-constant-int.html ./knowl/xref/ex-integral-parabola.html ./knowl/xref/prop-integration-properties.html ./knowl/xref/prop-integration-properties.html">
+\begin{equation*}
+\int_0^1 f = \int_0^1 (g+3h) = \int_0^1 g + \int_0^1 3h = 4 + 1 = 5\text{.}
+\end{equation*}
+</div>
+</div>
+<div class="para logical" id="sec-integrability-17-3">
+<div class="para">In practice, one proceeds as follows. Since</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/prop-integration-properties.html">
+\begin{equation*}
+\int_0^1 4 \du{x} = 4(1-0) = 4
+\end{equation*}
+</div>
+<div class="para">and <span class="process-math">\(\int_0^1 x^2\du{x} = \frac{1}{3}\text{,}\)</span> it follows (i.e. by repeated applications of <a href="sec-integrability.html#prop-integration-properties" class="xref" data-knowl="./knowl/xref/prop-integration-properties.html" data-reveal-label="Reveal" data-close-label="Close" title="Proposition 1.4.11: Basic properties of integration">Proposition 1.4.11</a>) that</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/prop-integration-properties.html">
+\begin{equation*}
+\int_0^1 (4+3x^2)\du{x} = \int_0^1 4\du{x} = 3\int_0^1x^2\du{x} = 4 + 3 \cdot \frac{1}{3} = 5\text{.}
+\end{equation*}
+</div>
+</div></article></section></div>
 <div class="ptx-content-footer">
 <a class="previous-button button" href="sec-upper-lower-int.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="top-button button" href="#" title="Top"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Top</span></a><a class="next-button button" href="backmatter.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a>
 </div></main>
