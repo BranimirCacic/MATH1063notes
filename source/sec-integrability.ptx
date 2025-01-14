@@ -68,8 +68,8 @@
                 </md>.
                 Thus, at last,
                 <md>
-                    <mrow>\Lint{a}{b}f \amp \sup\cL(f) = \sup\{c(b-a)\} = c(b-a)</mrow>
-                    <mrow>\Uint{a}{b}f \amp \inf\cU(f) = \inf\{c(b-a)\} = c(b-a)</mrow>
+                    <mrow>\Lint{a}{b}f \amp =\sup\cL(f) = \sup\{c(b-a)\} = c(b-a)</mrow>
+                    <mrow>\Uint{a}{b}f \amp =\inf\cU(f) = \inf\{c(b-a)\} = c(b-a)</mrow>
                 </md>
                 so that <m>f</m> is integrable and <m>\int_a^b f = c(b-a)</m>.
             </p>
