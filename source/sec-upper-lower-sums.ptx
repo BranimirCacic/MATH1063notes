@@ -96,7 +96,7 @@
     </image>
   </figure>
 
-  <remark>
+  <remark xml:id="rem-telescoping-sum">
     <p>
         We'll repeatedly use the fact that for any partition <m>P=(x_0,x_1,\dotsc,x_N)</m> of <m>[a,b]</m>, we have <m>\sum_{k=1}^N(x_k-x_{k-1}) = b-a</m>. This is called a <term>telescoping sum</term>.
     </p>

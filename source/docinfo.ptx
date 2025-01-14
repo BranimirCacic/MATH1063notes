@@ -29,7 +29,8 @@
     \newcommand{\defn}{\mathrel{:=}}
     \newcommand{\set}[2]{\left\{{#1}:{#2}\right\}}
     \newcommand{\Lint}[2]{\underline{\int_{#1}^{#2}}}
-     \newcommand{\Uint}[2]{\overline{\int_{#1}^{#2}}}
+    \newcommand{\Uint}[2]{\overline{\int_{#1}^{#2}}}
+    \newcommand{\du}{\,\mathrm{d}}
     \DeclareMathOperator{\Area}{Area}
   </macros>
 

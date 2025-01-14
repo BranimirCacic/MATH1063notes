@@ -3,5 +3,443 @@
 <section xml:id="sec-integrability" xmlns:xi="http://www.w3.org/2001/XInclude">
     <title>Integrability and integration</title>
 
-    <p></p>
+    <p>
+        In this section, we give a more-or-less rigorous alternative to <url href="https://opentext.uleth.ca/apex-calculus/sec_riemann.html">Section 5.4</url> of <pubtitle><init>APEX</init> Calculus</pubtitle> and Section 5.5 of Strang's <pubtitle>Calculus</pubtitle>.
+        Thus, instead of hand-waving around Riemann's original formulation of a rigorous theory of integration, we give a fairly precise account using technical simplifications due to Darboux.
+        Thus, in this course, we're technically considering Darboux integration instead of Riemann integration <foreign>sensu stricto</foreign>, but the two theories <url href="https://proofwiki.org/wiki/Equivalence_of_Definitions_of_Riemann_and_Darboux_Integrals">turn out to be equivalent</url>.
+    </p>
+
+    <definition xml:id="def-integrability">
+        <statement>
+            <p>
+                Let <m>f</m> be a bounded function on a closed interval <m>[a,b]</m>.
+                We say that <m>f</m> is <term>integrable</term> on <m>[a,b]</m> whenever <m>\Lint{a}{b}f = \Uint{a}{b}f</m>, in which case the <term>integral</term> of <m>f</m> on <m>[a,b]</m> is <me>\int_a^b f \defn \Lint{a}{b}f = \Uint{a}{b}f</me>.
+            </p>
+        </statement>
+    </definition>
+
+    <note>
+        <p>
+            Leibniz's notation for <m>\int_a^b f</m> is <m>\int_a^b f(x) \du{x}</m>.
+            This notation conveys the intuition that the integral <m>\int_a^b f</m> is a <q>continuous sum</q> over <m>a \leq x \leq b</m> of terms <m>f(x)\du{x}</m>, where <m>\du{x}</m> is the <q>width</q> of an <q>infinitesimal subinterval</q> of <m>[a,b]</m> (note the scare quotes).
+        </p>
+    </note>
+
+    <note>
+        <p>
+            Suppose that <m>f</m> is a <em>continuous</em> function on <m>[a,b]</m>.
+            Then <m>f</m> is bounded by the <url href="https://opentext.uleth.ca/apex-calculus/sec_extreme_values.html#thm_extreme_val">extreme value theorem</url>.
+            In particular, since <m>f</m> attains both a maximum and minimum on <m>[a,b]</m>, it follows that
+            <md>
+                <mrow>\inf\set{f(x)}{a \leq x \leq b} \amp = \min\set{f(x)}{a \leq x \leq b} </mrow>
+                <mrow>\sup\set{f(x)}{a \leq x \leq b} \amp = \max\set{f(x)}{a \leq x \leq b} </mrow>
+            </md>.
+        </p>
+    </note>
+
+    <example xml:id="ex-integral-parabola">
+        <p>
+            Define <m>f</m> on <m>[0,1]</m> by <m>f(x) := x^2</m>.
+            Since <m>\Lint{0}{1}f = \frac{1}{3} = \Uint{0}{1}f</m> by <xref ref="ex-parabola-upper-lower-int"/>, it follows that <m>f</m> is integrable with integral <m>\int_0^1 f = \frac{1}{3}</m> (<ie/>, <m>\int_0^1 x^2 \du{x} = \frac{1}{3}</m>).
+            This turns out to yield a rigorous proof that the region <m>U</m> of <xref ref="thm-area-parabola"/> has a well-defined area equal to <m>\frac{1}{3}</m>.
+        </p>
+    </example>
+
+    <proposition xml:id="prop-constant-int">
+        <statement>
+            <p>
+                Let <m>f</m> be a constant function on <m>[a,b]</m>, and let <m>c</m> denote the constant value of <m>f</m>, <ie/>, <m>f(x) = c</m> for all <m>a \leq x \leq b</m>.
+                Then <m>\int_a^b f = c(b-a)</m> (<ie/>, <m>\int_a^b c \du{x} = c(b-a)</m>).
+            </p>
+        </statement>
+        <proof>
+            <p>
+                Let <m>P = (x_0,x_1,\dotsc,x_N)</m> be any partition of <m>[a,b]</m>.
+                Since <m>f</m> has the constant value <m>c</m>, it follows that
+                <md>
+                    <mrow>m_k \amp \defn \inf\set{f(x)}{x_{k-1} \leq x \leq x_k} = \inf\{c\} = c</mrow>
+                    <mrow>M_k \amp \defn \sup\set{f(x)}{x_{k-1} \leq x \leq x_k} = \inf\{c\} = c</mrow>
+                </md>
+                for all <m>1 \leq k \leq N</m>.
+                Hence, by <xref ref="rem-telescoping-sum"/>, it follows that
+                <md>
+                    <mrow>L(f,P) \amp \defn \sum_{k=1}^N m_k(x_k-x_{k-1}) = \sum_{k=1}^N c(x_k-x_{k-1}) = c(b-a)</mrow>
+                    <mrow>U(f,P) \amp \defn \sum_{k=1}^N M_k(x_k-x_{k-1}) = \sum_{k=1}^N c(x_k-x_{k-1}) = c(b-a)</mrow>
+                </md>.
+                Thus, at last,
+                <md>
+                    <mrow>\Lint{a}{b}f \amp \sup\cL(f) = \sup\{c(b-a)\} = c(b-a)</mrow>
+                    <mrow>\Uint{a}{b}f \amp \inf\cU(f) = \inf\{c(b-a)\} = c(b-a)</mrow>
+                </md>
+                so that <m>f</m> is integrable and <m>\int_a^b f = c(b-a)</m>.
+            </p>
+        </proof>
+    </proposition>
+
+    <p>
+        While the above definition of integrability is most closely linked to the geometric intuition of approximating the area under the graph of a function from above and below, it generally quite difficult to prove.
+        Instead, one uses the following necessary and sufficient condition.
+    </p>
+
+    <theorem xml:id="thm-integrability-criterion">
+        <statement>
+            <p>
+                Let <m>f</m> be a bounded function on <m>[a,b]</m>.
+                The following are equivalent:
+                <ol>
+                    <li>
+                        <p>
+                            the function <m>f</m> is integrable on <m>[a,b]</m>;
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            for every <m>\epsilon \gt 0</m>, there exists a partition <m>P</m> of <m>[a,b]</m> such that <m>U(f,P) - L(f,P) \lt \epsilon</m>.
+                        </p>
+                    </li>
+                </ol>
+            </p>
+        </statement>
+        <proof>
+            <p>
+                
+            </p>
+        </proof>
+    </theorem>
+
+    <remark>
+        <p>
+            A detailed proof of <xref ref="thm-integrability-criterion"/> can be found <url href="https://proofwiki.org/wiki/Condition_for_Darboux_Integrability">here</url>.
+            Be aware of the following quirks of notation and terminology:
+            <ul>
+                <li>
+                    <p>
+                        a closed interval <m>[a,b]</m> is denoted by <m>[a \,.\,.\, b]</m>;
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        a partition is called a <term>finite subdivision</term>;
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        the lower sum <m>L(f,P)</m>of a function <m>f</m> with respect to a partition <m>P</m> of an interval <m>[a,b]</m> is denoted by <m>L(P)</m>, and <m>\sup\cL(f)</m> is denoted by <m>\sup_P L(P)</m>;
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        the upper sum <m>U(f,P)</m>of a function <m>f</m> with respect to a partition <m>P</m> of an interval <m>[a,b]</m> is denoted by <m>U(P)</m>, and <m>\inf\cU(f)</m> is denoted by <m>\inf_P U(P)</m>.
+                    </p>
+                </li>
+            </ul>
+        </p>
+    </remark>
+
+    <example xml:id="ex-int-one-point">
+        <p>
+            Define a function <m>f</m> on <m>[0,1]</m> by
+            <me>
+                f(x) \defn \begin{cases}1 \amp \text{if } x = 1\\ 0 \amp \text{else}\end{cases}
+            </me>.
+            Then <m>f</m> is integrable on <m>[0,2]</m> and <m>\int_0^2 f = 0</m>.
+        </p>
+        <p>
+            Let's first show that <m>f</m> is integrable using <xref ref="thm-integrability-criterion"/>.
+            Let <m>0 \lt \epsilon \lt 4</m> be given.
+            Define a partition <m>P_\epsilon = (x_0,x_1,x_2,x_3)</m> of <m>[0,2]</m> by 
+            <md>
+                <mrow>x_0 \amp \defn 0 \amp x_1 \amp \defn 1-\frac{\epsilon}{4} \amp x_2 \amp \defn 1+\frac{\epsilon}{4} \amp x_3 \amp \defn 2 </mrow>
+            </md>.
+            On the one hand, on both <m>[x_0,x_1]</m> and <m>[x_2,x_3]</m>, the function <m>f</m> has the constant value <m>0</m>, so that <m>m_1 = 0 = M_1</m> and <m>m_3 = 0 = M_3</m>.
+            On the other hand, on <m>[x_1,x_2]</m>, the function <m>f</m> attains a minimum of <m>0</m> and a maximum of <m>1</m>, so that <m>m_2 = 0</m> and <m>M_2 = 1</m>.
+            Hence,
+            <me>
+            L(f,P_\epsilon) = \sum_{k=1}^3 m_k (x_k-x_{k-1}) = \sum_{k=1}^3 0(x_k-x_{k-1}) = 0
+            </me>
+            and 
+            <md>
+                <mrow>U(f,P_\epsilon) \amp = \sum_{k=1}^3 M_k (x_k-x_{k-1})</mrow>
+                <mrow> \amp = 0 \cdot ((1-\tfrac{\epsilon}{4})-1) + 1 \cdot ((1+\tfrac{\epsilon}{4})-(1-\tfrac{\epsilon}{4})) + 0 \cdot (2-(1+\tfrac{\epsilon}{4})) </mrow>
+                <mrow> \amp = \frac{\epsilon}{2} </mrow>
+            </md>,
+            so that 
+            <me>
+                U(f,P_\epsilon) - L(f,P_\epsilon) = \frac{\epsilon}{2}-0 = \frac{\epsilon}{2} \lt \epsilon.
+            </me>
+            Since we can do this for all sufficienly small <m>\epsilon \gt 0</m>, it follows that <m>f</m> is integrable on <m>[0,2]</m>.
+        </p>
+        <p>
+            Let us now compute <m>\int_0^2 f</m>.
+            By our computations above, for every <m>0 \lt \epsilon \lt 4</m>,
+            <me>
+                0 = L(f,P_\epsilon) \leq \Lint{0}{2}f = \int_0^2 f = \Uint{0}{2} f \leq U(f,P_\epsilon) = \frac{\epsilon}{2} \lt \epsilon
+            </me>,
+            so that <m>0 \leq \int_0^2 f \lt \epsilon</m> for all sufficiently small <m>\epsilon \gt 0</m>.
+            Thus, <m>\int_0^2 f = 0</m>.
+        </p>
+    </example>
+
+    <remark>
+        <p>
+            In <xref ref="ex-int-one-point"/>, we concluded that two numbers <m>a</m> and <m>b</m> were equal because <m>\abs{a-b} \leq \epsilon</m> for all <m>\epsilon \gt 0</m>.
+            This is a typical way to prove an equality in analysis.
+            In fact, given real numbers <m>a</m> and <m>b</m>, the following statements are equivalent:
+            <ol>
+                <li>
+                    <p>
+                        <m>a \leq b</m>;
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        <m>a \leq b + \epsilon</m> for every <m>\epsilon \gt 0</m>;
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        <m>a-\epsilon \leq b</m> for every <m>\epsilon \gt 0</m>.
+                    </p>
+                </li>
+            </ol>
+        </p>
+    </remark>
+
+    <p>
+        We now need to know that the kinds of functions we typically work with in calculus are actually integrable on closed intervals.
+        Using the theory of <term>uniform continuity</term>, one can actually show that a continuous function <m>f</m> on a closed interval <m>[a,b]</m> is necessarily integrable.
+        However, the following special case will suffice for our purposes.
+    </p>
+
+        <theorem xml:id="thm-int-c1">
+        <statement>
+            <p>
+                Let <m>f</m> be continuously differentiable on <m>[a,b]</m>.
+                Then <m>f</m> is integrable on <m>[a,b]</m>.
+            </p>
+        </statement>
+        <proof>
+            <p>
+                As a preliminary step, we show that there exists a constant <m>C \gt 0</m> such that <m>\abs{f(t)-f(s)} \leq C\abs{s-t}</m> for all <m>s,t \in [a,b]</m>.
+                Since the derivative <m>f'</m> is continuous on <m>[a,b]</m>, it is bounded on <m>[a,b]</m> by the <url href="https://opentext.uleth.ca/apex-calculus/sec_extreme_values.html#thm_extreme_val">extreme value theorem</url>.
+                Hence, let <m>C \defn \sup\set{\abs{f'(x)}}{a \leq x \leq b} + 1</m> to ensure that <m>C \gt 0</m>.
+                Now, let <m>s,t \in [a,b]</m> be given; without loss of generality, we may assume that <m>a \leq s \lt t \leq b</m>.
+                Then, by the <url href="https://opentext.uleth.ca/apex-calculus/sec_mvt.html#thm_mvt">mean value theorem</url>, there exists some <m>s \lt c \lt t</m> such that <m>f(t)-f(s) = f'(c)(t-s)</m>.
+                Thus,
+                <me>
+                    \abs{f(t)-f(s)} = \abs{f'(c)(t-s)} = \abs{f'(c)}\abs{s-t} \leq C\abs{s-t}
+                </me>.
+            </p>
+            <p>
+                We now apply the integrability criterion of <xref ref="thm-integrability-criterion"/>.
+                Let <m>\epsilon \gt 0</m> be given.
+                By <xref ref="cor-archimedean-real"/>, find <m>N \in \N</m> such that <m>\frac{1}{N} \lt \frac{\epsilon}{2C(b-a)^2}</m>.
+                Hence, let <m>P_N = (x_0,\dotsc,x_N)</m> be the partition of <m>[a,b]</m> constructed in <xref ref="ex-partition-equal"/>, so that <me>\abs{x_k-x_{k-1}} = x_k-x_{k-1} = \frac{b-a}{N}</me> for all <m>1 \leq k \leq N</m>.
+                Thus, by our estimate above, given <m>1 \leq k \leq N</m>, we find that 
+                <md>
+                    <mrow> f(s) - f(t) \leq \amp \abs{f(s)-f(t)}</mrow>
+                    <mrow> \amp\leq C\abs{s-t} \leq C \cdot \frac{b-a}{N} </mrow>
+                    <mrow> \amp \lt C(b-a) \cdot \frac{\epsilon}{2C(b-a)^2}</mrow>
+                    <mrow>\lt \frac{\epsilon}{2(b-a)}</mrow> 
+                </md>
+                for all <m>s,t \in [x_{k-1},x_k]</m>.
+            </p>
+            <p>
+                Now, let <m>1 \leq k \leq N</m> be given.
+                Given <m>x_{k_1} \leq t \leq x_k</m>, it follows that
+                <m>
+                    f(s) \leq f(t) + \frac{\epsilon}{2(b-a)}
+                </m>
+                for all <m>x_{k-1} \leq s \leq x_k</m>, so that <m>M_k \leq f(t) + \frac{\epsilon}{2(b-a)}</m>.
+                But now, we see that <m>M_k - \frac{\epsilon}{2(b-a)} \leq f(t)</m> for all <m>x_{k-1} \leq t \leq x</m>, so that <m>M_k - \frac{\epsilon}{2(b-a)} \leq m_k</m>, <ie/>,
+                <me>
+                    M_k - m_k \leq \frac{\epsilon}{2(b-a)}
+                </me>.
+                Thus, at last, we find that
+                <md>
+                    <mrow>U(f,P) - L(f,P)\amp \sum_{k=1}^N M_k(x_k-x_{k-1}) - \sum_{k=1}^N m_k(x_k-x_{k-1}) </mrow>
+                    <mrow> \amp = \sum_{k=1}^N (M_k-m_k)(x_k-x_{k-1}) </mrow>
+                    <mrow> \amp \leq \sum_{k=1}^N \frac{\epsilon}{2(b-a)}(x_k-x_{k-1})</mrow>
+                    <mrow> \amp = \frac{\epsilon}{2(b-a)}\sum_{k=1}^N (x_k-x_{k-1})</mrow>
+                    <mrow> \amp = \frac{\epsilon}{2(b-a)}(b-a)</mrow>
+                    <mrow> \amp = \frac{\epsilon}{2} </mrow>
+                    <mrow> \amp \lt \epsilon </mrow>
+                </md>.
+            </p>
+        </proof>
+    </theorem>
+
+    <p>
+        Finally, we record some important basic properties of the integral.
+    </p>
+    
+    <proposition xml:id="prop-integration-properties">
+        <title>Basic properties of integration</title>
+        <statement>
+            <p>
+                <ol>
+                    <li>
+                        <p>
+                            Suppose that <m>f</m> is integrable on <m>[a,b]</m> and that <m>a \lt c \lt b</m>.
+                            Then <m>f</m> is integrable on both <m>[a,c]</m> and <m>[c,b]</m> and
+                            <me>
+                                \int_a^b f = \int_a^c f + \int_c^b f
+                            </me>,
+                            <ie/>, <m>\int_a^b f(x)\du{x} = \int_a^c f(x)\du{x} + \int_c^b f(x)\du{x}</m>.
+                        </p>
+                    </li>
+                    <li xml:id="item-int-sum">
+                        <p>
+                            Suppose that <m>f</m> and <m>g</m> are both integrable on <m>[a,b]</m>. 
+                            Define <m>f+g</m> on <m>[a,b]</m> by <m>(f+g)(x) \defn f(x) + g(x)</m>.
+                            Then <m>f+g</m> is integrable on <m>[a,b]</m> and
+                            <me>
+                                \int_a^b (f+g) = \int_a^b f + \int_a^b g
+                            </me>
+                            <ie/>, <m>\int_a^b \left(f(x)+g(x)\right)\du{x} = \int_a^b f(x)\du{x} + \int_a^b g(x)\du{x}</m>.
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            Suppose that <m>f</m> is integrable on <m>[a,b]</m>; let <m>c</m> be a real number.
+                            Define <m>cf</m> on <m>[a,b]</m> by <m>(cf)(x) \defn cf(x)</m>.
+                            Then <m>cf</m> is integrable on <m>[a,b]</m> and
+                            <me>
+                                \int_a^b cf = c \int_a^b f
+                            </me>
+                            <ie/>, <m>\int_a^b c f(x) \du{x} = c \int_a^b f(x)\du{x}</m>.
+                        </p>
+                    </li>
+                </ol>
+            </p>
+        </statement>
+        <proof>
+            <p>
+                I'll give the proof of <xref ref="item-int-sum"/> as a typical example of how these kinds of facts are proved (and an illustration of how abjectly tedious the necessary bookkeeping is).
+                In what follows, if <m>h</m> is an integrable function on <m>[a,b]</m> and <m>P = (x_0,x_1,\dotsc,x_N)</m> is a partition of <m>[a,b]</m>, let  
+                <md>
+                    <mrow>m_k[h,P] \amp \defn \inf\set{h(x)}{x_{k_1}\leq x \leq x_k}</mrow>
+                    <mrow>M_k \amp \defn \sup\set{h(x)}{x_{k_1}\leq x \leq x_k}</mrow>
+                </md>
+                for each <m>1 \leq k \leq N</m>, so that
+                <md>
+                    <mrow>L(h,P) \amp = \sum_{k=1}^N m_k[h,P](x_k-x_{k-1}) </mrow>
+                    <mrow>U(h,P) \amp = \sum_{k=1}^N M_k[h,P] (x_k-x_{k-1})</mrow>
+                </md>.
+            </p>
+            <p>
+                Let's first prove that <m>f+g</m> is integrable.
+                Let <m>\epsilon \gt 0</m> be given.
+                On the one hand, by <xref ref="thm-integrability-criterion"/> applied to <m>f</m>, there exists a partition <m>P_1</m> of <m>[a,b]</m> such that <m>U(f,P_1) - L(f,P_1) \lt \frac{\epsilon}{2}</m>.
+                On the other hand, by <xref ref="thm-integrability-criterion"/> applied to <m>g</m>, there exists a partition <m>P_2</m> of <m>[a,b]</m> such that <m>U(g,P_2) - L(f,P_2) \lt \frac{\epsilon}{2}</m>.
+                Hence, let <m>P=(x_0,x_1,\dotsc,x_N)</m> be the partition of <m>[a,b]</m> obtained by merging the lists <m>P_1</m> and <m>P_2</m>, so that, by <xref ref="item-upper-lower-sums-refinement"/>,
+                <md>
+                    <mrow>L(f,P) \amp \geq L(f,P_1) \amp U(f,P) \amp \leq U(f,P_1)</mrow>
+                    <mrow>L(g,P) \amp \geq L(g,P_2) \amp U(g,P) \amp \leq U(g,P_2)</mrow>
+                </md>.
+                Now, for each <m>1 \leq k \leq N</m>, observe that
+                <me>
+                    m_k[f,P]+m_k[g,P] \leq f(x) + g(x) \leq M_k[f,P]+M_k[g,P]
+                </me>
+                for all <m>x_{k-1} \leq x \leq x_k</m>, so that
+                <md>
+                    <mrow>m_k[f,P] + m_k[g,P] \amp \leq m_k[f+g,P]</mrow>
+                    <mrow>M_k[f,P] + M_k[g,P] \amp \geq M_k[f+g,P]</mrow>
+                </md>.
+                Hence,
+                <md>
+                    <mrow>L(f+g,P) \amp = \sum_{k=1}^N m_k[f+g,P](x_k-x_{k-1}) </mrow>
+                    <mrow> \amp \geq \sum_{k=1}^N \left(m_k[f,P]+m_k[g,P]\right)(x_k-x_{k-1}) </mrow>
+                    <mrow> \amp = \sum_{k=1}^N m_k[f,P](x_k-x_{k-1}) + \sum_{k=1}^N m_k[g,P](x_k-x_{k-1})</mrow>
+                    <mrow> \amp = L(f,P) + L(g,P) </mrow>
+                    <mrow> \amp \geq L(f,P_1) + L(g,P_2) </mrow>
+                </md>.
+                Similarly, one can show that <m>U(f+g,P) \leq U(f,P_1) + U(g,P_2)</m>.
+                Thus, at last,
+                <md>
+                    <mrow>U(f+g,P) - L(f+g,P) \amp \leq \left(U(f,P_1) + U(g,P_2)\right) - \left(L(f,P_1) + L(g,P_2)\right) </mrow>
+                    <mrow> \amp = \left(U(f,P_1)-L(f,P_1)\right) + \left(U(g,P_2) - L(g,P_2)\right) </mrow>
+                    <mrow> \amp \lt \frac{\epsilon}{2} + \frac{\epsilon}{2}</mrow>
+                    <mrow> \amp = \epsilon </mrow>
+                </md>.
+            </p>
+            <p>
+                Let's now show that <m>\int_a^b(f+g) = \int_a^b f + \int_a^b g</m>.
+                Let <m>\epsilon \gt 0</m> be given.
+                By our constructions above, there exists a partition <m>P</m> of <m>[a,b]</m> such that 
+                <md>
+                    <mrow>U(f,P) - L(f,P) \amp \lt \frac{\epsilon}{4} \amp U(g,P) - L(g,P) \amp \lt \frac{\epsilon}{4} </mrow>
+                </md>,
+                and moreover,
+                <md>
+                   <mrow>L(f,P) + L(g,P) \amp \leq L(f+g,P) \amp U(f+g,P) \amp \leq U(f,P) + U(g,P)</mrow>
+                </md>.
+                On the one hand, 
+                <me>
+                    L(f,P) + L(g,P) \leq \int_a^b (f+g) \leq U(f,P) + U(g,P)
+                </me>
+                since
+                <me>
+                    L(f,P) + L(g,P) \leq L(f+g,P) \leq \Lint{a}{b}(f+g) = \int_a^b (f+g)
+                </me>
+                and  
+                <me>
+                    U(f,P) + U(g,P) \geq U(f+g,P) \geq \Uint{a}{b}(f+g) = \int_a^b(f+g)
+                </me>.
+                On the other hand,
+                <me>
+                    L(f,P) + L(g,P) \leq \int_a^b f + \int_a^b g \leq U(f,P) + U(g,P)
+                </me>
+                since
+                <me>
+                    L(f,P) + L(g,P) \leq \Lint{a}{b}f + \Lint{a}{b} g = \int_a^b f + \int_a^b g
+                </me>
+                and  
+                <me>
+                    U(f,P) + U(g,P) \geq \Uint{a}{b}f + \Uint{a}{b}g = \int_a^b f = \int_a^b g.
+                </me>
+                Thus, we find that
+                <md>
+                    <mrow> 0 \amp \leq \left(\int_a^b (f+g)) \right) - \left(L(f,P)+L(g,P)\right) </mrow>
+                    <mrow> \amp \leq \left(U(f,P)+U(g,P)\right) - \left(L(f,P)+L(g,P)\right) </mrow>
+                    <mrow> \amp = \left(U(f,P)-L(f,P)\right) + \left(U(g,P) - L(g,P)\right) </mrow>
+                    <mrow> \amp = \frac{\epsilon}{4} + \frac{\epsilon}{4} </mrow>
+                    <mrow> \amp = \frac{\epsilon}{2}</mrow>
+                </md>,
+                and similarly
+                <me>
+                    0 \leq \left(\int_a^b f + \int_a^b g \right) - \left(L(f,P)+L(g,P)\right) \lt \frac{\epsilon}{2}
+                </me>.
+                Hence, at last, by the triangle inequality,
+                <md>
+                    <mrow>\abs{\left(\int_a^b f + \int_a^b g \right) - \int_a^b(f+g)} \amp \leq \abs{\left(\int_a^b f + \int_a^b g \right) - \left(L(f,P)+L(g,P)\right)}</mrow>
+                    <mrow>\amp \quad \abs{\int_a^b (f+g) - \left(L(f,P)+L(g,P)\right)}</mrow>
+                    <mrow> \amp \leq \frac{\epsilon}{2} + \frac{\epsilon}{2} </mrow>
+                    <mrow> \amp =\epsilon</mrow>
+                </md>.
+                Since <m>\epsilon \gt 0</m> was arbitrary, it follows that <m>\int_a^b f + \int_a^b g = \int_a^b(f+g)</m>.  
+            </p>
+        </proof>
+    </proposition>
+
+    <example>
+        <p>
+        Let's find <m>\int_0^1(4+3x^2)\du{x}</m>, <ie/>, <m>\int_0^1 f</m> for <m>f(x) \defn 4+3x^2</m>.
+        </p>
+        <p>
+            If we're being hyper-pedantic, we'll proceed as follows.
+            Note that <m>f = g+3h</m> for <m>g(x) \defn 4</m> and <m>h(x) = x^2</m>.
+            On the one hand, by <xref ref="prop-constant-int"/>, the constant function <m>g</m> is integrable on <m>[0,1]</m> and <me>\int_0^1 g = 4(1-0) = 4</me>.
+            On the other hand, by <xref ref="ex-integral-parabola"/>, the function <m>h</m> is integrable on <m>[0,1]</m> and <m>\int_0^1 h = \frac{1}{3}</m>, so that, by <xref ref="prop-integration-properties"/>, the function <m>3h</m> is integrable on <m>[0,1]</m> and <me>\int_0^1 3h = 3\int_0^1 h = 3 \cdot \frac{1}{3} = 1</me>.
+            Thus, by <xref ref="prop-integration-properties"/>, the function <m>f = g+3h</m> is also integrable on <m>[0,1]</m> and <me>\int_0^1 f = \int_0^1 (g+3h) = \int_0^1 g + \int_0^1 3h = 4 + 1 = 5</me>.
+        </p>
+        <p>
+            In practice, one proceeds as follows.
+            Since <me>\int_0^1 4 \du{x} = 4(1-0) = 4</me> and <m>\int_0^1 x^2\du{x} = \frac{1}{3}</m>, it follows (<ie/> by repeated applications of <xref ref="prop-integration-properties"/>) that
+            <me>
+                \int_0^1 (4+3x^2)\du{x} = \int_0^1 4\du{x} = 3\int_0^1x^2\du{x} = 4 + 3 \cdot \frac{1}{3} = 5
+            </me>.
+        </p>
+    </example>
+
 </section>
