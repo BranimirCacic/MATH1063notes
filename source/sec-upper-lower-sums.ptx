@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <section xml:id="sec-upper-lower-int" xmlns:xi="http://www.w3.org/2001/XInclude">
-    <title>Upper and lower integrals</title>
+    <title>Upper and Lower Integrals</title>
 
     <p>
         Let's revisit the proof of <xref ref="thm-area-parabola"/>, where we showed that the planar region <me>U \defn \set{(x,y) \in \R^2}{0 \leq x \leq 1,\,0 \leq y \leq x^2}</me> must have area <m>\frac{1}{3}</m>.

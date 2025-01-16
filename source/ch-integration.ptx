@@ -16,5 +16,6 @@
   <xi:include href="sec-suprema.ptx" />
   <xi:include href="sec-upper-lower-sums.ptx" />
   <xi:include href="sec-integrability.ptx" />
+  <xi:include href="sec-nonintegrable.ptx" />
 
 </chapter>

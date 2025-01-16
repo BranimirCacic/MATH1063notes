@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section xml:id="sec-nonintegrable" xmlns:xi="http://www.w3.org/2001/XInclude">
+    <title>A Non-Integrable Function</title>
+
+    <p>
+        A number <m>x</m> is <term>rational</term> if it can be written as <m>x = \frac{p}{q}</m> for <m>p \in \Z</m> and <m>q \in \N</m>; hence, let <m>\Q</m> denote the set of all rational numbers.
+        Conversely, a number <m>x</m> is <term>irrational</term> if it isn't rational; hence, let <m>\Q^c</m> denote the set of all irrational numbers, which reminds us that <m>\Q^c</m> is the <term>complement</term> of the subset <m>\Q</m> of <m>\R</m>.
+    </p>
+    <p>
+        For example, we know that <m>\sqrt{2} \in \Q^c</m> (since the 5th century <init>bce</init>), that <m>\eu \in \Q^c</m> (since the 17th century), and <m>\pi \in \Q</m> (since the 18th century)
+        However, somehow, we still don't know whether <m>\pi+\eu</m>, <m>\pi-\eu</m>, and <m>\pi\eu</m> are irrational.
+    </p>
+    <p>
+        The dichotomy between rational and irrational real numbers gives rise to the simplest example of a bounded but non-integrable function on a closed interval.
+    </p>
+    <theorem xml:id="thm-non-integrable">
+        <statement>
+            <p>
+                Let <m>f</m> be defined on <m>[0,1]</m> by
+                <me>
+                    f(x) \defn \begin{cases}1 \amp \text{if }x\text{ is irrational,}\\ 0 \amp \text{else.}\end{cases}
+                </me>
+                Then <m>\Lint{0}{1}f = 0</m> and <m>\Uint{0}{1}f = 1</m>, so that <m>f</m> is not integrable on <m>[0,1]</m>.
+            </p>
+        </statement>
+    </theorem>
+
+    <p>
+        How on earth do we prove a claim like this? We'll use a fundamental property of the sets <m>\Q</m> and <m>\Q^c</m>.
+    </p>
+
+    <definition xml:id="def-dense-set">
+        <statement>
+            <p>
+                A set of real numbers <m>A</m> is <term>dense</term> if, for all <m>a \lt b</m>, there exists <m>x \in A</m> such that <m>a \lt x \lt b</m>.
+            </p>
+        </statement>
+    </definition>
+
+    <remark>
+        <p>
+            A set of numbers <m>A</m> is dense if and only if every number <m>t</m> can be approximated to any desired precision by some number in <m>A</m> (precisely, for every <m>\epsilon \lt 0</m>, no matter how small, there exists <m>x \in A</m> such that <m>t-\epsilon \lt x \lt t+\epsilon</m>).
+        </p>
+    </remark>
+
+    <proposition xml:id="prop-rationals-dense">
+        <statement>
+            <p>
+                The set <m>\Q</m> of all rational numbers is dense.
+            </p>
+        </statement>
+    </proposition>
+
+    <p>
+        The proof of this proposition requires two preparatory lemmas (or <foreign>lemmata</foreign> if you prefer the Greek plural).
+    </p>
+
+    <lemma xml:id="lem-floor">
+        <statement>
+            <p>
+                Let <m>x</m> be a real number.
+                There is a largest integer <m>N</m> such that <m>N \leq x</m>.
+            </p>
+        </statement>
+        <proof>
+            <p>
+                Let <m>A \defn \set{n \in \Z}{n \leq x}</m>.
+                On the one hand, <m>A</m> is non-empty:
+                <ul>
+                    <li>
+                        <p>
+                            if <m>x \geq 0</m>, then <m>0 \in A</m>;
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            if <m>x \lt 0</m>, then there exists <m>k \in \N</m> such that <m>k \gt -x</m> by <xref ref="thm-archimedean-natural"/>, so that <m>-k \lt x</m>, and hence <m>-k \in A</m>.
+                        </p>
+                    </li>
+                </ul>
+                On the other hand, <m>A</m> is bounded from above by <m>x</m>.
+                Thus, <m>\alpha \defn \sup A</m> is well-defined and <m>\alpha \leq x</m>.
+            </p>
+            <p>
+                Now, since <m>\alpha-1 \lt \alpha = \sup A</m>, the number <m>\alpha-1</m> cannot be an upper bound for <m>A</m>, so there exists <m>N \in A</m> such that <m>N \gt \alpha - 1</m>; hence, let <m>B \defn \set{n \in \Z}{n \leq N}</m>.
+                We'll show that <m>A = B</m>, which will immediately imply that <m>N = \alpha</m> is the largest element of <m>A</m>.
+                We'll do so by showing that every element of <m>A</m> is an element of <m>B</m> and <foreign>vice versa</foreign>.
+            </p>
+            <p>
+                Let us first show that every element of <m>A</m> is an element of <m>B</m>; we'll do so using proof by contradiction.
+                Let <m>m \in A</m> be given, and assume for the sake of argument that <m>m \notin B</m>, so that <m>m \gt N</m>.
+                Then <m>m \geq N+1 \gt (\alpha-1)+1 = \alpha</m>, which is impossible since <m>\alpha</m> is an upper bound for <m>A</m>.
+            </p>
+            <p>
+                Let us now show that every element of <m>B</m> is an element of <m>A</m>.
+                Let <m>m \in B</m> be given.
+                Then <m>m \leq N</m> by definition of <m>B</m> and <m>N \leq x</m> since <m>N \in A</m>, so that <m>m \leq N \leq x</m>, which shows that <m>m \in A</m>.
+            </p>
+        </proof>
+    </lemma>
+
+    <lemma xml:id="lem-rational-sandwiching">
+        <statement>
+            <p>
+                Let <m>x</m> and <m>y</m> be real numbers satisfying <m>y-x \gt 1</m>.
+                There exists <m>k \in \Z</m> such that <m>x \lt k \lt y</m>.
+            </p>
+        </statement>
+        <proof>
+            <p>
+                By <xref ref="lem-floor"/>, let <m>N</m> be the largest integer such that <m>N \leq x</m>; hence, set <m>k \defn N+1</m>.
+                On the one hand, since <m>N = \max\set{n \in \Z}{n \leq x}</m> and <m>k \gt N</m>, it follows that <m>k \gt x</m>.
+                On the other hand, since <m>y-x \gt 1</m> and <m>N \leq x</m>, it follow that <m>y \gt 1+x \geq 1+N = k</m>.
+                Thus, we see that <m>x \lt k \lt y</m>.
+            </p>
+        </proof>
+    </lemma>
+
+    <proof>
+        <title>Proof of <xref ref="prop-rationals-dense"/></title>
+        <p>
+            Let <m>x</m> and <m>y</m> be real numbers satisfying <m>x \lt y</m>.
+            By <xref ref="cor-archimedean-real"/>, there exists <m>q \in \N</m> such that <m>\frac{1}{q} \lt y-x</m>.
+            Then <m>qy-qx \gt 1</m>, so, by <xref ref="lem-rational-sandwiching"/>, there exists <m>p \in \Z</m> such that <m>qx \lt p \leq qy</m>.
+            Then <m>r \defn \frac{p}{q} \in \Q</m> satisfies <m>x \lt r \lt y</m>.
+        </p>
+    </proof>
+
+    <proposition xml:id="prop-irrationals-dense">
+        <statement>
+            <p>
+                The set <m>\Q^c</m> of all irrational numbers is dense.
+            </p>
+        </statement>
+    </proposition>
+
+    <p>
+        Again, we'll two preparatory lemmas (or <foreign>lemmata</foreign> if you prefer).
+    </p>
+
+    <lemma xml:id="lem-irrational-sandwich">
+        <statement>
+            <p>
+                Let <m>r</m> and <m>s</m> be rational numbers such that <m>r \lt s</m>.
+                There exists irrational <m>w</m> such that <m>r \lt w \lt s</m>.
+            </p>
+        </statement>
+        <proof>
+            <p>
+                By bringing <m>r</m> and <m>s</m> over a common denominator, we can write <m>r = \frac{p_1}{q}</m> and <m>s = \frac{p_2}{q}</m> for integers <m>p_1 \lt p_2</m> and <m>q \in \N</m>.
+                Hence, let <m>w \defn r+\frac{\sqrt{2}}{2q}</m>.
+                We'll show that <m>w</m> is irrational and that <m>r \lt w \lt s</m>.
+            </p>
+            <p>
+                Let's first show that <m>w</m> is irrational; we'll prove this by contradiction.
+                So, assume for the sake of argument that <m>w</m> is rational, so <m>r = \frac{p'}{q'}</m> for some <m>p' \in \Z</m> and <m>q \in \N</m>.
+                Then <m>\frac{2p_1 + \sqrt{2}}{2q} = r = \frac{p'}{q'}</m>, so that <m>\sqrt{2} = \frac{2qp'}{q'} - 2p_1</m> is rational, which contradicts the fact (known to the ancient Greeks!) that <m>\sqrt{2}</m> is irrational.
+            </p>
+            <p>
+                Let's now show that <m>r \lt w \lt s</m>.
+                On the one hand, sicne <m>\sqrt{2} \lt 0</m>, it follows that <m>w = r + \frac{\sqrt{2}}{2q} \gt r</m>
+                On the other hand, since the square root function is strictly increasing on <m>(0,\infty)</m>, it follows that <m>\sqrt{2} \lt \sqrt{4} = 2</m>, so that <m>\frac{\sqrt{2}}{2q} \lt \frac{1}{q}</m>, and hence
+                <me>
+                    w = r + \frac{\sqrt{2}}{2q} \lt r + \frac{1}{q} = \frac{p_1 + 1}{q} \leq \frac{p_2}{q} = s.
+                </me>
+                Thus, we see that <m>r \lt w \lt s</m>.
+            </p>
+        </proof>
+    </lemma>
+
+    <proof>
+        <title>Proof of <xref ref="prop-irrationals-dense"/></title>
+        <p>
+            Let <m>x</m> and <m>y</m> be real numbers such that <m>x \lt y</m>.
+            First, by <xref ref="prop-rationals-dense"/>, there exists rational <m>r</m> such that <m>x \lt r \lt y</m>.
+            Next, by <xref ref="prop-rationals-dense"/>, there exists rational <m>s</m> such that <m>r \lt s \lt y</m>.
+            Finally, by <xref ref="lem-irrational-sandwich"/>, there exists irrational <m>w</m> such that <m>r \lt w \lt s</m>.
+            Thus, at last,
+            <me>
+                x \lt r \lt w \lt s \lt y
+            </me>,
+            so that <m>x \lt w \lt y</m>.
+        </p>
+    </proof>
+
+    <p>
+        We now have everything we need to prove non-integrability of the function <m>f</m>.
+    </p>
+
+    <proof>
+        <title>Proof of <xref ref="thm-non-integrable"/></title>
+        <p>
+            Let <m>P = (x_0,x_1,\dotsc,x_N)</m> be any partition of <m>[0,1]</m>.
+            Let <m>1 \leq k \leq N</m> be given.
+            On the one hand, by <xref ref="prop-irrationals-dense"/>, there exists irrational <m>w_k</m> such that <m>x_{k-1} \lt w_k \lt x_k</m>, so that <m>f(w_k) = 0</m>, and hence 
+            <me>
+                m_k = \inf\set{f(x)}{x_{k-1}\leq x \leq x} = \min\set{f(x)}{x_{k-1}\leq x \leq x} = 0
+            </me>.
+            On the other hand, by <xref ref="prop-irrationals-dense"/>, there exists rational <m>r_k</m> such that <m>x_{k-1} \lt r_k \lt x_k</m>, so that <m>f(r_k) = 1</m>, and hence 
+            <me>
+                M_k = \sup\set{f(x)}{x_{k-1}\leq x \leq x} = \max\set{f(x)}{x_{k-1}\leq x \leq x} = 1
+            </me>.
+            Thus
+            <me>
+                L(f,P) = \sum_{k=1}^N m_k(x_k-x_{k-1})) = \sum_{k=1}^N 0(x_k-x_{k-1}) = 0
+            </me>
+            and 
+            <me>
+                U(f,P) = \sum_{k=1}^N M_k(x_k-x_{k-1}) = \sum_{k=1}^N (x_k-x_{k-1}) = 1-0 = 1
+            </me>.
+            Since the partition <m>P</m> was arbitrary, it follows that
+            <me>
+                \Lint{0}{1} f = \sup\cL(f) = \sup\{0\} = 0
+            </me>
+            and 
+            <me>
+                \Uint{0}{1} f = \inf\cU(f) = \inf\{1\} = 1
+            </me>.
+            In particular, since <m>\Lint{0}{1}f \neq \Uint{0}{1}f</m>, we see that <m>f</m> is not integrable.
+        </p>
+    </proof>
+    
+</section>

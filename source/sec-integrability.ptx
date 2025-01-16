@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <section xml:id="sec-integrability" xmlns:xi="http://www.w3.org/2001/XInclude">
-    <title>Integrability and integration</title>
+    <title>Integrability and Integration</title>
 
     <p>
         In this section, we give a more-or-less rigorous alternative to <url href="https://opentext.uleth.ca/apex-calculus/sec_riemann.html">Section 5.4</url> of <pubtitle><init>APEX</init> Calculus</pubtitle> and Section 5.5 of Strang's <pubtitle>Calculus</pubtitle>.
