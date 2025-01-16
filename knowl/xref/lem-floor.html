@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="lemma theorem-like"><h3 class="heading">
+<span class="type">Lemma</span><span class="space"> </span><span class="codenumber">1.5.5</span><span class="period">.</span>
+</h3>
+<div class="para">Let <span class="process-math">\(x\)</span> be a real number. There is a largest integer <span class="process-math">\(N\)</span> such that <span class="process-math">\(N \leq x\text{.}\)</span>
+</div></article><article class="proof"><h3 class="heading"><span class="type">Proof<span class="period">.</span></span></h3>
+<div class="para logical">
+<div class="para">Let <span class="process-math">\(A \defn \set{n \in \Z}{n \leq x}\text{.}\)</span> On the one hand, <span class="process-math">\(A\)</span> is non-empty:</div>
+<ul class="disc" id="lem-floor-2-1-3">
+<li><div class="para">if <span class="process-math">\(x \geq 0\text{,}\)</span> then <span class="process-math">\(0 \in A\text{;}\)</span>
+</div></li>
+<li><div class="para">if <span class="process-math">\(x \lt 0\text{,}\)</span> then there exists <span class="process-math">\(k \in \N\)</span> such that <span class="process-math">\(k \gt -x\)</span> by <a href="sec-suprema.html#thm-archimedean-natural" class="xref" data-knowl="./knowl/xref/thm-archimedean-natural.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 1.2.13">Theorem 1.2.13</a>, so that <span class="process-math">\(-k \lt x\text{,}\)</span> and hence <span class="process-math">\(-k \in A\text{.}\)</span>
+</div></li>
+</ul>
+<div class="para">On the other hand, <span class="process-math">\(A\)</span> is bounded from above by <span class="process-math">\(x\text{.}\)</span> Thus, <span class="process-math">\(\alpha \defn \sup A\)</span> is well-defined and <span class="process-math">\(\alpha \leq x\text{.}\)</span>
+</div>
+</div>
+<div class="para">Now, since <span class="process-math">\(\alpha-1 \lt \alpha = \sup A\text{,}\)</span> the number <span class="process-math">\(\alpha-1\)</span> cannot be an upper bound for <span class="process-math">\(A\text{,}\)</span> so there exists <span class="process-math">\(N \in A\)</span> such that <span class="process-math">\(N \gt \alpha - 1\text{;}\)</span> hence, let <span class="process-math">\(B \defn \set{n \in \Z}{n \leq N}\text{.}\)</span> We’ll show that <span class="process-math">\(A = B\text{,}\)</span> which will immediately imply that <span class="process-math">\(N = \alpha\)</span> is the largest element of <span class="process-math">\(A\text{.}\)</span> We’ll do so by showing that every element of <span class="process-math">\(A\)</span> is an element of <span class="process-math">\(B\)</span> and <i class="foreign">vice versa</i>.</div>
+<div class="para">Let us first show that every element of <span class="process-math">\(A\)</span> is an element of <span class="process-math">\(B\text{;}\)</span> we’ll do so using proof by contradiction. Let <span class="process-math">\(m \in A\)</span> be given, and assume for the sake of argument that <span class="process-math">\(m \notin B\text{,}\)</span> so that <span class="process-math">\(m \gt N\text{.}\)</span> Then <span class="process-math">\(m \geq N+1 \gt (\alpha-1)+1 = \alpha\text{,}\)</span> which is impossible since <span class="process-math">\(\alpha\)</span> is an upper bound for <span class="process-math">\(A\text{.}\)</span>
+</div>
+<div class="para">Let us now show that every element of <span class="process-math">\(B\)</span> is an element of <span class="process-math">\(A\text{.}\)</span> Let <span class="process-math">\(m \in B\)</span> be given. Then <span class="process-math">\(m \leq N\)</span> by definition of <span class="process-math">\(B\)</span> and <span class="process-math">\(N \leq x\)</span> since <span class="process-math">\(N \in A\text{,}\)</span> so that <span class="process-math">\(m \leq N \leq x\text{,}\)</span> which shows that <span class="process-math">\(m \in A\text{.}\)</span>
+</div></article><span class="incontext"><a class="internal" href="sec-nonintegrable.html#lem-floor">in-context</a></span>
+</body>
+</html>

@@ -8,7 +8,7 @@
 <html lang="en-US" dir="ltr">
 <head xmlns:og="http://ogp.me/ns#" xmlns:book="https://ogp.me/ns/book#">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Integrability and integration</title>
+<title>Integrability and Integration</title>
 <meta name="Keywords" content="Authored in PreTeXt">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta property="og:type" content="book">
@@ -162,7 +162,7 @@ eBookConfig.enable_chatcodes =  false;
 <ol id="searchresults" class="searchresults"></ol>
 </div>
 </div>
-<span class="nav-other-controls"><button id="light-dark-button" class="light-dark-button button" title="Dark Mode"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe51c;</span><span class="name">Dark Mode</span></button></span><span class="treebuttons"><a class="previous-button button" href="sec-upper-lower-int.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="up-button button" href="ch-integration.html" title="Up"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Up</span></a><a class="next-button button" href="backmatter.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a></span>
+<span class="nav-other-controls"><button id="light-dark-button" class="light-dark-button button" title="Dark Mode"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe51c;</span><span class="name">Dark Mode</span></button></span><span class="treebuttons"><a class="previous-button button" href="sec-upper-lower-int.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="up-button button" href="ch-integration.html" title="Up"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Up</span></a><a class="next-button button" href="sec-nonintegrable.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a></span>
 </div></nav><div id="latex-macros" class="hidden-content process-math" style="display:none"><span class="process-math">\(\newcommand{\cL}{\mathcal L}
 \newcommand{\cU}{\mathcal U}
 \newcommand{\N}{\mathbb N}
@@ -175,6 +175,7 @@ eBookConfig.enable_chatcodes =  false;
 \newcommand{\Lint}[2]{\underline{\int_{#1}^{#2}}}
 \newcommand{\Uint}[2]{\overline{\int_{#1}^{#2}}}
 \newcommand{\du}{\,\mathrm{d}}
+\newcommand{\eu}{\mathrm{e}}
 \DeclareMathOperator{\Area}{Area}
 \newcommand{\lt}{&lt;}
 \newcommand{\gt}{&gt;}
@@ -196,14 +197,15 @@ eBookConfig.enable_chatcodes =  false;
 <li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-suprema.html#subsec-infima" class="internal"><span class="codenumber">1.2.2</span> <span class="title">Lower bounds</span></a></div></li>
 </ul>
 </li>
-<li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-upper-lower-int.html" class="internal"><span class="codenumber">1.3</span> <span class="title">Upper and lower integrals</span></a></div></li>
-<li class="toc-item toc-section active"><div class="toc-title-box"><a href="sec-integrability.html" class="internal"><span class="codenumber">1.4</span> <span class="title">Integrability and integration</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-upper-lower-int.html" class="internal"><span class="codenumber">1.3</span> <span class="title">Upper and Lower Integrals</span></a></div></li>
+<li class="toc-item toc-section active"><div class="toc-title-box"><a href="sec-integrability.html" class="internal"><span class="codenumber">1.4</span> <span class="title">Integrability and Integration</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-nonintegrable.html" class="internal"><span class="codenumber">1.5</span> <span class="title">A Non-Integrable Function</span></a></div></li>
 </ul>
 </li>
 <li class="toc-item toc-backmatter"><div class="toc-title-box"><a href="backmatter.html" class="internal"><span class="title">Backmatter</span></a></div></li>
 </ul></nav></div>
 <main class="ptx-main"><div id="ptx-content" class="ptx-content"><section class="section" id="sec-integrability"><h2 class="heading hide-type">
-<span class="type">Section</span><span class="space"> </span><span class="codenumber">1.4</span><span class="space"> </span><span class="title">Integrability and integration</span>
+<span class="type">Section</span><span class="space"> </span><span class="codenumber">1.4</span><span class="space"> </span><span class="title">Integrability and Integration</span>
 </h2>
 <div class="para" id="sec-integrability-2">In this section, we give a more-or-less rigorous alternative to <a class="external" href="https://opentext.uleth.ca/apex-calculus/sec_riemann.html" target="_blank">Section 5.4</a><details class="ptx-footnote" aria-live="polite" id="sec-integrability-2-2"><summary class="ptx-footnote__number" title="Footnote 1.4.1"><sup> 1 </sup></summary><div class="ptx-footnote__contents" id="sec-integrability-2-2"><code class="code-inline tex2jax_ignore">opentext.uleth.ca/apex-calculus/sec_riemann.html</code></div></details> of <span class="booktitle"><abbr class="initialism">APEX</abbr> Calculus</span> and Section 5.5 of Strang’s <span class="booktitle">Calculus</span>. Thus, instead of hand-waving around Riemann’s original formulation of a rigorous theory of integration, we give a fairly precise account using technical simplifications due to Darboux. Thus, in this course, we’re technically considering Darboux integration instead of Riemann integration <i class="foreign">sensu stricto</i>, but the two theories <a class="external" href="https://proofwiki.org/wiki/Equivalence_of_Definitions_of_Riemann_and_Darboux_Integrals" target="_blank">turn out to be equivalent</a><details class="ptx-footnote" aria-live="polite" id="sec-integrability-2-7"><summary class="ptx-footnote__number" title="Footnote 1.4.2"><sup> 2 </sup></summary><div class="ptx-footnote__contents" id="sec-integrability-2-7"><code class="code-inline tex2jax_ignore">proofwiki.org/wiki/Equivalence_of_Definitions_of_Riemann_and_Darboux_Integrals</code></div></details>.</div>
 <article class="definition definition-like" id="def-integrability"><h3 class="heading">
@@ -617,7 +619,7 @@ U(f,P) + U(g,P) \geq \Uint{a}{b}f + \Uint{a}{b}g = \int_a^b f = \int_a^b g.
 </div>
 </div></article></section></div>
 <div class="ptx-content-footer">
-<a class="previous-button button" href="sec-upper-lower-int.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="top-button button" href="#" title="Top"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Top</span></a><a class="next-button button" href="backmatter.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a>
+<a class="previous-button button" href="sec-upper-lower-int.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="top-button button" href="#" title="Top"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Top</span></a><a class="next-button button" href="sec-nonintegrable.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a>
 </div></main>
 </div>
 <div id="ptx-page-footer" class="ptx-page-footer">
