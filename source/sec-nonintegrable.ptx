@@ -8,7 +8,7 @@
         Conversely, a number <m>x</m> is <term>irrational</term> if it isn't rational; hence, let <m>\Q^c</m> denote the set of all irrational numbers, which reminds us that <m>\Q^c</m> is the <term>complement</term> of the subset <m>\Q</m> of <m>\R</m>.
     </p>
     <p>
-        For example, we know that <m>\sqrt{2} \in \Q^c</m> (since the 5th century <init>bce</init>), that <m>\eu \in \Q^c</m> (since the 17th century), and <m>\pi \in \Q</m> (since the 18th century)
+        For example, we know that <m>\sqrt{2} \in \Q^c</m> (since the 5th century <init>bce</init>), that <m>\eu \in \Q^c</m> (since the 17th century), and <m>\pi \in \Q^c</m> (since the 18th century)
         However, somehow, we still don't know whether <m>\pi+\eu</m>, <m>\pi-\eu</m>, and <m>\pi\eu</m> are irrational.
     </p>
     <p>
