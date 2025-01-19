@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section xml:id="sec-first-ftc" xmlns:xi="http://www.w3.org/2001/XInclude">
+    <title>The First Fundamental Theorem of Calculus</title>
+
+    <p>
+        In this section, we'll prove the first of the two <term>fundamental theorems of calculus</term>, the mathematical breakthrough of the 17th century that links the theory of integration with the theory of differentiation and permits the efficient calculation of integrals in a wide range of cases.
+        In particular, the first fundamental theorem of calculus uses integration to take a given function <m>f</m> and reverse-engineer a new function <m>F</m> such that <m>F' = f</m>.
+        Our account in this section and <xref ref="sec-second-ftc"/> provide a rigorous complement to <url href="https://opentext.uleth.ca/apex-calculus/sec_FTC.html">Section 5.5</url> of <pubtitle><init>APEX</init> Calculus</pubtitle> and Section 5.7 of Strang's <pubtitle>Calculus</pubtitle>.
+    </p>
+
+    <p>
+        We begin by showing that integration can be used to construct a continuous function <m>F</m> from an integrable function <m>f</m>, no matter how discontinuous <m>f</m> may be.
+        When <m>f</m> is actually continuous, this function <m>F</m> will turn out to satisfy <m>F' = f</m>.
+    </p>
+    
+    <theorem xml:id="thm-baby-ftc1">
+        <statement>
+            <p>
+                Let <m>f</m> be an integrable function on a closed interval <m>[a,b]</m>.
+                Let <m>F</m> be the function <m>[a,b]</m> given by <m>F(x) \defn \int_a^x f</m>.
+                Then <m>F</m> is continuous on <m>[a,b]</m>
+            </p>
+        </statement>
+    </theorem>
+
+    <remark>
+        <p>
+            Given a function <m>f</m> defined at a point <m>a</m>, we set <m>\int_a^a f \defn 0</m>.
+            Thus, in the context of <xref ref="thm-baby-ftc1"/>, we have <m>F(a) \defn \int_a^a f \defn 0</m>.
+        </p>
+    </remark>
+    
+    <lemma xml:id="lem-int-bounds">
+        <statement>
+            <p>
+                Let <m>f</m> be an integrable function on a closed interval <m>[a,b]</m>.
+                Let <m>m</m> and <m>M</m> be real numbers such that <m>m \leq f(x) \leq M</m> for all <m>a \leq x \leq b</m>.
+                Then <me>m(b-a) \leq \int_a^b f \leq M(b-a)</me>.
+            </p>
+        </statement>
+        <proof>
+            <p>
+                Consider the trivial partition <m>P_1 = (x_0,x_1)</m>, where <m>x_0 \defn a</m> and <m>x_1 \defn b</m>.
+                On the one hand, since <m>m</m> is a lower bound for <m>\set{f(x)}{a \leq x \leq b}</m>, it follows that <m>m \leq m_1</m>, hence <me>m(b-a) \leq m_1(b-a) = L(f,P_1) \leq \Lint{a}{b}f = \int_a^b f</me>.
+                On the other hand, since <m>M</m> is an upper bound for <m>\set{f(x)}{a \leq x \leq b}</m>, it follows that <m>M_1 \leq M</m>, hence <me>\int_a^b f = \Uint{a}{b}f \leq L(f,P_1) = M_1(b-a) \leq M(b-a)</me>.
+            </p>
+        </proof>
+    </lemma>
+
+    <proof>
+        <title>Proof of <xref ref="thm-baby-ftc1"/></title>
+        <p>
+            Before continuing, let us note that <m>F</m> is well-defined. Since <m>F(a) \defn \int_a^a f \defn 0</m> and <m>F(b) \defn \int_a^b</m>, it suffices to check that <m>F(x)</m> is well defined when <m>a \lt x \lt b</m>.
+            Indeed, let such <m>x</m> be given.
+            Then, by <xref ref="prop-integration-properties"/>, the function <m>f</m> is integrable on both <m>[a,x]</m> and <m>[x,b]</m>, so that <m>F(x) \defn \int_a^x f</m> is well-defined.
+        </p>
+        <p>
+            Now, since the integrable function <m>f</m> must be bounded on <m>[a,b]</m>, choose <m>M \gt 0</m> such that <m>\abs{f(x)} \leq M</m> for all <m>a \leq x \leq b</m>.
+            We will find it useful to show that <m>\abs{F(t)-F(s)} \leq M(t-s)</m> for all <m>s</m> and <m>t</m> satsfiying <m>a \leq s \lt t \leq b</m>.
+            Indeed, let such <m>s</m> and <m>t</m> be given.
+            Then, by definition of <m>F</m> and <xref ref="prop-integration-properties"/>,
+            <me>
+                F(t) = \int_a^t f = \int_a^s f + \int_s^t f = F(s) + \int_s^t f
+            </me>,
+            so that <m>F(t)-F(s) = \int_s^t f</m>.
+            But now, since <m>-M \leq f(x) \leq M</m> for all <m>s \leq x \leq t</m>, it follows by <xref ref="lem-int-bounds"/> that <m>-M(t-s) \leq \int_a^b f \leq M(t-s)</m>.
+            Hence,
+            <me>
+                \abs{F(t)-F(s)} = \abs{\int_a^b f} = \abs{M(t-s)} = M(t-s)
+            </me>. 
+        </p>
+        <p>
+            At last, let us show that <m>F</m> is continuous.
+            Let <m>a \leq c \leq b</m> be given; we'll show that <m>F</m> is continuous at <m>c</m>.
+            Thus, let <m>\epsilon \gt 0</m> and set <m>\delta \defn \frac{\epsilon}{M}</m>.
+            Let <m>a \leq x \leq b</m> satisfy <m>\abs{x-c} \lt \delta</m>.
+            <ol>
+                <li>
+                    <p>
+                        If <m>x \gt c</m>, then
+                        <me>
+                            \abs{F(x)-F(c)} \leq M(x-c) \lt M\delta = M\cdot\frac{\epsilon}{M} = \epsilon
+                        </me>.
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        If <m>x = c</m>, then <m>\abs{F(x)-F(c)} = 0 \lt \epsilon</m>.
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        If <m>x \lt c</m>, then
+                        <me>
+                            \abs{F(x)-F(c)} = \abs{F(c)-F(x)} \leq M(c-x) \lt M\delta = M\cdot\frac{\epsilon}{M} = \epsilon
+                        </me>.
+                    </p>
+                </li>
+            </ol>
+            Thus, in any case, we obtain <m>\abs{F(x)-F(c)} \lt \epsilon</m>.
+        </p>
+    </proof>
+
+    <p>
+        We now state and prove the first fundamental theorem of calculus, which guarantees that the function <m>F</m> of <xref ref="thm-baby-ftc1"/> is differentiable with derivative <m>F' = f</m> whenever <m>f</m> is continuous.
+    </p>
+
+    <theorem xml:id="thm-ftc1">
+        <title>First fundamental theorem of calculus</title>
+        <statement>
+            <p>
+                Let <m>f</m> be an integrable function on a closed interval <m>[a,b]</m>.
+                Let <m>F</m> be the function <m>[a,b]</m> given by <m>F(x) \defn \int_a^x f</m>.
+                Let <m>a \leq c \leq b</m>.
+                If <m>f</m> is continuous at <m>c</m>, then <m>F</m> is differentiable at <m>c</m> and <m>F'(c) =f(c)</m>.
+            </p>
+        </statement>
+    </theorem>
+
+    <remark>
+        <p>
+            Crudely speaking, results recognizable as the first fundamental theorem of calculus can be found in the work of <url href="https://en.wikipedia.org/wiki/James_Gregory_(mathematician)">James Gregory</url> and <url href="https://en.wikipedia.org/wiki/Isaac_Barrow">Isaac Barrow</url> in the mid 17th century.
+            However, it was <url href="https://en.wikipedia.org/wiki/Gottfried_Wilhelm_Leibniz">Gottfried Wilhelm Leibniz</url> and <url href="https://en.wikipedia.org/wiki/Isaac_Newton">Sir Isaac Newton</url> who understood its true significance and placed it in the theoretical context we use today.
+        </p>
+    </remark>
+
+    <proof>
+        <title>Proof of <xref ref="thm-ftc1"/></title>
+        <p>
+            For simplicity, let us suppose that <m>f</m> is continuous at <m>c</m> satisfying <m>a \lt c \lt b</m>.
+            By <url href="https://opentext.uleth.ca/apex-calculus/sec_derivative.html#def_derivative_at_a_point">definition of the derivative</url>, need to show that <m>\lim_{h \to 0}\frac{F(c+h)-F(c)}{h} = f(c)</m>.
+            For non-zero <m>h</m> satisfying <m>a-c \lt h \lt b-c</m>, let  
+            <md>
+                <mrow>m_h \amp \defn \begin{cases}\inf\set{f(x)}{c+h \leq h \leq c} \amp \text{if } h \lt 0\\ \inf\set{f(x)}{c \leq h \leq c+h} \amp \text{if } h \gt 0 \end{cases}</mrow>
+                <mrow>M_h \amp \defn \begin{cases}\sup\set{f(x)}{c+h \leq h \leq c} \amp \text{if } h \lt 0\\ \sup\set{f(x)}{c \leq h \leq c +h} \amp \text{if } h \gt 0 \end{cases}</mrow>
+            </md>.
+            On the one hand, we'll show that <m>m_h \leq \frac{F(c+h)-F(c)}{h} \leq M_h</m> for all such <m>h</m>.
+            On the other hand, we'll show that <m>\lim_{h\to 0}m_h = f(c) = \lim_{h\to 0}M_h</m>.
+            The <url href="https://opentext.uleth.ca/apex-calculus/sec_limit_analytically.html#thm_sqz">squeeze theorem</url> will then do the rest.
+        </p>
+        <p>
+            Let us first show that <m>m_h \leq \frac{F(c+h)-F(c)}{h} \leq M_h</m> for all non-zero <m>h</m> such that <m>a-c \lt h \lt b-c</m>.
+            For simplicity, let <m>0 \lt h \lt b-c</m> be given (the complementary case where <m>a-c \lt h \lt 0</m> will follow similarly).
+            On the one hand, by the proof of <xref ref="thm-baby-ftc1"/>, we know that <m>F(c+h)-F(c) = \int_c^{c+h}f</m>.
+            On the other hand, since <m>m_h \leq f(x) \leq M_h</m> for all <m>c \leq x \leq c+h</m>, it therefore follows by <xref ref="lem-int-bounds"/> that
+            <me>
+                m_h h = m_h((c+h)-c) \leq \int_c^{c+h} f \leq M_h((c+h)-c) = M_h h
+            </me>.
+            Thus, we find that <m>m_h h \leq F(c+h)-F(c) \leq M_h h</m>, which implies our desired inequality since <m>h \gt 0</m>.
+        </p>
+        <p>
+            Let us now show that <m>\lim_{h \to 0}m_h = c</m> and <m>\lim_{h \to 0}M_h = c</m>; we'll do so in tandem.
+            Let <m>\epsilon \gt 0</m> be given.
+            Since <m>f</m> is continuous at <m>c</m>, choose <m>\delta \gt 0</m> such that <m>\abs{f(x)-f(c)} \lt \epsilon</m> whenever <m>\abs{x-c} \lt \delta</m>.
+            Now, let <m>a-c \lt h \lt b-c</m> satisfy <m>0 \lt \abs{h} \lt \delta</m>.
+            Then <m>f(c) - \epsilon \lt f(x) \lt f(c) + \epsilon</m> for all <m>x</m> satisfying <m>\abs{x-c} \leq \abs{h}</m>, so that
+            <me>
+                f(c) - \epsilon \lt m_h \leq M_h \lt f(c) + \epsilon
+            </me>
+            whether <m>h \lt 0</m> or <m>h \gt 0</m>, so that <m>\abs{m_h-f(c)} \lt \epsilon</m> and <m>\abs{M_h-f(c)} \lt \epsilon</m>.
+        </p>
+    </proof>
+
+    <p>
+        Remarkably, one can adapt the proof of <xref ref="thm-ftc1"/> to yield a proof that a continuous function on a closed interval <m>[a,b]</m> is necessarily integrable.
+    </p>
+
+    <theorem xml:id="thm-cts-integrable">
+        <statement>
+            <p>
+                Let <m>f</m> be a continuous function on a closed interval <m>[a,b]</m>.
+                Then <m>f</m> is integrable on <m>[a,b]</m>.
+            </p>
+        </statement>
+    </theorem>
+
+    <proof>
+        <title>Sketch of proof of <xref ref="thm-cts-integrable"/></title>
+        <p>
+            Define functions <m>F_L</m> and <m>F_U</m> on <m>[a,b]</m> by <m>F_L(x) \defn \Lint{a}{x}f</m> and <m>F_U(x) \defn \Uint{a}{x}f</m>, respectively, with the convention that <m>\Lint{a}{a}f = 0 \Uint{a}{a}f</m>
+            Using <xref ref="prop-upper-lower-sums-properties"/>, one can adapt the proof of <xref ref="thm-ftc1"/> to show that both <m>F_L</m> and <m>F_U</m> are differentiable on <m>[a,b]</m> and <m>F_L^\prime = f = F_U^\prime</m>.
+            Hence, <m>(F_U-F_L)^\prime = F_U^\prime - F_L^\prime = 0</m> on <m>[a,b]</m>, <url href="https://opentext.uleth.ca/apex-calculus/sec_mvt.html#thm-mvt-corollaries-2-1">it follows</url> that <m>F_U-F_L</m> is constant, so that
+            <me>
+                F_U(x)-F_L(x) = F_U(a) - F_L(a) = 0 - 0 = 0
+            </me>
+            for all <m>a \leq x \leq b</m>.
+        </p>
+    </proof>
+    
+    <corollary xml:id="cor-antiderivative">
+        <statement>
+            <p>
+                Let <m>f</m> be a continuous function on a closed interval <m>[a,b]</m>; let <m>C</m> be a real number.
+                There exists a unique differentiable function <m>F</m> on <m>[a,b]</m> such that <m>F' = f</m> and <m>F(a) = C</m>.
+            </p>
+        </statement>
+        <proof>
+            <p>
+                Note that <m>f</m> is integrable on <m>[a,b]</m> by <xref ref="thm-cts-integrable"/>.
+                Hence, by <xref ref="thm-ftc1"/>, the function <m>F</m> on <m>[a,b]</m> defined by <m>F(x) \defn \int_a^b f + C</m> is differentiable with derivative <m>f + 0 = f</m>; moreover, by construction, it satisfies <m>F(a) = \int_a^a f + C = 0 + C = C</m>.
+            </p>
+            <p>
+                Now, suppose that <m>G</m> is a differentiable function on <m>[a,b]</m> such that <m>G' = f</m> and <m>G(a)=C</m>.
+                Then <m>(F-G)' = F' - G' = f - f = 0</m>, so that <m>F-G</m> is constant.
+                Hence, <m>F(x)-G(x) = F(a)-G(a) = C-C = 0</m> for all <m>a \leq x \leq b</m>. 
+            </p>
+        </proof>
+    </corollary>
+
+</section>

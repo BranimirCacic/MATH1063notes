@@ -17,5 +17,7 @@
   <xi:include href="sec-upper-lower-sums.ptx" />
   <xi:include href="sec-integrability.ptx" />
   <xi:include href="sec-nonintegrable.ptx" />
+  <xi:include href="sec-first-ftc.ptx" />
+  <xi:include href="sec-second-ftc.ptx" />
 
 </chapter>
