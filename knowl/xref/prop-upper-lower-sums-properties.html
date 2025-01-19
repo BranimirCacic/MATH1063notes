@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="proposition theorem-like"><h3 class="heading">
+<span class="type">Proposition</span><span class="space"> </span><span class="codenumber">1.3.10</span><span class="period">.</span>
+</h3>
+<div class="para logical">
+<div class="para">Let <span class="process-math">\(f\)</span> be a bounded real-valued function on a closed interval <span class="process-math">\([a,b]\text{.}\)</span>
+</div>
+<ol class="decimal" id="prop-upper-lower-sums-properties-1-1-3">
+<li><div class="para">Let <span class="process-math">\(P\)</span> be a partition of <span class="process-math">\([a,b]\text{.}\)</span> Then <span class="process-math">\(L(f,P) \leq U(f,P)\text{.}\)</span>
+</div></li>
+<li><div class="para logical">
+<div class="para">Let <span class="process-math">\(P\)</span> and <span class="process-math">\(P'\)</span> be partitions of <span class="process-math">\([a,b]\text{.}\)</span> Suppose that <span class="process-math">\(P'\)</span> can be obtained from <span class="process-math">\(P\)</span> by including additional points (i.e., <span class="process-math">\(P'\)</span> is a <dfn class="terminology">refinement</dfn> of <span class="process-math">\(P\)</span>). Then</div>
+<div class="displaymath process-math">
+\begin{equation*}
+L(f,P) \leq L(f,P') \leq U(f,P') \leq U(f,P)\text{.}
+\end{equation*}
+</div>
+</div></li>
+<li><div class="para">Let <span class="process-math">\(P\)</span> and <span class="process-math">\(P'\)</span> be partitions of <span class="process-math">\([a,b]\text{.}\)</span> Then <span class="process-math">\(L(f,P) \leq U(f,P')\text{.}\)</span>
+</div></li>
+</ol>
+</div></article><article class="proof"><h3 class="heading"><span class="type">Proof<span class="period">.</span></span></h3>
+<div class="para logical">
+<div class="para">Let us first prove <a href="sec-upper-lower-int.html#item-upper-lower-sums-inequality" class="xref" data-knowl="./knowl/xref/item-upper-lower-sums-inequality.html" data-reveal-label="Reveal" data-close-label="Close" title="Item 1">Item 1</a> Let <span class="process-math">\(P = (x_0,x_1,\dotsc,x_N)\)</span> be a partition of <span class="process-math">\([a,b]\text{.}\)</span> Given <span class="process-math">\(1 \leq k \leq N\text{,}\)</span> since</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/item-upper-lower-sums-inequality.html">
+\begin{equation*}
+m_k = \inf\set{f(x)}{x_{k-1} \leq x \leq x_k} \leq f(x_{k-1}) \leq \sup\set{f(x)}{x_{k-1}\leq x\leq x_k} = M_k\text{,}
+\end{equation*}
+</div>
+<div class="para">it follows that <span class="process-math">\(m_k \leq M_k\text{.}\)</span> Thus,</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/item-upper-lower-sums-inequality.html">
+\begin{equation*}
+L(f,P) = \sum_{k=1}^N m_k (x_k-x_{k-1}) \leq \sum_{k=1}^N M_k(x_k-x_{k-1}) = U(f,P)\text{.}
+\end{equation*}
+</div>
+</div>
+<div class="para">Next, let us sketch the proof of <a href="sec-upper-lower-int.html#item-upper-lower-sums-refinement" class="xref" data-knowl="./knowl/xref/item-upper-lower-sums-refinement.html" data-reveal-label="Reveal" data-close-label="Close" title="Item 2">Item 2</a>. The general case is a tedious application of the special case where <span class="process-math">\(P = (a,b)\)</span> and where <span class="process-math">\(P' = (x_0^\prime,\dotsc,x_N^\prime)\)</span> is any other partition. We’ll show that <span class="process-math">\(U(f,P') \leq U(f,P)\text{;}\)</span> the argument that <span class="process-math">\(L(f,P) \leq L(f,P')\)</span> will be qualitatively identical.</div>
+<div class="para logical">
+<div class="para">For each <span class="process-math">\(1 \leq k \leq N\text{,}\)</span> let <span class="process-math">\(M_k^\prime \defn \sup\set{f(x)}{x_{k-1}^\prime \leq x \leq x_k^\prime}\text{,}\)</span> so that <span class="process-math">\(U(f,P') = \sum_{k=1}^N M_k^\prime(x_k^\prime-x_{k-1}^\prime)\text{;}\)</span> let <span class="process-math">\(M \defn \sup{f(x)}{a\leq x \leq b}\text{,}\)</span> so that <span class="process-math">\(U(f,P) = M(b-a)\text{.}\)</span> Given <span class="process-math">\(1 \leq k \leq \text{,}\)</span> since <span class="process-math">\(f(x) \leq \sup{f(x)}{a\leq x \leq b} = M\)</span> for all <span class="process-math">\(x \in [x_{k-1}^\prime,x_k^\prime]\text{,}\)</span> it follows that</div>
+<div class="displaymath process-math">
+\begin{align*}
+U(f,P') \amp \defn \sum_{k=1}^N M_k^\prime(x_k^\prime-x_k-1^\prime) \\
+\amp \leq \sum_{k=1}^N M(x_k^\prime-x_{k-1}^\prime) \\
+\amp = M\sum_{k=1}^N(x_k^\prime-x_{k-1}^\prime)\\
+\amp = M(b-a) \\
+\amp = U(f,P) \text{.}
+\end{align*}
+</div>
+</div>
+<div class="para logical">
+<div class="para">Finally, let us prove <a href="sec-upper-lower-int.html#item-upper-sums-bound-lower-sums" class="xref" data-knowl="./knowl/xref/item-upper-sums-bound-lower-sums.html" data-reveal-label="Reveal" data-close-label="Close" title="Item 3">Item 3</a>. Let <span class="process-math">\(P\)</span> and <span class="process-math">\(P'\)</span> be partitions of <span class="process-math">\([a,b]\text{.}\)</span> Let <span class="process-math">\(P^{\prime\prime}\)</span> be the partition of <span class="process-math">\([a,b]\)</span> obtained by merging the lists <span class="process-math">\(P\)</span> and <span class="process-math">\(P'\text{.}\)</span> Then <span class="process-math">\(P^{\prime\prime}\)</span> is a refinement of both <span class="process-math">\(P\)</span> and <span class="process-math">\(P'\text{,}\)</span> so that</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/item-upper-sums-bound-lower-sums.html ./knowl/xref/item-upper-lower-sums-inequality.html ./knowl/xref/item-upper-lower-sums-refinement.html">
+\begin{equation*}
+L(f,P) \leq L(f,P^{\prime\prime}) \leq U(f,P^{\prime\prime}) \leq U(f,P)
+\end{equation*}
+</div>
+<div class="para">by <a href="sec-upper-lower-int.html#item-upper-lower-sums-inequality" class="xref" data-knowl="./knowl/xref/item-upper-lower-sums-inequality.html" data-reveal-label="Reveal" data-close-label="Close" title="Item 1">Item 1</a> and <a href="sec-upper-lower-int.html#item-upper-lower-sums-refinement" class="xref" data-knowl="./knowl/xref/item-upper-lower-sums-refinement.html" data-reveal-label="Reveal" data-close-label="Close" title="Item 2">Item 2</a>.</div>
+</div></article><span class="incontext"><a class="internal" href="sec-upper-lower-int.html#prop-upper-lower-sums-properties">in-context</a></span>
+</body>
+</html>

@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<html lang="en-US" dir="ltr">
+<head xmlns:og="http://ogp.me/ns#" xmlns:book="https://ogp.me/ns/book#">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>The First Fundamental Theorem of Calculus</title>
+<meta name="Keywords" content="Authored in PreTeXt">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:type" content="book">
+<meta property="book:title" content="Enriched Calculus II">
+<meta property="book:author" content="Branimir Ćaćić">
+<script>
+var runestoneMathReady = new Promise((resolve) => window.rsMathReady = resolve);
+window.MathJax = {
+  "tex": {
+    "inlineMath": [
+      [
+        "\\(",
+        "\\)"
+      ]
+    ],
+    "tags": "none",
+    "tagSide": "right",
+    "tagIndent": ".8em",
+    "packages": {
+      "[+]": [
+        "base",
+        "extpfeil",
+        "ams",
+        "amscd",
+        "color",
+        "newcommand",
+        "knowl"
+      ]
+    }
+  },
+  "options": {
+    "ignoreHtmlClass": "tex2jax_ignore|ignore-math",
+    "processHtmlClass": "process-math"
+  },
+  "chtml": {
+    "scale": 0.98,
+    "mtextInheritFont": true
+  },
+  "loader": {
+    "load": [
+      "input/asciimath",
+      "[tex]/extpfeil",
+      "[tex]/amscd",
+      "[tex]/color",
+      "[tex]/newcommand",
+      "[pretext]/mathjaxknowl3.js"
+    ],
+    "paths": {
+      "pretext": "_static/pretext/js/lib"
+    }
+  },
+  "startup": {
+    pageReady() {
+      return MathJax.startup.defaultPageReady().then(function () {
+      console.log("in ready function");
+      rsMathReady();
+      }
+    )}
+  }
+};
+</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.9/lunr.min.js" integrity="sha512-4xUl/d6D6THrAnXAwGajXkoWaeMNwEKK4iNfq5DotEbLPAfk6FSxSP3ydNxqDgCw1c/0Z1Jg6L8h2j+++9BZmg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><script src="lunr-pretext-search-index.js" async=""></script><script src="_static/pretext/js/pretext_search.js"></script><script src="_static/pretext/js/lib/jquery.min.js"></script><script src="_static/pretext/js/lib/jquery.sticky.js"></script><script src="_static/pretext/js/lib/jquery.espy.min.js"></script><script src="_static/pretext/js/pretext.js"></script><script src="_static/pretext/js/pretext_add_on.js?x=1"></script><script src="_static/pretext/js/user_preferences.js"></script><script src="_static/pretext/js/lib/knowl.js"></script><!--knowl.js code controls Sage Cells within knowls--><script>sagecellEvalName='Evaluate (Sage)';
+</script><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
+<link href="_static/pretext/css/theme.css" rel="stylesheet" type="text/css">
+<!--** eBookCongig is necessary to configure interactive       **-->
+<!--** Runestone components to run locally in reader's browser **-->
+<!--** No external communication:                              **-->
+<!--**     log level is 0, Runestone Services are disabled     **-->
+<script type="text/javascript">
+eBookConfig = {};
+eBookConfig.useRunestoneServices = false;
+eBookConfig.host = 'http://127.0.0.1:8000';
+eBookConfig.course = 'PTX_Course_Title_Here';
+eBookConfig.basecourse = 'PTX_Base_Course';
+eBookConfig.isLoggedIn = false;
+eBookConfig.email = '';
+eBookConfig.isInstructor = false;
+eBookConfig.logLevel = 0;
+eBookConfig.username = '';
+eBookConfig.readings = null;
+eBookConfig.activities = null;
+eBookConfig.downloadsEnabled = false;
+eBookConfig.allow_pairs = false;
+eBookConfig.enableScratchAC = false;
+eBookConfig.build_info = "";
+eBookConfig.python3 = null;
+eBookConfig.runestone_version = '7.5.2';
+eBookConfig.jobehost = '';
+eBookConfig.proxyuri_runs = '';
+eBookConfig.proxyuri_files = '';
+eBookConfig.enable_chatcodes =  false;
+</script>
+<!--*** Runestone Services ***-->
+<script src="_static/prefix-runtime.8b270ccf5298bad1.bundle.js"></script><script src="_static/prefix-723.3e6434f80549315a.bundle.js"></script><script src="_static/prefix-runestone.630d5c4fb4b681eb.bundle.js"></script><link rel="stylesheet" type="text/css" href="_static/prefix-723.3bccd435914aa0ff.css">
+<link rel="stylesheet" type="text/css" href="_static/prefix-runestone.d966d31a41778c59.css">
+<style>
+#assumption-area-1-1-4 { counter-set: assumption-area-1-1-4 0; }
+#assumption-area-1-1-4 > li::marker { content: ""counter(assumption-area-1-1-4,decimal)"."; }
+#assumption-area-1-1-4 > li { counter-increment: assumption-area-1-1-4; }
+#sec-prob-area-27-4-4 { counter-set: sec-prob-area-27-4-4 0; }
+#sec-prob-area-27-4-4 > li::marker { content: ""counter(sec-prob-area-27-4-4,decimal)"."; }
+#sec-prob-area-27-4-4 > li { counter-increment: sec-prob-area-27-4-4; }
+#def-supremum-1-1-7 { counter-set: def-supremum-1-1-7 0; }
+#def-supremum-1-1-7 > li::marker { content: ""counter(def-supremum-1-1-7,decimal)"."; }
+#def-supremum-1-1-7 > li { counter-increment: def-supremum-1-1-7; }
+#def-infimum-1-1-7 { counter-set: def-infimum-1-1-7 0; }
+#def-infimum-1-1-7 > li::marker { content: ""counter(def-infimum-1-1-7,decimal)"."; }
+#def-infimum-1-1-7 > li { counter-increment: def-infimum-1-1-7; }
+#prop-sup-inf-1-2-1 { counter-set: prop-sup-inf-1-2-1 0; }
+#prop-sup-inf-1-2-1 > li::marker { content: ""counter(prop-sup-inf-1-2-1,decimal)"."; }
+#prop-sup-inf-1-2-1 > li { counter-increment: prop-sup-inf-1-2-1; }
+#sec-upper-lower-int-3-1 { counter-set: sec-upper-lower-int-3-1 0; }
+#sec-upper-lower-int-3-1 > li::marker { content: ""counter(sec-upper-lower-int-3-1,decimal)"."; }
+#sec-upper-lower-int-3-1 > li { counter-increment: sec-upper-lower-int-3-1; }
+#def-upper-lower-sum-1-1-7 { counter-set: def-upper-lower-sum-1-1-7 0; }
+#def-upper-lower-sum-1-1-7 > li::marker { content: ""counter(def-upper-lower-sum-1-1-7,decimal)"."; }
+#def-upper-lower-sum-1-1-7 > li { counter-increment: def-upper-lower-sum-1-1-7; }
+#prop-upper-lower-sums-properties-1-1-3 { counter-set: prop-upper-lower-sums-properties-1-1-3 0; }
+#prop-upper-lower-sums-properties-1-1-3 > li::marker { content: ""counter(prop-upper-lower-sums-properties-1-1-3,decimal)"."; }
+#prop-upper-lower-sums-properties-1-1-3 > li { counter-increment: prop-upper-lower-sums-properties-1-1-3; }
+#def-upper-lower-int-1-1-3 { counter-set: def-upper-lower-int-1-1-3 0; }
+#def-upper-lower-int-1-1-3 > li::marker { content: ""counter(def-upper-lower-int-1-1-3,decimal)"."; }
+#def-upper-lower-int-1-1-3 > li { counter-increment: def-upper-lower-int-1-1-3; }
+#thm-integrability-criterion-1-1-3 { counter-set: thm-integrability-criterion-1-1-3 0; }
+#thm-integrability-criterion-1-1-3 > li::marker { content: ""counter(thm-integrability-criterion-1-1-3,decimal)"."; }
+#thm-integrability-criterion-1-1-3 > li { counter-increment: thm-integrability-criterion-1-1-3; }
+#sec-integrability-12-1-8 { counter-set: sec-integrability-12-1-8 0; }
+#sec-integrability-12-1-8 > li::marker { content: ""counter(sec-integrability-12-1-8,decimal)"."; }
+#sec-integrability-12-1-8 > li { counter-increment: sec-integrability-12-1-8; }
+#prop-integration-properties-2-1-1 { counter-set: prop-integration-properties-2-1-1 0; }
+#prop-integration-properties-2-1-1 > li::marker { content: ""counter(prop-integration-properties-2-1-1,decimal)"."; }
+#prop-integration-properties-2-1-1 > li { counter-increment: prop-integration-properties-2-1-1; }
+#sec-first-ftc-7-4-9 { counter-set: sec-first-ftc-7-4-9 0; }
+#sec-first-ftc-7-4-9 > li::marker { content: ""counter(sec-first-ftc-7-4-9,decimal)"."; }
+#sec-first-ftc-7-4-9 > li { counter-increment: sec-first-ftc-7-4-9; }
+</style>
+</head>
+<body class="pretext book ignore-math">
+<a class="assistive" href="#ptx-content">Skip to main content</a><header id="ptx-masthead" class="ptx-masthead"><div class="ptx-banner">
+<a id="logo-link" class="logo-link" target="_blank" href=""></a><div class="title-container">
+<h1 class="heading"><a href="mybook.html"><span class="title">Enriched Calculus II:</span> <span class="subtitle">Notes for MATH 1063</span></a></h1>
+<p class="byline">Branimir Ćaćić</p>
+</div>
+</div></header><nav id="ptx-navbar" class="ptx-navbar navbar"><div class="ptx-navbar-contents">
+<button class="toc-toggle button" title="Contents"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5d2;</span><span class="name">Contents</span></button><div class="searchbox">
+<div class="searchwidget"><button id="searchbutton" class="searchbutton button" type="button" title="Search book"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe8b6;</span><span class="name">Search Book</span></button></div>
+<div id="searchresultsplaceholder" class="searchresultsplaceholder" style="display: none">
+<div class="search-results-controls">
+<input aria-label="Search term" id="ptxsearch" class="ptxsearch" type="text" name="terms" placeholder="Search term"><button title="Close search" id="closesearchresults" class="closesearchresults"><span class="material-symbols-outlined">close</span></button>
+</div>
+<h2 class="search-results-heading">Search Results: </h2>
+<div id="searchempty" class="searchempty"><span>No results.</span></div>
+<ol id="searchresults" class="searchresults"></ol>
+</div>
+</div>
+<span class="nav-other-controls"><button id="light-dark-button" class="light-dark-button button" title="Dark Mode"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe51c;</span><span class="name">Dark Mode</span></button></span><span class="treebuttons"><a class="previous-button button" href="sec-nonintegrable.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="up-button button" href="ch-integration.html" title="Up"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Up</span></a><a class="next-button button" href="sec-second-ftc.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a></span>
+</div></nav><div id="latex-macros" class="hidden-content process-math" style="display:none"><span class="process-math">\(\newcommand{\cL}{\mathcal L}
+\newcommand{\cU}{\mathcal U}
+\newcommand{\N}{\mathbb N}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\R}{\mathbb R}
+\newcommand{\abs}[1]{\lvert{#1}\rvert}
+\newcommand{\defn}{\mathrel{:=}}
+\newcommand{\set}[2]{\left\{{#1}:{#2}\right\}}
+\newcommand{\Lint}[2]{\underline{\int_{#1}^{#2}}}
+\newcommand{\Uint}[2]{\overline{\int_{#1}^{#2}}}
+\newcommand{\du}{\,\mathrm{d}}
+\newcommand{\eu}{\mathrm{e}}
+\DeclareMathOperator{\Area}{Area}
+\newcommand{\lt}{&lt;}
+\newcommand{\gt}{&gt;}
+\newcommand{\amp}{&amp;}
+\definecolor{fillinmathshade}{gray}{0.9}
+\newcommand{\fillinmath}[1]{\mathchoice{\colorbox{fillinmathshade}{$\displaystyle     \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\textstyle        \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\scriptstyle      \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\scriptscriptstyle\phantom{\,#1\,}$}}}
+\)</span></div>
+<div class="ptx-page">
+<div id="ptx-sidebar" class="ptx-sidebar"><nav id="ptx-toc" class="ptx-toc depth2 focused" data-preexpanded-levels="0" data-max-levels="2"><ul class="structural toc-item-list contains-active">
+<li class="toc-item toc-frontmatter"><div class="toc-title-box"><a href="frontmatter.html" class="internal"><span class="title">Front Matter</span></a></div></li>
+<li class="toc-item toc-chapter contains-active">
+<div class="toc-title-box"><a href="ch-integration.html" class="internal"><span class="codenumber">1</span> <span class="title">Integration</span></a></div>
+<ul class="structural toc-item-list contains-active">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-prob-area.html" class="internal"><span class="codenumber">1.1</span> <span class="title">The Problem of Area</span></a></div></li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-suprema.html" class="internal"><span class="codenumber">1.2</span> <span class="title">Upper Bounds and Lower Bounds</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-suprema.html#subsec-suprema" class="internal"><span class="codenumber">1.2.1</span> <span class="title">Upper bounds</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-suprema.html#subsec-infima" class="internal"><span class="codenumber">1.2.2</span> <span class="title">Lower bounds</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-upper-lower-int.html" class="internal"><span class="codenumber">1.3</span> <span class="title">Upper and Lower Integrals</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-integrability.html" class="internal"><span class="codenumber">1.4</span> <span class="title">Integrability and Integration</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-nonintegrable.html" class="internal"><span class="codenumber">1.5</span> <span class="title">A Non-Integrable Function</span></a></div></li>
+<li class="toc-item toc-section active"><div class="toc-title-box"><a href="sec-first-ftc.html" class="internal"><span class="codenumber">1.6</span> <span class="title">The First Fundamental Theorem of Calculus</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-second-ftc.html" class="internal"><span class="codenumber">1.7</span> <span class="title">The Second Fundamental Theorem of Calculus</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-backmatter"><div class="toc-title-box"><a href="backmatter.html" class="internal"><span class="title">Backmatter</span></a></div></li>
+</ul></nav></div>
+<main class="ptx-main"><div id="ptx-content" class="ptx-content"><section class="section" id="sec-first-ftc"><h2 class="heading hide-type">
+<span class="type">Section</span><span class="space"> </span><span class="codenumber">1.6</span><span class="space"> </span><span class="title">The First Fundamental Theorem of Calculus</span>
+</h2>
+<div class="para" id="sec-first-ftc-2">In this section, we’ll prove the first of the two <dfn class="terminology">fundamental theorems of calculus</dfn>, the mathematical breakthrough of the 17th century that links the theory of integration with the theory of differentiation and permits the efficient calculation of integrals in a wide range of cases. In particular, the first fundamental theorem of calculus uses integration to take a given function <span class="process-math">\(f\)</span> and reverse-engineer a new function <span class="process-math">\(F\)</span> such that <span class="process-math">\(F' = f\text{.}\)</span> Our account in this section and <a href="sec-second-ftc.html" class="internal" title="Section 1.7: The Second Fundamental Theorem of Calculus">Section 1.7</a> provide a rigorous complement to <a class="external" href="https://opentext.uleth.ca/apex-calculus/sec_FTC.html" target="_blank">Section 5.5</a><details class="ptx-footnote" aria-live="polite" id="sec-first-ftc-2-7"><summary class="ptx-footnote__number" title="Footnote 1.6.1"><sup> 1 </sup></summary><div class="ptx-footnote__contents" id="sec-first-ftc-2-7"><code class="code-inline tex2jax_ignore">opentext.uleth.ca/apex-calculus/sec_FTC.html</code></div></details> of <span class="booktitle"><abbr class="initialism">APEX</abbr> Calculus</span> and Section 5.7 of Strang’s <span class="booktitle">Calculus</span>.</div>
+<div class="para" id="sec-first-ftc-3">We begin by showing that integration can be used to construct a continuous function <span class="process-math">\(F\)</span> from an integrable function <span class="process-math">\(f\text{,}\)</span> no matter how discontinuous <span class="process-math">\(f\)</span> may be. When <span class="process-math">\(f\)</span> is actually continuous, this function <span class="process-math">\(F\)</span> will turn out to satisfy <span class="process-math">\(F' = f\text{.}\)</span>
+</div>
+<article class="theorem theorem-like" id="thm-baby-ftc1"><h3 class="heading">
+<span class="type">Theorem</span><span class="space"> </span><span class="codenumber">1.6.1</span><span class="period">.</span>
+</h3>
+<div class="para" id="thm-baby-ftc1-1-1">Let <span class="process-math">\(f\)</span> be an integrable function on a closed interval <span class="process-math">\([a,b]\text{.}\)</span> Let <span class="process-math">\(F\)</span> be the function <span class="process-math">\([a,b]\)</span> given by <span class="process-math">\(F(x) \defn \int_a^x f\text{.}\)</span> Then <span class="process-math">\(F\)</span> is continuous on <span class="process-math">\([a,b]\)</span>
+</div></article><article class="remark remark-like" id="sec-first-ftc-5"><h3 class="heading">
+<span class="type">Remark</span><span class="space"> </span><span class="codenumber">1.6.2</span><span class="period">.</span>
+</h3>
+<div class="para" id="sec-first-ftc-5-1">Given a function <span class="process-math">\(f\)</span> defined at a point <span class="process-math">\(a\text{,}\)</span> we set <span class="process-math">\(\int_a^a f \defn 0\text{.}\)</span> Thus, in the context of <a href="sec-first-ftc.html#thm-baby-ftc1" class="xref" data-knowl="./knowl/xref/thm-baby-ftc1.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 1.6.1">Theorem 1.6.1</a>, we have <span class="process-math">\(F(a) \defn \int_a^a f \defn 0\text{.}\)</span>
+</div></article><article class="lemma theorem-like" id="lem-int-bounds"><h3 class="heading">
+<span class="type">Lemma</span><span class="space"> </span><span class="codenumber">1.6.3</span><span class="period">.</span>
+</h3>
+<div class="para logical" id="lem-int-bounds-1-1">
+<div class="para">Let <span class="process-math">\(f\)</span> be an integrable function on a closed interval <span class="process-math">\([a,b]\text{.}\)</span> Let <span class="process-math">\(m\)</span> and <span class="process-math">\(M\)</span> be real numbers such that <span class="process-math">\(m \leq f(x) \leq M\)</span> for all <span class="process-math">\(a \leq x \leq b\text{.}\)</span> Then</div>
+<div class="displaymath process-math">
+\begin{equation*}
+m(b-a) \leq \int_a^b f \leq M(b-a)\text{.}
+\end{equation*}
+</div>
+</div></article><article class="proof" id="lem-int-bounds-2"><h3 class="heading"><span class="type">Proof<span class="period">.</span></span></h3>
+<div class="para logical" id="lem-int-bounds-2-1">
+<div class="para">Consider the trivial partition <span class="process-math">\(P_1 = (x_0,x_1)\text{,}\)</span> where <span class="process-math">\(x_0 \defn a\)</span> and <span class="process-math">\(x_1 \defn b\text{.}\)</span> On the one hand, since <span class="process-math">\(m\)</span> is a lower bound for <span class="process-math">\(\set{f(x)}{a \leq x \leq b}\text{,}\)</span> it follows that <span class="process-math">\(m \leq m_1\text{,}\)</span> hence</div>
+<div class="displaymath process-math">
+\begin{equation*}
+m(b-a) \leq m_1(b-a) = L(f,P_1) \leq \Lint{a}{b}f = \int_a^b f\text{.}
+\end{equation*}
+</div>
+<div class="para">On the other hand, since <span class="process-math">\(M\)</span> is an upper bound for <span class="process-math">\(\set{f(x)}{a \leq x \leq b}\text{,}\)</span> it follows that <span class="process-math">\(M_1 \leq M\text{,}\)</span> hence</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\int_a^b f = \Uint{a}{b}f \leq L(f,P_1) = M_1(b-a) \leq M(b-a)\text{.}
+\end{equation*}
+</div>
+</div></article><article class="proof" id="sec-first-ftc-7"><h3 class="heading"><span class="title">Proof of Theorem 1.6.1.</span></h3>
+<div class="para" id="sec-first-ftc-7-2">Before continuing, let us note that <span class="process-math">\(F\)</span> is well-defined. Since <span class="process-math">\(F(a) \defn \int_a^a f \defn 0\)</span> and <span class="process-math">\(F(b) \defn \int_a^b\text{,}\)</span> it suffices to check that <span class="process-math">\(F(x)\)</span> is well defined when <span class="process-math">\(a \lt x \lt b\text{.}\)</span> Indeed, let such <span class="process-math">\(x\)</span> be given. Then, by <a href="sec-integrability.html#prop-integration-properties" class="xref" data-knowl="./knowl/xref/prop-integration-properties.html" data-reveal-label="Reveal" data-close-label="Close" title="Proposition 1.4.11: Basic properties of integration">Proposition 1.4.11</a>, the function <span class="process-math">\(f\)</span> is integrable on both <span class="process-math">\([a,x]\)</span> and <span class="process-math">\([x,b]\text{,}\)</span> so that <span class="process-math">\(F(x) \defn \int_a^x f\)</span> is well-defined.</div>
+<div class="para logical" id="sec-first-ftc-7-3">
+<div class="para">Now, since the integrable function <span class="process-math">\(f\)</span> must be bounded on <span class="process-math">\([a,b]\text{,}\)</span> choose <span class="process-math">\(M \gt 0\)</span> such that <span class="process-math">\(\abs{f(x)} \leq M\)</span> for all <span class="process-math">\(a \leq x \leq b\text{.}\)</span> We will find it useful to show that <span class="process-math">\(\abs{F(t)-F(s)} \leq M(t-s)\)</span> for all <span class="process-math">\(s\)</span> and <span class="process-math">\(t\)</span> satsfiying <span class="process-math">\(a \leq s \lt t \leq b\text{.}\)</span> Indeed, let such <span class="process-math">\(s\)</span> and <span class="process-math">\(t\)</span> be given. Then, by definition of <span class="process-math">\(F\)</span> and <a href="sec-integrability.html#prop-integration-properties" class="xref" data-knowl="./knowl/xref/prop-integration-properties.html" data-reveal-label="Reveal" data-close-label="Close" title="Proposition 1.4.11: Basic properties of integration">Proposition 1.4.11</a>,</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/prop-integration-properties.html ./knowl/xref/lem-int-bounds.html">
+\begin{equation*}
+F(t) = \int_a^t f = \int_a^s f + \int_s^t f = F(s) + \int_s^t f\text{,}
+\end{equation*}
+</div>
+<div class="para">so that <span class="process-math">\(F(t)-F(s) = \int_s^t f\text{.}\)</span> But now, since <span class="process-math">\(-M \leq f(x) \leq M\)</span> for all <span class="process-math">\(s \leq x \leq t\text{,}\)</span> it follows by <a href="sec-first-ftc.html#lem-int-bounds" class="xref" data-knowl="./knowl/xref/lem-int-bounds.html" data-reveal-label="Reveal" data-close-label="Close" title="Lemma 1.6.3">Lemma 1.6.3</a> that <span class="process-math">\(-M(t-s) \leq \int_a^b f \leq M(t-s)\text{.}\)</span> Hence,</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/prop-integration-properties.html ./knowl/xref/lem-int-bounds.html">
+\begin{equation*}
+\abs{F(t)-F(s)} = \abs{\int_a^b f} = \abs{M(t-s)} = M(t-s)\text{.}
+\end{equation*}
+</div>
+</div>
+<div class="para logical" id="sec-first-ftc-7-4">
+<div class="para">At last, let us show that <span class="process-math">\(F\)</span> is continuous. Let <span class="process-math">\(a \leq c \leq b\)</span> be given; we’ll show that <span class="process-math">\(F\)</span> is continuous at <span class="process-math">\(c\text{.}\)</span> Thus, let <span class="process-math">\(\epsilon \gt 0\)</span> and set <span class="process-math">\(\delta \defn \frac{\epsilon}{M}\text{.}\)</span> Let <span class="process-math">\(a \leq x \leq b\)</span> satisfy <span class="process-math">\(\abs{x-c} \lt \delta\text{.}\)</span>
+</div>
+<ol class="decimal" id="sec-first-ftc-7-4-9">
+<li id="sec-first-ftc-7-4-9-1"><div class="para logical" id="sec-first-ftc-7-4-9-1-1">
+<div class="para">If <span class="process-math">\(x \gt c\text{,}\)</span> then</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\abs{F(x)-F(c)} \leq M(x-c) \lt M\delta = M\cdot\frac{\epsilon}{M} = \epsilon\text{.}
+\end{equation*}
+</div>
+</div></li>
+<li id="sec-first-ftc-7-4-9-2"><div class="para" id="sec-first-ftc-7-4-9-2-1">If <span class="process-math">\(x = c\text{,}\)</span> then <span class="process-math">\(\abs{F(x)-F(c)} = 0 \lt \epsilon\text{.}\)</span>
+</div></li>
+<li id="sec-first-ftc-7-4-9-3"><div class="para logical" id="sec-first-ftc-7-4-9-3-1">
+<div class="para">If <span class="process-math">\(x \lt c\text{,}\)</span> then</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\abs{F(x)-F(c)} = \abs{F(c)-F(x)} \leq M(c-x) \lt M\delta = M\cdot\frac{\epsilon}{M} = \epsilon\text{.}
+\end{equation*}
+</div>
+</div></li>
+</ol>
+<div class="para">Thus, in any case, we obtain <span class="process-math">\(\abs{F(x)-F(c)} \lt \epsilon\text{.}\)</span>
+</div>
+</div></article><div class="para" id="sec-first-ftc-8">We now state and prove the first fundamental theorem of calculus, which guarantees that the function <span class="process-math">\(F\)</span> of <a href="sec-first-ftc.html#thm-baby-ftc1" class="xref" data-knowl="./knowl/xref/thm-baby-ftc1.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 1.6.1">Theorem 1.6.1</a> is differentiable with derivative <span class="process-math">\(F' = f\)</span> whenever <span class="process-math">\(f\)</span> is continuous.</div>
+<article class="theorem theorem-like" id="thm-ftc1"><h3 class="heading">
+<span class="type">Theorem</span><span class="space"> </span><span class="codenumber">1.6.4</span><span class="period">.</span><span class="space"> </span><span class="title">First fundamental theorem of calculus.</span>
+</h3>
+<div class="para" id="thm-ftc1-2-1">Let <span class="process-math">\(f\)</span> be an integrable function on a closed interval <span class="process-math">\([a,b]\text{.}\)</span> Let <span class="process-math">\(F\)</span> be the function <span class="process-math">\([a,b]\)</span> given by <span class="process-math">\(F(x) \defn \int_a^x f\text{.}\)</span> Let <span class="process-math">\(a \leq c \leq b\text{.}\)</span> If <span class="process-math">\(f\)</span> is continuous at <span class="process-math">\(c\text{,}\)</span> then <span class="process-math">\(F\)</span> is differentiable at <span class="process-math">\(c\)</span> and <span class="process-math">\(F'(c) =f(c)\text{.}\)</span>
+</div></article><article class="remark remark-like" id="sec-first-ftc-10"><h3 class="heading">
+<span class="type">Remark</span><span class="space"> </span><span class="codenumber">1.6.5</span><span class="period">.</span>
+</h3>
+<div class="para" id="sec-first-ftc-10-1">Crudely speaking, results recognizable as the first fundamental theorem of calculus can be found in the work of <a class="external" href="https://en.wikipedia.org/wiki/James_Gregory_(mathematician)" target="_blank">James Gregory</a><details class="ptx-footnote" aria-live="polite" id="sec-first-ftc-10-1-2"><summary class="ptx-footnote__number" title="Footnote 1.6.2"><sup> 2 </sup></summary><div class="ptx-footnote__contents" id="sec-first-ftc-10-1-2"><code class="code-inline tex2jax_ignore">en.wikipedia.org/wiki/James_Gregory_(mathematician)</code></div></details> and <a class="external" href="https://en.wikipedia.org/wiki/Isaac_Barrow" target="_blank">Isaac Barrow</a><details class="ptx-footnote" aria-live="polite" id="sec-first-ftc-10-1-4"><summary class="ptx-footnote__number" title="Footnote 1.6.3"><sup> 3 </sup></summary><div class="ptx-footnote__contents" id="sec-first-ftc-10-1-4"><code class="code-inline tex2jax_ignore">en.wikipedia.org/wiki/Isaac_Barrow</code></div></details> in the mid 17th century. However, it was <a class="external" href="https://en.wikipedia.org/wiki/Gottfried_Wilhelm_Leibniz" target="_blank">Gottfried Wilhelm Leibniz</a><details class="ptx-footnote" aria-live="polite" id="sec-first-ftc-10-1-6"><summary class="ptx-footnote__number" title="Footnote 1.6.4"><sup> 4 </sup></summary><div class="ptx-footnote__contents" id="sec-first-ftc-10-1-6"><code class="code-inline tex2jax_ignore">en.wikipedia.org/wiki/Gottfried_Wilhelm_Leibniz</code></div></details> and <a class="external" href="https://en.wikipedia.org/wiki/Isaac_Newton" target="_blank">Sir Isaac Newton</a><details class="ptx-footnote" aria-live="polite" id="sec-first-ftc-10-1-8"><summary class="ptx-footnote__number" title="Footnote 1.6.5"><sup> 5 </sup></summary><div class="ptx-footnote__contents" id="sec-first-ftc-10-1-8"><code class="code-inline tex2jax_ignore">en.wikipedia.org/wiki/Isaac_Newton</code></div></details> who understood its true significance and placed it in the theoretical context we use today.</div></article><article class="proof" id="sec-first-ftc-11"><h3 class="heading"><span class="title">Proof of Theorem 1.6.4.</span></h3>
+<div class="para logical" id="sec-first-ftc-11-2">
+<div class="para">For simplicity, let us suppose that <span class="process-math">\(f\)</span> is continuous at <span class="process-math">\(c\)</span> satisfying <span class="process-math">\(a \lt c \lt b\text{.}\)</span> By <a class="external" href="https://opentext.uleth.ca/apex-calculus/sec_derivative.html#def_derivative_at_a_point" target="_blank">definition of the derivative</a><details class="ptx-footnote" aria-live="polite" id="sec-first-ftc-11-2-5"><summary class="ptx-footnote__number" title="Footnote 1.6.6"><sup> 6 </sup></summary><div class="ptx-footnote__contents" id="sec-first-ftc-11-2-5"><code class="code-inline tex2jax_ignore">opentext.uleth.ca/apex-calculus/sec_derivative.html#def_derivative_at_a_point</code></div></details>, need to show that <span class="process-math">\(\lim_{h \to 0}\frac{F(c+h)-F(c)}{h} = f(c)\text{.}\)</span> For non-zero <span class="process-math">\(h\)</span> satisfying <span class="process-math">\(a-c \lt h \lt b-c\text{,}\)</span> let</div>
+<div class="displaymath process-math" id="sec-first-ftc-11-2-9">
+\begin{align*}
+m_h \amp \defn \begin{cases}\inf\set{f(x)}{c+h \leq h \leq c} \amp \text{if } h \lt 0\\ \inf\set{f(x)}{c \leq h \leq c+h} \amp \text{if } h \gt 0 \end{cases}\\
+M_h \amp \defn \begin{cases}\sup\set{f(x)}{c+h \leq h \leq c} \amp \text{if } h \lt 0\\ \sup\set{f(x)}{c \leq h \leq c +h} \amp \text{if } h \gt 0 \end{cases}\text{.}
+\end{align*}
+</div>
+<div class="para">On the one hand, we’ll show that <span class="process-math">\(m_h \leq \frac{F(c+h)-F(c)}{h} \leq M_h\)</span> for all such <span class="process-math">\(h\text{.}\)</span> On the other hand, we’ll show that <span class="process-math">\(\lim_{h\to 0}m_h = f(c) = \lim_{h\to 0}M_h\text{.}\)</span> The <a class="external" href="https://opentext.uleth.ca/apex-calculus/sec_limit_analytically.html#thm_sqz" target="_blank">squeeze theorem</a><details class="ptx-footnote" aria-live="polite" id="sec-first-ftc-11-2-14"><summary class="ptx-footnote__number" title="Footnote 1.6.7"><sup> 7 </sup></summary><div class="ptx-footnote__contents" id="sec-first-ftc-11-2-14"><code class="code-inline tex2jax_ignore">opentext.uleth.ca/apex-calculus/sec_limit_analytically.html#thm_sqz</code></div></details> will then do the rest.</div>
+</div>
+<div class="para logical" id="sec-first-ftc-11-3">
+<div class="para">Let us first show that <span class="process-math">\(m_h \leq \frac{F(c+h)-F(c)}{h} \leq M_h\)</span> for all non-zero <span class="process-math">\(h\)</span> such that <span class="process-math">\(a-c \lt h \lt b-c\text{.}\)</span> For simplicity, let <span class="process-math">\(0 \lt h \lt b-c\)</span> be given (the complementary case where <span class="process-math">\(a-c \lt h \lt 0\)</span> will follow similarly). On the one hand, by the proof of <a href="sec-first-ftc.html#thm-baby-ftc1" class="xref" data-knowl="./knowl/xref/thm-baby-ftc1.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 1.6.1">Theorem 1.6.1</a>, we know that <span class="process-math">\(F(c+h)-F(c) = \int_c^{c+h}f\text{.}\)</span> On the other hand, since <span class="process-math">\(m_h \leq f(x) \leq M_h\)</span> for all <span class="process-math">\(c \leq x \leq c+h\text{,}\)</span> it therefore follows by <a href="sec-first-ftc.html#lem-int-bounds" class="xref" data-knowl="./knowl/xref/lem-int-bounds.html" data-reveal-label="Reveal" data-close-label="Close" title="Lemma 1.6.3">Lemma 1.6.3</a> that</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/thm-baby-ftc1.html ./knowl/xref/lem-int-bounds.html">
+\begin{equation*}
+m_h h = m_h((c+h)-c) \leq \int_c^{c+h} f \leq M_h((c+h)-c) = M_h h\text{.}
+\end{equation*}
+</div>
+<div class="para">Thus, we find that <span class="process-math">\(m_h h \leq F(c+h)-F(c) \leq M_h h\text{,}\)</span> which implies our desired inequality since <span class="process-math">\(h \gt 0\text{.}\)</span>
+</div>
+</div>
+<div class="para logical" id="sec-first-ftc-11-4">
+<div class="para">Let us now show that <span class="process-math">\(\lim_{h \to 0}m_h = c\)</span> and <span class="process-math">\(\lim_{h \to 0}M_h = c\text{;}\)</span> we’ll do so in tandem. Let <span class="process-math">\(\epsilon \gt 0\)</span> be given. Since <span class="process-math">\(f\)</span> is continuous at <span class="process-math">\(c\text{,}\)</span> choose <span class="process-math">\(\delta \gt 0\)</span> such that <span class="process-math">\(\abs{f(x)-f(c)} \lt \epsilon\)</span> whenever <span class="process-math">\(\abs{x-c} \lt \delta\text{.}\)</span> Now, let <span class="process-math">\(a-c \lt h \lt b-c\)</span> satisfy <span class="process-math">\(0 \lt \abs{h} \lt \delta\text{.}\)</span> Then <span class="process-math">\(f(c) - \epsilon \lt f(x) \lt f(c) + \epsilon\)</span> for all <span class="process-math">\(x\)</span> satisfying <span class="process-math">\(\abs{x-c} \leq \abs{h}\text{,}\)</span> so that</div>
+<div class="displaymath process-math">
+\begin{equation*}
+f(c) - \epsilon \lt m_h \leq M_h \lt f(c) + \epsilon
+\end{equation*}
+</div>
+<div class="para">whether <span class="process-math">\(h \lt 0\)</span> or <span class="process-math">\(h \gt 0\text{,}\)</span> so that <span class="process-math">\(\abs{m_h-f(c)} \lt \epsilon\)</span> and <span class="process-math">\(\abs{M_h-f(c)} \lt \epsilon\text{.}\)</span>
+</div>
+</div></article><div class="para" id="sec-first-ftc-12">Remarkably, one can adapt the proof of <a href="sec-first-ftc.html#thm-ftc1" class="xref" data-knowl="./knowl/xref/thm-ftc1.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 1.6.4: First fundamental theorem of calculus">Theorem 1.6.4</a> to yield a proof that a continuous function on a closed interval <span class="process-math">\([a,b]\)</span> is necessarily integrable.</div>
+<article class="theorem theorem-like" id="thm-cts-integrable"><h3 class="heading">
+<span class="type">Theorem</span><span class="space"> </span><span class="codenumber">1.6.6</span><span class="period">.</span>
+</h3>
+<div class="para" id="thm-cts-integrable-1-1">Let <span class="process-math">\(f\)</span> be a continuous function on a closed interval <span class="process-math">\([a,b]\text{.}\)</span> Then <span class="process-math">\(f\)</span> is integrable on <span class="process-math">\([a,b]\text{.}\)</span>
+</div></article><article class="proof" id="sec-first-ftc-14"><h3 class="heading"><span class="title">Sketch of proof of Theorem 1.6.6.</span></h3>
+<div class="para logical" id="sec-first-ftc-14-2">
+<div class="para">Define functions <span class="process-math">\(F_L\)</span> and <span class="process-math">\(F_U\)</span> on <span class="process-math">\([a,b]\)</span> by <span class="process-math">\(F_L(x) \defn \Lint{a}{x}f\)</span> and <span class="process-math">\(F_U(x) \defn \Uint{a}{x}f\text{,}\)</span> respectively, with the convention that <span class="process-math">\(\Lint{a}{a}f = 0 \Uint{a}{a}f\)</span> Using <a href="sec-upper-lower-int.html#prop-upper-lower-sums-properties" class="xref" data-knowl="./knowl/xref/prop-upper-lower-sums-properties.html" data-reveal-label="Reveal" data-close-label="Close" title="Proposition 1.3.10">Proposition 1.3.10</a>, one can adapt the proof of <a href="sec-first-ftc.html#thm-ftc1" class="xref" data-knowl="./knowl/xref/thm-ftc1.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 1.6.4: First fundamental theorem of calculus">Theorem 1.6.4</a> to show that both <span class="process-math">\(F_L\)</span> and <span class="process-math">\(F_U\)</span> are differentiable on <span class="process-math">\([a,b]\)</span> and <span class="process-math">\(F_L^\prime = f = F_U^\prime\text{.}\)</span> Hence, <span class="process-math">\((F_U-F_L)^\prime = F_U^\prime - F_L^\prime = 0\)</span> on <span class="process-math">\([a,b]\text{,}\)</span> <a class="external" href="https://opentext.uleth.ca/apex-calculus/sec_mvt.html#thm-mvt-corollaries-2-1" target="_blank">it follows</a><details class="ptx-footnote" aria-live="polite" id="sec-first-ftc-14-2-16"><summary class="ptx-footnote__number" title="Footnote 1.6.8"><sup> 8 </sup></summary><div class="ptx-footnote__contents" id="sec-first-ftc-14-2-16"><code class="code-inline tex2jax_ignore">opentext.uleth.ca/apex-calculus/sec_mvt.html#thm-mvt-corollaries-2-1</code></div></details> that <span class="process-math">\(F_U-F_L\)</span> is constant, so that</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/prop-upper-lower-sums-properties.html ./knowl/xref/thm-ftc1.html">
+\begin{equation*}
+F_U(x)-F_L(x) = F_U(a) - F_L(a) = 0 - 0 = 0
+\end{equation*}
+</div>
+<div class="para">for all <span class="process-math">\(a \leq x \leq b\text{.}\)</span>
+</div>
+</div></article><article class="corollary theorem-like" id="cor-antiderivative"><h3 class="heading">
+<span class="type">Corollary</span><span class="space"> </span><span class="codenumber">1.6.7</span><span class="period">.</span>
+</h3>
+<div class="para" id="cor-antiderivative-1-1">Let <span class="process-math">\(f\)</span> be a continuous function on a closed interval <span class="process-math">\([a,b]\text{;}\)</span> let <span class="process-math">\(C\)</span> be a real number. There exists a unique differentiable function <span class="process-math">\(F\)</span> on <span class="process-math">\([a,b]\)</span> such that <span class="process-math">\(F' = f\)</span> and <span class="process-math">\(F(a) = C\text{.}\)</span>
+</div></article><article class="proof" id="cor-antiderivative-2"><h3 class="heading"><span class="type">Proof<span class="period">.</span></span></h3>
+<div class="para" id="cor-antiderivative-2-1">Note that <span class="process-math">\(f\)</span> is integrable on <span class="process-math">\([a,b]\)</span> by <a href="sec-first-ftc.html#thm-cts-integrable" class="xref" data-knowl="./knowl/xref/thm-cts-integrable.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 1.6.6">Theorem 1.6.6</a>. Hence, by <a href="sec-first-ftc.html#thm-ftc1" class="xref" data-knowl="./knowl/xref/thm-ftc1.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 1.6.4: First fundamental theorem of calculus">Theorem 1.6.4</a>, the function <span class="process-math">\(F\)</span> on <span class="process-math">\([a,b]\)</span> defined by <span class="process-math">\(F(x) \defn \int_a^b f + C\)</span> is differentiable with derivative <span class="process-math">\(f + 0 = f\text{;}\)</span> moreover, by construction, it satisfies <span class="process-math">\(F(a) = \int_a^a f + C = 0 + C = C\text{.}\)</span>
+</div>
+<div class="para" id="cor-antiderivative-2-2">Now, suppose that <span class="process-math">\(G\)</span> is a differentiable function on <span class="process-math">\([a,b]\)</span> such that <span class="process-math">\(G' = f\)</span> and <span class="process-math">\(G(a)=C\text{.}\)</span> Then <span class="process-math">\((F-G)' = F' - G' = f - f = 0\text{,}\)</span> so that <span class="process-math">\(F-G\)</span> is constant. Hence, <span class="process-math">\(F(x)-G(x) = F(a)-G(a) = C-C = 0\)</span> for all <span class="process-math">\(a \leq x \leq b\text{.}\)</span>
+</div></article></section></div>
+<div class="ptx-content-footer">
+<a class="previous-button button" href="sec-nonintegrable.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="top-button button" href="#" title="Top"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Top</span></a><a class="next-button button" href="sec-second-ftc.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a>
+</div></main>
+</div>
+<div id="ptx-page-footer" class="ptx-page-footer">
+<a class="pretext-link" href="https://pretextbook.org" title="PreTeXt"><div class="logo"><svg xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="338 3000 8772 6866"><g style="stroke-width:.025in; stroke:currentColor; fill:none"><polyline points="472,3590 472,9732 " style="stroke-width:174; stroke-linejoin:miter; stroke-linecap:round; "></polyline><path style="stroke-width:126;stroke-linecap:butt;" d="M 4724,9448 A 4660 4660  0  0  1  8598  9259"></path><path style="stroke-width:174;stroke-linecap:butt;" d="M 4488,9685 A 4228 4228  0  0  0   472  9732"></path><path style="stroke-width:126;stroke-linecap:butt;" d="M 4724,3590 A 4241 4241  0  0  1  8598  3496"></path><path style="stroke-width:126;stroke-linecap:round;" d="M 850,3496  A 4241 4241  0  0  1  4724  3590"></path><path style="stroke-width:126;stroke-linecap:round;" d="M 850,9259  A 4507 4507  0  0  1  4724  9448"></path><polyline points="5385,4299 4062,8125" style="stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="8598,3496 8598,9259" style="stroke-width:126; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="850,3496 850,9259" style="stroke-width:126; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="4960,9685 4488,9685" style="stroke-width:174; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="3070,4582 1889,6141 3070,7700" style="stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="6418,4582 7600,6141 6418,7700" style="stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="8976,3590 8976,9732" style="stroke-width:174; stroke-linejoin:miter; stroke-linecap:round;"></polyline><path style="stroke-width:174;stroke-linecap:butt;" d="M 4960,9685 A 4228 4228  0  0  1  8976  9732"></path></g></svg></div></a><a class="runestone-link" href="https://runestone.academy" title="Runestone Academy"><img class="logo" src="https://runestone.academy/runestone/static/images/RAIcon_cropped.png"></a><a class="mathjax-link" href="https://www.mathjax.org" title="MathJax"><img class="logo" src="https://www.mathjax.org/badge/badge-square-2.png"></a>
+</div>
+</body>
+</html>

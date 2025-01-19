@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="lemma theorem-like"><h3 class="heading">
+<span class="type">Lemma</span><span class="space"> </span><span class="codenumber">1.6.3</span><span class="period">.</span>
+</h3>
+<div class="para logical">
+<div class="para">Let <span class="process-math">\(f\)</span> be an integrable function on a closed interval <span class="process-math">\([a,b]\text{.}\)</span> Let <span class="process-math">\(m\)</span> and <span class="process-math">\(M\)</span> be real numbers such that <span class="process-math">\(m \leq f(x) \leq M\)</span> for all <span class="process-math">\(a \leq x \leq b\text{.}\)</span> Then</div>
+<div class="displaymath process-math">
+\begin{equation*}
+m(b-a) \leq \int_a^b f \leq M(b-a)\text{.}
+\end{equation*}
+</div>
+</div></article><article class="proof"><h3 class="heading"><span class="type">Proof<span class="period">.</span></span></h3>
+<div class="para logical">
+<div class="para">Consider the trivial partition <span class="process-math">\(P_1 = (x_0,x_1)\text{,}\)</span> where <span class="process-math">\(x_0 \defn a\)</span> and <span class="process-math">\(x_1 \defn b\text{.}\)</span> On the one hand, since <span class="process-math">\(m\)</span> is a lower bound for <span class="process-math">\(\set{f(x)}{a \leq x \leq b}\text{,}\)</span> it follows that <span class="process-math">\(m \leq m_1\text{,}\)</span> hence</div>
+<div class="displaymath process-math">
+\begin{equation*}
+m(b-a) \leq m_1(b-a) = L(f,P_1) \leq \Lint{a}{b}f = \int_a^b f\text{.}
+\end{equation*}
+</div>
+<div class="para">On the other hand, since <span class="process-math">\(M\)</span> is an upper bound for <span class="process-math">\(\set{f(x)}{a \leq x \leq b}\text{,}\)</span> it follows that <span class="process-math">\(M_1 \leq M\text{,}\)</span> hence</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\int_a^b f = \Uint{a}{b}f \leq L(f,P_1) = M_1(b-a) \leq M(b-a)\text{.}
+\end{equation*}
+</div>
+</div></article><span class="incontext"><a class="internal" href="sec-first-ftc.html#lem-int-bounds">in-context</a></span>
+</body>
+</html>
