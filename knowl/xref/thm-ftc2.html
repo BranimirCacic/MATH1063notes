@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="theorem theorem-like"><h3 class="heading">
+<span class="type">Theorem</span><span class="space"> </span><span class="codenumber">1.7.3</span><span class="period">.</span><span class="space"> </span><span class="title">Second fundamental theorem of calculus.</span>
+</h3>
+<div class="para">Let <span class="process-math">\(f\)</span> be an integrable function on a closed interval <span class="process-math">\([a,b]\text{.}\)</span> Suppose that <span class="process-math">\(F\)</span> is an antiderivative of <span class="process-math">\(f\)</span> on <span class="process-math">\([a,b]\text{.}\)</span> Then <span class="process-math">\(\int_a^b f = F(b)-F(a)\text{.}\)</span>
+</div></article><article class="proof"><h3 class="heading"><span class="type">Proof<span class="period">.</span></span></h3>
+<div class="para">It suffices to show that <span class="process-math">\(L(f,P) \leq F(b)-F(a) \leq U(f,P)\)</span> for every partition <span class="process-math">\(P\)</span> of <span class="process-math">\([a,b]\text{.}\)</span> Indeed, suppose we have shown this. On the one hand, since <span class="process-math">\(F(b)-F(a)\)</span> is an upper bound for every lower sum of <span class="process-math">\(f\)</span> on <span class="process-math">\([a,b]\text{,}\)</span> it follows that <span class="process-math">\(\int_a^b f = \Lint{a}{b}f \leq F(b)-F(a)
+\text{.}\)</span> On the other hand, since <span class="process-math">\(F(b)-F(a)\)</span> is a lower bound for every upper sum of <span class="process-math">\(f\)</span> on <span class="process-math">\([a,b]\text{,}\)</span> it follows that <span class="process-math">\(F(b)-F(a) \leq \Uint{a}{b}f = \int_a^b f
+\text{.}\)</span> Hence, it follows that <span class="process-math">\(\int_a^b f \leq F(b)-F(a) \leq \int_a^b f\text{,}\)</span> so that <span class="process-math">\(\int_a^b f = F(b)-F(a)\text{.}\)</span>
+</div>
+<div class="para logical">
+<div class="para">Let <span class="process-math">\(P = (x_0,x_1,\dotsc,x_N)\)</span> be a partition of <span class="process-math">\([a,b]\text{.}\)</span> Let <span class="process-math">\(1 \leq k \leq N\text{.}\)</span> By the <a class="external" href="https://opentext.uleth.ca/apex-calculus/sec_mvt.html#thm_mvt" target="_blank">mean value theorem</a><details class="ptx-footnote" aria-live="polite" id="thm-ftc2-3-2-5"><summary class="ptx-footnote__number" title="Footnote 1.7.2"><sup> 2 </sup></summary><div class="ptx-footnote__contents" id="thm-ftc2-3-2-5"><code class="code-inline tex2jax_ignore">opentext.uleth.ca/apex-calculus/sec_mvt.html#thm_mvt</code></div></details> applied to <span class="process-math">\(F\)</span> on <span class="process-math">\([x_{k-1},x_k]\text{,}\)</span> there exists <span class="process-math">\(x_{k-1} \lt x_k^\ast \lt x_k\)</span> such that <span class="process-math">\(F(x_k)-F(x_{k-1}) = f(x_k^\ast)(x_k-x_{k-1})\text{.}\)</span> Then <span class="process-math">\(m_k \leq f(x_k^\ast) \leq M_k\)</span> by definition of <span class="process-math">\(m_k\)</span> and <span class="process-math">\(M_k\)</span> (see <a href="sec-upper-lower-int.html#def-upper-lower-sum" class="xref" data-knowl="./knowl/xref/def-upper-lower-sum.html" data-reveal-label="Reveal" data-close-label="Close" title="Definition 1.3.6">Definition 1.3.6</a>), so that</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/def-upper-lower-sum.html">
+\begin{equation*}
+m_k(x_k-x_{k-1}) \leq f(x_k^\ast)(x_k-x_{k-1}) \leq M_k(x_k-x_{k-1})\text{,}
+\end{equation*}
+</div>
+<div class="para">and hence</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/def-upper-lower-sum.html">
+\begin{equation*}
+m_k(x_k-x_{k-1}) \leq F(x_k) - F(x_{k-1}) \leq M_k(x_k-x_{k-1})
+\end{equation*}
+</div>
+<div class="para">Thus, by telescoping summation,</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/def-upper-lower-sum.html">
+\begin{equation*}
+L(f,P) = \sum_{k=1}^N m_k(x_k-x_{k-1}) \leq \sum_{k=1}^N F((x_k)-F(x_{k-1})) = F(b) - F(a)
+\end{equation*}
+</div>
+<div class="para">and</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/def-upper-lower-sum.html">
+\begin{equation*}
+L(f,P) = \sum_{k=1}^N M_k(x_k-x_{k-1}) \geq \sum_{k=1}^N F((x_k)-F(x_{k-1})) = F(b) - F(a)
+\end{equation*}
+</div>
+</div></article><span class="incontext"><a class="internal" href="sec-second-ftc.html#thm-ftc2">in-context</a></span>
+</body>
+</html>

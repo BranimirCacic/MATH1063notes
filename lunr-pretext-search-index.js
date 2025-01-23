@@ -862,7 +862,7 @@ var ptx_lunr_docs = [
   "type": "Section",
   "number": "1.6",
   "title": "The First Fundamental Theorem of Calculus",
-  "body": " The First Fundamental Theorem of Calculus  In this section, we'll prove the first of the two fundamental theorems of calculus , the mathematical breakthrough of the 17th century that links the theory of integration with the theory of differentiation and permits the efficient calculation of integrals in a wide range of cases. In particular, the first fundamental theorem of calculus uses integration to take a given function and reverse-engineer a new function such that . Our account in this section and provide a rigorous complement to Section 5.5 of APEX Calculus and Section 5.7 of Strang's Calculus .  We begin by showing that integration can be used to construct a continuous function from an integrable function , no matter how discontinuous may be. When is actually continuous, this function will turn out to satisfy .    Let be an integrable function on a closed interval . Let be the function given by . Then is continuous on      Given a function defined at a point , we set . Thus, in the context of , we have .     Let be an integrable function on a closed interval . Let and be real numbers such that for all . Then .    Consider the trivial partition , where and . On the one hand, since is a lower bound for , it follows that , hence . On the other hand, since is an upper bound for , it follows that , hence .     Proof of  Before continuing, let us note that is well-defined. Since and , it suffices to check that is well defined when . Indeed, let such be given. Then, by , the function is integrable on both and , so that is well-defined.  Now, since the integrable function must be bounded on , choose such that for all . We will find it useful to show that for all and satsfiying . Indeed, let such and be given. Then, by definition of and , , so that . But now, since for all , it follows by that . Hence, .  At last, let us show that is continuous. Let be given; we'll show that is continuous at . Thus, let and set . Let satisfy .   If , then .    If , then .    If , then .   Thus, in any case, we obtain .   We now state and prove the first fundamental theorem of calculus, which guarantees that the function of is differentiable with derivative whenever is continuous.   First fundamental theorem of calculus   Let be an integrable function on a closed interval . Let be the function given by . Let . If is continuous at , then is differentiable at and .     Crudely speaking, results recognizable as the first fundamental theorem of calculus can be found in the work of James Gregory and Isaac Barrow in the mid 17th century. However, it was Gottfried Wilhelm Leibniz and Sir Isaac Newton who understood its true significance and placed it in the theoretical context we use today.    Proof of  For simplicity, let us suppose that is continuous at satisfying . By definition of the derivative , need to show that . For non-zero satisfying , let . On the one hand, we'll show that for all such . On the other hand, we'll show that . The squeeze theorem will then do the rest.  Let us first show that for all non-zero such that . For simplicity, let be given (the complementary case where will follow similarly). On the one hand, by the proof of , we know that . On the other hand, since for all , it therefore follows by that . Thus, we find that , which implies our desired inequality since .  Let us now show that and ; we'll do so in tandem. Let be given. Since is continuous at , choose such that whenever . Now, let satisfy . Then for all satisfying , so that whether or , so that and .   Remarkably, one can adapt the proof of to yield a proof that a continuous function on a closed interval is necessarily integrable.    Let be a continuous function on a closed interval . Then is integrable on .     Sketch of proof of  Define functions and on by and , respectively, with the convention that Using , one can adapt the proof of to show that both and are differentiable on and . Hence, on , it follows that is constant, so that for all .     Let be a continuous function on a closed interval ; let be a real number. There exists a unique differentiable function on such that and .    Note that is integrable on by . Hence, by , the function on defined by is differentiable with derivative ; moreover, by construction, it satisfies .  Now, suppose that is a differentiable function on such that and . Then , so that is constant. Hence, for all .    "
+  "body": " The First Fundamental Theorem of Calculus  In this section, we'll prove the first of the two fundamental theorems of calculus , the mathematical breakthrough of the 17th century that links the theory of integration with the theory of differentiation and permits the efficient calculation of integrals in a wide range of cases. In particular, the first fundamental theorem of calculus uses integration to take a given function and reverse-engineer a new function such that . Our account in this section and provides a rigorous complement to Section 5.5 of APEX Calculus and Section 5.7 of Strang's Calculus .  We begin by showing that integration can be used to construct a continuous function from an integrable function , no matter how discontinuous may be. When is actually continuous, this function will turn out to satisfy .    Let be an integrable function on a closed interval . Let be the function given by . Then is continuous on      Given a function defined at a point , we set . Thus, in the context of , we have .     Let be an integrable function on a closed interval . Let and be real numbers such that for all . Then .    Consider the trivial partition , where and . On the one hand, since is a lower bound for , it follows that , hence . On the other hand, since is an upper bound for , it follows that , hence .     Proof of  Before continuing, let us note that is well-defined. Since and , it suffices to check that is well defined when . Indeed, let such be given. Then, by , the function is integrable on both and , so that is well-defined.  Now, since the integrable function must be bounded on , choose such that for all . We will find it useful to show that for all and satsfiying . Indeed, let such and be given. Then, by definition of and , , so that . But now, since for all , it follows by that . Hence, .  At last, let us show that is continuous. Let be given; we'll show that is continuous at . Thus, let and set . Let satisfy .   If , then .    If , then .    If , then .   Thus, in any case, we obtain .   We now state and prove the first fundamental theorem of calculus, which guarantees that the function of is differentiable with derivative whenever is continuous.   First fundamental theorem of calculus   Let be an integrable function on a closed interval . Let be the function given by . Let . If is continuous at , then is differentiable at and .     Crudely speaking, results recognizable as the first fundamental theorem of calculus can be found in the work of James Gregory and Isaac Barrow in the mid 17th century. However, it was Gottfried Wilhelm Leibniz and Sir Isaac Newton who understood its true significance and placed it in the theoretical context we use today.    Proof of  For simplicity, let us suppose that is continuous at satisfying . By definition of the derivative , need to show that . For non-zero satisfying , let . On the one hand, we'll show that for all such . On the other hand, we'll show that . The squeeze theorem will then do the rest.  Let us first show that for all non-zero such that . For simplicity, let be given (the complementary case where will follow similarly). On the one hand, by the proof of , we know that . On the other hand, since for all , it therefore follows by that . Thus, we find that , which implies our desired inequality since .  Let us now show that and ; we'll do so in tandem. Let be given. Since is continuous at , choose such that whenever . Now, let satisfy . Then for all satisfying , so that whether or , so that and .   Remarkably, one can adapt the proof of to yield a proof that a continuous function on a closed interval is necessarily integrable.    Let be a continuous function on a closed interval . Then is integrable on .     Sketch of proof of  Define functions and on by and , respectively, with the convention that Using , one can adapt the proof of to show that both and are differentiable on and . Hence, on , it follows that is constant, so that for all .   "
 },
 {
   "id": "sec-first-ftc-2",
@@ -955,22 +955,76 @@ var ptx_lunr_docs = [
   "body": " Sketch of proof of  Define functions and on by and , respectively, with the convention that Using , one can adapt the proof of to show that both and are differentiable on and . Hence, on , it follows that is constant, so that for all .  "
 },
 {
-  "id": "cor-antiderivative",
-  "level": "2",
-  "url": "sec-first-ftc.html#cor-antiderivative",
-  "type": "Corollary",
-  "number": "1.6.7",
-  "title": "",
-  "body": "  Let be a continuous function on a closed interval ; let be a real number. There exists a unique differentiable function on such that and .    Note that is integrable on by . Hence, by , the function on defined by is differentiable with derivative ; moreover, by construction, it satisfies .  Now, suppose that is a differentiable function on such that and . Then , so that is constant. Hence, for all .   "
-},
-{
   "id": "sec-second-ftc",
   "level": "1",
   "url": "sec-second-ftc.html",
   "type": "Section",
   "number": "1.7",
   "title": "The Second Fundamental Theorem of Calculus",
-  "body": " The Second Fundamental Theorem of Calculus  Content to come.  "
+  "body": " The Second Fundamental Theorem of Calculus  In this section, we discuss the second fundamental theorem of calculus , which gives us an easy way to compute an integral when we happen to know (by hook or by crook!) that for some function . This remarkable fact therefore lets us leverage everything we know about differentiation to compute integrals of familiar functions (and some not-so-familiar functions too). Our account in this section and provides a rigorous complement to Section 5.5 of APEX Calculus and Section 5.7 of Strang's Calculus .    Let be a function on a closed interval . An antiderivative of on is a differentiable function on such that .    A straightforward application of the first fundamental theorem of calculus ( ) yields an important special case where an antiderivative is not only guaranteed to exist but allows us to compute the relevant integral.    Let be a continuous function on a closed interval ; let be a real number. Then has a unique antiderivative on such that . Moreover, this antiderivative satisfies .    Note that is integrable on by . Hence, by , the function on defined by is differentiable with derivative ; moreover, by construction, it satisfies . Thus, in particular, .  Now, suppose that is a differentiable function on such that and . Then , so that is constant. Hence, for all .    The above proposition is good enough for most purposes, but we can actually do better than requiring continuity of . In fact, it's enough to find (by hook or by crook!) one antiderivative of . This is the content of the second fundamental theorem of calculus .   Second fundamental theorem of calculus   Let be an integrable function on a closed interval . Suppose that is an antiderivative of on . Then .    It suffices to show that for every partition of . Indeed, suppose we have shown this. On the one hand, since is an upper bound for every lower sum of on , it follows that . On the other hand, since is a lower bound for every upper sum of on , it follows that . Hence, it follows that , so that .  Let be a partition of . Let . By the mean value theorem applied to on , there exists such that . Then by definition of and (see ), so that , and hence Thus, by telescoping summation, and      The conclusion of can be written in Leibniz notation as or as .    Let be a non-negative integer. On the one hand, define a function on by . On the other hand, define a function on by . Then is an antiderivative of the continuous function since with the traditional harmless abuses of notation. Hence, for all , it follows by that ; the same calculation in Lebiniz notation looks like . Note that setting , , and effortlessly recovers the calculation of .   "
+},
+{
+  "id": "sec-second-ftc-2",
+  "level": "2",
+  "url": "sec-second-ftc.html#sec-second-ftc-2",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": "second fundamental theorem of calculus "
+},
+{
+  "id": "def-antiderivative",
+  "level": "2",
+  "url": "sec-second-ftc.html#def-antiderivative",
+  "type": "Definition",
+  "number": "1.7.1",
+  "title": "",
+  "body": "  Let be a function on a closed interval . An antiderivative of on is a differentiable function on such that .   "
+},
+{
+  "id": "prop-antiderivative",
+  "level": "2",
+  "url": "sec-second-ftc.html#prop-antiderivative",
+  "type": "Proposition",
+  "number": "1.7.2",
+  "title": "",
+  "body": "  Let be a continuous function on a closed interval ; let be a real number. Then has a unique antiderivative on such that . Moreover, this antiderivative satisfies .    Note that is integrable on by . Hence, by , the function on defined by is differentiable with derivative ; moreover, by construction, it satisfies . Thus, in particular, .  Now, suppose that is a differentiable function on such that and . Then , so that is constant. Hence, for all .   "
+},
+{
+  "id": "sec-second-ftc-6",
+  "level": "2",
+  "url": "sec-second-ftc.html#sec-second-ftc-6",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": "second fundamental theorem of calculus "
+},
+{
+  "id": "thm-ftc2",
+  "level": "2",
+  "url": "sec-second-ftc.html#thm-ftc2",
+  "type": "Theorem",
+  "number": "1.7.3",
+  "title": "Second fundamental theorem of calculus.",
+  "body": " Second fundamental theorem of calculus   Let be an integrable function on a closed interval . Suppose that is an antiderivative of on . Then .    It suffices to show that for every partition of . Indeed, suppose we have shown this. On the one hand, since is an upper bound for every lower sum of on , it follows that . On the other hand, since is a lower bound for every upper sum of on , it follows that . Hence, it follows that , so that .  Let be a partition of . Let . By the mean value theorem applied to on , there exists such that . Then by definition of and (see ), so that , and hence Thus, by telescoping summation, and    "
+},
+{
+  "id": "sec-second-ftc-8",
+  "level": "2",
+  "url": "sec-second-ftc.html#sec-second-ftc-8",
+  "type": "Remark",
+  "number": "1.7.4",
+  "title": "",
+  "body": " The conclusion of can be written in Leibniz notation as or as .  "
+},
+{
+  "id": "sec-second-ftc-9",
+  "level": "2",
+  "url": "sec-second-ftc.html#sec-second-ftc-9",
+  "type": "Example",
+  "number": "1.7.5",
+  "title": "",
+  "body": " Let be a non-negative integer. On the one hand, define a function on by . On the other hand, define a function on by . Then is an antiderivative of the continuous function since with the traditional harmless abuses of notation. Hence, for all , it follows by that ; the same calculation in Lebiniz notation looks like . Note that setting , , and effortlessly recovers the calculation of .  "
 },
 {
   "id": "backmatter-2",
