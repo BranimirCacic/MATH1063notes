@@ -3,5 +3,123 @@
 <section xml:id="sec-second-ftc" xmlns:xi="http://www.w3.org/2001/XInclude">
     <title>The Second Fundamental Theorem of Calculus</title>
 
-    <p>Content to come.</p>
+    <p>
+        In this section, we discuss the <term>second fundamental theorem of calculus</term>, which gives us an easy way to compute an integral <m>\int_a^b f</m> when we happen to know (by hook or by crook!) that <m>f = F'</m> for some function <m>F</m>.
+        This remarkable fact therefore lets us leverage everything we know about differentiation to compute integrals of familiar functions (and some not-so-familiar functions too).
+        Our account in this section and <xref ref="sec-first-ftc"/> provides a rigorous complement to <url href="https://opentext.uleth.ca/apex-calculus/sec_FTC.html">Section 5.5</url> of <pubtitle><init>APEX</init> Calculus</pubtitle> and Section 5.7 of Strang's <pubtitle>Calculus</pubtitle>.
+    </p>
+
+    <definition xml:id="def-antiderivative">
+        <statement>
+            <p>
+                Let <m>f</m> be a function on a closed interval <m>[a,b]</m>.
+                An <term>antiderivative</term> of <m>f</m> on <m>[a,b]</m> is a differentiable function <m>F</m> on <m>[a,b]</m> such that <m>F' = f</m>.
+            </p>
+        </statement>
+    </definition>
+
+    <p>
+        A straightforward application of the first fundamental theorem of calculus (<xref ref="thm-ftc1"/>) yields an important special case where an antiderivative is not only guaranteed to exist but allows us to compute the relevant integral.
+    </p>
+
+    <proposition xml:id="prop-antiderivative">
+        <statement>
+            <p>
+                Let <m>f</m> be a continuous function on a closed interval <m>[a,b]</m>; let <m>C</m> be a real number.
+                Then <m>f</m> has a unique antiderivative <m>F</m> on <m>[a,b]</m> such that <m>F(a) = C</m>.
+                Moreover, this antiderivative <m>F</m> satisfies <m>\int_a^b f = F(b)-F(a)</m>.
+            </p>
+        </statement>
+        <proof>
+            <p>
+                Note that <m>f</m> is integrable on <m>[a,b]</m> by <xref ref="thm-cts-integrable"/>.
+                Hence, by <xref ref="thm-ftc1"/>, the function <m>F</m> on <m>[a,b]</m> defined by <m>F(x) \defn \int_a^b f + C</m> is differentiable with derivative <m>f + 0 = f</m>; moreover, by construction, it satisfies <m>F(a) = \int_a^a f + C = 0 + C = C</m>.
+                Thus, in particular,
+                <me>
+                    F(b) - F(a) = (\int_a^b f + C) - (\int_a^a f + C) = \int_a^b f
+                </me>.
+            </p>
+            <p>
+                Now, suppose that <m>G</m> is a differentiable function on <m>[a,b]</m> such that <m>G' = f</m> and <m>G(a)=C</m>.
+                Then <m>(F-G)' = F' - G' = f - f = 0</m>, so that <m>F-G</m> is constant.
+                Hence, <m>F(x)-G(x) = F(a)-G(a) = C-C = 0</m> for all <m>a \leq x \leq b</m>. 
+            </p>
+        </proof>
+    </proposition>
+
+    <p>
+        The above proposition is good enough for most purposes, but we can actually do better than requiring continuity of <m>f</m>.
+        In fact, it's enough to find (by hook or by crook!) one antiderivative of <m>f</m>.
+        This is the content of the <term>second fundamental theorem of calculus</term>.
+    </p>
+
+    <theorem xml:id="thm-ftc2">
+        <title>Second fundamental theorem of calculus</title>
+        <statement>
+            <p>
+                Let <m>f</m> be an integrable function on a closed interval <m>[a,b]</m>.
+                Suppose that <m>F</m> is an antiderivative of <m>f</m> on <m>[a,b]</m>.
+                Then <m>\int_a^b f = F(b)-F(a)</m>.
+            </p>
+        </statement>
+        <proof>
+            <p>
+                It suffices to show that <m>L(f,P) \leq F(b)-F(a) \leq U(f,P)</m> for every partition <m>P</m> of <m>[a,b]</m>.
+                Indeed, suppose we have shown this.
+                On the one hand, since <m>F(b)-F(a)</m> is an upper bound for every lower sum of <m>f</m> on <m>[a,b]</m>, it follows that <m>
+                    \int_a^b f = \Lint{a}{b}f \leq F(b)-F(a)
+                </m>.
+                On the other hand, since <m>F(b)-F(a)</m> is a lower bound for every upper sum of <m>f</m> on <m>[a,b]</m>, it follows that
+                <m>
+                    F(b)-F(a) \leq \Uint{a}{b}f = \int_a^b f
+                </m>.
+                Hence, it follows that <m>\int_a^b f \leq F(b)-F(a) \leq \int_a^b f</m>, so that <m>\int_a^b f = F(b)-F(a)</m>.
+            </p>
+            <p>
+                Let <m>P = (x_0,x_1,\dotsc,x_N)</m> be a partition of <m>[a,b]</m>.
+                Let <m>1 \leq k \leq N</m>.
+                By the <url href="https://opentext.uleth.ca/apex-calculus/sec_mvt.html#thm_mvt">mean value theorem</url> applied to <m>F</m> on <m>[x_{k-1},x_k]</m>, there exists <m>x_{k-1} \lt x_k^\ast \lt x_k</m> such that <m>F(x_k)-F(x_{k-1}) = f(x_k^\ast)(x_k-x_{k-1})</m>.
+                Then <m>m_k \leq f(x_k^\ast) \leq M_k</m> by definition of <m>m_k</m> and <m>M_k</m> (see <xref ref="def-upper-lower-sum"/>), so that <me>m_k(x_k-x_{k-1}) \leq f(x_k^\ast)(x_k-x_{k-1}) \leq M_k(x_k-x_{k-1})</me>, and hence <me>m_k(x_k-x_{k-1}) \leq F(x_k) - F(x_{k-1}) \leq M_k(x_k-x_{k-1})</me>
+                Thus, by telescoping summation,
+                <me>
+                    L(f,P) = \sum_{k=1}^N m_k(x_k-x_{k-1}) \leq \sum_{k=1}^N F((x_k)-F(x_{k-1})) = F(b) - F(a)
+                </me>
+                and 
+                <me>
+                    L(f,P) = \sum_{k=1}^N M_k(x_k-x_{k-1}) \geq \sum_{k=1}^N F((x_k)-F(x_{k-1})) = F(b) - F(a)
+                </me>
+            </p>
+        </proof>
+    </theorem>
+
+    <remark>
+        <p>
+            The conclusion of <xref ref="thm-ftc2"/> can be written in Leibniz notation as <m>\int_a^b f(x) \du{x} = F(b)-F(a)</m> or as <m>\int_a^b f(x) \du{x} = F(x)\vert_a^b</m>.
+        </p>
+    </remark>
+
+    <example>
+        <p>
+            Let <m>n</m> be a non-negative integer.
+            On the one hand, define a function <m>f</m> on <m>\R</m> by <m>f(x) \defn x^n</m>.
+            On the other hand, define a function <m>F</m> on <m>\R</m> by <m>F(x) \defn \frac{1}{n+1}x^{n+1}</m>.
+            Then <m>F</m> is an antiderivative of the continuous function <m>f</m> since 
+            <me>
+                F'(x) = \ddx\left(\frac{1}{n+1}x^{n+1}\right)  = \frac{1}{n+1} \cdot (n+1)x^{(n+1)-1} = x^n = f(x)
+            </me>
+            with the traditional harmless abuses of notation.
+            Hence, for all <m>a \lt b</m>, it follows by <xref ref="thm-ftc2"/> that
+            <me>
+                \int_a^b f = F(b) - F(a) = \frac{1}{n+1}b^{n+1} - \frac{1}{n+1}a^{n+1} = \frac{b^{n+1}-a^{n+1}}{n+1}
+            </me>;
+            the same calculation in Lebiniz notation looks like
+            <me>
+                \int_a^b x^n \du{x} = \frac{1}{n+1}x^{n+1} \vert_a^b = \frac{1}{n+1}b^{n+1} - \frac{1}{n+1}a^{n+1} = \frac{b^{n+1}-a^{n+1}}{n+1}
+            </me>.  
+            Note that setting <m>N=2</m>, <m>a = 0</m>, and <m>b=1</m> effortlessly recovers the calculation <m>\int_0^1 x^2 \du{x} = \frac{1}{3}</m> of <xref ref="ex-integral-parabola"/>.
+        </p>
+    </example>
+    
+
+
 </section>
