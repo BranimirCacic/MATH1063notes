@@ -96,15 +96,15 @@ eBookConfig.allow_pairs = false;
 eBookConfig.enableScratchAC = false;
 eBookConfig.build_info = "";
 eBookConfig.python3 = null;
-eBookConfig.runestone_version = '7.5.2';
+eBookConfig.runestone_version = '7.5.3';
 eBookConfig.jobehost = '';
 eBookConfig.proxyuri_runs = '';
 eBookConfig.proxyuri_files = '';
 eBookConfig.enable_chatcodes =  false;
 </script>
 <!--*** Runestone Services ***-->
-<script src="_static/prefix-runtime.8b270ccf5298bad1.bundle.js"></script><script src="_static/prefix-723.3e6434f80549315a.bundle.js"></script><script src="_static/prefix-runestone.630d5c4fb4b681eb.bundle.js"></script><link rel="stylesheet" type="text/css" href="_static/prefix-723.3bccd435914aa0ff.css">
-<link rel="stylesheet" type="text/css" href="_static/prefix-runestone.d966d31a41778c59.css">
+<script src="_static/prefix-runtime.596d7408a9995282.bundle.js"></script><script src="_static/prefix-723.3e6434f80549315a.bundle.js"></script><script src="_static/prefix-runestone.f6bda0c0ccce4835.bundle.js"></script><link rel="stylesheet" type="text/css" href="_static/prefix-723.3bccd435914aa0ff.css">
+<link rel="stylesheet" type="text/css" href="_static/prefix-runestone.6a985cbf816db5c7.css">
 <style>
 #assumption-area-1-1-4 { counter-set: assumption-area-1-1-4 0; }
 #assumption-area-1-1-4 > li::marker { content: ""counter(assumption-area-1-1-4,decimal)"."; }
@@ -145,6 +145,12 @@ eBookConfig.enable_chatcodes =  false;
 #sec-first-ftc-7-4-9 { counter-set: sec-first-ftc-7-4-9 0; }
 #sec-first-ftc-7-4-9 > li::marker { content: ""counter(sec-first-ftc-7-4-9,decimal)"."; }
 #sec-first-ftc-7-4-9 > li { counter-increment: sec-first-ftc-7-4-9; }
+#conv-indef-int-2-1 { counter-set: conv-indef-int-2-1 0; }
+#conv-indef-int-2-1 > li::marker { content: ""counter(conv-indef-int-2-1,decimal)"."; }
+#conv-indef-int-2-1 > li { counter-increment: conv-indef-int-2-1; }
+#prop-indef-int-facts-2-1-1 { counter-set: prop-indef-int-facts-2-1-1 0; }
+#prop-indef-int-facts-2-1-1 > li::marker { content: ""counter(prop-indef-int-facts-2-1-1,decimal)"."; }
+#prop-indef-int-facts-2-1-1 > li { counter-increment: prop-indef-int-facts-2-1-1; }
 </style>
 </head>
 <body class="pretext book ignore-math">
@@ -206,6 +212,7 @@ eBookConfig.enable_chatcodes =  false;
 <li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-nonintegrable.html" class="internal"><span class="codenumber">1.5</span> <span class="title">A Non-Integrable Function</span></a></div></li>
 <li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-first-ftc.html" class="internal"><span class="codenumber">1.6</span> <span class="title">The First Fundamental Theorem of Calculus</span></a></div></li>
 <li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-second-ftc.html" class="internal"><span class="codenumber">1.7</span> <span class="title">The Second Fundamental Theorem of Calculus</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-integration-ftc.html" class="internal"><span class="codenumber">1.8</span> <span class="title">Integration via Antidifferentiation</span></a></div></li>
 </ul>
 </li>
 <li class="toc-item toc-backmatter"><div class="toc-title-box"><a href="backmatter.html" class="internal"><span class="title">Backmatter</span></a></div></li>
@@ -371,10 +378,10 @@ U(f,P_\epsilon) - L(f,P_\epsilon) = \frac{\epsilon}{2}-0 = \frac{\epsilon}{2} \l
 <div class="para" id="thm-int-c1-1-1">Let <span class="process-math">\(f\)</span> be continuously differentiable on <span class="process-math">\([a,b]\text{.}\)</span> Then <span class="process-math">\(f\)</span> is integrable on <span class="process-math">\([a,b]\text{.}\)</span>
 </div></article><article class="proof" id="thm-int-c1-2"><h3 class="heading"><span class="type">Proof<span class="period">.</span></span></h3>
 <div class="para logical" id="thm-int-c1-2-1">
-<div class="para">As a preliminary step, we show that there exists a constant <span class="process-math">\(C \gt 0\)</span> such that <span class="process-math">\(\abs{f(t)-f(s)} \leq C\abs{s-t}\)</span> for all <span class="process-math">\(s,t \in [a,b]\text{.}\)</span> Since the derivative <span class="process-math">\(f'\)</span> is continuous on <span class="process-math">\([a,b]\text{,}\)</span> it is bounded on <span class="process-math">\([a,b]\)</span> by the <a class="external" href="https://opentext.uleth.ca/apex-calculus/sec_extreme_values.html#thm_extreme_val" target="_blank">extreme value theorem</a><details class="ptx-footnote" aria-live="polite" id="thm-int-c1-2-1-8"><summary class="ptx-footnote__number" title="Footnote 1.4.5"><sup> 5 </sup></summary><div class="ptx-footnote__contents" id="thm-int-c1-2-1-8"><code class="code-inline tex2jax_ignore">opentext.uleth.ca/apex-calculus/sec_extreme_values.html#thm_extreme_val</code></div></details>. Hence, let <span class="process-math">\(C \defn \sup\set{\abs{f'(x)}}{a \leq x \leq b} + 1\)</span> to ensure that <span class="process-math">\(C \gt 0\text{.}\)</span> Now, let <span class="process-math">\(s,t \in [a,b]\)</span> be given; without loss of generality, we may assume that <span class="process-math">\(a \leq s \lt t \leq b\text{.}\)</span> Then, by the <a class="external" href="https://opentext.uleth.ca/apex-calculus/sec_mvt.html#thm_mvt" target="_blank">mean value theorem</a><details class="ptx-footnote" aria-live="polite" id="thm-int-c1-2-1-14"><summary class="ptx-footnote__number" title="Footnote 1.4.6"><sup> 6 </sup></summary><div class="ptx-footnote__contents" id="thm-int-c1-2-1-14"><code class="code-inline tex2jax_ignore">opentext.uleth.ca/apex-calculus/sec_mvt.html#thm_mvt</code></div></details>, there exists some <span class="process-math">\(s \lt c \lt t\)</span> such that <span class="process-math">\(f(t)-f(s) = f'(c)(t-s)\text{.}\)</span> Thus,</div>
+<div class="para">As a preliminary step, we show that there exists a constant <span class="process-math">\(C \gt 0\)</span> such that <span class="process-math">\(\abs{f(t)-f(s)} \leq C\abs{s-t}\)</span> for all <span class="process-math">\(s,t \in [a,b]\text{.}\)</span> Since the derivative <span class="process-math">\(f^\prime\)</span> is continuous on <span class="process-math">\([a,b]\text{,}\)</span> it is bounded on <span class="process-math">\([a,b]\)</span> by the <a class="external" href="https://opentext.uleth.ca/apex-calculus/sec_extreme_values.html#thm_extreme_val" target="_blank">extreme value theorem</a><details class="ptx-footnote" aria-live="polite" id="thm-int-c1-2-1-8"><summary class="ptx-footnote__number" title="Footnote 1.4.5"><sup> 5 </sup></summary><div class="ptx-footnote__contents" id="thm-int-c1-2-1-8"><code class="code-inline tex2jax_ignore">opentext.uleth.ca/apex-calculus/sec_extreme_values.html#thm_extreme_val</code></div></details>. Hence, let <span class="process-math">\(C \defn \sup\set{\abs{f^\prime(x)}}{a \leq x \leq b} + 1\)</span> to ensure that <span class="process-math">\(C \gt 0\text{.}\)</span> Now, let <span class="process-math">\(s,t \in [a,b]\)</span> be given; without loss of generality, we may assume that <span class="process-math">\(a \leq s \lt t \leq b\text{.}\)</span> Then, by the <a class="external" href="https://opentext.uleth.ca/apex-calculus/sec_mvt.html#thm_mvt" target="_blank">mean value theorem</a><details class="ptx-footnote" aria-live="polite" id="thm-int-c1-2-1-14"><summary class="ptx-footnote__number" title="Footnote 1.4.6"><sup> 6 </sup></summary><div class="ptx-footnote__contents" id="thm-int-c1-2-1-14"><code class="code-inline tex2jax_ignore">opentext.uleth.ca/apex-calculus/sec_mvt.html#thm_mvt</code></div></details>, there exists some <span class="process-math">\(s \lt c \lt t\)</span> such that <span class="process-math">\(f(t)-f(s) = f^\prime(c)(t-s)\text{.}\)</span> Thus,</div>
 <div class="displaymath process-math">
 \begin{equation*}
-\abs{f(t)-f(s)} = \abs{f'(c)(t-s)} = \abs{f'(c)}\abs{s-t} \leq C\abs{s-t}\text{.}
+\abs{f(t)-f(s)} = \abs{f^\prime(c)(t-s)} = \abs{f^\prime(c)}\abs{s-t} \leq C\abs{s-t}\text{.}
 \end{equation*}
 </div>
 </div>

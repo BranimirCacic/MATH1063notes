@@ -1018,13 +1018,139 @@ var ptx_lunr_docs = [
   "body": " The conclusion of can be written in Leibniz notation as or as .  "
 },
 {
-  "id": "sec-second-ftc-9",
+  "id": "ex-power-law",
   "level": "2",
-  "url": "sec-second-ftc.html#sec-second-ftc-9",
+  "url": "sec-second-ftc.html#ex-power-law",
   "type": "Example",
   "number": "1.7.5",
   "title": "",
   "body": " Let be a non-negative integer. On the one hand, define a function on by . On the other hand, define a function on by . Then is an antiderivative of the continuous function since with the traditional harmless abuses of notation. Hence, for all , it follows by that ; the same calculation in Lebiniz notation looks like . Note that setting , , and effortlessly recovers the calculation of .  "
+},
+{
+  "id": "sec-integration-ftc",
+  "level": "1",
+  "url": "sec-integration-ftc.html",
+  "type": "Section",
+  "number": "1.8",
+  "title": "Integration via Antidifferentiation",
+  "body": " Integration via Antidifferentiation  Let's recall the second fundamental theorem of calculus ( ):   Let be an integrable function on a closed interval . Suppose that is an antiderivative of on . Then . Equivalently, in Lebniz notation, , where .   In principle, this means that we can integrate a function by reverse-engineering an antiderivative of . This gives rise to the traditional notion of indefinite integration .   Indefinite integration     Let be an integrable function on an interval that has an antiderivative. The indefinite integral  of is a symbolic placeholder for any antiderivative of .    Any equality of functions involving an indefinite integral holds, by definition, up to addition of a constant term, which is typically denoted by .       A constant is a real number treated as a constant function with constant value .    If you want to be rigorous, you can define the indefinite integral of a function on an interval admitting antiderivatives to be the set  of all anti-derivatives of . Then an equality of indefinite integrals can be made precise as an equality of functions modulo constant functions. Compare angles, where two numbers and represent the same angle in radians whenever for some integer .   Every fact about derivatives yields a corresponding fact about indefinite integrals. The most basic facts about derivatives immediately yield the following basic facts about indefinite integrals.   Basic properties of indefinite integrals      Let be an integrable function on an interval . Suppose that is an antiderivative of . Then . This means that a antiderivative of is precisely a function of the form , where is a constant.    Let and be integrable functions on an interval that have antiderivatives. Then . This means that an antiderivative of is precisely a function of the form , where is an antiderivative of , is an antiderivative of , and is a constant.    Let be an integrable function on an interval that has an antiderivative, and let be a real number. Then . This means that an antiderivative of is precisely a function of the form , where is an antiderivative of and is a constant.        Let be an integrable function on an interval that has an antiderivative. The does not imply that . Instead, it says that  up to addition of a constant term , , the antiderivatives of are precisely the constants.    Let be a non-negative integer. By the proof of , the function is an antiderivative of the function . Hence, .  Let's apply this to computing . By repeated applications of and , it follows that , where we used our convention on equalities of involving indefinite integrals to collect constant terms. Hence, by , it follows that , where we were free to set since any choice of antiderivative must yield the same value for .    The natural logarithm is differentiable on with derivative . Hence, on the domain , .  Let's apply this to computing : .    Let on . Then, by the chain rule, . Hence, on the domain , .    Since the exponential function satisfies , it follows that . Thus, for example, .   For a table of the most common indefinite integrals, see here .   Let's compute . Since , it follows that .    Let's compute in one go: .   "
+},
+{
+  "id": "sec-integration-ftc-2",
+  "level": "2",
+  "url": "sec-integration-ftc.html#sec-integration-ftc-2",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": "second fundamental theorem of calculus "
+},
+{
+  "id": "sec-integration-ftc-4",
+  "level": "2",
+  "url": "sec-integration-ftc.html#sec-integration-ftc-4",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": "indefinite integration "
+},
+{
+  "id": "conv-indef-int",
+  "level": "2",
+  "url": "sec-integration-ftc.html#conv-indef-int",
+  "type": "Convention",
+  "number": "1.8.1",
+  "title": "Indefinite integration.",
+  "body": " Indefinite integration     Let be an integrable function on an interval that has an antiderivative. The indefinite integral  of is a symbolic placeholder for any antiderivative of .    Any equality of functions involving an indefinite integral holds, by definition, up to addition of a constant term, which is typically denoted by .     "
+},
+{
+  "id": "sec-integration-ftc-6",
+  "level": "2",
+  "url": "sec-integration-ftc.html#sec-integration-ftc-6",
+  "type": "Note",
+  "number": "1.8.2",
+  "title": "",
+  "body": " A constant is a real number treated as a constant function with constant value .  "
+},
+{
+  "id": "sec-integration-ftc-7",
+  "level": "2",
+  "url": "sec-integration-ftc.html#sec-integration-ftc-7",
+  "type": "Remark",
+  "number": "1.8.3",
+  "title": "",
+  "body": " If you want to be rigorous, you can define the indefinite integral of a function on an interval admitting antiderivatives to be the set  of all anti-derivatives of . Then an equality of indefinite integrals can be made precise as an equality of functions modulo constant functions. Compare angles, where two numbers and represent the same angle in radians whenever for some integer .  "
+},
+{
+  "id": "prop-indef-int-facts",
+  "level": "2",
+  "url": "sec-integration-ftc.html#prop-indef-int-facts",
+  "type": "Proposition",
+  "number": "1.8.4",
+  "title": "Basic properties of indefinite integrals.",
+  "body": " Basic properties of indefinite integrals      Let be an integrable function on an interval . Suppose that is an antiderivative of . Then . This means that a antiderivative of is precisely a function of the form , where is a constant.    Let and be integrable functions on an interval that have antiderivatives. Then . This means that an antiderivative of is precisely a function of the form , where is an antiderivative of , is an antiderivative of , and is a constant.    Let be an integrable function on an interval that has an antiderivative, and let be a real number. Then . This means that an antiderivative of is precisely a function of the form , where is an antiderivative of and is a constant.      "
+},
+{
+  "id": "sec-integration-ftc-10",
+  "level": "2",
+  "url": "sec-integration-ftc.html#sec-integration-ftc-10",
+  "type": "Warning",
+  "number": "1.8.5",
+  "title": "",
+  "body": " Let be an integrable function on an interval that has an antiderivative. The does not imply that . Instead, it says that  up to addition of a constant term , , the antiderivatives of are precisely the constants.  "
+},
+{
+  "id": "sec-integration-ftc-11",
+  "level": "2",
+  "url": "sec-integration-ftc.html#sec-integration-ftc-11",
+  "type": "Example",
+  "number": "1.8.6",
+  "title": "",
+  "body": " Let be a non-negative integer. By the proof of , the function is an antiderivative of the function . Hence, .  Let's apply this to computing . By repeated applications of and , it follows that , where we used our convention on equalities of involving indefinite integrals to collect constant terms. Hence, by , it follows that , where we were free to set since any choice of antiderivative must yield the same value for .  "
+},
+{
+  "id": "sec-integration-ftc-12",
+  "level": "2",
+  "url": "sec-integration-ftc.html#sec-integration-ftc-12",
+  "type": "Example",
+  "number": "1.8.7",
+  "title": "",
+  "body": " The natural logarithm is differentiable on with derivative . Hence, on the domain , .  Let's apply this to computing : .  "
+},
+{
+  "id": "sec-integration-ftc-13",
+  "level": "2",
+  "url": "sec-integration-ftc.html#sec-integration-ftc-13",
+  "type": "Example",
+  "number": "1.8.8",
+  "title": "",
+  "body": " Let on . Then, by the chain rule, . Hence, on the domain , .  "
+},
+{
+  "id": "sec-integration-ftc-14",
+  "level": "2",
+  "url": "sec-integration-ftc.html#sec-integration-ftc-14",
+  "type": "Example",
+  "number": "1.8.9",
+  "title": "",
+  "body": " Since the exponential function satisfies , it follows that . Thus, for example, .  "
+},
+{
+  "id": "sec-integration-ftc-16",
+  "level": "2",
+  "url": "sec-integration-ftc.html#sec-integration-ftc-16",
+  "type": "Example",
+  "number": "1.8.10",
+  "title": "",
+  "body": " Let's compute . Since , it follows that .  "
+},
+{
+  "id": "sec-integration-ftc-17",
+  "level": "2",
+  "url": "sec-integration-ftc.html#sec-integration-ftc-17",
+  "type": "Example",
+  "number": "1.8.11",
+  "title": "",
+  "body": " Let's compute in one go: .  "
 },
 {
   "id": "backmatter-2",

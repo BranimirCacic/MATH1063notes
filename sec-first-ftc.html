@@ -96,15 +96,15 @@ eBookConfig.allow_pairs = false;
 eBookConfig.enableScratchAC = false;
 eBookConfig.build_info = "";
 eBookConfig.python3 = null;
-eBookConfig.runestone_version = '7.5.2';
+eBookConfig.runestone_version = '7.5.3';
 eBookConfig.jobehost = '';
 eBookConfig.proxyuri_runs = '';
 eBookConfig.proxyuri_files = '';
 eBookConfig.enable_chatcodes =  false;
 </script>
 <!--*** Runestone Services ***-->
-<script src="_static/prefix-runtime.8b270ccf5298bad1.bundle.js"></script><script src="_static/prefix-723.3e6434f80549315a.bundle.js"></script><script src="_static/prefix-runestone.630d5c4fb4b681eb.bundle.js"></script><link rel="stylesheet" type="text/css" href="_static/prefix-723.3bccd435914aa0ff.css">
-<link rel="stylesheet" type="text/css" href="_static/prefix-runestone.d966d31a41778c59.css">
+<script src="_static/prefix-runtime.596d7408a9995282.bundle.js"></script><script src="_static/prefix-723.3e6434f80549315a.bundle.js"></script><script src="_static/prefix-runestone.f6bda0c0ccce4835.bundle.js"></script><link rel="stylesheet" type="text/css" href="_static/prefix-723.3bccd435914aa0ff.css">
+<link rel="stylesheet" type="text/css" href="_static/prefix-runestone.6a985cbf816db5c7.css">
 <style>
 #assumption-area-1-1-4 { counter-set: assumption-area-1-1-4 0; }
 #assumption-area-1-1-4 > li::marker { content: ""counter(assumption-area-1-1-4,decimal)"."; }
@@ -145,6 +145,12 @@ eBookConfig.enable_chatcodes =  false;
 #sec-first-ftc-7-4-9 { counter-set: sec-first-ftc-7-4-9 0; }
 #sec-first-ftc-7-4-9 > li::marker { content: ""counter(sec-first-ftc-7-4-9,decimal)"."; }
 #sec-first-ftc-7-4-9 > li { counter-increment: sec-first-ftc-7-4-9; }
+#conv-indef-int-2-1 { counter-set: conv-indef-int-2-1 0; }
+#conv-indef-int-2-1 > li::marker { content: ""counter(conv-indef-int-2-1,decimal)"."; }
+#conv-indef-int-2-1 > li { counter-increment: conv-indef-int-2-1; }
+#prop-indef-int-facts-2-1-1 { counter-set: prop-indef-int-facts-2-1-1 0; }
+#prop-indef-int-facts-2-1-1 > li::marker { content: ""counter(prop-indef-int-facts-2-1-1,decimal)"."; }
+#prop-indef-int-facts-2-1-1 > li { counter-increment: prop-indef-int-facts-2-1-1; }
 </style>
 </head>
 <body class="pretext book ignore-math">
@@ -206,6 +212,7 @@ eBookConfig.enable_chatcodes =  false;
 <li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-nonintegrable.html" class="internal"><span class="codenumber">1.5</span> <span class="title">A Non-Integrable Function</span></a></div></li>
 <li class="toc-item toc-section active"><div class="toc-title-box"><a href="sec-first-ftc.html" class="internal"><span class="codenumber">1.6</span> <span class="title">The First Fundamental Theorem of Calculus</span></a></div></li>
 <li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-second-ftc.html" class="internal"><span class="codenumber">1.7</span> <span class="title">The Second Fundamental Theorem of Calculus</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-integration-ftc.html" class="internal"><span class="codenumber">1.8</span> <span class="title">Integration via Antidifferentiation</span></a></div></li>
 </ul>
 </li>
 <li class="toc-item toc-backmatter"><div class="toc-title-box"><a href="backmatter.html" class="internal"><span class="title">Backmatter</span></a></div></li>
@@ -213,8 +220,8 @@ eBookConfig.enable_chatcodes =  false;
 <main class="ptx-main"><div id="ptx-content" class="ptx-content"><section class="section" id="sec-first-ftc"><h2 class="heading hide-type">
 <span class="type">Section</span><span class="space"> </span><span class="codenumber">1.6</span><span class="space"> </span><span class="title">The First Fundamental Theorem of Calculus</span>
 </h2>
-<div class="para" id="sec-first-ftc-2">In this section, we’ll prove the first of the two <dfn class="terminology">fundamental theorems of calculus</dfn>, the mathematical breakthrough of the 17th century that links the theory of integration with the theory of differentiation and permits the efficient calculation of integrals in a wide range of cases. In particular, the first fundamental theorem of calculus uses integration to take a given function <span class="process-math">\(f\)</span> and reverse-engineer a new function <span class="process-math">\(F\)</span> such that <span class="process-math">\(F' = f\text{.}\)</span> Our account in this section and <a href="sec-second-ftc.html" class="internal" title="Section 1.7: The Second Fundamental Theorem of Calculus">Section 1.7</a> provides a rigorous complement to <a class="external" href="https://opentext.uleth.ca/apex-calculus/sec_FTC.html" target="_blank">Section 5.5</a><details class="ptx-footnote" aria-live="polite" id="sec-first-ftc-2-7"><summary class="ptx-footnote__number" title="Footnote 1.6.1"><sup> 1 </sup></summary><div class="ptx-footnote__contents" id="sec-first-ftc-2-7"><code class="code-inline tex2jax_ignore">opentext.uleth.ca/apex-calculus/sec_FTC.html</code></div></details> of <span class="booktitle"><abbr class="initialism">APEX</abbr> Calculus</span> and Section 5.7 of Strang’s <span class="booktitle">Calculus</span>.</div>
-<div class="para" id="sec-first-ftc-3">We begin by showing that integration can be used to construct a continuous function <span class="process-math">\(F\)</span> from an integrable function <span class="process-math">\(f\text{,}\)</span> no matter how discontinuous <span class="process-math">\(f\)</span> may be. When <span class="process-math">\(f\)</span> is actually continuous, this function <span class="process-math">\(F\)</span> will turn out to satisfy <span class="process-math">\(F' = f\text{.}\)</span>
+<div class="para" id="sec-first-ftc-2">In this section, we’ll prove the first of the two <dfn class="terminology">fundamental theorems of calculus</dfn>, the mathematical breakthrough of the 17th century that links the theory of integration with the theory of differentiation and permits the efficient calculation of integrals in a wide range of cases. In particular, the first fundamental theorem of calculus uses integration to take a given function <span class="process-math">\(f\)</span> and reverse-engineer a new function <span class="process-math">\(F\)</span> such that <span class="process-math">\(F^\prime = f\text{.}\)</span> Our account in this section and <a href="sec-second-ftc.html" class="internal" title="Section 1.7: The Second Fundamental Theorem of Calculus">Section 1.7</a> provides a rigorous complement to <a class="external" href="https://opentext.uleth.ca/apex-calculus/sec_FTC.html" target="_blank">Section 5.5</a><details class="ptx-footnote" aria-live="polite" id="sec-first-ftc-2-7"><summary class="ptx-footnote__number" title="Footnote 1.6.1"><sup> 1 </sup></summary><div class="ptx-footnote__contents" id="sec-first-ftc-2-7"><code class="code-inline tex2jax_ignore">opentext.uleth.ca/apex-calculus/sec_FTC.html</code></div></details> of <span class="booktitle"><abbr class="initialism">APEX</abbr> Calculus</span> and Section 5.7 of Strang’s <span class="booktitle">Calculus</span>.</div>
+<div class="para" id="sec-first-ftc-3">We begin by showing that integration can be used to construct a continuous function <span class="process-math">\(F\)</span> from an integrable function <span class="process-math">\(f\text{,}\)</span> no matter how discontinuous <span class="process-math">\(f\)</span> may be. When <span class="process-math">\(f\)</span> is actually continuous, this function <span class="process-math">\(F\)</span> will turn out to satisfy <span class="process-math">\(F^\prime = f\text{.}\)</span>
 </div>
 <article class="theorem theorem-like" id="thm-baby-ftc1"><h3 class="heading">
 <span class="type">Theorem</span><span class="space"> </span><span class="codenumber">1.6.1</span><span class="period">.</span>
@@ -289,11 +296,11 @@ F(t) = \int_a^t f = \int_a^s f + \int_s^t f = F(s) + \int_s^t f\text{,}
 </ol>
 <div class="para">Thus, in any case, we obtain <span class="process-math">\(\abs{F(x)-F(c)} \lt \epsilon\text{.}\)</span>
 </div>
-</div></article><div class="para" id="sec-first-ftc-8">We now state and prove the first fundamental theorem of calculus, which guarantees that the function <span class="process-math">\(F\)</span> of <a href="sec-first-ftc.html#thm-baby-ftc1" class="xref" data-knowl="./knowl/xref/thm-baby-ftc1.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 1.6.1">Theorem 1.6.1</a> is differentiable with derivative <span class="process-math">\(F' = f\)</span> whenever <span class="process-math">\(f\)</span> is continuous.</div>
+</div></article><div class="para" id="sec-first-ftc-8">We now state and prove the first fundamental theorem of calculus, which guarantees that the function <span class="process-math">\(F\)</span> of <a href="sec-first-ftc.html#thm-baby-ftc1" class="xref" data-knowl="./knowl/xref/thm-baby-ftc1.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 1.6.1">Theorem 1.6.1</a> is differentiable with derivative <span class="process-math">\(F^\prime = f\)</span> whenever <span class="process-math">\(f\)</span> is continuous.</div>
 <article class="theorem theorem-like" id="thm-ftc1"><h3 class="heading">
 <span class="type">Theorem</span><span class="space"> </span><span class="codenumber">1.6.4</span><span class="period">.</span><span class="space"> </span><span class="title">First fundamental theorem of calculus.</span>
 </h3>
-<div class="para" id="thm-ftc1-2-1">Let <span class="process-math">\(f\)</span> be an integrable function on a closed interval <span class="process-math">\([a,b]\text{.}\)</span> Let <span class="process-math">\(F\)</span> be the function <span class="process-math">\([a,b]\)</span> given by <span class="process-math">\(F(x) \defn \int_a^x f\text{.}\)</span> Let <span class="process-math">\(a \leq c \leq b\text{.}\)</span> If <span class="process-math">\(f\)</span> is continuous at <span class="process-math">\(c\text{,}\)</span> then <span class="process-math">\(F\)</span> is differentiable at <span class="process-math">\(c\)</span> and <span class="process-math">\(F'(c) =f(c)\text{.}\)</span>
+<div class="para" id="thm-ftc1-2-1">Let <span class="process-math">\(f\)</span> be an integrable function on a closed interval <span class="process-math">\([a,b]\text{.}\)</span> Let <span class="process-math">\(F\)</span> be the function <span class="process-math">\([a,b]\)</span> given by <span class="process-math">\(F(x) \defn \int_a^x f\text{.}\)</span> Let <span class="process-math">\(a \leq c \leq b\text{.}\)</span> If <span class="process-math">\(f\)</span> is continuous at <span class="process-math">\(c\text{,}\)</span> then <span class="process-math">\(F\)</span> is differentiable at <span class="process-math">\(c\)</span> and <span class="process-math">\(F^\prime(c) =f(c)\text{.}\)</span>
 </div></article><article class="remark remark-like" id="sec-first-ftc-10"><h3 class="heading">
 <span class="type">Remark</span><span class="space"> </span><span class="codenumber">1.6.5</span><span class="period">.</span>
 </h3>

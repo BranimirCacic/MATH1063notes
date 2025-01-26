@@ -96,15 +96,15 @@ eBookConfig.allow_pairs = false;
 eBookConfig.enableScratchAC = false;
 eBookConfig.build_info = "";
 eBookConfig.python3 = null;
-eBookConfig.runestone_version = '7.5.2';
+eBookConfig.runestone_version = '7.5.3';
 eBookConfig.jobehost = '';
 eBookConfig.proxyuri_runs = '';
 eBookConfig.proxyuri_files = '';
 eBookConfig.enable_chatcodes =  false;
 </script>
 <!--*** Runestone Services ***-->
-<script src="_static/prefix-runtime.8b270ccf5298bad1.bundle.js"></script><script src="_static/prefix-723.3e6434f80549315a.bundle.js"></script><script src="_static/prefix-runestone.630d5c4fb4b681eb.bundle.js"></script><link rel="stylesheet" type="text/css" href="_static/prefix-723.3bccd435914aa0ff.css">
-<link rel="stylesheet" type="text/css" href="_static/prefix-runestone.d966d31a41778c59.css">
+<script src="_static/prefix-runtime.596d7408a9995282.bundle.js"></script><script src="_static/prefix-723.3e6434f80549315a.bundle.js"></script><script src="_static/prefix-runestone.f6bda0c0ccce4835.bundle.js"></script><link rel="stylesheet" type="text/css" href="_static/prefix-723.3bccd435914aa0ff.css">
+<link rel="stylesheet" type="text/css" href="_static/prefix-runestone.6a985cbf816db5c7.css">
 <style>
 #assumption-area-1-1-4 { counter-set: assumption-area-1-1-4 0; }
 #assumption-area-1-1-4 > li::marker { content: ""counter(assumption-area-1-1-4,decimal)"."; }
@@ -145,6 +145,12 @@ eBookConfig.enable_chatcodes =  false;
 #sec-first-ftc-7-4-9 { counter-set: sec-first-ftc-7-4-9 0; }
 #sec-first-ftc-7-4-9 > li::marker { content: ""counter(sec-first-ftc-7-4-9,decimal)"."; }
 #sec-first-ftc-7-4-9 > li { counter-increment: sec-first-ftc-7-4-9; }
+#conv-indef-int-2-1 { counter-set: conv-indef-int-2-1 0; }
+#conv-indef-int-2-1 > li::marker { content: ""counter(conv-indef-int-2-1,decimal)"."; }
+#conv-indef-int-2-1 > li { counter-increment: conv-indef-int-2-1; }
+#prop-indef-int-facts-2-1-1 { counter-set: prop-indef-int-facts-2-1-1 0; }
+#prop-indef-int-facts-2-1-1 > li::marker { content: ""counter(prop-indef-int-facts-2-1-1,decimal)"."; }
+#prop-indef-int-facts-2-1-1 > li { counter-increment: prop-indef-int-facts-2-1-1; }
 </style>
 </head>
 <body class="pretext book ignore-math">
@@ -165,7 +171,7 @@ eBookConfig.enable_chatcodes =  false;
 <ol id="searchresults" class="searchresults"></ol>
 </div>
 </div>
-<span class="nav-other-controls"><button id="light-dark-button" class="light-dark-button button" title="Dark Mode"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe51c;</span><span class="name">Dark Mode</span></button></span><span class="treebuttons"><a class="previous-button button" href="sec-first-ftc.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="up-button button" href="ch-integration.html" title="Up"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Up</span></a><a class="next-button button" href="backmatter.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a></span>
+<span class="nav-other-controls"><button id="light-dark-button" class="light-dark-button button" title="Dark Mode"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe51c;</span><span class="name">Dark Mode</span></button></span><span class="treebuttons"><a class="previous-button button" href="sec-first-ftc.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="up-button button" href="ch-integration.html" title="Up"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Up</span></a><a class="next-button button" href="sec-integration-ftc.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a></span>
 </div></nav><div id="latex-macros" class="hidden-content process-math" style="display:none"><span class="process-math">\(\newcommand{\cL}{\mathcal L}
 \newcommand{\cU}{\mathcal U}
 \newcommand{\N}{\mathbb N}
@@ -206,6 +212,7 @@ eBookConfig.enable_chatcodes =  false;
 <li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-nonintegrable.html" class="internal"><span class="codenumber">1.5</span> <span class="title">A Non-Integrable Function</span></a></div></li>
 <li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-first-ftc.html" class="internal"><span class="codenumber">1.6</span> <span class="title">The First Fundamental Theorem of Calculus</span></a></div></li>
 <li class="toc-item toc-section active"><div class="toc-title-box"><a href="sec-second-ftc.html" class="internal"><span class="codenumber">1.7</span> <span class="title">The Second Fundamental Theorem of Calculus</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-integration-ftc.html" class="internal"><span class="codenumber">1.8</span> <span class="title">Integration via Antidifferentiation</span></a></div></li>
 </ul>
 </li>
 <li class="toc-item toc-backmatter"><div class="toc-title-box"><a href="backmatter.html" class="internal"><span class="title">Backmatter</span></a></div></li>
@@ -213,11 +220,11 @@ eBookConfig.enable_chatcodes =  false;
 <main class="ptx-main"><div id="ptx-content" class="ptx-content"><section class="section" id="sec-second-ftc"><h2 class="heading hide-type">
 <span class="type">Section</span><span class="space"> </span><span class="codenumber">1.7</span><span class="space"> </span><span class="title">The Second Fundamental Theorem of Calculus</span>
 </h2>
-<div class="para" id="sec-second-ftc-2">In this section, we discuss the <dfn class="terminology">second fundamental theorem of calculus</dfn>, which gives us an easy way to compute an integral <span class="process-math">\(\int_a^b f\)</span> when we happen to know (by hook or by crook!) that <span class="process-math">\(f = F'\)</span> for some function <span class="process-math">\(F\text{.}\)</span> This remarkable fact therefore lets us leverage everything we know about differentiation to compute integrals of familiar functions (and some not-so-familiar functions too). Our account in this section and <a href="sec-first-ftc.html" class="internal" title="Section 1.6: The First Fundamental Theorem of Calculus">Section 1.6</a> provides a rigorous complement to <a class="external" href="https://opentext.uleth.ca/apex-calculus/sec_FTC.html" target="_blank">Section 5.5</a><details class="ptx-footnote" aria-live="polite" id="sec-second-ftc-2-7"><summary class="ptx-footnote__number" title="Footnote 1.7.1"><sup> 1 </sup></summary><div class="ptx-footnote__contents" id="sec-second-ftc-2-7"><code class="code-inline tex2jax_ignore">opentext.uleth.ca/apex-calculus/sec_FTC.html</code></div></details> of <span class="booktitle"><abbr class="initialism">APEX</abbr> Calculus</span> and Section 5.7 of Strang’s <span class="booktitle">Calculus</span>.</div>
+<div class="para" id="sec-second-ftc-2">In this section, we discuss the <dfn class="terminology">second fundamental theorem of calculus</dfn>, which gives us an easy way to compute an integral <span class="process-math">\(\int_a^b f\)</span> when we happen to know (by hook or by crook!) that <span class="process-math">\(f = F^\prime\)</span> for some function <span class="process-math">\(F\text{.}\)</span> This remarkable fact therefore lets us leverage everything we know about differentiation to compute integrals of familiar functions (and some not-so-familiar functions too). Our account in this section and <a href="sec-first-ftc.html" class="internal" title="Section 1.6: The First Fundamental Theorem of Calculus">Section 1.6</a> provides a rigorous complement to <a class="external" href="https://opentext.uleth.ca/apex-calculus/sec_FTC.html" target="_blank">Section 5.5</a><details class="ptx-footnote" aria-live="polite" id="sec-second-ftc-2-7"><summary class="ptx-footnote__number" title="Footnote 1.7.1"><sup> 1 </sup></summary><div class="ptx-footnote__contents" id="sec-second-ftc-2-7"><code class="code-inline tex2jax_ignore">opentext.uleth.ca/apex-calculus/sec_FTC.html</code></div></details> of <span class="booktitle"><abbr class="initialism">APEX</abbr> Calculus</span> and Section 5.7 of Strang’s <span class="booktitle">Calculus</span>.</div>
 <article class="definition definition-like" id="def-antiderivative"><h3 class="heading">
 <span class="type">Definition</span><span class="space"> </span><span class="codenumber">1.7.1</span><span class="period">.</span>
 </h3>
-<div class="para" id="def-antiderivative-1-1">Let <span class="process-math">\(f\)</span> be a function on a closed interval <span class="process-math">\([a,b]\text{.}\)</span> An <dfn class="terminology">antiderivative</dfn> of <span class="process-math">\(f\)</span> on <span class="process-math">\([a,b]\)</span> is a differentiable function <span class="process-math">\(F\)</span> on <span class="process-math">\([a,b]\)</span> such that <span class="process-math">\(F' = f\text{.}\)</span>
+<div class="para" id="def-antiderivative-1-1">Let <span class="process-math">\(f\)</span> be a function on a closed interval <span class="process-math">\([a,b]\text{.}\)</span> An <dfn class="terminology">antiderivative</dfn> of <span class="process-math">\(f\)</span> on <span class="process-math">\([a,b]\)</span> is a differentiable function <span class="process-math">\(F\)</span> on <span class="process-math">\([a,b]\)</span> such that <span class="process-math">\(F^\prime = f\text{.}\)</span>
 </div></article><div class="para" id="sec-second-ftc-4">A straightforward application of the first fundamental theorem of calculus (<a href="sec-first-ftc.html#thm-ftc1" class="xref" data-knowl="./knowl/xref/thm-ftc1.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 1.6.4: First fundamental theorem of calculus">Theorem 1.6.4</a>) yields an important special case where an antiderivative is not only guaranteed to exist but allows us to compute the relevant integral.</div>
 <article class="proposition theorem-like" id="prop-antiderivative"><h3 class="heading">
 <span class="type">Proposition</span><span class="space"> </span><span class="codenumber">1.7.2</span><span class="period">.</span>
@@ -232,7 +239,7 @@ F(b) - F(a) = (\int_a^b f + C) - (\int_a^a f + C) = \int_a^b f\text{.}
 \end{equation*}
 </div>
 </div>
-<div class="para" id="prop-antiderivative-2-2">Now, suppose that <span class="process-math">\(G\)</span> is a differentiable function on <span class="process-math">\([a,b]\)</span> such that <span class="process-math">\(G' = f\)</span> and <span class="process-math">\(G(a)=C\text{.}\)</span> Then <span class="process-math">\((F-G)' = F' - G' = f - f = 0\text{,}\)</span> so that <span class="process-math">\(F-G\)</span> is constant. Hence, <span class="process-math">\(F(x)-G(x) = F(a)-G(a) = C-C = 0\)</span> for all <span class="process-math">\(a \leq x \leq b\text{.}\)</span>
+<div class="para" id="prop-antiderivative-2-2">Now, suppose that <span class="process-math">\(G\)</span> is a differentiable function on <span class="process-math">\([a,b]\)</span> such that <span class="process-math">\(G^\prime = f\)</span> and <span class="process-math">\(G(a)=C\text{.}\)</span> Then <span class="process-math">\((F-G)^\prime = F^\prime - G^\prime = f - f = 0\text{,}\)</span> so that <span class="process-math">\(F-G\)</span> is constant. Hence, <span class="process-math">\(F(x)-G(x) = F(a)-G(a) = C-C = 0\)</span> for all <span class="process-math">\(a \leq x \leq b\text{.}\)</span>
 </div></article><div class="para" id="sec-second-ftc-6">The above proposition is good enough for most purposes, but we can actually do better than requiring continuity of <span class="process-math">\(f\text{.}\)</span> In fact, it’s enough to find (by hook or by crook!) one antiderivative of <span class="process-math">\(f\text{.}\)</span> This is the content of the <dfn class="terminology">second fundamental theorem of calculus</dfn>.</div>
 <article class="theorem theorem-like" id="thm-ftc2"><h3 class="heading">
 <span class="type">Theorem</span><span class="space"> </span><span class="codenumber">1.7.3</span><span class="period">.</span><span class="space"> </span><span class="title">Second fundamental theorem of calculus.</span>
@@ -272,14 +279,14 @@ L(f,P) = \sum_{k=1}^N M_k(x_k-x_{k-1}) \geq \sum_{k=1}^N F((x_k)-F(x_{k-1})) = F
 <span class="type">Remark</span><span class="space"> </span><span class="codenumber">1.7.4</span><span class="period">.</span>
 </h3>
 <div class="para" id="sec-second-ftc-8-1">The conclusion of <a href="sec-second-ftc.html#thm-ftc2" class="xref" data-knowl="./knowl/xref/thm-ftc2.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 1.7.3: Second fundamental theorem of calculus">Theorem 1.7.3</a> can be written in Leibniz notation as <span class="process-math">\(\int_a^b f(x) \du{x} = F(b)-F(a)\)</span> or as <span class="process-math">\(\int_a^b f(x) \du{x} = F(x)\vert_a^b\text{.}\)</span>
-</div></article><article class="example example-like" id="sec-second-ftc-9"><h3 class="heading">
+</div></article><article class="example example-like" id="ex-power-law"><h3 class="heading">
 <span class="type">Example</span><span class="space"> </span><span class="codenumber">1.7.5</span><span class="period">.</span>
 </h3>
-<div class="para logical" id="sec-second-ftc-9-1">
+<div class="para logical" id="ex-power-law-1">
 <div class="para">Let <span class="process-math">\(n\)</span> be a non-negative integer. On the one hand, define a function <span class="process-math">\(f\)</span> on <span class="process-math">\(\R\)</span> by <span class="process-math">\(f(x) \defn x^n\text{.}\)</span> On the other hand, define a function <span class="process-math">\(F\)</span> on <span class="process-math">\(\R\)</span> by <span class="process-math">\(F(x) \defn \frac{1}{n+1}x^{n+1}\text{.}\)</span> Then <span class="process-math">\(F\)</span> is an antiderivative of the continuous function <span class="process-math">\(f\)</span> since</div>
 <div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/thm-ftc2.html ./knowl/xref/ex-integral-parabola.html">
 \begin{equation*}
-F'(x) = \ddx\left(\frac{1}{n+1}x^{n+1}\right)  = \frac{1}{n+1} \cdot (n+1)x^{(n+1)-1} = x^n = f(x)
+F^\prime(x) = \ddx\left(\frac{1}{n+1}x^{n+1}\right)  = \frac{1}{n+1} \cdot (n+1)x^{(n+1)-1} = x^n = f(x)
 \end{equation*}
 </div>
 <div class="para">with the traditional harmless abuses of notation. Hence, for all <span class="process-math">\(a \lt b\text{,}\)</span> it follows by <a href="sec-second-ftc.html#thm-ftc2" class="xref" data-knowl="./knowl/xref/thm-ftc2.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 1.7.3: Second fundamental theorem of calculus">Theorem 1.7.3</a> that</div>
@@ -297,7 +304,7 @@ F'(x) = \ddx\left(\frac{1}{n+1}x^{n+1}\right)  = \frac{1}{n+1} \cdot (n+1)x^{(n+
 <div class="para">Note that setting <span class="process-math">\(N=2\text{,}\)</span> <span class="process-math">\(a = 0\text{,}\)</span> and <span class="process-math">\(b=1\)</span> effortlessly recovers the calculation <span class="process-math">\(\int_0^1 x^2 \du{x} = \frac{1}{3}\)</span> of <a href="sec-integrability.html#ex-integral-parabola" class="xref" data-knowl="./knowl/xref/ex-integral-parabola.html" data-reveal-label="Reveal" data-close-label="Close" title="Example 1.4.4">Example 1.4.4</a>.</div>
 </div></article></section></div>
 <div class="ptx-content-footer">
-<a class="previous-button button" href="sec-first-ftc.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="top-button button" href="#" title="Top"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Top</span></a><a class="next-button button" href="backmatter.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a>
+<a class="previous-button button" href="sec-first-ftc.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="top-button button" href="#" title="Top"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Top</span></a><a class="next-button button" href="sec-integration-ftc.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a>
 </div></main>
 </div>
 <div id="ptx-page-footer" class="ptx-page-footer">
