@@ -5,13 +5,13 @@
 
     <p>
         In this section, we'll prove the first of the two <term>fundamental theorems of calculus</term>, the mathematical breakthrough of the 17th century that links the theory of integration with the theory of differentiation and permits the efficient calculation of integrals in a wide range of cases.
-        In particular, the first fundamental theorem of calculus uses integration to take a given function <m>f</m> and reverse-engineer a new function <m>F</m> such that <m>F' = f</m>.
+        In particular, the first fundamental theorem of calculus uses integration to take a given function <m>f</m> and reverse-engineer a new function <m>F</m> such that <m>F^\prime = f</m>.
         Our account in this section and <xref ref="sec-second-ftc"/> provides a rigorous complement to <url href="https://opentext.uleth.ca/apex-calculus/sec_FTC.html">Section 5.5</url> of <pubtitle><init>APEX</init> Calculus</pubtitle> and Section 5.7 of Strang's <pubtitle>Calculus</pubtitle>.
     </p>
 
     <p>
         We begin by showing that integration can be used to construct a continuous function <m>F</m> from an integrable function <m>f</m>, no matter how discontinuous <m>f</m> may be.
-        When <m>f</m> is actually continuous, this function <m>F</m> will turn out to satisfy <m>F' = f</m>.
+        When <m>f</m> is actually continuous, this function <m>F</m> will turn out to satisfy <m>F^\prime = f</m>.
     </p>
     
     <theorem xml:id="thm-baby-ftc1">
@@ -103,7 +103,7 @@
     </proof>
 
     <p>
-        We now state and prove the first fundamental theorem of calculus, which guarantees that the function <m>F</m> of <xref ref="thm-baby-ftc1"/> is differentiable with derivative <m>F' = f</m> whenever <m>f</m> is continuous.
+        We now state and prove the first fundamental theorem of calculus, which guarantees that the function <m>F</m> of <xref ref="thm-baby-ftc1"/> is differentiable with derivative <m>F^\prime = f</m> whenever <m>f</m> is continuous.
     </p>
 
     <theorem xml:id="thm-ftc1">
@@ -113,7 +113,7 @@
                 Let <m>f</m> be an integrable function on a closed interval <m>[a,b]</m>.
                 Let <m>F</m> be the function <m>[a,b]</m> given by <m>F(x) \defn \int_a^x f</m>.
                 Let <m>a \leq c \leq b</m>.
-                If <m>f</m> is continuous at <m>c</m>, then <m>F</m> is differentiable at <m>c</m> and <m>F'(c) =f(c)</m>.
+                If <m>f</m> is continuous at <m>c</m>, then <m>F</m> is differentiable at <m>c</m> and <m>F^\prime(c) =f(c)</m>.
             </p>
         </statement>
     </theorem>

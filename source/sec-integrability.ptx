@@ -221,13 +221,13 @@
         <proof>
             <p>
                 As a preliminary step, we show that there exists a constant <m>C \gt 0</m> such that <m>\abs{f(t)-f(s)} \leq C\abs{s-t}</m> for all <m>s,t \in [a,b]</m>.
-                Since the derivative <m>f'</m> is continuous on <m>[a,b]</m>, it is bounded on <m>[a,b]</m> by the <url href="https://opentext.uleth.ca/apex-calculus/sec_extreme_values.html#thm_extreme_val">extreme value theorem</url>.
-                Hence, let <m>C \defn \sup\set{\abs{f'(x)}}{a \leq x \leq b} + 1</m> to ensure that <m>C \gt 0</m>.
+                Since the derivative <m>f^\prime</m> is continuous on <m>[a,b]</m>, it is bounded on <m>[a,b]</m> by the <url href="https://opentext.uleth.ca/apex-calculus/sec_extreme_values.html#thm_extreme_val">extreme value theorem</url>.
+                Hence, let <m>C \defn \sup\set{\abs{f^\prime(x)}}{a \leq x \leq b} + 1</m> to ensure that <m>C \gt 0</m>.
                 Now, let <m>s,t \in [a,b]</m> be given; without loss of generality, we may assume that <m>a \leq s \lt t \leq b</m>.
-                Then, by the <url href="https://opentext.uleth.ca/apex-calculus/sec_mvt.html#thm_mvt">mean value theorem</url>, there exists some <m>s \lt c \lt t</m> such that <m>f(t)-f(s) = f'(c)(t-s)</m>.
+                Then, by the <url href="https://opentext.uleth.ca/apex-calculus/sec_mvt.html#thm_mvt">mean value theorem</url>, there exists some <m>s \lt c \lt t</m> such that <m>f(t)-f(s) = f^\prime(c)(t-s)</m>.
                 Thus,
                 <me>
-                    \abs{f(t)-f(s)} = \abs{f'(c)(t-s)} = \abs{f'(c)}\abs{s-t} \leq C\abs{s-t}
+                    \abs{f(t)-f(s)} = \abs{f^\prime(c)(t-s)} = \abs{f^\prime(c)}\abs{s-t} \leq C\abs{s-t}
                 </me>.
             </p>
             <p>

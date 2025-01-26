@@ -19,5 +19,6 @@
   <xi:include href="sec-nonintegrable.ptx" />
   <xi:include href="sec-first-ftc.ptx" />
   <xi:include href="sec-second-ftc.ptx" />
+  <xi:include href="./sec-integration-ftc.ptx" />
 
 </chapter>

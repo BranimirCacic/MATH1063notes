@@ -4,7 +4,7 @@
     <title>The Second Fundamental Theorem of Calculus</title>
 
     <p>
-        In this section, we discuss the <term>second fundamental theorem of calculus</term>, which gives us an easy way to compute an integral <m>\int_a^b f</m> when we happen to know (by hook or by crook!) that <m>f = F'</m> for some function <m>F</m>.
+        In this section, we discuss the <term>second fundamental theorem of calculus</term>, which gives us an easy way to compute an integral <m>\int_a^b f</m> when we happen to know (by hook or by crook!) that <m>f = F^\prime</m> for some function <m>F</m>.
         This remarkable fact therefore lets us leverage everything we know about differentiation to compute integrals of familiar functions (and some not-so-familiar functions too).
         Our account in this section and <xref ref="sec-first-ftc"/> provides a rigorous complement to <url href="https://opentext.uleth.ca/apex-calculus/sec_FTC.html">Section 5.5</url> of <pubtitle><init>APEX</init> Calculus</pubtitle> and Section 5.7 of Strang's <pubtitle>Calculus</pubtitle>.
     </p>
@@ -13,7 +13,7 @@
         <statement>
             <p>
                 Let <m>f</m> be a function on a closed interval <m>[a,b]</m>.
-                An <term>antiderivative</term> of <m>f</m> on <m>[a,b]</m> is a differentiable function <m>F</m> on <m>[a,b]</m> such that <m>F' = f</m>.
+                An <term>antiderivative</term> of <m>f</m> on <m>[a,b]</m> is a differentiable function <m>F</m> on <m>[a,b]</m> such that <m>F^\prime = f</m>.
             </p>
         </statement>
     </definition>
@@ -40,8 +40,8 @@
                 </me>.
             </p>
             <p>
-                Now, suppose that <m>G</m> is a differentiable function on <m>[a,b]</m> such that <m>G' = f</m> and <m>G(a)=C</m>.
-                Then <m>(F-G)' = F' - G' = f - f = 0</m>, so that <m>F-G</m> is constant.
+                Now, suppose that <m>G</m> is a differentiable function on <m>[a,b]</m> such that <m>G^\prime = f</m> and <m>G(a)=C</m>.
+                Then <m>(F-G)^\prime = F^\prime - G^\prime = f - f = 0</m>, so that <m>F-G</m> is constant.
                 Hence, <m>F(x)-G(x) = F(a)-G(a) = C-C = 0</m> for all <m>a \leq x \leq b</m>. 
             </p>
         </proof>
@@ -98,14 +98,14 @@
         </p>
     </remark>
 
-    <example>
+    <example xml:id="ex-power-law">
         <p>
             Let <m>n</m> be a non-negative integer.
             On the one hand, define a function <m>f</m> on <m>\R</m> by <m>f(x) \defn x^n</m>.
             On the other hand, define a function <m>F</m> on <m>\R</m> by <m>F(x) \defn \frac{1}{n+1}x^{n+1}</m>.
             Then <m>F</m> is an antiderivative of the continuous function <m>f</m> since 
             <me>
-                F'(x) = \ddx\left(\frac{1}{n+1}x^{n+1}\right)  = \frac{1}{n+1} \cdot (n+1)x^{(n+1)-1} = x^n = f(x)
+                F^\prime(x) = \ddx\left(\frac{1}{n+1}x^{n+1}\right)  = \frac{1}{n+1} \cdot (n+1)x^{(n+1)-1} = x^n = f(x)
             </me>
             with the traditional harmless abuses of notation.
             Hence, for all <m>a \lt b</m>, it follows by <xref ref="thm-ftc2"/> that
