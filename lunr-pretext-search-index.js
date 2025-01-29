@@ -1153,6 +1153,87 @@ var ptx_lunr_docs = [
   "body": " Let's compute in one go: .  "
 },
 {
+  "id": "sec-int-interpretation",
+  "level": "1",
+  "url": "sec-int-interpretation.html",
+  "type": "Section",
+  "number": "1.9",
+  "title": "Geometric and physical interpretations",
+  "body": " Geometric and physical interpretations   Signed area    Let be a set of points in the plane . Suppose that admits a description of the form , where is integrable and non-negative on . The area of is .     This definition recovers the working definition of area used in . In particular, it turns to be consistent with the rigorous notion of Jordan content discussed in .    Let be the region in the plane enclosed by the curves and . We'll compute by following the recipe of .  A quick sketch (see ) shows that , where and are the -coordinates of the respective intersection points of the curve and , , the solutions of . Since , it follows that if and only if , if and only if or . Thus, we obtain , so that .  Now, by applied term by term, Hence, by , we conclude that .    The planar region of .    This is a plot of the bounded planar region under the parabola and above the -axis.      But now, does an integral admit a geometric interpretation when takes negative values? The answer is yes.    Let be an integrable function on . Define functions and on by and , respectively. Then and are both integrable and non-negative on and satisfy , so that .      If you accept , that reflections preserve the area of planar regions, and that is consistent with , then gives the area above the -axis and below the graph of on  gives the area below the -axis and above the graph of on .    For a proof of the non-trivial part of ( , integrability of and ), look here , but note that their is relatively unusual notation (from computer science?) for the closed interval .    Displacement and distance  Consider a point mass moving along some straight line from time to time . By imposing a Cartesian coordinate system (including unit of length) on the straight line, we can encode the position of our point mass as a function of time , so that gives the position at time . Let's suppose that is continuously differentiable, so that gives velocity as a function of time.   By , the integral gives the net displacement as a result of the motion.    By contrast, speed as a function of time is given by , so that the integral gives the distance travelled as a result of the motion.     The following example will demonstrate just how different net displacement and distance travelled can be.   Consider a simple harmonic oscillator ( a block on a spring oscillating along a straight track in the absence of friction, resistance, or forcing) starting from rest, so that in suitable units.   The net displacement from time to time is ; this means that you ended up at time exactly where you started at time .    Note that , which is non-negative for and non-positive for . Thus, so that the total distance travelled is .       "
+},
+{
+  "id": "def-area",
+  "level": "2",
+  "url": "sec-int-interpretation.html#def-area",
+  "type": "Definition",
+  "number": "1.9.1",
+  "title": "",
+  "body": "  Let be a set of points in the plane . Suppose that admits a description of the form , where is integrable and non-negative on . The area of is .   "
+},
+{
+  "id": "subsec-signed-area-3",
+  "level": "2",
+  "url": "sec-int-interpretation.html#subsec-signed-area-3",
+  "type": "Remark",
+  "number": "1.9.2",
+  "title": "",
+  "body": " This definition recovers the working definition of area used in . In particular, it turns to be consistent with the rigorous notion of Jordan content discussed in .  "
+},
+{
+  "id": "ex-quartic-area",
+  "level": "2",
+  "url": "sec-int-interpretation.html#ex-quartic-area",
+  "type": "Example",
+  "number": "1.9.3",
+  "title": "",
+  "body": " Let be the region in the plane enclosed by the curves and . We'll compute by following the recipe of .  A quick sketch (see ) shows that , where and are the -coordinates of the respective intersection points of the curve and , , the solutions of . Since , it follows that if and only if , if and only if or . Thus, we obtain , so that .  Now, by applied term by term, Hence, by , we conclude that .  "
+},
+{
+  "id": "fig-quartic-area",
+  "level": "2",
+  "url": "sec-int-interpretation.html#fig-quartic-area",
+  "type": "Figure",
+  "number": "1.9.4",
+  "title": "",
+  "body": " The planar region of .    This is a plot of the bounded planar region under the parabola and above the -axis.     "
+},
+{
+  "id": "prop-signed-area",
+  "level": "2",
+  "url": "sec-int-interpretation.html#prop-signed-area",
+  "type": "Proposition",
+  "number": "1.9.5",
+  "title": "",
+  "body": "  Let be an integrable function on . Define functions and on by and , respectively. Then and are both integrable and non-negative on and satisfy , so that .   "
+},
+{
+  "id": "heuristic-signed-area",
+  "level": "2",
+  "url": "sec-int-interpretation.html#heuristic-signed-area",
+  "type": "Heuristic",
+  "number": "1.9.6",
+  "title": "",
+  "body": "  If you accept , that reflections preserve the area of planar regions, and that is consistent with , then gives the area above the -axis and below the graph of on  gives the area below the -axis and above the graph of on .   "
+},
+{
+  "id": "subsec-net-change-2",
+  "level": "2",
+  "url": "sec-int-interpretation.html#subsec-net-change-2",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": "velocity net displacement speed distance travelled "
+},
+{
+  "id": "subsec-net-change-4",
+  "level": "2",
+  "url": "sec-int-interpretation.html#subsec-net-change-4",
+  "type": "Example",
+  "number": "1.9.7",
+  "title": "",
+  "body": " Consider a simple harmonic oscillator ( a block on a spring oscillating along a straight track in the absence of friction, resistance, or forcing) starting from rest, so that in suitable units.   The net displacement from time to time is ; this means that you ended up at time exactly where you started at time .    Note that , which is non-negative for and non-positive for . Thus, so that the total distance travelled is .     "
+},
+{
   "id": "backmatter-2",
   "level": "1",
   "url": "backmatter-2.html",

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="example example-like"><h4 class="heading">
+<span class="type">Example</span><span class="space"> </span><span class="codenumber">1.9.3</span><span class="period">.</span>
+</h4>
+<div class="para">Let <span class="process-math">\(U\)</span> be the region in the plane enclosed by the curves <span class="process-math">\(y=1-x^4\)</span> and <span class="process-math">\(y=0\text{.}\)</span> We’ll compute <span class="process-math">\(\Area(U)\)</span> by following the recipe of <a href="sec-int-interpretation.html#def-area" class="xref" data-knowl="./knowl/xref/def-area.html" data-reveal-label="Reveal" data-close-label="Close" title="Definition 1.9.1">Definition 1.9.1</a>.</div>
+<div class="para logical">
+<div class="para">A quick sketch (see <a href="sec-int-interpretation.html#fig-quartic-area" class="xref" data-knowl="./knowl/xref/fig-quartic-area.html" data-reveal-label="Reveal" data-close-label="Close" title="Figure 1.9.4">Figure 1.9.4</a>) shows that</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/fig-quartic-area.html">
+\begin{equation*}
+U = \set{(x,y) \in \R^2}{a \leq x \leq b,\, 0 \leq y \leq 1-x^4}\text{,}
+\end{equation*}
+</div>
+<div class="para">where <span class="process-math">\(x=a\)</span> and <span class="process-math">\(x=b\)</span> are the <span class="process-math">\(x\)</span>-coordinates of the respective intersection points of the curve <span class="process-math">\(y=1-x^4\)</span> and <span class="process-math">\(y=0\text{,}\)</span> i.e., the solutions of <span class="process-math">\(1-x^4 = 0\text{.}\)</span> Since</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/fig-quartic-area.html">
+\begin{equation*}
+1-x^4 = (1-x^2)(1+x^2) = (1-x)(1+x)(1+x^2)\text{,}
+\end{equation*}
+</div>
+<div class="para">it follows that <span class="process-math">\(1-x^4 = 0\)</span> if and only if <span class="process-math">\((1-x)(1+x) = 0\text{,}\)</span> if and only if <span class="process-math">\(x=-1\)</span> or <span class="process-math">\(x=1\text{.}\)</span> Thus, we obtain</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/fig-quartic-area.html">
+\begin{equation*}
+U = \set{(x,y) \in \R^2}{-1 \leq x \leq 1,\, 0 \leq y \leq 1-x^4}\text{,}
+\end{equation*}
+</div>
+<div class="para">so that <span class="process-math">\(\Area(U) = \int_{-1}^{1} (1-x^4) \du{x}\text{.}\)</span>
+</div>
+</div>
+<div class="para logical">
+<div class="para">Now, by <a href="sec-integration-ftc.html#eq-power-law" class="xref" data-knowl="./knowl/xref/eq-power-law.html" data-reveal-label="Reveal" data-close-label="Close" title="Equation 1.8.2">(1.8.2)</a> applied term by term,</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/eq-power-law.html ./knowl/xref/thm-ftc2.html">
+\begin{equation*}
+\int (1-x^4)\du{x} = \int x^0 \du{x} - \int x^4 \du{x} = x - \frac{x^5}{5} + C.
+\end{equation*}
+</div>
+<div class="para">Hence, by <a href="sec-second-ftc.html#thm-ftc2" class="xref" data-knowl="./knowl/xref/thm-ftc2.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 1.7.3: Second fundamental theorem of calculus">Theorem 1.7.3</a>, we conclude that</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/eq-power-law.html ./knowl/xref/thm-ftc2.html">
+\begin{align*}
+\Area(U) \amp = \int_{-1}^{1} (1-x^4) \du{x} \\
+\amp = x-\frac{x^5}{5}\vert_{-1}^1 \\
+\amp = \left(1-\frac{1}{5}\right) - \left(-1+\frac{1}{5}\right)\\
+\amp = \frac{12}{5} \text{.}
+\end{align*}
+</div>
+</div></article><span class="incontext"><a class="internal" href="sec-int-interpretation.html#ex-quartic-area">in-context</a></span>
+</body>
+</html>
