@@ -20,5 +20,6 @@
   <xi:include href="sec-first-ftc.ptx" />
   <xi:include href="sec-second-ftc.ptx" />
   <xi:include href="./sec-integration-ftc.ptx" />
+  <xi:include href="./sec-int-interpretation.ptx" />
 
 </chapter>

@@ -1,0 +1,210 @@
+<section xml:id="sec-int-interpretation" xmlns:xi="http://www.w3.org/2001/XInclude">
+    <title>Geometric and physical interpretations</title>
+
+    <subsection xml:id="subsec-signed-area">
+        <title>Signed area</title>
+        
+        <definition xml:id="def-area">
+            <statement>
+                <p>
+                    Let <m>U</m> be a set of points in the plane <m>\R^2</m>.
+                    Suppose that <m>U</m> admits a description of the form
+                    <me>
+                        U = \set{(x,y) \in \R^2}{a \leq x \leq b, \, f(x) \leq y \leq g(x)}
+                    </me>,
+                    where <m>f</m> is integrable and non-negative on <m>[a,b]</m>.
+                    The <term>area</term> of <m>U</m> is  
+                    <me>
+                        \Area(U) \defn \int_a^b f
+                    </me>.
+                </p>
+            </statement>
+        </definition>
+
+        <remark>
+            <p>
+                This definition recovers the working definition of area used in <xref ref="sec-prob-area"/>.
+                In particular, it turns to be consistent with the rigorous notion of <term>Jordan content</term> discussed in <xref ref="assumption-area"/>.
+            </p>
+        </remark>
+
+        <example xml:id="ex-quartic-area">
+            <p>
+                Let <m>U</m> be the region in the plane enclosed by the curves <m>y=1-x^4</m> and <m>y=0</m>.
+                We'll compute <m>\Area(U)</m> by following the recipe of <xref ref="def-area"/>.
+            </p>
+            <p>
+                A quick sketch (see <xref ref="fig-quartic-area"/>) shows that
+                <me>U = \set{(x,y) \in \R^2}{a \leq x \leq b,\, 0 \leq y \leq 1-x^4}</me>,
+                where <m>x=a</m> and <m>x=b</m> are the <m>x</m>-coordinates of the respective intersection points of the curve <m>y=1-x^4</m> and <m>y=0</m>, <ie/>, the solutions of <m>1-x^4 = 0</m>. 
+                Since <me>1-x^4 = (1-x^2)(1+x^2) = (1-x)(1+x)(1+x^2)</me>, it follows that <m>1-x^4 = 0</m> if and only if <m>(1-x)(1+x) = 0</m>, if and only if <m>x=-1</m> or <m>x=1</m>.
+                Thus, we obtain  
+                <me>
+                    U = \set{(x,y) \in \R^2}{-1 \leq x \leq 1,\, 0 \leq y \leq 1-x^4}
+                </me>,
+                so that <m>\Area(U) = \int_{-1}^{1} (1-x^4) \du{x}</m>.   
+            </p>
+            <p>
+                Now, by <xref ref="eq-power-law"/> applied term by term,
+                <me>
+                    \int (1-x^4)\du{x} = \int x^0 \du{x} - \int x^4 \du{x} = x - \frac{x^5}{5} + C.
+                </me>
+                Hence, by <xref ref="thm-ftc2"/>, we conclude that
+                <md>
+                    <mrow> \Area(U) \amp = \int_{-1}^{1} (1-x^4) \du{x} </mrow>
+                    <mrow> \amp = x-\frac{x^5}{5}\vert_{-1}^1 </mrow> 
+                    <mrow> \amp = \left(1-\frac{1}{5}\right) - \left(-1+\frac{1}{5}\right)</mrow> 
+                    <mrow> \amp = \frac{12}{5} </mrow>
+                </md>. 
+            </p>
+        </example>
+
+        <figure xml:id="fig-quartic-area">
+            <caption>The planar region <m>U</m> of <xref ref="ex-quartic-area" />.</caption>
+            <image width="50%">
+            <description>
+                <p>
+                    This is a plot of the bounded planar region <m>U</m> under the parabola <m>y=1-x^4</m> and above the <m>x</m>-axis.
+                </p>
+            </description>
+            <asymptote>
+                unitsize(4cm);
+                defaultpen(fontsize(10pt));
+                import graph;
+
+                real f(real x) { return 1-x^4; }
+                path s = graph(f, -1, 1, operator..);
+                pen fillpen = mediumgray;
+                fill(s -- cycle, fillpen);
+                path c = graph(f,-1.01,1.01,operator..);
+                Label graphlabel = Label("$y=1-x^4$", position=EndPoint);
+                draw(c, L=graphlabel);
+
+                arrowbar axisarrow = Arrow(TeXHead);
+                Label nula = Label("$0$", position=BeginPoint);
+                Label xlabel = Label("$+x$", position=EndPoint);
+                path xaxis = (-1.1,0) -- (1.1,0);
+                draw (xaxis, arrow=axisarrow);
+                label(xlabel,xaxis);
+                Label ylabel = Label("$+y$", position=EndPoint);
+                path yaxis = (0,-0.05) -- (0,1.25);
+                draw (yaxis, arrow=axisarrow);
+                label(nula,yaxis);
+                label(ylabel,yaxis);
+
+                draw ((-1,0)--(-1,-0.1),L=Label("$-1$",position=EndPoint));
+                draw ((1,0)--(1,-0.1),L=Label("$1$",position=EndPoint));
+            </asymptote>
+            </image>
+        </figure>
+
+        <p>
+            But now, does an integral <m>\int_a^b f</m> admit a geometric interpretation when <m>f</m> takes negative values?
+            The answer is yes.
+        </p>
+
+        <proposition xml:id="prop-signed-area">
+            <statement>
+                <p>
+                    Let <m>f</m> be an integrable function on <m>[a,b]</m>.
+                    Define functions <m>f_+</m> and <m>f_-</m> on <m>[a,b]</m> by <m>f(x) \defn \max(f(x),0)</m> and <m>f(x) \defn\max(-f(x),0)</m>, respectively.
+                    Then <m>f_+</m> and <m>f_-</m> are both integrable and non-negative on <m>[a,b]</m> and satisfy <m>f = f_+ - f_-</m>, so that
+                    <me>
+                        \int_a^b f = \int_a^b f_+ - \int_a^b f_-
+                    </me>.
+                </p>
+            </statement>
+        </proposition>
+
+        <heuristic xml:id="heuristic-signed-area">
+            <statement>
+                <p>
+                    If you accept <xref ref="assumption-area"/>, that reflections preserve the area of planar regions, and that <xref ref="def-area"/> is consistent with <xref ref="assumption-area"/>, then
+                    <md>
+                        <mrow> \int_a^b f_+ \amp = \Area\set{(x,y) \in \R^2}{a \leq x \leq b, \, 0 \leq y \leq f_+(x)} </mrow>
+                        <mrow> \amp = \Area\set{(x,y) \in \R^2}{a \leq x \leq b, \, 0 \leq y \leq f(x)} </mrow>
+                    </md>
+                    gives the area above the <m>x</m>-axis and below the graph of <m>f</m> on <m>[a,b]</m>
+                    <md>
+                        <mrow> \int_a^b f_- \amp = \Area\set{(x,y) \in \R^2}{a \leq x \leq b, \, 0 \leq y \leq f_-(x)} </mrow>
+                        <mrow> \amp = \Area\set{(x,y) \in \R^2}{a \leq x \leq b, \, f(x) \leq y \leq 0} </mrow>
+                    </md>
+                    gives the area below the <m>x</m>-axis and above the graph of <m>f</m> on <m>[a,b]</m>.
+                </p>
+            </statement>
+        </heuristic>
+
+        <p>
+            For a proof of the non-trivial part of <xref ref="prop-signed-area"/> (<ie/>, integrability of <m>f_+</m> and <m>f_-</m>), look <url href="https://proofwiki.org/wiki/Positive_Part_of_Darboux_Integrable_Function_is_Integrable">here</url>, but note that their <m>[a..b]</m> is relatively unusual notation (from computer science?) for the closed interval <m>[a,b]</m>.
+        </p>
+
+    </subsection>
+
+    <subsection xml:id="subsec-net-change">
+        <title>Displacement and distance</title>
+
+        <p>
+            Consider a point mass moving along some straight line from time <m>a</m> to time <m>b</m>.
+            By imposing a Cartesian coordinate system (including unit of length) on the straight line, we can encode the position of our point mass as a function <m>q</m> of time <m>t \in [a,b]</m>, so that <m>q(t)</m> gives the position at time <m>t</m>.
+            Let's suppose that <m>q</m> is continuously differentiable, so that <m>q^\prime</m> gives <term>velocity</term> as a function of time.
+            <ol>
+                <li>
+                    <p>
+                        By <xref ref="thm-ftc2"/>, the integral
+                        <m>
+                            \int_a^b q^\prime = q(b) - q(a)
+                        </m>
+                        gives the <term>net displacement</term> as a result of the motion.
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        By contrast, <term>speed</term> as a function of time is given by <m>\abs{q'}</m>, so that the integral
+                        <m>
+                            \int_a^b \abs{q^\prime}
+                        </m>
+                        gives the <term>distance travelled</term> as a result of the motion.
+                    </p>
+                </li>
+            </ol>
+        </p>
+        <p>
+            The following example will demonstrate just how different net displacement and distance travelled can be.
+        </p>
+        <example>
+            <p>
+                Consider a <term>simple harmonic oscillator</term> (<eg/> a block on a spring oscillating along a straight track in the absence of friction, resistance, or forcing) starting from rest, so that <m>q(t) = \cos(t)</m> in suitable units.
+                <ol>
+                    <li>
+                        <p>
+                            The net displacement from time <m>0</m> to time <m>2\pi</m> is  
+                            <me>
+                                \int_0^{2\pi} q^\prime = q(2\pi) - q(0) = \cos(2\pi) - \cos(0) = 0
+                            </me>;
+                            this means that you ended up at time <m>2\pi</m> exactly where you started at time <m>0</m>.
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            Note that <m>q^\prime(t) = \cos^\prime(t) = -\sin(t)</m>, which is non-negative for <m>0 \leq t \leq \pi</m> and non-positive for <m>\pi \leq t \leq 2\pi</m>.
+                            Thus,
+                            <me>
+                                \abs{q^\prime(t)} = \abs{\sin(t)} = \begin{cases} \sin(t) \amp 0 \leq t \leq \pi \\ -\sin(t) \amp \pi \leq t \leq 2\pi \end{cases}
+                            </me>
+                            so that the total distance travelled is  
+                            <md>
+                                <mrow>\int_0^{2\pi}\abs{q^\prime(t)}\du{t} \amp = \int_0^{\pi}\abs{q^\prime(t)}\du{t} + \int_{\pi}^{2\pi} \abs{q^\prime(t)}\du{t} </mrow>
+                                <mrow> \amp = \int_0^{\pi} \sin(t)\du{t} + \int_{\pi}^{2\pi}(-\sin(t))\du{t} </mrow>
+                                <mrow> \amp = \int_0^{\pi} \sin(t)\du{t} - \int_{\pi}^{2\pi}\sin(t)\du{t} </mrow>
+                                <mrow> \amp = -\cos(t)\vert_0^{\pi} + \cos(t)\vert_{\pi}^{2\pi} </mrow>
+                                <mrow> \amp = -\cos(\pi) + \cos(0) + \cos(2\pi) - \cos(\pi) </mrow>
+                                <mrow> \amp = 4</mrow>
+                            </md>.
+                        </p>
+                    </li>
+                </ol>
+            </p>
+        </example>
+
+    </subsection>
+</section>
