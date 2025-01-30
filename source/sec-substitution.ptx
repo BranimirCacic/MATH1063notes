@@ -1,0 +1,277 @@
+<section xml:id="sec-substitution" xmlns:xi="http://www.w3.org/2001/XInclude">
+    <title>Integration by Substitution</title>
+
+    <p>
+        By the second fundamental theorem of calculus (<xref ref="thm-ftc2"/>), every fact about derivatives should (at least in principle) yield a corresponding fact about integrals.
+        In this section, we turn the chain rule on its head to yield the integration technique called <term>integration by substitution</term>.
+        You should view it as philosophically akin to a familiar strategy from physics: the right change of coordinate system can dramatically simplify an otherwise intractable problem.
+        Our account is complementary to <url href="https://opentext.uleth.ca/apex-calculus/sec_substitution.html">Section 6.1</url> of <pubtitle><init>APEX</init> Calculus</pubtitle> and Section 7.1 of Strang's Calculus.
+    </p>
+
+    <definition xml:id="def-composite">
+        <statement>
+            <p>
+                Let <m>f</m> be a function on <m>[a,b]</m> and <m>g</m> a function on <m>[c,d]</m>.
+                We say that <m>g</m> and <m>f</m> are <term>composable</term> if <m>c \leq f(x) \leq d</m> for all <m>a \leq x \leq b</m>; in this case, their <term>composition</term> is the function <m>g \circ f</m> on <m>[a,b]</m> defined by <m>g \circ f(x) \defn g(f(x))</m>.
+            </p>
+        </statement>
+    </definition>
+
+    <theorem xml:id="thm-chain-rule">
+        <title>Chain rule</title>
+        <statement>
+            <p>
+                Let <m>f</m> be a differentiable function on <m>[a,b]</m> and <m>g</m> a differentiable function on <m>[c,d]</m>, and suppose that <m>g</m> and <m>f</m> are composable.
+                Then <m>g \circ f</m> is differentiable on <m>[a,b]</m> with derivative <m>(g \circ f)^\prime = (g^\prime \circ f) \cdot f^\prime</m>, <ie/>,
+                <me>
+                    (g \circ f)^\prime(x) = g^\prime(f(x)) f^\prime(x)
+                </me>.
+            </p>
+        </statement>
+    </theorem>
+
+    <example>
+        <p>
+            Define <m>f</m> on <m>[2,4]</m> by <m>f(x) \defn \log(x)</m> and <m>g</m> on <m>[1/4,3]</m> by <m>g(x) \defn \sqrt{x}</m>; note that <m>f</m> and <m>g</m> are both differentiable.
+            Let's show that <m>g</m> and <m>f</m> are composable and compute <m>(g \circ f)^\prime</m>.
+        </p> 
+        <p>
+            Let's first check composability.
+            Given <m>x \geq 1</m>, note that <m>\frac{1}{x} \leq \frac{1}{t} \leq 1</m> for all <m>1 \leq t \leq x</m>, so that 
+            <me>
+                \frac{1}{x}(x-1) \leq \int_1^x \frac{1}{t}\du{t} \leq 1(x-1) = x-1
+            </me>
+            by <xref ref="lem-int-bounds"/>.
+            Hence, given <m>2 \leq x \leq </m>, it follows that <m>g(x) = \log(x) = \int_1^x \frac{1}{t}\du{t}</m> satisfies
+            <me>
+                \frac{1}{4} = \frac{1}{4}(2-1) \leq \frac{1}{x}(x-1) \leq g(x) \leq x-1 \leq 4-1 = 3
+            </me>,
+            as required.
+            Thus, the composition <m>g \circ f</m> is well-defined and takes the form
+            <me>
+                g \circ f(x) = g(f(x)) = \sqrt{f(x)} = \sqrt{\log(x)}
+            </me>.
+        </p>
+        <p>
+            Let's now apply the chain rule to compute <m>(g \circ f)^\prime</m>.
+            Indeed, since <m>f^\prime(x) = \frac{1}{x}</m> and <m>g^\prime(x) = \frac{1}{2\sqrt{x}}</m>, it follows that
+            <md>
+                <mrow>(g \circ f)^\prime(x) \amp = g^\prime(f(x)) \cdot f^\prime(x)</mrow>
+                <mrow> \amp = \frac{1}{2\sqrt{f(x)}} f^\prime(x)</mrow>
+                <mrow> \amp = \frac{1}{2\sqrt{\log(x)}} \frac{1}{x}</mrow> 
+                <mrow> \amp = \frac{1}{2x\sqrt{\log(x)}}</mrow> 
+            </md>.
+        </p>
+    </example>
+
+    <corollary xml:id="cor-substitution">
+        <title>Integration by substitution</title>
+        <statement>
+            <p>
+                Let <m>f</m> be a continuously differentiable function on <m>[a,b]</m>, let <m>g</m> be a continuous function on <m>[c,d]</m>, and suppose that <m>g</m> and <m>f</m> are composable.
+                Then 
+                <me>
+                    \int_{f(a)}^{f(b)} g = \int_a^b (g \circ f) \cdot f^\prime
+                </me>,
+                <ie/>, in Leibniz notation,
+                <me>
+                    \int_{f(a)}^{f(b)} g(u)\du{u} = \int_a^b g(f(x)) f^\prime(x) \du{x}
+                </me>.
+            </p>
+        </statement>
+        <proof>
+            <p>
+                First, by <xref ref="thm-ftc1"/>, let <m>G</m> be an antiderivative of <m>g</m> on <m>[c,d]</m>.
+                Then, by <xref ref="thm-ftc2"/>,  
+                <me>
+                    \int_{f(a)}^{f(b)} = G(f(b)) - G(f(a))
+                </me>.
+            </p>
+            <p>
+                Next, by <xref ref="thm-chain-rule"/>,
+                <me>
+                    (G \circ f)^\prime = (G^\prime \circ f) \cdot f^\prime = (g \circ f) \cdot f^\prime
+                </me>,
+                so that <m>G \circ f</m> is an antiderivative of <m>(g \circ f) \cdot f^\prime</m>.
+                Hence, by <xref ref="thm-ftc2"/>,
+                <me>
+                    \int_a^b (g \circ f) \cdot f^\prime = G\circ f(b) - G \circ f(a) = G(f(b)) - G(f(a))
+                </me>.
+                Thus, at last, we find that
+                <me>
+                    \int_{f(a)}^{f(b)} = G(f(b)) - G(f(a)) = \int_a^b (g \circ f) \cdot f^\prime
+                </me>.
+            </p>
+        </proof>
+    </corollary>
+
+    <note>
+        <p>
+            Recall that <m>\int_a^a f \defn 0</m> for any function <m>f</m> defined at <m>a</m>.
+            If <m>f</m> is integrable on <m>[a,b]</m>, it's also convenient to define <m>\int_b^a f \defn -\int_a^b f</m>.
+            Both fundamental theorems of calculus and the identity <m>\int_a^b f = \int_a^c f + \int_c^b f</m> can straightforwardly be generalized accordingly.
+        </p>
+    </note>
+
+    <example>
+        <p>
+            Let's use <xref ref="cor-substitution"/> to compute <m>\int_a^b \sin^5(x) \cos(x)\du{x}</m>.
+            Note that <m>\sin^5(x) \cos(x) = \sin(x)^5 \sin^\prime(x)</m>.
+            Hence, let <m>f(u) \defn u^5</m>.
+            Then
+            <md>
+                <mrow>\int_a^b \sin^5(x)\cos(x)\du{x} \amp \int_a^b f(\sin(x)) \sin^\prime(x)\du{x}</mrow>
+                <mrow> \amp = \int_{\sin(a)}^{\sin(b)} f(u) \du{u} </mrow>
+                <mrow> \amp = \int_{\sin(a)}^{\sin(b)} u^5 \du{u} </mrow>
+                <mrow> \amp = \eval{\frac{1}{6}u^6}{\sin(a)}{\sin(b)} </mrow> 
+                <mrow> \amp = \frac{\sin^6(b) - \sin^6(a)}{6}</mrow>
+            </md>.
+        </p>
+    </example>
+
+    <example>
+        <p>
+            Let's compute <m>\int_a^b \tan(x)\du{x}</m>, where <m>[a,b]</m> is an interval satisfying <m>-\frac{\pi}{2} \lt a \lt b \lt \frac{\pi}{2}</m>; note that <m>\cos(x) \gt 0</m> on such an interval.
+            Observe that <me>\tan(x) = \frac{\sin(x)}{\cos(x)} = \frac{1}{\cos(x)}\sin(x) = -\frac{1}{\cos(x)}\cos^\prime(x)</me>.
+            Hence, let <m>f(u) \defn \frac{1}{u}</m>.
+            Then 
+            <md>
+                <mrow>\int_a^b \tan(x) \du{x} \amp = -\int_a^b f(\cos(x)) \cos^\prime(x) \du{x} </mrow>
+                <mrow> \amp =-\int_{\cos(a)}^{\cos(b)} f(u) \du{u}</mrow>
+                <mrow> \amp = -\int_{\cos(a)}^{\cos(b)} \frac{1}{u} \du{u}</mrow>
+                <mrow> \amp = -\eval{\log(u)}{\cos(a)}{\cos(b)} </mrow> 
+                <mrow> \amp = \log(\cos(a))-\log(\cos(b))</mrow> 
+            </md>.
+        </p>
+    </example>
+
+    <heuristic xml:id="heuristic-substitution">
+        <title>Integration by substitution in practice</title>
+        <statement>
+            <p>
+                To compute <m>\int_a^b h(x) \du{x}</m> using integration by substitution:
+                <ol>
+                    <li>
+                        <p>
+                            Choose a substitution <m>u = g(x)</m>, so that <m>\du{u} = g^\prime(x)\du{x}</m> (formally!), and reverse engineer <m>f</m> such that <m>h(x)\du{x} = f(u)\du{u}</m>.
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            Find an antiderivative <m>F</m> of <m>f</m>, <ie/>, compute <m>\int f(u)\du = F(u) + C</m>.
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            Substitute <m>u = g(x)</m> into <m>F</m> to get an antiderivative <m>F \circ g</m> for <m>h</m>.
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            Apply the second fundamental theorem of calculus (<xref ref="thm-ftc2"/>).
+                        </p>
+                    </li>
+                </ol>
+            </p>
+            <p>
+                Moreover, note that the first three steps yield a method for computing the indefinite integral <m>\int h(x) \du{x}</m>.
+            </p>
+        </statement>
+    </heuristic>
+    
+    <example>
+        <p>
+            Let's compute <m>\int_a^b \frac{1}{x\log(x)}\du{x}</m> for <m>a,b \gt 1</m>.
+            <ol>
+                <li>
+                    <p>
+                        Try <m>u = \log(x)</m>. 
+                        Then <m>\du{x} = \log^\prime(x)\du{x} = \frac{1}{x}\du{x}</m>, and hence
+                        <me>
+                            \frac{1}{x\log(x)}\du{x} = \frac{1}{\log(x)} \cdot \frac{1}{x}\du{x} = \frac{1}{u} \du{u}.
+                        </me>
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        Recall that <m>\int \frac{1}{u} \du{u} = \log(u) + C</m>.
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        Substituting <m>u = \log(x)</m> into <m>\log(u)</m> yields <me>\int \frac{1}{x\log x}\du{x} = \log(\log(x)) + C</me>.
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        At last, by the second fundamental theorem of calculus,
+                        <me>
+                            \int_a^b \frac{1}{x\log x}\du{x} = \eval{\log(\log(x))}{a}{b} = \log(\log(b)) - \log(\log(a))
+                        </me>.
+                    </p>
+                </li>
+            </ol>
+        </p>
+    </example>
+
+    <example>
+        <p>
+            Let's find the indefinite integral <m>\int \frac{1+\eu^x}{1-\eu^x}\du{x}</m>.
+            <ol>
+                <li>
+                    <p>
+                        Take <m>u = \eu^x</m>, so that <m>\du{u} = \eu^x \du{x}</m>, and hence
+                        <me>
+                            \frac{1+\eu^x}{1-\eu^x}\du{x} = \frac{1+\eu^x}{1-\eu^x} \cdot \frac{1}{\eu^x} \cdot \eu^x\du{x} = \frac{1+u}{1-u} \cdot \frac{1}{u} \cdot \du{u}
+                        </me>.
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        Note that
+                        <me>
+                             \frac{1+u}{1-u} \cdot \frac{1}{u} = \frac{1-u+2u}{(1-u)u} = \frac{1}{u} + \frac{2}{1-u}
+                        </me>,
+                        so that
+                        <me>
+                            \int \frac{1+u}{1-u} \cdot \frac{1}{u} \du{u} = \int \frac{1}{u} \du{u} + 2 \int \frac{1}{1-u}\du{u} = \log\abs{u} + 2\int\frac{1}{1-u}\du{u}
+                        </me>.
+                        We compute the remaining term by a substitution of its own:
+                        <ol>
+                            <li>
+                                <p>
+                                    take <m>v = 1-u</m>, so that <m>\du{v} = -\du{u}</m>, and hence
+                                    <m>
+                                        \frac{1}{1-u}\du{u} = -\frac{1}{v}\du{v}
+                                    </m>;
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    note that <m>-\int\frac{1}{v}\du{v} = -\log\abs{v} + C</m>;
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    re-substitute <m>v = 1-u</m> to get <m>\int\frac{1}{1-u}\du{u} = -\log\abs{1-u} + C</m>.
+                                </p>
+                            </li>
+                        </ol>
+                         Hence, at last, we get
+                            <me>
+                                 \int \frac{1+u}{1-u} \cdot \frac{1}{u} \du{u} = \log\abs{u} - 2\log\abs{1-u} + C
+                            </me>.
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        We finally re-substitute <m>u = \eu^x</m> to get
+                        <me>
+                            \int \frac{1+\eu^x}{1-\eu^x}\du{x} = \log\abs{\eu^x} - 2\log\abs{1-\eu^x} + C = x - 2\log\abs{1-\eu^x} + C
+                        </me>.
+                    </p>
+                </li>
+            </ol>
+        </p>
+    </example>
+</section>

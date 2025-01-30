@@ -13,6 +13,7 @@
 
     <!-- Include chapters -->
     <xi:include href="./ch-integration.ptx" />
+    <xi:include href="./ch-antidifferentiation.ptx" />
 
 
     <!-- Include backmatter -->

@@ -1,5 +1,5 @@
 <section xml:id="sec-int-interpretation" xmlns:xi="http://www.w3.org/2001/XInclude">
-    <title>Geometric and physical interpretations</title>
+    <title>Geometric and Physical Interpretations</title>
 
     <subsection xml:id="subsec-signed-area">
         <title>Signed area</title>
@@ -52,9 +52,9 @@
                 Hence, by <xref ref="thm-ftc2"/>, we conclude that
                 <md>
                     <mrow> \Area(U) \amp = \int_{-1}^{1} (1-x^4) \du{x} </mrow>
-                    <mrow> \amp = x-\frac{x^5}{5}\vert_{-1}^1 </mrow> 
+                    <mrow> \amp = \eval{x-\frac{x^5}{5}}{-1}{1} </mrow> 
                     <mrow> \amp = \left(1-\frac{1}{5}\right) - \left(-1+\frac{1}{5}\right)</mrow> 
-                    <mrow> \amp = \frac{12}{5} </mrow>
+                    <mrow> \amp = \frac{8}{5} </mrow>
                 </md>. 
             </p>
         </example>
@@ -196,7 +196,7 @@
                                 <mrow>\int_0^{2\pi}\abs{q^\prime(t)}\du{t} \amp = \int_0^{\pi}\abs{q^\prime(t)}\du{t} + \int_{\pi}^{2\pi} \abs{q^\prime(t)}\du{t} </mrow>
                                 <mrow> \amp = \int_0^{\pi} \sin(t)\du{t} + \int_{\pi}^{2\pi}(-\sin(t))\du{t} </mrow>
                                 <mrow> \amp = \int_0^{\pi} \sin(t)\du{t} - \int_{\pi}^{2\pi}\sin(t)\du{t} </mrow>
-                                <mrow> \amp = -\cos(t)\vert_0^{\pi} + \cos(t)\vert_{\pi}^{2\pi} </mrow>
+                                <mrow> \amp = \eval{-\cos(t)}{0}{\pi} + \eval{\cos(t)}{\pi}{2\pi} </mrow>
                                 <mrow> \amp = -\cos(\pi) + \cos(0) + \cos(2\pi) - \cos(\pi) </mrow>
                                 <mrow> \amp = 4</mrow>
                             </md>.

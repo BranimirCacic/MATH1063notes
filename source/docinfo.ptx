@@ -34,6 +34,7 @@
     \newcommand{\eu}{\mathrm{e}}
     \newcommand{\ddx}{\frac{\mathrm{d}}{\mathrm{d}x}}
     \DeclareMathOperator{\Area}{Area}
+    \newcommand{\eval}[3]{\left.{#1}\right\rvert_{#2}^{#3}}
   </macros>
 
   <!-- If you put any latex-image elements you can include preambles -->
