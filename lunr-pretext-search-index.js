@@ -1158,8 +1158,8 @@ var ptx_lunr_docs = [
   "url": "sec-int-interpretation.html",
   "type": "Section",
   "number": "1.9",
-  "title": "Geometric and physical interpretations",
-  "body": " Geometric and physical interpretations   Signed area    Let be a set of points in the plane . Suppose that admits a description of the form , where is integrable and non-negative on . The area of is .     This definition recovers the working definition of area used in . In particular, it turns to be consistent with the rigorous notion of Jordan content discussed in .    Let be the region in the plane enclosed by the curves and . We'll compute by following the recipe of .  A quick sketch (see ) shows that , where and are the -coordinates of the respective intersection points of the curve and , , the solutions of . Since , it follows that if and only if , if and only if or . Thus, we obtain , so that .  Now, by applied term by term, Hence, by , we conclude that .    The planar region of .    This is a plot of the bounded planar region under the parabola and above the -axis.      But now, does an integral admit a geometric interpretation when takes negative values? The answer is yes.    Let be an integrable function on . Define functions and on by and , respectively. Then and are both integrable and non-negative on and satisfy , so that .      If you accept , that reflections preserve the area of planar regions, and that is consistent with , then gives the area above the -axis and below the graph of on  gives the area below the -axis and above the graph of on .    For a proof of the non-trivial part of ( , integrability of and ), look here , but note that their is relatively unusual notation (from computer science?) for the closed interval .    Displacement and distance  Consider a point mass moving along some straight line from time to time . By imposing a Cartesian coordinate system (including unit of length) on the straight line, we can encode the position of our point mass as a function of time , so that gives the position at time . Let's suppose that is continuously differentiable, so that gives velocity as a function of time.   By , the integral gives the net displacement as a result of the motion.    By contrast, speed as a function of time is given by , so that the integral gives the distance travelled as a result of the motion.     The following example will demonstrate just how different net displacement and distance travelled can be.   Consider a simple harmonic oscillator ( a block on a spring oscillating along a straight track in the absence of friction, resistance, or forcing) starting from rest, so that in suitable units.   The net displacement from time to time is ; this means that you ended up at time exactly where you started at time .    Note that , which is non-negative for and non-positive for . Thus, so that the total distance travelled is .       "
+  "title": "Geometric and Physical Interpretations",
+  "body": " Geometric and Physical Interpretations   Signed area    Let be a set of points in the plane . Suppose that admits a description of the form , where is integrable and non-negative on . The area of is .     This definition recovers the working definition of area used in . In particular, it turns to be consistent with the rigorous notion of Jordan content discussed in .    Let be the region in the plane enclosed by the curves and . We'll compute by following the recipe of .  A quick sketch (see ) shows that , where and are the -coordinates of the respective intersection points of the curve and , , the solutions of . Since , it follows that if and only if , if and only if or . Thus, we obtain , so that .  Now, by applied term by term, Hence, by , we conclude that .    The planar region of .    This is a plot of the bounded planar region under the parabola and above the -axis.      But now, does an integral admit a geometric interpretation when takes negative values? The answer is yes.    Let be an integrable function on . Define functions and on by and , respectively. Then and are both integrable and non-negative on and satisfy , so that .      If you accept , that reflections preserve the area of planar regions, and that is consistent with , then gives the area above the -axis and below the graph of on  gives the area below the -axis and above the graph of on .    For a proof of the non-trivial part of ( , integrability of and ), look here , but note that their is relatively unusual notation (from computer science?) for the closed interval .    Displacement and distance  Consider a point mass moving along some straight line from time to time . By imposing a Cartesian coordinate system (including unit of length) on the straight line, we can encode the position of our point mass as a function of time , so that gives the position at time . Let's suppose that is continuously differentiable, so that gives velocity as a function of time.   By , the integral gives the net displacement as a result of the motion.    By contrast, speed as a function of time is given by , so that the integral gives the distance travelled as a result of the motion.     The following example will demonstrate just how different net displacement and distance travelled can be.   Consider a simple harmonic oscillator ( a block on a spring oscillating along a straight track in the absence of friction, resistance, or forcing) starting from rest, so that in suitable units.   The net displacement from time to time is ; this means that you ended up at time exactly where you started at time .    Note that , which is non-negative for and non-positive for . Thus, so that the total distance travelled is .       "
 },
 {
   "id": "def-area",
@@ -1232,6 +1232,114 @@ var ptx_lunr_docs = [
   "number": "1.9.7",
   "title": "",
   "body": " Consider a simple harmonic oscillator ( a block on a spring oscillating along a straight track in the absence of friction, resistance, or forcing) starting from rest, so that in suitable units.   The net displacement from time to time is ; this means that you ended up at time exactly where you started at time .    Note that , which is non-negative for and non-positive for . Thus, so that the total distance travelled is .     "
+},
+{
+  "id": "sec-substitution",
+  "level": "1",
+  "url": "sec-substitution.html",
+  "type": "Section",
+  "number": "2.1",
+  "title": "Integration by Substitution",
+  "body": " Integration by Substitution  By the second fundamental theorem of calculus ( ), every fact about derivatives should (at least in principle) yield a corresponding fact about integrals. In this section, we turn the chain rule on its head to yield the integration technique called integration by substitution . You should view it as philosophically akin to a familiar strategy from physics: the right change of coordinate system can dramatically simplify an otherwise intractable problem. Our account is complementary to Section 6.1 of APEX Calculus and Section 7.1 of Strang's Calculus.    Let be a function on and a function on . We say that and are composable if for all ; in this case, their composition is the function on defined by .     Chain rule   Let be a differentiable function on and a differentiable function on , and suppose that and are composable. Then is differentiable on with derivative , , .     Define on by and on by ; note that and are both differentiable. Let's show that and are composable and compute .  Let's first check composability. Given , note that for all , so that by . Hence, given , it follows that satisfies , as required. Thus, the composition is well-defined and takes the form .  Let's now apply the chain rule to compute . Indeed, since and , it follows that .    Integration by substitution   Let be a continuously differentiable function on , let be a continuous function on , and suppose that and are composable. Then , , in Leibniz notation, .    First, by , let be an antiderivative of on . Then, by , .  Next, by , , so that is an antiderivative of . Hence, by , . Thus, at last, we find that .     Recall that for any function defined at . If is integrable on , it's also convenient to define . Both fundamental theorems of calculus and the identity can straightforwardly be generalized accordingly.    Let's use to compute . Note that . Hence, let . Then .    Let's compute , where is an interval satisfying ; note that on such an interval. Observe that . Hence, let . Then .    Integration by substitution in practice   To compute using integration by substitution:   Choose a substitution , so that (formally!), and reverse engineer such that .    Find an antiderivative of , , compute .    Substitute into to get an antiderivative for .    Apply the second fundamental theorem of calculus ( ).     Moreover, note that the first three steps yield a method for computing the indefinite integral .     Let's compute for .   Try . Then , and hence     Recall that .    Substituting into yields .    At last, by the second fundamental theorem of calculus, .       Let's find the indefinite integral .   Take , so that , and hence .    Note that , so that . We compute the remaining term by a substitution of its own:   take , so that , and hence ;    note that ;    re-substitute to get .   Hence, at last, we get .    We finally re-substitute to get .      "
+},
+{
+  "id": "sec-substitution-2",
+  "level": "2",
+  "url": "sec-substitution.html#sec-substitution-2",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": "integration by substitution "
+},
+{
+  "id": "def-composite",
+  "level": "2",
+  "url": "sec-substitution.html#def-composite",
+  "type": "Definition",
+  "number": "2.1.1",
+  "title": "",
+  "body": "  Let be a function on and a function on . We say that and are composable if for all ; in this case, their composition is the function on defined by .   "
+},
+{
+  "id": "thm-chain-rule",
+  "level": "2",
+  "url": "sec-substitution.html#thm-chain-rule",
+  "type": "Theorem",
+  "number": "2.1.2",
+  "title": "Chain rule.",
+  "body": " Chain rule   Let be a differentiable function on and a differentiable function on , and suppose that and are composable. Then is differentiable on with derivative , , .   "
+},
+{
+  "id": "sec-substitution-5",
+  "level": "2",
+  "url": "sec-substitution.html#sec-substitution-5",
+  "type": "Example",
+  "number": "2.1.3",
+  "title": "",
+  "body": " Define on by and on by ; note that and are both differentiable. Let's show that and are composable and compute .  Let's first check composability. Given , note that for all , so that by . Hence, given , it follows that satisfies , as required. Thus, the composition is well-defined and takes the form .  Let's now apply the chain rule to compute . Indeed, since and , it follows that .  "
+},
+{
+  "id": "cor-substitution",
+  "level": "2",
+  "url": "sec-substitution.html#cor-substitution",
+  "type": "Corollary",
+  "number": "2.1.4",
+  "title": "Integration by substitution.",
+  "body": " Integration by substitution   Let be a continuously differentiable function on , let be a continuous function on , and suppose that and are composable. Then , , in Leibniz notation, .    First, by , let be an antiderivative of on . Then, by , .  Next, by , , so that is an antiderivative of . Hence, by , . Thus, at last, we find that .   "
+},
+{
+  "id": "sec-substitution-7",
+  "level": "2",
+  "url": "sec-substitution.html#sec-substitution-7",
+  "type": "Note",
+  "number": "2.1.5",
+  "title": "",
+  "body": " Recall that for any function defined at . If is integrable on , it's also convenient to define . Both fundamental theorems of calculus and the identity can straightforwardly be generalized accordingly.  "
+},
+{
+  "id": "sec-substitution-8",
+  "level": "2",
+  "url": "sec-substitution.html#sec-substitution-8",
+  "type": "Example",
+  "number": "2.1.6",
+  "title": "",
+  "body": " Let's use to compute . Note that . Hence, let . Then .  "
+},
+{
+  "id": "sec-substitution-9",
+  "level": "2",
+  "url": "sec-substitution.html#sec-substitution-9",
+  "type": "Example",
+  "number": "2.1.7",
+  "title": "",
+  "body": " Let's compute , where is an interval satisfying ; note that on such an interval. Observe that . Hence, let . Then .  "
+},
+{
+  "id": "heuristic-substitution",
+  "level": "2",
+  "url": "sec-substitution.html#heuristic-substitution",
+  "type": "Heuristic",
+  "number": "2.1.8",
+  "title": "Integration by substitution in practice.",
+  "body": " Integration by substitution in practice   To compute using integration by substitution:   Choose a substitution , so that (formally!), and reverse engineer such that .    Find an antiderivative of , , compute .    Substitute into to get an antiderivative for .    Apply the second fundamental theorem of calculus ( ).     Moreover, note that the first three steps yield a method for computing the indefinite integral .   "
+},
+{
+  "id": "sec-substitution-11",
+  "level": "2",
+  "url": "sec-substitution.html#sec-substitution-11",
+  "type": "Example",
+  "number": "2.1.9",
+  "title": "",
+  "body": " Let's compute for .   Try . Then , and hence     Recall that .    Substituting into yields .    At last, by the second fundamental theorem of calculus, .     "
+},
+{
+  "id": "sec-substitution-12",
+  "level": "2",
+  "url": "sec-substitution.html#sec-substitution-12",
+  "type": "Example",
+  "number": "2.1.10",
+  "title": "",
+  "body": " Let's find the indefinite integral .   Take , so that , and hence .    Note that , so that . We compute the remaining term by a substitution of its own:   take , so that , and hence ;    note that ;    re-substitute to get .   Hence, at last, we get .    We finally re-substitute to get .     "
 },
 {
   "id": "backmatter-2",
