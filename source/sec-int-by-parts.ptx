@@ -1,0 +1,382 @@
+<section xml:id="sec-int-by-parts" xmlns:xi="http://www.w3.org/2001/XInclude">
+    <title>Integration by Parts</title>
+
+<p>
+    In <xref ref="sec-substitution"/>, we saw how the chain rule for the derivative of a composition yielded a technique of integration called <term>integration by substitution</term>.
+    In this section, we'll see how the <term>Leibniz rule</term> for the derivative of a product yields a technique of integration called <term>integration by parts</term>.
+    Our account is complementary to <url href="https://opentext.uleth.ca/apex-calculus/sec_IBP.html">Section 6.2</url> of <pubtitle><init>APEX</init> Calculus</pubtitle> and Section 7.1 of Strang's Calculus.
+</p>
+
+<theorem xml:id="thm-int-by-parts">
+    <statement>
+        <p>
+            Let <m>u</m> and <m>v</m> be continuously differentiable on <m>[a,b]</m>.
+            Then
+            <me>
+                \int_a^b u(x)v^\prime(x)\du{x} = \eval{u(x)v(x)}{a}{b} - \int_a^b u^\prime(x)v(x)\du{x}
+            </me>.       
+        </p>
+    </statement>
+    <proof>
+        <p>
+            By the Leibniz rule for differentiation,
+            <me>
+                (u \cdot v)^\prime = u^\prime \cdot v + u \cdot v^\prime
+            </me>,
+            On the one hand, by <xref ref="thm-ftc2"/>,
+            <me>
+                \int_a^b (u \cdot v)^\prime = (u \cdot v)(b) - (u \cdot v)(a) = f(b)g(b) - f(a)g(a)
+            </me>.
+            On the other hand, since <m>f</m>, <m>f^\prime</m>, <m>g</m>, and <m>g^\prime</m> are all continuous on <m>[a,b]</m>, so too are <m>u^\prime \cdot v</m> and <m>u \cdot v^\prime</m>, so that <m>u^\prime \cdot v</m> and <m>u \cdot v^\prime</m> are both integrable on <m>[a,b]</m> by <xref ref="thm-cts-integrable"/>, and hence, by <xref ref="prop-integration-properties"/>, 
+            <me>
+                \int_a^b (u \cdot v)^\prime = \int_a^b (u^\prime \cdot v + u \cdot v^\prime) = \int_a^b u^\prime \cdot v + \int_a^b u \cdot v^\prime
+            </me>.
+            Thus, at last, 
+            <me>
+                \int_a^b u^\prime \cdot v + \int_a^b u \cdot v^\prime = u(b)v(b) - u(a)v(a)
+            </me>,
+            which we can solve for <m>\int_a^b u \cdot v^\prime</m> to get
+            <me>
+                \int_a^b u \cdot v^\prime = \left(u(b)v(b) - u(a)v(a)\right) - \int_a^b u^\prime \cdot v
+            </me>. 
+            Rewriting this equality in Leibniz notation gives the claim as stated.
+        </p>
+    </proof>
+</theorem>
+
+<p>
+    In practice, integration by parts is often carried out at the level of indefinite integration.
+    Thus, suppose that <m>u</m> and <m>v</m> are continuously differentiable on some interval <m>I</m>, so that <m>u^\prime \cdot v</m> and <m>u \cdot v^\prime</m> are both continuous on <m>I</m> and hence have antiderivatives by the first fundamental theorem of calculus (<xref ref="thm-ftc1"/>).
+    Then 
+    <me>
+        (u \cdot v)^\prime = u^\prime \cdot v + u \cdot v^\prime
+    </me>,
+    which we can solve for <m>u \cdot v^\prime</m> to get
+    <me>
+        u \cdot v^\prime = (u \cdot v)^\prime - u^\prime \cdot v
+    </me>.
+    Since <m>u \cdot v</m> is an antiderivative of <m>(u \cdot v)^\prime</m>, it therefore follows that
+    <me>
+        \int u(x)v^\prime(x)\du{x} = u(x)v(x) - \int u^\prime(x)v(x)\du{x}
+    </me>
+    which one traditionally writes as 
+    <men xml:id="eqn-eq-indef-ibp">
+        \int u \du{v} = uv - \int v \du{u}
+    </men>,
+    where <m>\du{u} \defn u^\prime(x)\du{x}</m> and <m>\du{v} \defn v^\prime(x)\du{x}</m>.
+</p>
+
+<heuristic xml:id="heuristic-parts">
+    <title>Integration by parts in practice</title>
+    <statement>
+        <p>
+            To compute <m>\int_a^b h(x) \du{x}</m> using integration by parts:
+            <ol>
+                <li>
+                    <p>
+                        Choose a function <m>u</m> such that <m>h(x)\du{x}</m> obviously factorizes as <me>h(x)\du{x} = u\du{v}</me>, where <m>\du{v} \defn v^\prime(x)\du{x}</m> for <m>v</m> an unknown function with chosen derivative <m>v^\prime(x)</m>.
+                        You want to choose <m>u</m> (explicitly) and<m>v</m> (implicitly) in such a way that <m>u^\prime</m> is much simpler than <m>u</m> and <m>v</m> can't be much more complicated than <m>v^\prime</m>.
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        Reverse engineer <m>v</m> <foreign>via</foreign> <m>\int \du{v} = v(x) + C</m>.
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        Using <xref ref="eqn-eq-indef-ibp"/>, write
+                        <me>
+                            \int u \du{v} = uv - \int v \du{u}
+                        </me>,
+                        and compute <m>\int v \du{u}</m> by any means necessary.
+                        If you've chosen <m>u</m> and <m>v</m> correctly, the new indefinite integral <m>\int v \du{u}</m> will be easier than <m>\int u \du{v}</m>.
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        Apply the second fundamental theorem of calculus (<xref ref="thm-ftc2"/>) to compute <m>\int_a^b h(x)\du{x}</m> in terms of <m>\int h(x)\du{x} = \int u \du{v}</m>.
+                    </p>
+                </li>
+            </ol>
+        </p>
+        <p>
+            Moreover, note that the first three steps yield a method for computing the indefinite integral <m>\int h(x) \du{x}</m>.
+        </p>
+    </statement>
+</heuristic>
+
+<warning>
+    <p>
+        The traditional use of <m>u</m> and <m>v</m> in integration by parts has nothing to do with the traditional use of <m>u</m> in integration by substitution!
+    </p>
+</warning>
+
+<example>
+    <p>
+        Let's apply integration by parts to compute <m>\int x\eu^x \du{x}</m>.
+        <ol>
+            <li>
+                <p>
+                    Choose <m>u(x) \defn x</m>, so that <m>x\eu^x \du{x} = u(x) \eu^x \du{x}</m>, and hence <m>\du{v} = \eu^x \du{x}</m>.
+                </p>
+            </li>
+            <li>
+                <p>
+                    Since <m>\int\du{v} = \int \eu^x \du{x} = \eu^x + C</m>, take <m>v(x) \defn \eu^x</m>.
+                    Note that <m>u^\prime(x) = 1</m> is much simpler than <m>u(x) = x</m>, while <m>v(x) = \eu^x</m> is no more complicated than <m>v^\prime(x) = \eu^x</m>.
+                </p>
+            </li>
+            <li>
+                <p>
+                    Since <m>\du{u} = u^\prime(x)\du{x} = 1\du{x} = \du{x}</m>, we get
+                    <md>
+                        <mrow>\int x\eu^x \du{x} \amp = \int u \du{v}</mrow>
+                        <mrow> \amp = uv - \int v \du{u}</mrow>
+                        <mrow> \amp = x\eu^x - \int \eu^x \du{x} </mrow>
+                        <mrow> \amp = x\eu^x - \eu^x + C </mrow> 
+                    </md>
+                </p>
+            </li>
+        </ol>
+    </p>
+</example>
+
+<p>
+    You may be wondering how you should choose <m>u</m> and <m>\du{v}</m>.
+    <url href="https://opentext.uleth.ca/apex-calculus/sec_IBP.html"><pubtitle><init>APEX</init> Calculus</pubtitle></url> provides the following guidance.
+</p>
+
+<heuristic xml:id="heuristic-LIATE">
+    <title><sq><init>LIATE</init></sq></title>
+    <statement>
+        <p>
+            Consider the following informal hierarchy of elementary functions:
+            <ol>
+                <li>
+                    <p>
+                        Logarithmic functions;
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        Inverse trigonometric functions;
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        Algebraic functions (<eg/>, polynomials, rational functions, <m>n</m>th roots);
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        Trigonometric functions;
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        Exponential.
+                    </p>
+                </li>
+            </ol>
+        </p>
+        <p>
+            Suppose that <m>h = p \cdot q</m>, where <m>p</m> ranks higher on the list than <m>q</m>.
+            Then write <m>\int h(x) \du{x} = \int u \du{v}</m>, where <m>u(x) \defn p(x)</m> and <m>\du{v} = q(x)\du{x}</m>.
+        </p>
+    </statement>
+</heuristic>
+
+<example>
+    <p>
+        Let's compute <m>\int x \sin(x)\du{x}</m>.
+        <ol>
+            <li>
+                <p>
+                    Note that <m>x</m> is Algebraic while <m>\sin(x)</m> is Trigonometric. Since A precedes T in <init>LIATE</init>, take <m>u(x) \defn x</m> and <m>\du{v} = \sin(x)\du{x}</m>.
+                </p>
+            </li>
+            <li>
+                <p>
+                    Since <m>\int\du{v} = \int\sin(x)\du{x} = -\cos(x)+C</m>, take <m>v(x) \defn -\cos(x)</m>.
+                </p>
+            </li>
+            <li>
+                <p>
+                    Since <m>\du{u} = 1 \du{x} = \du{x}</m>, compute
+                    <md>
+                        <mrow>\int x \sin(x)\du{x} \amp = \int u\du{v} </mrow>
+                        <mrow> \amp = uv - \int v\du{u} </mrow>
+                        <mrow> \amp = x(-\cos(x)) - \int (-\cos(x))\du{x}</mrow> 
+                        <mrow> \amp = -x\cos(x) + \int \cos(x) \du{x}</mrow>
+                        <mrow> \amp = -x\cos(x) + \sin(x) + C</mrow>
+                    </md>.
+                </p>
+            </li>
+        </ol>
+    </p>
+</example>
+
+<p>
+    Suppose you want to compute <m>\int h(x) \du{x}</m>, where <m>h</m> is logarithmic or inverse trigonometric.
+    Note that <m>h = h \cdot 1</m>, where the constant <m>1</m> is Algebraic and hence outranked by <m>h</m>.
+    Thus, <init>LIATE</init> suggests taking <m>u \defn h</m> and <m>\du{v} = 1\du{x}</m>, which yields the obvious choice of <m>v(x) \defn x</m>.
+    The idea is that <m>h^\prime</m> will be so much simpler in form than <m>h</m> that <m>\int v\du{u} = \int x u^\prime(x)\du{x}</m> will still be simpler to compute than <m>\int h(x)\du{x} = \int u \du{v}</m>.
+</p>
+
+<example>
+    <p>
+        Let's compute <m>\int \log(x) \du{x}</m>.
+        <ol>
+            <li>
+                <p>
+                    Since <m>\log</m> is Logarithmic, write <m>\log(x) = \log(x) \cdot 1</m>, and hence take <m>u(x) \defn \log(x)</m> and <m>v(x) \defn x</m>.
+                </p>
+            </li>
+            <li>
+                <p>
+                    Since <m>\du{u} = \log^\prime(x) \du{x} = \frac{1}{x}\du{x}</m>, compute
+                    <md>
+                        <mrow>\int \log(x)\du{x} \amp = \int u \du{v}</mrow>
+                        <mrow> \amp = uv - \int v \du{u} </mrow>
+                        <mrow> \amp = \log(x)x - \int x \cdot \frac{1}{x}\du{x}</mrow> 
+                        <mrow> \amp = x\log(x) - \int 1 \du{x} </mrow>
+                        <mrow> \amp = x\log(x) - x + C </mrow>
+                    </md>.
+                </p>
+            </li>
+        </ol>
+    </p>
+</example>
+
+<example>
+    <p>
+        Let's compute <m>\int_0^1 \arctan(x) \du{x}</m>.
+        <ol>
+            <li>
+                <p>
+                    Since <m>\arctan</m> is Inverse trigonometric, write <m>\arctan(x) = \arctan(x) \cdot 1</m>, and hence take <m>u(x) \defn \arctan(x)</m> and <m>v(x) \defn x</m>.
+                </p>
+            </li>
+            <li>
+                <p>
+                    Since <m>\du{u} = \arctan^\prime(x) \du{x} = \frac{1}{1+x^2}\du{x}</m>, compute
+                    <md>
+                        <mrow>\int \arctan(x)\du{x} \amp = \int u \du{v}</mrow>
+                        <mrow> \amp = uv - \int v \du{u} </mrow>
+                        <mrow> \amp = \arctan(x)x - \int x \cdot \frac{1}{1+x^2}\du{x}</mrow> 
+                        <mrow> \amp = x\arctan(x) - \int \frac{x}{1+x^2} \du{x} </mrow>
+                    </md>.
+                    We now use integration by substitution to compute <m>\int \frac{x}{1+x^2} \du{x}</m>.
+                    <ol>
+                        <li>
+                            <p>
+                                Take <m>w \defn 1+x^2</m>, so that <m>\du{w} = 2x\du{x}</m>, and hence
+                                <me>
+                                    \frac{x}{1+x^2} \du{x} = \frac{1}{1+x^2} \cdot \frac{1}{2} \cdot 2x\du{x} = \frac{1}{w} \cdot \frac{1}{2} \cdot \du{w} = \frac{1}{2}\cdot\frac{1}{w}\du{w}
+                                </me>.
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                Observe that <m>\int \frac{1}{2}\cdot\frac{1}{w}\du{w} = \frac{1}{2}\int \frac{1}{w} \du{w} = \frac{1}{2}\log\abs{w}+C</m>.
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                Substituting <m>w = 1+x^2</m> into <m>\frac{1}{2}\log\abs{w}</m> yields
+                                <me>
+                                    \int \frac{x}{1+x^2} \du{x} = \frac{1}{2}\log(1+x^2) + C
+                                </me>.
+                            </p>
+                        </li>
+                    </ol>
+                    Hence, at last,
+                    <me>
+                        \int \arctan(x)\du{x} = x\arctan(x) - \frac{1}{2}\log(1+x^2) + C
+                    </me>.
+                </p>
+            </li>
+            <li>
+                <p>
+                    Finally,
+                    <md>
+                        <mrow>\int_0^1 \arctan(x) \du{x} \amp = \eval{x\arctan(x) - \frac{1}{2}\log(1+x^2)}{0}{1} </mrow>
+                        <mrow> \amp = \left(1\arctan(1) - \frac{1}{2}\log(1+1^2)\right) - \left(0\arctan(0) - \frac{1}{2}\log(1+0^2)\right)</mrow>
+                        <mrow> \amp = \frac{\pi}{4} - \frac{1}{2}\log(2)</mrow>
+                    </md>.
+                </p>
+            </li>
+        </ol>
+    </p>
+</example>
+
+<p>
+    Sometimes, you need to apply integration by parts repeatedly to obtain a non-trivial equation for your unknown integral.
+</p>
+
+<example>
+    <p> 
+        Let's compute <m>\int \eu^x \sin(x) \du{x}</m>.
+        <ol>
+            <li>
+                <p>
+                    Since <m>\sin(x)</m> is Trigonometric and <m>\eu^x</m> is Exponential, take <m>u(x) \defn \sin(x)</m> and <m>\du{v} \defn \eu^x\du{x}</m>.
+                </p>
+            </li>
+            <li>
+                <p>
+                    Since <m>\int\du{v} = \int\eu^x\du{x} = \eu^x + C</m>, take <m>v(x) \defn \eu^x</m>.
+                </p>
+            </li>
+            <li>
+                <p>
+                    Since <m>\du{u} = \sin^\prime(x) \du{x} = \cos(x)\du{x}</m>, compute
+                    <md>
+                        <mrow>\int \eu^x\sin(x)\du{x} \amp = \int u \du{v}</mrow>
+                        <mrow> \amp = uv - \int v \du{u} </mrow>
+                        <mrow> \amp = \sin(x)\eu^x - \int \eu^x \cos(x)\du{x}</mrow> 
+                    </md>.
+                </p>
+                <p>
+                    We now apply integration by parts to compute <m>\int \eu^x \cos(x) \du{x}</m>:
+                    <ol>
+                        <li>
+                            <p>
+                                Since <m>\cos(x)</m> is Trigonometric and <m>\eu^x</m> is Exponential, take <m>u(x) \defn \cos(x)</m> and <m>\du{v} \defn \eu^x\du{x}</m>.
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                Since <m>\int\du{v} = \int\eu^x\du{x} = \eu^x + C</m>, take <m>v(x) \defn \eu^x</m>.
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                Since <m>\du{u} = \cos^\prime(x) \du{x} = -\sin(x)\du{x}</m>, compute
+                                <md>
+                                    <mrow>\int \eu^x\cos(x)\du{x} \amp = \int u \du{v}</mrow>
+                                    <mrow> \amp = uv - \int v \du{u} </mrow>
+                                    <mrow> \amp = \cos(x)\eu^x - \int \eu^x (-\sin(x))\du{x}</mrow> 
+                                    <mrow> \amp = \eu^x\cos(x) + \int \eu^x \sin(x) \du{x} </mrow>
+                                </md>.
+                            </p>
+                        </li>
+                    </ol>
+                </p>
+                <p>
+                    Setting <m>I \defn \int \eu^x \sin(x) \du{x}</m>, we therefore find that 
+                    <me>
+                        I = \eu^x\sin(x) - \left(\eu^x\cos(x)-I\right) = \eu^x\left(\sin(x)-\cos(x)\right) - I
+                    </me>,
+                    which we can now solve for <m>I</m> (with the usual caveats about equalities of indefinite integrals) to get
+                    <me>
+                        \int \eu^x \sin(x) \du{x} = I = \frac{\left(\eu^x\cos(x)-I\right) = \eu^x\left(\sin(x)-\cos(x)\right)}{2}
+                    </me>.   
+                </p>
+            </li>
+        </ol>
+    </p>
+</example>
+
+</section>

@@ -9,5 +9,7 @@
   </introduction>
 
   <xi:include href="./sec-substitution.ptx" />
+  <xi:include href="./sec-int-by-parts.ptx" />
+  <!--<xi:include href="./sec-trig-int.ptx" />-->
 
 </chapter>

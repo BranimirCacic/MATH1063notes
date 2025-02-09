@@ -1,0 +1,56 @@
+<section xml:id="sec-trig-int" xmlns:xi="http://www.w3.org/2001/XInclude">
+    <title>Trigonometric Integrals</title>
+
+    <subsection xml:id="subsec-trig-int-pythagoras">
+        <title>trig-int-pythagoras</title>
+
+        <p>
+            Let <m>m</m> and <m>n</m> be non-negative integers.
+            To compute <m>\int \sin^m(x)\cos^n(x)\du{x}</m>, proceed as follows.
+        </p>
+
+        <algorithm xml:id="alg-trig-int-pythagoras">
+            <statement>
+                <p>
+                    Let <m>m</m> and <m>n</m> be non-negative integers.
+                    To compute <m>\int \sin^m(x)\cos^n(x)\du{x}</m>, proceed as follows.
+                </p>
+            </statement>
+        </algorithm>
+
+        <lemma xml:id="lem-rescaling">
+            <statement>
+                <p>
+                    Let <m>f</m> be a continuous function on an interval <m>I</m> with antiderivative <m>F</m>.
+                    Let <m>a</m> be a non-zero constant.
+                    Then 
+                    <me>
+                        \int f(ax) \du{x} = \frac{1}{a}F(ax) + C
+                    </me>.
+                </p>
+            </statement>
+            <proof>
+                <p>
+                    By the chain rule,
+                    <me>
+                        \left(\frac{1}{a}F(ax)\right)^\prime = \frac{1}{a} \cdot F(ax)^\prime = \frac{1}{a} \cdot F^\prime(ax) \cdot (ax)^\prime = \frac{1}{a}f(ax)a = f(x)
+                    </me>.
+                </p>
+            </proof>
+        </lemma>
+
+        
+        <example>
+            <p>
+                Let's compute <m>\int \sin^5(x)\cos(x)\du{x}</m>.
+            </p>
+        </example>
+        
+    </subsection>
+
+   
+
+
+
+
+</section>

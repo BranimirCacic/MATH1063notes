@@ -5,7 +5,7 @@
         By the second fundamental theorem of calculus (<xref ref="thm-ftc2"/>), every fact about derivatives should (at least in principle) yield a corresponding fact about integrals.
         In this section, we turn the chain rule on its head to yield the integration technique called <term>integration by substitution</term>.
         You should view it as philosophically akin to a familiar strategy from physics: the right change of coordinate system can dramatically simplify an otherwise intractable problem.
-        Our account is complementary to <url href="https://opentext.uleth.ca/apex-calculus/sec_substitution.html">Section 6.1</url> of <pubtitle><init>APEX</init> Calculus</pubtitle> and Section 7.1 of Strang's Calculus.
+        Our account is complementary to <url href="https://opentext.uleth.ca/apex-calculus/sec_substitution.html">Section 6.1</url> of <pubtitle><init>APEX</init> Calculus</pubtitle> and Section 7.3 of Strang's Calculus.
     </p>
 
     <definition xml:id="def-composite">
@@ -186,7 +186,7 @@
                 <li>
                     <p>
                         Try <m>u = \log(x)</m>. 
-                        Then <m>\du{x} = \log^\prime(x)\du{x} = \frac{1}{x}\du{x}</m>, and hence
+                        Then <m>\du{u} = \log^\prime(x)\du{x} = \frac{1}{x}\du{x}</m>, and hence
                         <me>
                             \frac{1}{x\log(x)}\du{x} = \frac{1}{\log(x)} \cdot \frac{1}{x}\du{x} = \frac{1}{u} \du{u}.
                         </me>
