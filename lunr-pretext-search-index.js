@@ -1240,7 +1240,7 @@ var ptx_lunr_docs = [
   "type": "Section",
   "number": "2.1",
   "title": "Integration by Substitution",
-  "body": " Integration by Substitution  By the second fundamental theorem of calculus ( ), every fact about derivatives should (at least in principle) yield a corresponding fact about integrals. In this section, we turn the chain rule on its head to yield the integration technique called integration by substitution . You should view it as philosophically akin to a familiar strategy from physics: the right change of coordinate system can dramatically simplify an otherwise intractable problem. Our account is complementary to Section 6.1 of APEX Calculus and Section 7.1 of Strang's Calculus.    Let be a function on and a function on . We say that and are composable if for all ; in this case, their composition is the function on defined by .     Chain rule   Let be a differentiable function on and a differentiable function on , and suppose that and are composable. Then is differentiable on with derivative , , .     Define on by and on by ; note that and are both differentiable. Let's show that and are composable and compute .  Let's first check composability. Given , note that for all , so that by . Hence, given , it follows that satisfies , as required. Thus, the composition is well-defined and takes the form .  Let's now apply the chain rule to compute . Indeed, since and , it follows that .    Integration by substitution   Let be a continuously differentiable function on , let be a continuous function on , and suppose that and are composable. Then , , in Leibniz notation, .    First, by , let be an antiderivative of on . Then, by , .  Next, by , , so that is an antiderivative of . Hence, by , . Thus, at last, we find that .     Recall that for any function defined at . If is integrable on , it's also convenient to define . Both fundamental theorems of calculus and the identity can straightforwardly be generalized accordingly.    Let's use to compute . Note that . Hence, let . Then .    Let's compute , where is an interval satisfying ; note that on such an interval. Observe that . Hence, let . Then .    Integration by substitution in practice   To compute using integration by substitution:   Choose a substitution , so that (formally!), and reverse engineer such that .    Find an antiderivative of , , compute .    Substitute into to get an antiderivative for .    Apply the second fundamental theorem of calculus ( ).     Moreover, note that the first three steps yield a method for computing the indefinite integral .     Let's compute for .   Try . Then , and hence     Recall that .    Substituting into yields .    At last, by the second fundamental theorem of calculus, .       Let's find the indefinite integral .   Take , so that , and hence .    Note that , so that . We compute the remaining term by a substitution of its own:   take , so that , and hence ;    note that ;    re-substitute to get .   Hence, at last, we get .    We finally re-substitute to get .      "
+  "body": " Integration by Substitution  By the second fundamental theorem of calculus ( ), every fact about derivatives should (at least in principle) yield a corresponding fact about integrals. In this section, we turn the chain rule on its head to yield the integration technique called integration by substitution . You should view it as philosophically akin to a familiar strategy from physics: the right change of coordinate system can dramatically simplify an otherwise intractable problem. Our account is complementary to Section 6.1 of APEX Calculus and Section 7.3 of Strang's Calculus.    Let be a function on and a function on . We say that and are composable if for all ; in this case, their composition is the function on defined by .     Chain rule   Let be a differentiable function on and a differentiable function on , and suppose that and are composable. Then is differentiable on with derivative , , .     Define on by and on by ; note that and are both differentiable. Let's show that and are composable and compute .  Let's first check composability. Given , note that for all , so that by . Hence, given , it follows that satisfies , as required. Thus, the composition is well-defined and takes the form .  Let's now apply the chain rule to compute . Indeed, since and , it follows that .    Integration by substitution   Let be a continuously differentiable function on , let be a continuous function on , and suppose that and are composable. Then , , in Leibniz notation, .    First, by , let be an antiderivative of on . Then, by , .  Next, by , , so that is an antiderivative of . Hence, by , . Thus, at last, we find that .     Recall that for any function defined at . If is integrable on , it's also convenient to define . Both fundamental theorems of calculus and the identity can straightforwardly be generalized accordingly.    Let's use to compute . Note that . Hence, let . Then .    Let's compute , where is an interval satisfying ; note that on such an interval. Observe that . Hence, let . Then .    Integration by substitution in practice   To compute using integration by substitution:   Choose a substitution , so that (formally!), and reverse engineer such that .    Find an antiderivative of , , compute .    Substitute into to get an antiderivative for .    Apply the second fundamental theorem of calculus ( ).     Moreover, note that the first three steps yield a method for computing the indefinite integral .     Let's compute for .   Try . Then , and hence     Recall that .    Substituting into yields .    At last, by the second fundamental theorem of calculus, .       Let's find the indefinite integral .   Take , so that , and hence .    Note that , so that . We compute the remaining term by a substitution of its own:   take , so that , and hence ;    note that ;    re-substitute to get .   Hence, at last, we get .    We finally re-substitute to get .      "
 },
 {
   "id": "sec-substitution-2",
@@ -1340,6 +1340,105 @@ var ptx_lunr_docs = [
   "number": "2.1.10",
   "title": "",
   "body": " Let's find the indefinite integral .   Take , so that , and hence .    Note that , so that . We compute the remaining term by a substitution of its own:   take , so that , and hence ;    note that ;    re-substitute to get .   Hence, at last, we get .    We finally re-substitute to get .     "
+},
+{
+  "id": "sec-int-by-parts",
+  "level": "1",
+  "url": "sec-int-by-parts.html",
+  "type": "Section",
+  "number": "2.2",
+  "title": "Integration by Parts",
+  "body": " Integration by Parts  In , we saw how the chain rule for the derivative of a composition yielded a technique of integration called integration by substitution . In this section, we'll see how the Leibniz rule for the derivative of a product yields a technique of integration called integration by parts . Our account is complementary to Section 6.2 of APEX Calculus and Section 7.1 of Strang's Calculus.    Let and be continuously differentiable on . Then .    By the Leibniz rule for differentiation, , On the one hand, by , . On the other hand, since , , , and are all continuous on , so too are and , so that and are both integrable on by , and hence, by , . Thus, at last, , which we can solve for to get . Rewriting this equality in Leibniz notation gives the claim as stated.    In practice, integration by parts is often carried out at the level of indefinite integration. Thus, suppose that and are continuously differentiable on some interval , so that and are both continuous on and hence have antiderivatives by the first fundamental theorem of calculus ( ). Then , which we can solve for to get . Since is an antiderivative of , it therefore follows that which one traditionally writes as , where and .   Integration by parts in practice   To compute using integration by parts:   Choose a function such that obviously factorizes as , where for an unknown function with chosen derivative . You want to choose (explicitly) and (implicitly) in such a way that is much simpler than and can't be much more complicated than .    Reverse engineer  via  .    Using , write , and compute by any means necessary. If you've chosen and correctly, the new indefinite integral will be easier than .    Apply the second fundamental theorem of calculus ( ) to compute in terms of .     Moreover, note that the first three steps yield a method for computing the indefinite integral .     The traditional use of and in integration by parts has nothing to do with the traditional use of in integration by substitution!    Let's apply integration by parts to compute .   Choose , so that , and hence .    Since , take . Note that is much simpler than , while is no more complicated than .    Since , we get       You may be wondering how you should choose and . APEX Calculus provides the following guidance.   LIATE   Consider the following informal hierarchy of elementary functions:   Logarithmic functions;    Inverse trigonometric functions;    Algebraic functions ( , polynomials, rational functions, th roots);    Trigonometric functions;    Exponential.     Suppose that , where ranks higher on the list than . Then write , where and .     Let's compute .   Note that is Algebraic while is Trigonometric. Since A precedes T in LIATE , take and .    Since , take .    Since , compute .      Suppose you want to compute , where is logarithmic or inverse trigonometric. Note that , where the constant is Algebraic and hence outranked by . Thus, LIATE suggests taking and , which yields the obvious choice of . The idea is that will be so much simpler in form than that will still be simpler to compute than .   Let's compute .   Since is Logarithmic, write , and hence take and .    Since , compute .       Let's compute .   Since is Inverse trigonometric, write , and hence take and .    Since , compute . We now use integration by substitution to compute .   Take , so that , and hence .    Observe that .    Substituting into yields .   Hence, at last, .    Finally, .      Sometimes, you need to apply integration by parts repeatedly to obtain a non-trivial equation for your unknown integral.   Let's compute .   Since is Trigonometric and is Exponential, take and .    Since , take .    Since , compute .  We now apply integration by parts to compute :   Since is Trigonometric and is Exponential, take and .    Since , take .    Since , compute .     Setting , we therefore find that , which we can now solve for (with the usual caveats about equalities of indefinite integrals) to get .      "
+},
+{
+  "id": "sec-int-by-parts-2",
+  "level": "2",
+  "url": "sec-int-by-parts.html#sec-int-by-parts-2",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": "integration by substitution Leibniz rule integration by parts "
+},
+{
+  "id": "thm-int-by-parts",
+  "level": "2",
+  "url": "sec-int-by-parts.html#thm-int-by-parts",
+  "type": "Theorem",
+  "number": "2.2.1",
+  "title": "",
+  "body": "  Let and be continuously differentiable on . Then .    By the Leibniz rule for differentiation, , On the one hand, by , . On the other hand, since , , , and are all continuous on , so too are and , so that and are both integrable on by , and hence, by , . Thus, at last, , which we can solve for to get . Rewriting this equality in Leibniz notation gives the claim as stated.   "
+},
+{
+  "id": "heuristic-parts",
+  "level": "2",
+  "url": "sec-int-by-parts.html#heuristic-parts",
+  "type": "Heuristic",
+  "number": "2.2.2",
+  "title": "Integration by parts in practice.",
+  "body": " Integration by parts in practice   To compute using integration by parts:   Choose a function such that obviously factorizes as , where for an unknown function with chosen derivative . You want to choose (explicitly) and (implicitly) in such a way that is much simpler than and can't be much more complicated than .    Reverse engineer  via  .    Using , write , and compute by any means necessary. If you've chosen and correctly, the new indefinite integral will be easier than .    Apply the second fundamental theorem of calculus ( ) to compute in terms of .     Moreover, note that the first three steps yield a method for computing the indefinite integral .   "
+},
+{
+  "id": "sec-int-by-parts-6",
+  "level": "2",
+  "url": "sec-int-by-parts.html#sec-int-by-parts-6",
+  "type": "Warning",
+  "number": "2.2.3",
+  "title": "",
+  "body": " The traditional use of and in integration by parts has nothing to do with the traditional use of in integration by substitution!  "
+},
+{
+  "id": "sec-int-by-parts-7",
+  "level": "2",
+  "url": "sec-int-by-parts.html#sec-int-by-parts-7",
+  "type": "Example",
+  "number": "2.2.4",
+  "title": "",
+  "body": " Let's apply integration by parts to compute .   Choose , so that , and hence .    Since , take . Note that is much simpler than , while is no more complicated than .    Since , we get      "
+},
+{
+  "id": "heuristic-LIATE",
+  "level": "2",
+  "url": "sec-int-by-parts.html#heuristic-LIATE",
+  "type": "Heuristic",
+  "number": "2.2.5",
+  "title": "‘<abbr class=\"initialism\">LIATE<\/abbr>’.",
+  "body": " LIATE   Consider the following informal hierarchy of elementary functions:   Logarithmic functions;    Inverse trigonometric functions;    Algebraic functions ( , polynomials, rational functions, th roots);    Trigonometric functions;    Exponential.     Suppose that , where ranks higher on the list than . Then write , where and .   "
+},
+{
+  "id": "sec-int-by-parts-10",
+  "level": "2",
+  "url": "sec-int-by-parts.html#sec-int-by-parts-10",
+  "type": "Example",
+  "number": "2.2.6",
+  "title": "",
+  "body": " Let's compute .   Note that is Algebraic while is Trigonometric. Since A precedes T in LIATE , take and .    Since , take .    Since , compute .     "
+},
+{
+  "id": "sec-int-by-parts-12",
+  "level": "2",
+  "url": "sec-int-by-parts.html#sec-int-by-parts-12",
+  "type": "Example",
+  "number": "2.2.7",
+  "title": "",
+  "body": " Let's compute .   Since is Logarithmic, write , and hence take and .    Since , compute .     "
+},
+{
+  "id": "sec-int-by-parts-13",
+  "level": "2",
+  "url": "sec-int-by-parts.html#sec-int-by-parts-13",
+  "type": "Example",
+  "number": "2.2.8",
+  "title": "",
+  "body": " Let's compute .   Since is Inverse trigonometric, write , and hence take and .    Since , compute . We now use integration by substitution to compute .   Take , so that , and hence .    Observe that .    Substituting into yields .   Hence, at last, .    Finally, .     "
+},
+{
+  "id": "sec-int-by-parts-15",
+  "level": "2",
+  "url": "sec-int-by-parts.html#sec-int-by-parts-15",
+  "type": "Example",
+  "number": "2.2.9",
+  "title": "",
+  "body": " Let's compute .   Since is Trigonometric and is Exponential, take and .    Since , take .    Since , compute .  We now apply integration by parts to compute :   Since is Trigonometric and is Exponential, take and .    Since , take .    Since , compute .     Setting , we therefore find that , which we can now solve for (with the usual caveats about equalities of indefinite integrals) to get .     "
 },
 {
   "id": "backmatter-2",

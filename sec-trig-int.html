@@ -8,7 +8,7 @@
 <html lang="en-US" dir="ltr">
 <head xmlns:og="http://ogp.me/ns#" xmlns:book="https://ogp.me/ns/book#">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Techniques of Antidifferentiation</title>
+<title>Trigonometric Integrals</title>
 <meta name="Keywords" content="Authored in PreTeXt">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta property="og:type" content="book">
@@ -216,7 +216,7 @@ eBookConfig.enable_chatcodes =  false;
 <ol id="searchresults" class="searchresults"></ol>
 </div>
 </div>
-<span class="nav-other-controls"><button id="light-dark-button" class="light-dark-button button" title="Dark Mode"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe51c;</span><span class="name">Dark Mode</span></button></span><span class="treebuttons"><a class="previous-button button" href="sec-int-interpretation.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="up-button button" href="mybook.html" title="Up"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Up</span></a><a class="next-button button" href="sec-substitution.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a></span>
+<span class="nav-other-controls"><button id="light-dark-button" class="light-dark-button button" title="Dark Mode"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe51c;</span><span class="name">Dark Mode</span></button></span><span class="treebuttons"><a class="previous-button button" href="sec-int-by-parts.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="up-button button" href="ch-antidifferentiation.html" title="Up"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Up</span></a><a class="next-button button" href="backmatter.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a></span>
 </div></nav><div id="latex-macros" class="hidden-content process-math" style="display:none"><span class="process-math">\(\newcommand{\cL}{\mathcal L}
 \newcommand{\cU}{\mathcal U}
 \newcommand{\N}{\mathbb N}
@@ -270,22 +270,91 @@ eBookConfig.enable_chatcodes =  false;
 </li>
 <li class="toc-item toc-chapter contains-active">
 <div class="toc-title-box"><a href="ch-antidifferentiation.html" class="internal"><span class="codenumber">2</span> <span class="title">Techniques of Antidifferentiation</span></a></div>
-<ul class="structural toc-item-list active">
+<ul class="structural toc-item-list contains-active">
 <li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-substitution.html" class="internal"><span class="codenumber">2.1</span> <span class="title">Integration by Substitution</span></a></div></li>
 <li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-int-by-parts.html" class="internal"><span class="codenumber">2.2</span> <span class="title">Integration by Parts</span></a></div></li>
+<li class="toc-item toc-section active"><div class="toc-title-box"><a href="sec-trig-int.html" class="internal"><span class="codenumber">2.3</span> <span class="title">Trigonometric Integrals</span></a></div></li>
 </ul>
 </li>
 <li class="toc-item toc-backmatter"><div class="toc-title-box"><a href="backmatter.html" class="internal"><span class="title">Backmatter</span></a></div></li>
 </ul></nav></div>
-<main class="ptx-main"><div id="ptx-content" class="ptx-content"><section class="chapter" id="ch-antidifferentiation"><h2 class="heading">
-<span class="type">Chapter</span><span class="space"> </span><span class="codenumber">2</span><span class="space"> </span><span class="title">Techniques of Antidifferentiation</span>
+<main class="ptx-main"><div id="ptx-content" class="ptx-content"><section class="section" id="sec-trig-int"><h2 class="heading hide-type">
+<span class="type">Section</span><span class="space"> </span><span class="codenumber">2.3</span><span class="space"> </span><span class="title">Trigonometric Integrals</span>
 </h2>
-<section class="introduction" id="ch-antidifferentiation-2"><div class="para" id="ch-antidifferentiation-2-1"></div></section><nav class="summary-links"><ul>
-<li><a href="sec-substitution.html" class="internal"><span class="codenumber">2.1</span> <span class="title">Integration by Substitution</span></a></li>
-<li><a href="sec-int-by-parts.html" class="internal"><span class="codenumber">2.2</span> <span class="title">Integration by Parts</span></a></li>
-</ul></nav></section></div>
+<article class="lemma theorem-like" id="lem-rescaling"><h3 class="heading">
+<span class="type">Lemma</span><span class="space"> </span><span class="codenumber">2.3.1</span><span class="period">.</span>
+</h3>
+<div class="para logical" id="lem-rescaling-1-1">
+<div class="para">Let <span class="process-math">\(f\)</span> be a continuous function on an interval <span class="process-math">\(I\)</span> with antiderivative <span class="process-math">\(F\text{.}\)</span> Let <span class="process-math">\(a\)</span> be a non-zero constant. Then</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\int f(ax) \du{x} = \frac{1}{a}F(ax) + C\text{.}
+\end{equation*}
+</div>
+</div></article><article class="proof" id="lem-rescaling-2"><h3 class="heading"><span class="type">Proof<span class="period">.</span></span></h3>
+<div class="para logical" id="lem-rescaling-2-1">
+<div class="para">By the chain rule,</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\left(\frac{1}{a}F(ax)\right)^\prime = \frac{1}{a}F(ax)^\prime = \frac{1}{a}F^\prime(ax)(ax)^\prime = \frac{1}{a}f(ax)a = f(x)\text{.}
+\end{equation*}
+</div>
+</div></article><article class="proposition theorem-like" id="prop-trig-int-odd-power-sin"><h3 class="heading">
+<span class="type">Proposition</span><span class="space"> </span><span class="codenumber">2.3.2</span><span class="period">.</span>
+</h3>
+<div class="para logical" id="prop-trig-int-odd-power-sin-1-1">
+<div class="para">Let <span class="process-math">\(m\)</span> and <span class="process-math">\(n\)</span> be non-negative integers. Suppose that <span class="process-math">\(m\)</span> is odd, so that <span class="process-math">\(m = 2k+1\)</span> for <span class="process-math">\(k\)</span> a non-negative integer. Then</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\int \sin^m(x)\cos(x)\du{x} = \sum_{j=0}^k \frac{(-1)^{j+1}}{n+2j+1} {k \choose j}\cos^{n+2j+1}(x) + C\text{.}
+\end{equation*}
+</div>
+</div></article><article class="proof" id="prop-trig-int-odd-power-sin-2"><h3 class="heading"><span class="type">Proof<span class="period">.</span></span></h3>
+<div class="para logical" id="prop-trig-int-odd-power-sin-2-1">
+<div class="para">By our hypothesis that <span class="process-math">\(m = 2k+1\)</span> and the Pythagorean theorem,</div>
+<div class="displaymath process-math" id="prop-trig-int-odd-power-sin-2-1-2">
+\begin{align*}
+\sin^m(x)\cos^n(x) \amp = \sin^{2k+1}(x)\cos^n(x) \\
+\amp = (\sin^2(x))^k\sin(x)\cos^n(x) \\
+\amp = (1-\cos^2(x))^k\cos^n(x)\sin(x) \text{,}
+\end{align*}
+</div>
+<div class="para">so that</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\int \sin^m(x)\cos^n(x) \du{x} = \int (1-\cos^2(x))^k \cos^n(x)\sin(x)\du{x}.
+\end{equation*}
+</div>
+<div class="para">Since <span class="process-math">\(\sin = -\cos^\prime\text{,}\)</span> we may apply the substitution <span class="process-math">\(u \defn \cos(x)\)</span> to get</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\int \sin^m(x)\cos^n(x) \du{x} = \int -(1-u^2)^k u^n \du{u} = \int -u^n(-u^2+1)^k \du{u}\text{.}
+\end{equation*}
+</div>
+<div class="para">But now, by the binomial theorem,</div>
+<div class="displaymath process-math">
+\begin{equation*}
+-u(-u^2+1)^k = -u^n \sum_{j=0}^k {k \choose j}(-u^2)^j 1^{k-j} = \sum_{j=0}^k (-1)^{j+1} {k \choose j} u^{n+2j}\text{,}
+\end{equation*}
+</div>
+<div class="para">so that</div>
+<div class="displaymath process-math" id="prop-trig-int-odd-power-sin-2-1-8">
+\begin{align*}
+\int -u^n(-u^2+1)^k \du{u} \amp = \int \left(\sum_{j=0}^k (-1)^{j+1} {k \choose j} u^{n+2j}\right)\du{u} \\
+\amp = \sum_{j=0}^k (-1)^{j+1} {k \choose j} \int u^{n+2j}\du{u}\\
+\amp = \sum_{j=0}^k (-1)^{j+1} {k \choose j} \frac{1}{n+2j+1}u^{n+2j+1} + C\\
+\amp = \sum_{j=0}^k {k \choose j} \frac{(-1)^{j+1}}{n+2j+1}u^{n+2j+1} + C\text{.}
+\end{align*}
+</div>
+<div class="para">At last, re-substituting <span class="process-math">\(u = \cos(x)\)</span> yields</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\int \sin^m(x)\cos^n(x) \du{x} = \sum_{j=0}^k {k \choose j} \frac{(-1)^{j+1}}{n+2j+1}\cos^{n+2j+1}(x) + C\text{.}
+\end{equation*}
+</div>
+</div></article></section></div>
 <div class="ptx-content-footer">
-<a class="previous-button button" href="sec-int-interpretation.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="top-button button" href="#" title="Top"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Top</span></a><a class="next-button button" href="sec-substitution.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a>
+<a class="previous-button button" href="sec-int-by-parts.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="top-button button" href="#" title="Top"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Top</span></a><a class="next-button button" href="backmatter.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a>
 </div></main>
 </div>
 <div id="ptx-page-footer" class="ptx-page-footer">
